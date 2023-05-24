@@ -8,15 +8,16 @@ const contentStore = useContentStore()
 </script>
 
 <template>
-    <div :class="{ dashboard: true, nodashboard: !contentStore.currentDashboard.content }">
-        <ComponentContainer v-if="contentStore.currentDashboard.content"
-            v-for="item in contentStore.currentDashboard.content" :content="item" />
-        <div v-else class="dashboard-nodashboard">
+    <div v-if="contentStore.currentDashboard.content.length !== 0" class="dashboard">
+        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" />
+        <MoreInfo />
+    </div>
+    <div v-else class="dashboard nodashboard">
+        <div class="dashboard-nodashboard">
             <span>sentiment_very_dissatisfied</span>
             <h2>尚未加入組件</h2>
             <p>加入您的第一個組件</p>
         </div>
-        <MoreInfo />
     </div>
 </template>
 

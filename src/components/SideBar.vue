@@ -1,13 +1,10 @@
 <script setup>
 import SideBarTab from './utilities/SideBarTab.vue';
 import { ref } from 'vue';
-import { useAuthStore } from '../store/authStore';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
-import { icons } from '../assets/configs/temp'
 import AddDashboard from './dialogs/AddDashboard.vue';
 
-const authStore = useAuthStore()
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
 
@@ -18,22 +15,16 @@ function toggleExpand() {
 </script>
 
 <template>
-    <div :class="{ sidebar: true, collapse: !isExpanded }" v-if="authStore.auth > 0">
+    <div :class="{ sidebar: true, collapse: !isExpanded }">
         <div>
             <div class="sidebar-sub">
                 <div class="sidebar-sub-add">
-                    <h2>{{ isExpanded ? `自訂儀表板` : `自訂` }}</h2>
+                    <h2>{{ isExpanded ? `儀表板列表` : `列表` }}</h2>
                     <button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
                     <AddDashboard />
                 </div>
-                <SideBarTab v-for=" item  in  contentStore.customizedDashboards " :icon="icons[item.index] || 'help'"
-                    :title="item.name === 'defaultFav' ? '我的最愛' : item.name" :id="item.id" :type="`customized`"
-                    :key="item.index" :expanded="isExpanded" />
-            </div>
-            <div class="sidebar-sub">
-                <h2>{{ isExpanded ? `官方儀表板` : `官方` }}</h2>
-                <SideBarTab v-for=" item  in  contentStore.fixedDashboards " :icon="icons[item.index]" :title="item.name"
-                    :id="item.id" :type="`fixed`" :key="item.index" :expanded="isExpanded" />
+                <SideBarTab v-for="item in contentStore.dashboards" :icon="item.icon" :title="item.name" :index="item.index"
+                    :type="`customized`" :key="item.index" :expanded="isExpanded" />
             </div>
             <div class="sidebar-sub">
                 <h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>

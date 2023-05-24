@@ -10,7 +10,7 @@ const contentStore = useContentStore()
 <template>
     <div class="map">
         <div class="map-charts">
-            <ComponentMapChart v-if="contentStore.currentDashboard.content"
+            <ComponentMapChart v-if="contentStore.currentDashboard.content.length !== 0"
                 v-for="item in contentStore.currentDashboard.content" :content="item" :key="item.index" />
             <div v-else class="map-charts-nodashboard">
                 <span>sentiment_very_dissatisfied</span>

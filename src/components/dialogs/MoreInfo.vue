@@ -13,9 +13,9 @@ const dialogStore = useDialogStore()
             <ComponentContainer :content="dialogStore.moreInfoContent" :not-more-info="false" />
             <div class="moreinfo-info">
                 <h3>組件說明</h3>
-                <p>本組件搭配啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉。</p>
+                <p>{{ dialogStore.moreInfoContent.long_desc }}</p>
                 <h3>使用情境</h3>
-                <p>本組件搭配啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉，啦啦啦拉拉。</p>
+                <p>{{ dialogStore.moreInfoContent.use_case }}</p>
                 <h3>相關連結</h3>
                 <p>連結</p>
                 <div class="moreinfo-info-control">

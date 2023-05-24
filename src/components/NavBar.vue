@@ -14,7 +14,7 @@ const { isFullscreen, toggle } = useFullscreen()
 
 const linkQuery = computed(() => {
     const query = route.query
-    return `?id=${query.id}&type=${query.type}`
+    return `?index=${query.index}`
 })
 
 </script>
@@ -28,11 +28,11 @@ const linkQuery = computed(() => {
                 <h2>Taipei City Dashboard</h2>
             </div>
         </div>
-        <div class="navbar-tabs" v-if="authStore.auth > 0">
-            <router-link :to="`/Dashboard${linkQuery}`">儀表板總覽</router-link>
-            <router-link :to="`/Mapview${linkQuery}`">地圖交叉比對</router-link>
+        <div class="navbar-tabs">
+            <router-link :to="`/dashboard${linkQuery}`">儀表板總覽</router-link>
+            <router-link :to="`/mapview${linkQuery}`">地圖交叉比對</router-link>
         </div>
-        <div class="navbar-user" v-if="authStore.auth > 0">
+        <div class="navbar-user">
             <button><span>school</span></button>
             <button @click="toggle"><span>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</span></button>
             <div class="navbar-user-user">

@@ -1,8 +1,7 @@
 <script setup>
-import { defineProps, ref, defineAsyncComponent } from 'vue';
+import { ref, computed } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 import LoadingImage from '../LoadingImage.vue';
-import { indexToChartType } from '../../assets/configs/temp';
 
 const props = defineProps({
     content: { type: Object }
@@ -16,11 +15,21 @@ function handleToggle() {
         return
     }
     if (checked.value) {
-        mapStore.addToMapLayerList(props.content.map_config[0])
+        mapStore.addToMapLayerList(props.content.map_config)
     } else {
-        mapStore.turnOffMapLayerVisibility(props.content.map_config[0])
+        mapStore.turnOffMapLayerVisibility(props.content.map_config)
     }
 }
+
+const dataTime = computed(() => {
+    if (!props.content.time_from) {
+        return '固定資料'
+    }
+    if (!props.content.time_to) {
+        return props.content.time_from.slice(0, 10)
+    }
+    return `${props.content.time_from.slice(0, 10)} ~ ${props.content.time_to.slice(0, 10)}`
+})
 
 </script>
 
@@ -31,9 +40,8 @@ function handleToggle() {
                 <div>
                     <h3>{{ content.name }}</h3>
                     <span v-if="!content.map_config">wrong_location</span>
-                    <span v-if="content.calculation_config">insights</span>
                 </div>
-                <h4 v-if="checked">{{ `${content.source_from} | (顯示資料之時間)` }}</h4>
+                <h4 v-if="checked">{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <label class="toggleswitch">
                 <input type="checkbox" @change="handleToggle" v-model="checked">
@@ -41,10 +49,10 @@ function handleToggle() {
             </label>
         </div>
         <div class="componentmapchart-chart" v-if="checked">
-            <LoadingImage v-if="content.chartData.length === 0" />
+            <!-- <LoadingImage v-if="content.chartData.length === 0" />
             <component v-else-if="indexToChartType[content.index]" :is="indexToChartType[content.index]" :content="content">
-            </component>
-            <p v-else>{{ content.index }}{{ content.chartData }}</p>
+            </component> -->
+            <p>{{ content.index }}{{ content.chart_data }}</p>
         </div>
 
         <div class="componentmapchart-footer"></div>

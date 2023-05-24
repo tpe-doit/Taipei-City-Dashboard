@@ -8,19 +8,16 @@ const contentStore = useContentStore()
 const props = defineProps({
     icon: { type: String },
     title: { type: String },
-    id: { type: Number },
-    type: { type: String },
+    index: { type: String },
     expanded: { type: Boolean }
 })
 
 const tabLink = computed(() => {
     const path = route.path
-    return `${route.path}?id=${props.id}&type=${props.type}`
+    return `${route.path}?index=${props.index}`
 })
 const linkActiveOrNot = computed(() => {
-    const idSameOrNot = route.query.id == props.id ? true : false;
-    const typeSameOrNot = route.query.type == props.type ? true : false
-    return idSameOrNot && typeSameOrNot
+    return route.query.index === props.index ? true : false;
 })
 
 </script>

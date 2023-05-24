@@ -1,10 +1,8 @@
 <script setup>
-import { defineProps, defineAsyncComponent } from 'vue';
 import { useContentStore } from '../../store/contentStore';
 import { useDialogStore } from '../../store/dialogStore';
 import ComponentTag from '../utilities/ComponentTag.vue';
-import LoadingImage from '../LoadingImage.vue';
-import { indexToChartType } from '../../assets/configs/temp';
+import { computed } from 'vue';
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
@@ -14,6 +12,31 @@ const props = defineProps({
     notMoreInfo: { type: Boolean, default: true },
 })
 
+const dataTime = computed(() => {
+    if (!props.content.time_from) {
+        return '固定資料'
+    }
+    if (!props.content.time_to) {
+        return props.content.time_from.slice(0, 10)
+    }
+    return `${props.content.time_from.slice(0, 10)} ~ ${props.content.time_to.slice(0, 10)}`
+})
+
+const updateFreq = computed(() => {
+    const unitRef = {
+        minute: "分鐘",
+        hour: "小時",
+        day: "天",
+        week: "週",
+        month: "月",
+        year: "年"
+    }
+    if (!props.content.update_freq) {
+        return '不定期更新'
+    }
+    return `每${props.content.update_freq}${unitRef[props.content.update_freq_unit]}更新`
+})
+
 </script>
 
 <template>
@@ -21,26 +44,28 @@ const props = defineProps({
         <div class="componentcontainer-header">
             <div>
                 <h3>{{ content.name }}</h3>
-                <h4>{{ `${content.source_from} | (顯示資料之時間)` }}</h4>
+                <h4>{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <div v-if="notMoreInfo">
                 <button title="回報問題"><span>flag</span></button>
-                <button v-if="contentStore.currentDashboard.type === 'customized'"
-                    @click="contentStore.deleteComponent(content.topic_id, content.id, content.name)"><span>delete</span></button>
+
+                <!-- If you wish to implement the "delete component" function, uncomment the following -->
+                <!-- <button v-if="contentStore.currentDashboard.type === 'customized'"
+                    @click="contentStore.deleteComponent(content.topic_id, content.id, content.name)"><span>delete</span></button> -->
+
             </div>
         </div>
 
         <div class="componentcontainer-chart">
-            <LoadingImage v-if="content.chartData.length === 0" />
+            <!-- <LoadingImage v-if="content.chart_data.length === 0" />
             <component v-else-if="indexToChartType[content.index]" :is="indexToChartType[content.index]" :content="content">
-            </component>
-            <p v-else>{{ content.index }}{{ content.chartData }}</p>
+            </component> -->
+            <p>{{ content.index }}{{ content.chart_data }}</p>
         </div>
         <div class="componentcontainer-footer">
             <div>
-                <ComponentTag :icon="``" :text="`更新頻率`" />
+                <ComponentTag :icon="``" :text="updateFreq" />
                 <ComponentTag v-if="!content.map_config" :icon="`wrong_location`" :text="`沒有地圖`" />
-                <ComponentTag v-if="content.calculation_config" :icon="`insights`" :text="`有歷史軸`" />
             </div>
             <button v-if="notMoreInfo" @click="dialogStore.showMoreInfo(content)">
                 <p>組件資訊</p>

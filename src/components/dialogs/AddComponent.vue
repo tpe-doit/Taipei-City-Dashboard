@@ -67,16 +67,18 @@ const filterItems = {
     control: ['有地理資料', '有歷史資料']
 }
 
+// Uncomment the following to restore add components function if new backend is connected
+function handleSubmit() {
+    // contentStore.addComponents(componentsSelected.value)
+    dialogStore.showNotification('fail', '尚未新增新增儀表板功能，無法新增組件')
+    handleClose();
+}
 function handleClose() {
-    dialogStore.hideAllDialogs()
     searchName.value = ''
     searchIndex.value = ''
     componentsSelected.value = []
     clearFilters()
-}
-function handleSubmit() {
-    contentStore.addComponents(componentsSelected.value)
-    handleClose();
+    dialogStore.hideAllDialogs()
 }
 function clearFilters() {
     filterSource.value = []

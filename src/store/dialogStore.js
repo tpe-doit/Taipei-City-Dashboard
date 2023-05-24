@@ -24,6 +24,9 @@ export const useDialogStore = defineStore("dialog", {
     hideAllDialogs() {
       const keys = Object.keys(this.dialogs);
       for (let i = 0; i < keys.length; i++) {
+        if (keys[i] === "notificationBar") {
+          continue;
+        }
         this.dialogs[keys[i]] = false;
       }
       this.moreInfoContent = null;

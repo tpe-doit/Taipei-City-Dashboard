@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "name": "民情熱議",
+      "index": "sentiment",
+      "components": ["4", "32"],
+      "icon": "mic"
+    },
+    {
+      "name": "城市安防",
+      "index": "patrol",
+      "components": [],
+      "icon": "security"
+    },
+    {
+      "name": "城市交通",
+      "index": "traffic",
+      "components": [],
+      "icon": "traffic"
+    },
+    {
+      "name": "城市建設",
+      "index": "construction",
+      "components": [],
+      "icon": "construction"
+    },
+    {
+      "name": "社會福利",
+      "index": "welfare",
+      "components": [],
+      "icon": "badge"
+    },
+    {
+      "name": "生態環境",
+      "index": "environment",
+      "components": [],
+      "icon": "forest"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "data": {
+    "4": {
+      "id": 4,
+      "index": "f092b008",
+      "map_config": null,
+      "chart_config": { "color": null, "types": ["donut", "horizontalBar"] },
+      "source": "1999話務系統",
+      "time_from": "2023-05-09T17:05:17+08:00",
+      "time_to": "2023-05-23T17:05:17+08:00",
+      "update_freq": "1",
+      "update_freq_unit": "day",
+      "name": "1999話務案件局處",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "32": {
+      "id": 32,
+      "index": "work_live",
+      "map_config": [
+        {
+          "index": "tp_fet_work_live",
+          "paint": {
+            "fill-extrusion-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "work_l_w"],
+              -11533,
+              "#77dddf",
+              -4,
+              "#000000",
+              8,
+              "#000000",
+              2551,
+              "#d76c29"
+            ],
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["get", "work_l+w"],
+              0,
+              0,
+              19895,
+              1000
+            ],
+            "fill-extrusion-opacity": 0.5
+          },
+          "property": [
+            { "key": "pop_live", "name": "居住推估人數" },
+            { "key": "pop_work", "name": "工作推估人數" }
+          ],
+          "type": "fill-extrusion",
+          "size": null,
+          "icon": null,
+          "title": "居職人口推估"
+        }
+      ],
+      "chart_config": { "color": ["#d76c29", "#77dddf"], "types": [] },
+      "source": "遠傳電信",
+      "time_from": "2020-06-16T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "name": "居職人口推估",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    }
+  }
+}

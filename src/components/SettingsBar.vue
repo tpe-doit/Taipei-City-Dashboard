@@ -1,25 +1,22 @@
 <script setup>
-import { useAuthStore } from '../store/authStore';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
-import { icons } from '../assets/configs/temp';
 import AddComponent from './dialogs/AddComponent.vue';
 import DashboardSettings from './dialogs/DashboardSettings.vue';
-const authStore = useAuthStore()
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
 
 </script>
 
 <template>
-    <div class="settingsbar" v-if="authStore.auth > 0">
+    <div class="settingsbar">
         <div class="settingsbar-title">
-            <span>{{ icons[contentStore.currentDashboard.index] || 'help' }}</span>
+            <span>{{ contentStore.currentDashboard.icon }}</span>
             <h2>{{ contentStore.currentDashboard.name === 'defaultFav' ? '我的最愛' : contentStore.currentDashboard.name }}</h2>
             <p>|</p>
             <h3>{{ contentStore.currentDashboard.type === 'fixed' ? '官方儀表板' : '自訂儀表板' }}</h3>
         </div>
-        <div class="settingsbar-settings" v-if="contentStore.currentDashboard.type === 'customized'">
+        <div class="settingsbar-settings">
             <button @click="dialogStore.showDialog('addComponent')"><span>add_chart</span>
                 新增組件
             </button>
@@ -27,7 +24,7 @@ const dialogStore = useDialogStore()
             <button @click="dialogStore.showDialog('dashboardSettings')"><span>settings</span>
                 設定
             </button>
-            <DashboardSettings v-if="contentStore.currentDashboard.name" />
+            <DashboardSettings />
         </div>
     </div>
 </template>

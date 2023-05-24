@@ -14,21 +14,22 @@ const MAPBOXTOKEN = import.meta.env.VITE_MAPBOXTOKEN
 const mapStore = useMapStore()
 
 const mapBoxObject = ref(null)
-function initializeMapBox() {
-    mapboxGl.accessToken = MAPBOXTOKEN
-    mapBoxObject.value = new mapboxGl.Map({
-        ...MapObjectConfig,
-        style: mapStyle
-    })
-    mapBoxObject.value.addControl(new mapboxGl.NavigationControl())
-    mapBoxObject.value.doubleClickZoom.disable()
-    mapBoxObject.value.on('style.load', () => {
-        mapStore.initializeBasicLayers(mapBoxObject.value)
-        mapStore.initialize3DLayers(mapBoxObject.value)
-    })
-}
+// function initializeMapBox() {
+//     mapboxGl.accessToken = MAPBOXTOKEN
+//     mapBoxObject.value = new mapboxGl.Map({
+//         ...MapObjectConfig,
+//         style: mapStyle
+//     })
+//     mapBoxObject.value.addControl(new mapboxGl.NavigationControl())
+//     mapBoxObject.value.doubleClickZoom.disable()
+//     mapBoxObject.value.on('style.load', () => {
+
+//         mapStore.initializeBasicLayers(mapBoxObject.value)
+//         mapStore.initialize3DLayers(mapBoxObject.value)
+//     })
+// }
 onMounted(() => {
-    initializeMapBox()
+    mapStore.initializeMapBox()
 })
 </script>
 

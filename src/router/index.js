@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Map from "../views/Map.vue";
-import { useAuthStore } from "../store/authStore";
 import { useContentStore } from "../store/contentStore";
 import { useMapStore } from "../store/mapStore";
 
@@ -11,40 +9,22 @@ import { useMapStore } from "../store/mapStore";
 const routes = [
   {
     path: "/",
-    name: "homeRedirect",
-    redirect: "/login",
-    meta: {
-      auth: 0,
-    },
+    redirect: "/dashboard",
   },
   {
-    path: "/login",
-    name: "login",
-    component: Login,
-    meta: {
-      auth: 0,
-    },
-  },
-  {
-    path: "/Dashboard",
+    path: "/dashboard",
     name: "dashboard",
     component: Dashboard,
-    meta: {
-      auth: 1,
-    },
   },
   {
-    path: "/MapView",
-    name: "mapView",
+    path: "/mapview",
+    name: "mapview",
     component: Map,
-    meta: {
-      auth: 1,
-    },
   },
   {
     path: "/:pathMatch(.*)*",
     name: "notFoundRedirect",
-    redirect: "/Dashboard",
+    redirect: "/dashboard",
   },
 ];
 
@@ -54,35 +34,17 @@ const router = createRouter({
   routes,
 });
 
-// If the route has an auth level higher than 1 and no valid tokens are present, redirect to login
-router.beforeEach((to) => {
-  const store = useAuthStore();
-  if (to.matched.some((record) => record.meta.auth === 1)) {
-    if (store.tokens.access_token && store.tokens.refresh_token) {
-      return;
-    }
-    return { name: "login" };
-  }
-});
-
-// If the route has an auth level of 0 and there are valid tokens, redirect to dashboard
-router.beforeEach((to) => {
-  const store = useAuthStore();
-  if (to.matched.some((record) => record.meta.auth === 0)) {
-    if (store.tokens.access_token && store.tokens.refresh_token) {
-      return { name: "dashboard" };
-    }
-    return;
-  }
-});
-
-// Pass in route info to contentStore if the path starts with /Dashboard or /Mapview
+// Pass in route info to contentStore if the path starts with /dashboard or /mapview
 router.beforeEach((to) => {
   const contentStore = useContentStore();
   const mapStore = useMapStore();
-  if (to.path === "/Dashboard" || to.path === "/Mapview") {
-    contentStore.setRouteParams(to.path, to.query.id, to.query.type);
-    mapStore.clearMapStore();
+  if (to.path === "/dashboard" || to.path === "/mapview") {
+    contentStore.setRouteParams(to.path, to.query.index);
+  }
+  if (to.path === "/dashboard") {
+    mapStore.clearEntireMap();
+  } else if (to.path === "/mapview") {
+    mapStore.clearOnlyLayers();
   }
 });
 

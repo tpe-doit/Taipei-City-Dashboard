@@ -1,176 +1,47 @@
+/* authStore */
+// The auth store stores authentication and user information.
+// Since this template doesn't implement user authentication, only dummy user info is stored.
+// If you wish to implement authentication, you can reference the logic below (based on the authentication system of Taipei City Dashboard)
+// or design a new system from scratch that tailors to your needs.
+
 import { defineStore } from "pinia";
-import axios from "axios";
-import { md5 } from "../assets/utilityFunctions/md5";
-import router from "../router";
-import { useContentStore } from "./contentStore";
+import { useDialogStore } from "./dialogStore";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    // cmd f userDocs
-    user: null,
-    auth: 0,
-    tokens: {
-      access_token: localStorage.getItem("access_token") || "",
-      refresh_token: localStorage.getItem("refresh_token") || "",
-      token_type: localStorage.getItem("token_type") || "",
+    // This is a shortened version of the user object Taipei City Dashboard's backend will return once authenticated
+    user: {
+      email: "tuic-admin@gov.taipei",
+      gid: 1,
+      id: 1,
+      name: "系統管理者Admin🤩",
+      status: 1,
+      type: 0,
     },
+    tokens: {},
     errorMessage: "",
   }),
-  getters: {
-    userEssentials() {
-      const accountType = ["Email 用戶", "台北通用戶", "Taipei On 用戶"];
-      return {
-        name: this.user.name,
-        type: accountType[this.user.type],
-      };
-    },
-  },
+  getters: {},
   actions: {
-    // Sends email and password to backend to request tokens. Success -> setTokens / setUser / reroute to dashboard ; Fail -> Display Error
-    handleEmailLogin(email, password) {
-      axios
-        .post(
-          `/api_server/access/token`,
-          {},
-          {
-            headers: {
-              Authorization: `Basic ${btoa(`${email}:${md5(password)}`)}`,
-            },
-          }
-        )
-        .then((rs) => {
-          this.setTokens(
-            rs.data.access_token,
-            rs.data.refresh_token,
-            rs.data.token_type
-          );
-          this.setUser();
-          router.replace({ path: "/Dashboard" });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    // Sends request to backend to logout. Success or Fail -> Clear localStorage / Clear Store / Reroute to login
+    // Call this function to log in
+    handleLogin() {},
+
+    // Call this function to log out
     handleLogout() {
-      if (this.tokens.access_token) {
-        axios
-          .post(`/api_server/access/logout`, {
-            headers: {
-              Authorization: `${this.tokens.token_type} ${this.tokens.access_token}`,
-            },
-          })
-          .then((rs) => {
-            console.log(rs);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
-      localStorage.removeItem("token_type");
-      this.executeClearStore();
-      router.replace({ path: "/login" });
+      const dialogStore = useDialogStore();
+      dialogStore.showNotification("fail", "尚未新增用戶管理功能，無法登出");
     },
-    // Posts the refresh token to the server to request a new pair of tokens then sets user info
-    executeRefreshTokens() {
-      axios({
-        method: "post",
-        url: "/api_server/access/refresh",
-        headers: {
-          Authorization: `${this.tokens.token_type} ${this.tokens.refresh_token}`,
-        },
-      })
-        .then((rs) => {
-          const newToken = rs.data;
-          this.setTokens(
-            newToken.accessToken,
-            newToken.refresh_token,
-            newToken.token_type
-          );
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `${newToken.token_type} ${newToken.access_token}`;
-          axios
-            .get(`/api_server/manager/authuser`)
-            .then((rs) => {
-              this.user = rs.data;
-              this.auth = rs.data.gid == 1 ? 2 : 1;
-            })
-            .catch((e) => {
-              this.handleLogout();
-            });
-        })
-        .catch((e) => {
-          this.handleLogout();
-        });
-    },
-    // clears the entire store
-    executeClearStore() {
-      this.user = null;
-      this.auth = 0;
-      this.tokens = {
-        access_token: localStorage.getItem("access_token") || "",
-        refresh_token: localStorage.getItem("refresh_token") || "",
-        token_type: localStorage.getItem("token_type") || "",
-      };
-      this.dashboards = {
-        fixed: [],
-        customized: [],
-      };
-    },
-    // sets the tokens into the store and local storage
-    setTokens(access_token, refresh_token, token_type) {
-      this.tokens = {
-        access_token: access_token,
-        refresh_token: refresh_token,
-        token_type: token_type,
-      };
-      localStorage.setItem("access_token", access_token);
-      localStorage.setItem("refresh_token", refresh_token);
-      localStorage.setItem("token_type", token_type);
-    },
-    // requests user info from the server and adds it to the store
-    setUser() {
-      const contentStore = useContentStore();
-      if (!this.tokens.access_token || !this.tokens.refresh_token) {
-        this.handleLogout();
-        return;
-      }
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `${this.tokens.token_type} ${this.tokens.access_token}`;
-      axios
-        .get(`/api_server/manager/authuser`)
-        .then((rs) => {
-          this.user = rs.data;
-          this.auth = rs.data.gid == 1 ? 2 : 1;
-        })
-        .catch((e) => {
-          console.log(e);
-          this.executeRefreshTokens();
-        });
-    },
+
+    // If your authentication system supports refresh tokens, call this function to refresh existing tokens
+    executeRefreshTokens() {},
+
+    // Call this function to store tokens in the store as well as in localstorage/cookies/etc.
+    setTokens() {},
+
+    // Call this function to store user info in the store
+    setUser() {},
+
+    // Call this function to clear the entire store
+    executeClearStore() {},
   },
 });
-
-// userDocs:
-/*
-{
-  activated_at: Date,
-  created_at: Date,
-  email: String,
-  gid: Number,
-  id: Number,
-  is_blacklist: Boolean,
-  is_whitelist: Boolean,
-  login_at: Date,
-  name: String,
-  status: Number,
-  type: Number,
-  updated_at: Date,
-  updated_by: Date,
-  taipei_pass: Object,
-}
-*/

@@ -1,7 +1,16 @@
+import { createApp, defineComponent, nextTick } from "vue";
+import MapPopup from "../components/map/MapPopup.vue";
+
 import axios from "axios";
-import { defineStore } from "pinia";
+import { defineStore, createPinia } from "pinia";
 import { useContentStore } from "./contentStore";
+
+import mapboxGl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapStyle from "../assets/configs/mapbox/mapStyle.js";
+import { MapPositions } from "../assets/configs/mapbox/mapType.js";
 import {
+  MapObjectConfig,
   TaipeiTown,
   TaipeiVillage,
   TaipeiBuilding,
@@ -10,109 +19,182 @@ import {
 export const useMapStore = defineStore("map", {
   state: () => ({
     currentLayers: [],
+    mapConfigs: {},
+    currentVisibleLayers: [],
+    map: null,
+    popup: null,
   }),
   getters: {},
   actions: {
-    // Called by ComponentMapCharts to add map config data to the store and trigger apis to fetch map data
-    // If a layer already exists, this function will only toggle visibility
-    // mapLayerId = maptype-index
-    addToMapLayerList(mapConfig) {
-      const mapType = Object.keys(mapConfig)[0];
-      const mapLayerId = `${mapType}-${mapConfig[mapType].index}`;
-      const existingItemIndex = this.currentLayers.findIndex(
-        (item) => item.mapLayerId === mapLayerId
-      );
-      if (existingItemIndex >= 0) {
-        this.currentLayers[existingItemIndex].visible = true;
-        return;
-      }
-      const mapLayerInfo = {
-        mapType: mapType,
-        mapLayerId: mapLayerId,
-        visible: true,
-        ...mapConfig[mapType],
-      };
-      this.currentLayers.push(mapLayerInfo);
-      if (mapType === "raster") {
-        this.fetchRaster(mapLayerInfo);
-      } else if (mapType === "raster" || mapLayerInfo.url) {
-        this.fetchRemoteGeoJson(mapLayerInfo);
-      } else {
-        this.fetchLocalGeoJson(mapLayerInfo);
-      }
+    addToMapLayerList(map_config) {
+      map_config.forEach((element) => {
+        let mapLayerId = `${element.index}-${element.type}`;
+        if (this.currentLayers.find((element) => element === mapLayerId)) {
+          this.turnOnMapLayerVisibility(mapLayerId);
+          if (
+            !this.currentVisibleLayers.find((element) => element === mapLayerId)
+          ) {
+            this.currentVisibleLayers.push(mapLayerId);
+          }
+          return;
+        }
+        let appendLayerId = { ...element };
+        appendLayerId.layerId = mapLayerId;
+        this.fetchLocalGeoJson(appendLayerId);
+      });
     },
-    // Called by ComponentMapCharts to turn the visibility off for a layer but not removing it from the store
-    turnOffMapLayerVisibility(mapConfig) {
-      const mapType = Object.keys(mapConfig)[0];
-      const mapLayerId = `${mapType}-${mapConfig[mapType].index}`;
-      const existingItemIndex = this.currentLayers.findIndex(
-        (item) => item.mapLayerId === mapLayerId
-      );
-      if (existingItemIndex >= 0) {
-        this.currentLayers[existingItemIndex].visible = false;
-      }
-    },
-    // Fetch map layer data for raster maps
-    fetchRaster(mapLayerInfo) {
-      console.log("raster");
-    },
+
+    /* Functions that fetch map layers */
+
+    // Raster Maps were used in the official city dashboard due to file size concerns.
+    // The open source version doesn't feature any as all data is static and access to our raster maps are restricted to within the Taipei city gov's intranet
+    fetchRaster() {},
+
     // Fetch map layer data for geojsons stored locally
-    fetchLocalGeoJson(mapLayerInfo) {
+    fetchLocalGeoJson(map_config) {
       axios
-        .get(`/mapData/${mapLayerInfo.index}.geojson`)
+        .get(`/mapData/${map_config.index}.geojson`)
         .then((rs) => {
-          console.log("local success");
+          this.addMapLayerSource(map_config, rs.data);
         })
         .catch((e) => console.log(e));
     },
-    // Fetch map layer data for remote geoJsons
-    fetchRemoteGeoJson(mapLayerInfo) {
-      const contentStore = useContentStore();
-      const payload = contentStore.parseRequestFormData(mapLayerInfo.form_data);
-      axios
-        .post(`api_server${mapLayerInfo.url}`, payload)
-        .then((rs) => {
-          console.log("remote success");
-        })
-        .catch((e) => console.log(e));
-    },
+
+    // The open source version doesn't feature any as all data is static and access to our remote geoJSONs are restricted to within the Taipei city gov's intranet
+    fetchRemoteGeoJson(mapLayerInfo) {},
 
     /* Functions that directly mutate the map */
-
+    initializeMapBox() {
+      const MAPBOXTOKEN = import.meta.env.VITE_MAPBOXTOKEN;
+      mapboxGl.accessToken = MAPBOXTOKEN;
+      this.map = new mapboxGl.Map({
+        ...MapObjectConfig,
+        style: mapStyle,
+      });
+      this.map.addControl(new mapboxGl.NavigationControl());
+      this.map.doubleClickZoom.disable();
+      this.map
+        .on("style.load", () => {
+          this.initializeBasicLayers();
+          // this.initialize3DLayers();
+        })
+        .on("click", (event) => {
+          if (this.popup) {
+            this.popup = null;
+          }
+          this.addPopup(event);
+        });
+    },
     // Called when the mapbox instance is first initialized and adds two basic layers to the map
-    initializeBasicLayers(map) {
-      const layers = map.getStyle().layers;
+    initializeBasicLayers() {
       fetch(`/mapData/taipei_town.geojson`)
         .then((response) => response.json())
         .then((data) => {
-          map
+          this.map
             .addSource("taipei_town", { type: "geojson", data: data })
             .addLayer(TaipeiTown("dark"));
         });
       fetch(`/mapData/taipei_village.geojson`)
         .then((response) => response.json())
         .then((data) => {
-          map
+          this.map
             .addSource("taipei_village", { type: "geojson", data: data })
             .addLayer(TaipeiVillage("dark"));
         });
     },
     // Called when the mapbox instance is first initialized and adds 3d renderings of taipei buildings to the map
-    initialize3DLayers(map) {
-      map
-        .addSource("TaipeiBuild", {
-          type: "vector",
-          scheme: "tms",
-          tiles: [
-            `${location.origin}/geo_server/gwc/service/tms/1.0.0/taipei_vioc:tp_building_height@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
-          ],
-        })
-        .addLayer(TaipeiBuilding, "airport-label");
+    initialize3DLayers() {},
+
+    addMapLayerSource(map_config, data) {
+      this.map.addSource(`${map_config.layerId}-source`, {
+        type: "geojson",
+        data: data,
+      });
+      this.addMapLayer(map_config);
     },
 
-    // Clear the map store
-    clearMapStore() {
-      this.currentLayers.splice(0, this.currentLayers.length);
+    addMapLayer(map_config) {
+      this.map.addLayer({
+        id: map_config.layerId,
+        type: map_config.type,
+        paint: {
+          ...map_config.paint,
+        },
+        source: `${map_config.layerId}-source`,
+      });
+      this.currentLayers.push(map_config.layerId);
+      this.mapConfigs[map_config.layerId] = map_config;
+      this.currentVisibleLayers.push(map_config.layerId);
+    },
+
+    addPopup(event) {
+      const clickFeatureDatas = this.map.queryRenderedFeatures(event.point, {
+        layers: this.currentVisibleLayers,
+      });
+      if (!clickFeatureDatas || clickFeatureDatas.length === 0) {
+        return;
+      }
+      const mapConfigs = this.mapConfigs;
+      this.popup = new mapboxGl.Popup()
+        .setLngLat(event.lngLat)
+        .setHTML('<div id="vue-popup-content"></div>')
+        .addTo(this.map);
+      const PopupComponent = defineComponent({
+        extends: MapPopup,
+        setup() {
+          return {
+            popupContent: clickFeatureDatas[0],
+            mapConfig: mapConfigs[clickFeatureDatas[0].layer.id],
+          };
+        },
+      });
+      nextTick(() => {
+        const app = createApp(PopupComponent);
+        app.mount("#vue-popup-content");
+      });
+    },
+    removePopup() {
+      if (this.popup) {
+        this.popup.remove();
+      }
+      this.popup = null;
+    },
+
+    turnOnMapLayerVisibility(mapLayerId) {
+      this.map.setLayoutProperty(mapLayerId, "visibility", "visible");
+    },
+
+    // Called by ComponentMapCharts to turn the visibility off for a layer but not removing it from the store
+    turnOffMapLayerVisibility(map_config) {
+      map_config.forEach((element) => {
+        let mapLayerId = `${element.index}-${element.type}`;
+        if (this.map.getLayer(mapLayerId)) {
+          this.map.setLayoutProperty(mapLayerId, "visibility", "none");
+        }
+        this.currentVisibleLayers = this.currentVisibleLayers.filter(
+          (element) => element !== mapLayerId
+        );
+      });
+      this.removePopup();
+    },
+    // Called when the user is switching between maps
+    clearOnlyLayers() {
+      this.currentLayers.forEach((element) => {
+        this.map.removeLayer(element);
+        this.map.removeSource(`${element}-source`);
+      });
+      this.currentLayers = [];
+      this.mapConfigs = {};
+      this.currentVisibleLayers = [];
+      this.removePopup();
+    },
+    // Called when user navigates away from the map
+    clearEntireMap() {
+      this.currentLayers = [];
+      this.mapConfigs = {};
+      this.map = null;
+      this.currentVisibleLayers = [];
+      this.removePopup();
     },
   },
 });

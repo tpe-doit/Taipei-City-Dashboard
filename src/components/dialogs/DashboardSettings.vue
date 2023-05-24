@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import DialogContainer from './DialogContainer.vue';
 import CustomCheckBox from '../utilities/CustomCheckBox.vue'
 import { useDialogStore } from '../../store/dialogStore';
@@ -12,14 +12,15 @@ const newName = ref('')
 const error = ref(null)
 const deleteConfirm = ref(false)
 
+// Uncomment the following to restore dashboard settings function if new backend is connected
 function handleSubmit() {
     if (validateStrInput(newName.value) !== true) {
         error.value = validateStrInput(newName.value)
         return
     }
-    contentStore.changeCurrentDashboardName(newName.value);
+    // contentStore.changeCurrentDashboardName(newName.value);
+    dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
     handleClose()
-    dialogStore.hideAllDialogs();
 }
 function handleClose() {
     newName.value = ''
@@ -28,7 +29,8 @@ function handleClose() {
     dialogStore.hideAllDialogs();
 }
 function handleDelete() {
-    contentStore.deleteCurrentDashboard();
+    // contentStore.deleteCurrentDashboard();
+    dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
     handleClose()
 }
 </script>

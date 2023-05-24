@@ -8,154 +8,90 @@ import { useDialogStore } from "./dialogStore";
 export const useContentStore = defineStore("content", {
   state: () => ({
     dashboards: [],
+    components: {},
     currentDashboard: {
       mode: null,
-      id: null,
       index: null,
       name: null,
-      type: null,
+      components: {},
       content: [],
     },
   }),
-  getters: {
-    customizedDashboards() {
-      return this.dashboards.filter((item) => item.type === "customized");
-    },
-    fixedDashboards() {
-      return this.dashboards.filter((item) => item.type === "fixed");
-    },
-  },
+  getters: {},
   actions: {
-    // Will get all of the dashboards that belong to the user. Will also reroute the user to the first dashboard in the list
-    setDashboards() {
-      axios
-        .get("/api_server/manager/topic/all")
-        .then((rs) => {
-          this.dashboards = rs.data.data.filter((item) => item.id !== 63918);
-          if (!this.currentDashboard.type || !this.currentDashboard.id) {
-            this.currentDashboard.id = this.dashboards[0].id;
-            this.currentDashboard.type = this.dashboards[0].type;
-            router.replace({
-              query: {
-                id: this.dashboards[0].id,
-                type: this.dashboards[0].type,
-              },
-            });
-          }
-          this.setCurrentDashboardContent();
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
     // Called by the router. Will provide the store with query parameters 'id' and 'type'. If either isn't present, the setDashboards method will be called
-    setRouteParams(mode, id, type) {
+    setRouteParams(mode, index) {
       this.currentDashboard.mode = mode;
-      if (
-        this.currentDashboard.id === id &&
-        this.currentDashboard.type === type
-      ) {
+      if (this.currentDashboard.index === index) {
         return;
       }
-      this.currentDashboard.id = id;
-      this.currentDashboard.type = type;
+      this.currentDashboard.index = index;
       if (this.dashboards.length === 0) {
         this.setDashboards();
         return;
       }
-      if (!id || !type) {
+      if (!index) {
         this.setDashboards();
         return;
       }
       this.setCurrentDashboardContent();
     },
-    // Will call an api to get the general info of a dashboard. This function will also filter out null components
-    setCurrentDashboardContent() {
+    // Will get all of the dashboards that belong to the user. Will also reroute the user to the first dashboard in the list
+    setDashboards() {
       axios
-        .get(
-          `/api_server/manager/topcomp/${this.currentDashboard.type}/${this.currentDashboard.id}`
-        )
+        .get("/dashboards/all_dashboards.json")
         .then((rs) => {
-          this.currentDashboard.index = rs.data.index;
-          this.currentDashboard.name = rs.data.name;
-          this.currentDashboard.content = rs.data.components.filter(
-            (comp) => comp.request_list !== null
-          );
-          this.setCurrentDashboardChartData();
+          this.dashboards = rs.data.data;
+          if (!this.currentDashboard.index) {
+            this.currentDashboard.index = this.dashboards[0].index;
+            router.replace({
+              query: {
+                index: this.currentDashboard.index,
+              },
+            });
+          }
+          this.setComponents();
         })
         .catch((e) => {
-          if (e.response.status === 500) {
-            const emptyDashboard = this.dashboards.filter(
-              (item) =>
-                item.id == this.currentDashboard.id &&
-                item.type === this.currentDashboard.type
-            );
-            this.currentDashboard.index = emptyDashboard[0].index;
-            this.currentDashboard.name = emptyDashboard[0].name;
-            this.currentDashboard.content = [];
-            return;
-          }
-          router.replace({ path: "/Dashboard" });
+          console.log(e);
         });
+    },
+    setComponents() {
+      axios
+        .get("/dashboards/all_components.json")
+        .then((rs) => {
+          this.components = rs.data.data;
+          this.setCurrentDashboardContent();
+        })
+        .catch((e) => console.log(e));
+    },
+    // Will call an api to get the general info of a dashboard. This function will also filter out null components
+    setCurrentDashboardContent() {
+      const currentDashboardInfo = this.dashboards.find(
+        (item) => item.index === this.currentDashboard.index
+      );
+      this.currentDashboard.name = currentDashboardInfo.name;
+      this.currentDashboard.components = currentDashboardInfo.components;
+      this.currentDashboard.icon = currentDashboardInfo.icon;
+      this.currentDashboard.content = [];
+      this.currentDashboard.components.forEach((component) => {
+        this.currentDashboard.content.push(this.components[component]);
+      });
+      this.setCurrentDashboardChartData();
     },
     // Will look through the components and call every requested api (POST) to get chart info for each component.
     // This function will save the chart configs of the components that don't have api paths
     setCurrentDashboardChartData() {
-      for (let i = 0; i < this.currentDashboard.content.length; i++) {
-        for (
-          let j = 0;
-          j < this.currentDashboard.content[i].request_list.length;
-          j++
-        ) {
-          if (j === 0) {
-            this.currentDashboard.content[i].chartData = [];
-            this.currentDashboard.content[i].chartType = "";
-          }
-          this.currentDashboard.content[i].chartType +=
-            this.currentDashboard.content[i].request_list[j].type;
-          let payload = null;
-          if (this.currentDashboard.content[i].request_list[j].form_data) {
-            payload = this.parseRequestFormData(
-              this.currentDashboard.content[i].request_list[j].form_data
-            );
-          }
-          if (this.currentDashboard.content[i].request_list[j].path) {
-            axios
-              .post(
-                `/api_server${this.currentDashboard.content[i].request_list[j].path}`,
-                payload
-              )
-              .then((rs) => {
-                this.currentDashboard.content[i].chartData.push(rs.data);
-              })
-              .catch((e) => {
-                console.log(e);
-              });
-          } else {
-            this.currentDashboard.content[i].chartData.push(
-              this.currentDashboard.content[i].request_list[j].config
-            );
-          }
-        }
-      }
-    },
-    // This function will parse the form_data of each component and produce a payload that is to be attached to the POST request for chart info
-    parseRequestFormData(form_data) {
-      const timeData = parseTimeFun(form_data);
-      const otherData = { ...form_data };
-      if (otherData.time_step) delete otherData.time_step;
-      if (otherData.time_unit) delete otherData.time_unit;
-      if (otherData.last) delete otherData.last;
-      const allData = {
-        ...timeData,
-        ...otherData,
-      };
-
-      const formData = new FormData();
-      Object.keys(allData).forEach((key) => {
-        formData.append(key, allData[key]);
+      this.currentDashboard.components.forEach((component, index) => {
+        axios
+          .get(`/chartData/${component}.json`)
+          .then((rs) => {
+            this.currentDashboard.content[index].chart_data = rs.data.data;
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       });
-      return formData;
     },
     createNewDashboard(name) {
       const dialogStore = useDialogStore();

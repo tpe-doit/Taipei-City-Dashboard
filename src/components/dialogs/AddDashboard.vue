@@ -14,8 +14,9 @@ function handleSubmit() {
         error.value = validateStrInput(name.value)
         return
     }
-    contentStore.createNewDashboard(name.value);
-    dialogStore.hideAllDialogs();
+    // contentStore.createNewDashboard(name.value);
+    handleClose();
+    dialogStore.showNotification('fail', '尚未新增新增儀表板功能，無法新增儀表板')
 }
 function handleClose() {
     name.value = '';
