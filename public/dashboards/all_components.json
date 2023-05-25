@@ -4,13 +4,90 @@
       "id": 4,
       "index": "f092b008",
       "map_config": null,
-      "chart_config": { "color": null, "types": ["donut", "horizontalBar"] },
+      "chart_config": {
+        "color": [
+          "#2e999b",
+          "#80e3d4",
+          "#1f9b85",
+          "#a5ece0",
+          "#17675a",
+          "#C2d1d0"
+        ],
+        "types": ["HorizontalBarChart", "DonutChart"]
+      },
       "source": "1999話務系統",
       "time_from": "2023-05-09T17:05:17+08:00",
       "time_to": "2023-05-23T17:05:17+08:00",
       "update_freq": "1",
       "update_freq_unit": "day",
       "name": "1999話務案件局處",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "8": {
+      "id": 8,
+      "index": "crimehotspot",
+      "map_config": null,
+      "chart_config": {
+        "color": ["#F3847E", "#e06666", "#fdb7ba", "#fb8c8c", "#C53E5E"],
+        "types": ["DonutChart", "HorizontalBarChart"]
+      },
+      "source": "警察局",
+      "time_from": "2022-11-01T00:00:00+08:00",
+      "time_to": "2023-05-25T16:07:24+08:00",
+      "update_freq": "1",
+      "update_freq_unit": "day",
+      "name": "犯罪點位",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "22": {
+      "id": 22,
+      "index": "traffic_accident",
+      "map_config": [
+        {
+          "heatmap": { "filter": "type", "zoom": 16.5 },
+          "index": "traffic_accident_location_view",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "type"],
+              "1",
+              "#CA0020",
+              "2",
+              "#ff996d",
+              "3",
+              "#f8c3ac",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "location", "name": "位置" },
+            { "key": "type", "name": "處理別" },
+            { "key": "occur_time", "name": "時間" }
+          ],
+          "type": "circle",
+          "size": null,
+          "icon": "heatmap",
+          "title": "交通事故統計"
+        }
+      ],
+      "chart_config": {
+        "color": ["#CA0020", "#ff996d", "#f8c3ac"],
+        "types": ["DonutChart", "HorizontalBarChart"]
+      },
+      "source": "警察局",
+      "time_from": "2023-01-31T14:01:00Z",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "name": "交通事故統計",
       "short_desc": "",
       "long_desc": "",
       "use_case": "",
@@ -45,8 +122,7 @@
               0,
               19895,
               1000
-            ],
-            "fill-extrusion-opacity": 0.5
+            ]
           },
           "property": [
             { "key": "pop_live", "name": "居住推估人數" },
@@ -58,13 +134,225 @@
           "title": "居職人口推估"
         }
       ],
-      "chart_config": { "color": ["#d76c29", "#77dddf"], "types": [] },
+      "chart_config": {
+        "color": ["#d76c29", "#77dddf"],
+        "types": ["HorizontalBarChart"]
+      },
       "source": "遠傳電信",
       "time_from": "2020-06-16T00:00:00+08:00",
       "time_to": null,
       "update_freq": null,
       "update_freq_unit": null,
       "name": "居職人口推估",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "34": {
+      "id": 34,
+      "index": "building_landuse",
+      "map_config": [
+        {
+          "index": "building_landuse",
+          "paint": {
+            "fill-color": [
+              "match",
+              ["get", "顏色"],
+              "0",
+              "#00ff00",
+              "3",
+              "#ff003f",
+              "4",
+              "#ffff00",
+              "5",
+              "#b3b3b3",
+              "7",
+              "#7fffff",
+              "9",
+              "#7f3f00",
+              "10",
+              "#bf7fff",
+              "11",
+              "#70dcaf",
+              "13",
+              "#007fff",
+              "14",
+              "#7fff00",
+              "15",
+              "#00ff00",
+              "16",
+              "#ff3f00",
+              "17",
+              "#ff00ff",
+              "18",
+              "#e6e6e6",
+              "19",
+              "#00ff00",
+              "29",
+              "#ff8fad",
+              "34",
+              "#00ff00",
+              "50",
+              "#7fff00",
+              "53",
+              "#e58bd8",
+              "82",
+              "#00ff00",
+              "#7fff00"
+            ],
+            "fill-opacity": 0.5
+          },
+          "property": [
+            {
+              "key": "landuse group_metadata_用地分類",
+              "name": "用地分類"
+            },
+            { "key": "使用分區", "name": "使用分區" },
+            { "key": "分區簡稱", "name": "分區簡稱" },
+            { "key": "編號", "name": "編號" },
+            { "key": "area", "name": "面積" }
+          ],
+          "type": "fill",
+          "size": null,
+          "icon": null,
+          "title": "都市計畫用地類型"
+        }
+      ],
+      "chart_config": {
+        "color": [
+          "#7fff00",
+          "#00ff00",
+          "#ffff00",
+          "#7fffff",
+          "#00ff00",
+          "#bf7fff",
+          "#e6e6e6",
+          "#e6e6e6",
+          "#007fff",
+          "#7fff00",
+          "#7f3f00",
+          "#b3b3b3",
+          "#7fff00",
+          "#00ff00",
+          "#ff003f",
+          "#007fff",
+          "#ff8fad",
+          "#ff3f00",
+          "#00ff00",
+          "#00ff00",
+          "#00ff00",
+          "#00ff00",
+          "#00ff00"
+        ],
+        "types": ["TreemapChart", "HorizontalBarChart"]
+      },
+      "source": "都發局",
+      "time_from": null,
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "name": "都市計畫用地類型",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "110": {
+      "id": 110,
+      "index": "9452b8d3",
+      "map_config": [
+        {
+          "index": "work_street_tree",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "type"],
+              "臺灣欒樹",
+              "#FF4500",
+              "火燄木",
+              "#FF4500",
+              "落羽松",
+              "#FF4500",
+              "洋紅風鈴木",
+              "#FF4500",
+              "鳳凰木",
+              "#FF4500",
+              "楓香",
+              "#FF4500",
+              "大花紫薇",
+              "#905EE6",
+              "山櫻花",
+              "#EDAEEC",
+              "吉野櫻",
+              "#EDAEEC",
+              "八重櫻",
+              "#EDAEEC",
+              "寒櫻",
+              "#EDAEEC",
+              "日日櫻",
+              "#EDAEEC",
+              "富士櫻",
+              "#EDAEEC",
+              "河津櫻",
+              "#EDAEEC",
+              "黃花風鈴木",
+              "#FFFB00",
+              "阿勃勒",
+              "#FFFB00",
+              "印度紫檀",
+              "#FFFB00",
+              "西印度櫻桃",
+              "#FFFB00",
+              "#33C552"
+            ],
+            "circle-opacity": [
+              "interpolate",
+              ["linear"],
+              ["get", "height"],
+              0,
+              0.75,
+              10,
+              1
+            ],
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              10.99,
+              0,
+              14,
+              2,
+              16,
+              ["interpolate", ["linear"], ["get", "diameter"], 0, 2, 2, 8]
+            ]
+          },
+          "property": [
+            { "key": "dist", "name": "行政區" },
+            { "key": "type", "name": "類型" },
+            { "key": "region_ps", "name": "層區" },
+            { "key": "height", "name": "高度" },
+            { "key": "diameter", "name": "直徑" },
+            { "key": "survey_date", "name": "紀錄時間" }
+          ],
+          "type": "circle",
+          "size": null,
+          "icon": null,
+          "title": "行道樹"
+        }
+      ],
+      "chart_config": {
+        "color": ["#33C552"],
+        "types": ["DistrictChart", "HorizontalBarChart"]
+      },
+      "source": "工務局",
+      "time_from": "2022-08-15T00:00:00Z",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "name": "行道樹",
       "short_desc": "",
       "long_desc": "",
       "use_case": "",

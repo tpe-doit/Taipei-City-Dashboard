@@ -3,7 +3,7 @@
     {
       "name": "民情熱議",
       "index": "sentiment",
-      "components": ["4", "32"],
+      "components": ["4", "32", "34", "8", "22", "110"],
       "icon": "mic"
     },
     {

@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 import LoadingImage from '../LoadingImage.vue';
+import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
 const props = defineProps({
     content: { type: Object }
@@ -31,6 +32,12 @@ const dataTime = computed(() => {
     return `${props.content.time_from.slice(0, 10)} ~ ${props.content.time_to.slice(0, 10)}`
 })
 
+const activeChart = ref(props.content.chart_config.types[0])
+
+function changeActiveChart(chartName) {
+    activeChart.value = chartName
+}
+
 </script>
 
 <template>
@@ -48,11 +55,14 @@ const dataTime = computed(() => {
                 <span class="toggleswitch-slider"></span>
             </label>
         </div>
-        <div class="componentmapchart-chart" v-if="checked">
-            <!-- <LoadingImage v-if="content.chartData.length === 0" />
-            <component v-else-if="indexToChartType[content.index]" :is="indexToChartType[content.index]" :content="content">
-            </component> -->
-            <p>{{ content.index }}{{ content.chart_data }}</p>
+        <div class="componentmapchart-control" v-if="props.content.chart_config.types.length > 1 && checked">
+            <button v-for="item in props.content.chart_config.types" @click="changeActiveChart(item)">{{
+                chartTypes[item] }}</button>
+        </div>
+        <div class="componentmapchart-chart" v-if="checked && content.chart_data">
+            <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
+                :chart_config="content.chart_config" :series="content.chart_data">
+            </component>
         </div>
 
         <div class="componentmapchart-footer"></div>
@@ -74,6 +84,7 @@ const dataTime = computed(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     &-header {
         display: flex;
@@ -99,6 +110,35 @@ const dataTime = computed(() => {
                 font-family: var(--font-icon);
                 color: var(--color-complement-text);
                 margin-left: 8px;
+            }
+        }
+    }
+
+    &-control {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        z-index: 10;
+
+        button {
+            background-color: rgb(77, 77, 77);
+            padding: 4px 4px;
+            border-radius: 5px;
+            transition: color 0.2s, opacity 0.2s;
+            font-size: var(--font-s);
+            margin: 0 4px;
+            color: var(--color-complement-text);
+            opacity: 0.25;
+            text-align: center;
+
+            &:hover {
+                color: white;
+                opacity: 1;
             }
         }
     }

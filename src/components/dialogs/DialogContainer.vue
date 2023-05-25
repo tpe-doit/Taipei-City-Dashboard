@@ -30,6 +30,7 @@ const emits = defineEmits(['onClose'])
     align-items: center;
     justify-content: center;
     opacity: 1;
+    z-index: 10;
 
     &-dialog {
         position: relative;

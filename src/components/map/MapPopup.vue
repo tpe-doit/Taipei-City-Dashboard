@@ -27,8 +27,9 @@
 
 .mapboxgl-popup {
     animation: easein 0.2s linear;
-    min-width: 225px;
+    min-width: 200px;
     max-width: 400px;
+    width: max-content;
 }
 
 .mapboxgl-popup-content {
@@ -36,7 +37,7 @@
     border: solid 1px var(--color-border);
     box-shadow: 0px 0px 10px rgb(35, 35, 35) !important;
     border-radius: 5px !important;
-    padding: 1rem !important;
+    padding: 10px !important;
 
 }
 
@@ -63,8 +64,8 @@
 .mapboxgl-popup-close-button {
     font-size: 1.2rem;
     color: var(--color-complement-text);
-    right: 1.2rem !important;
-    top: 1rem !important;
+    right: 15px !important;
+    top: 10px !important;
     line-height: 1rem;
 }
 
@@ -78,11 +79,16 @@
     overflow-y: scroll;
 
     &-content {
-        display: grid;
-        grid-template-columns: 150px 1fr;
+        display: flex;
+
+        width: fit-content;
+
+        h3 {
+            min-width: 80px;
+        }
 
         p {
-            text-align: right;
+            text-align: justify;
         }
     }
 }

@@ -14,6 +14,7 @@ import {
   TaipeiTown,
   TaipeiVillage,
   TaipeiBuilding,
+  maplayerCommonStyle,
 } from "../assets/configs/mapbox/mapConfig.js";
 
 export const useMapStore = defineStore("map", {
@@ -114,10 +115,18 @@ export const useMapStore = defineStore("map", {
     },
 
     addMapLayer(map_config) {
+      let extra_configs = {};
+      if (map_config.icon) {
+        extra_configs = {
+          ...maplayerCommonStyle[`${map_config.type}-${map_config.icon}`],
+        };
+      }
       this.map.addLayer({
         id: map_config.layerId,
         type: map_config.type,
         paint: {
+          ...maplayerCommonStyle[`${map_config.type}`],
+          ...extra_configs,
           ...map_config.paint,
         },
         source: `${map_config.layerId}-source`,

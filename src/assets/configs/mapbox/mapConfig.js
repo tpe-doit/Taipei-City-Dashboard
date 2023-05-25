@@ -181,6 +181,76 @@ export const TaipeiVillage = (mode) => {
 };
 
 // Map layer config
+
+export const maplayerCommonStyle = {
+  circle: {
+    "circle-radius": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      2,
+      12,
+      2,
+      13.5,
+      2.5,
+      15,
+      3,
+      22,
+      5,
+    ],
+  },
+  "circle-heatmap": {
+    "circle-radius": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      5,
+      12,
+      5,
+      13.5,
+      2.5,
+      15,
+      3,
+      22,
+      5,
+    ],
+    "circle-blur": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      1,
+      12,
+      1,
+      13.5,
+      0.5,
+      15,
+      0,
+    ],
+    "circle-opacity": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.1,
+      12,
+      0.1,
+      13.5,
+      0.5,
+      15,
+      1,
+    ],
+  },
+  "fill-extrusion": {
+    "fill-extrusion-opacity": 0.5,
+  },
+  fill: {
+    "fill-opacity": 0.5,
+  },
+};
+
 export const lineWideStyle = {
   "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 0, 12, 0.5, 18, 3],
 };

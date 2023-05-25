@@ -2,7 +2,8 @@
 import { useContentStore } from '../../store/contentStore';
 import { useDialogStore } from '../../store/dialogStore';
 import ComponentTag from '../utilities/ComponentTag.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
@@ -37,6 +38,12 @@ const updateFreq = computed(() => {
     return `每${props.content.update_freq}${unitRef[props.content.update_freq_unit]}更新`
 })
 
+const activeChart = ref(props.content.chart_config.types[0])
+
+function changeActiveChart(chartName) {
+    activeChart.value = chartName
+}
+
 </script>
 
 <template>
@@ -55,12 +62,14 @@ const updateFreq = computed(() => {
 
             </div>
         </div>
-
-        <div class="componentcontainer-chart">
-            <!-- <LoadingImage v-if="content.chart_data.length === 0" />
-            <component v-else-if="indexToChartType[content.index]" :is="indexToChartType[content.index]" :content="content">
-            </component> -->
-            <p>{{ content.index }}{{ content.chart_data }}</p>
+        <div class="componentcontainer-control" v-if="props.content.chart_config.types.length > 1">
+            <button v-for="item in props.content.chart_config.types" @click="changeActiveChart(item)">{{
+                chartTypes[item] }}</button>
+        </div>
+        <div class="componentcontainer-chart" v-if="content.chart_data">
+            <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
+                :chart_config="content.chart_config" :series="content.chart_data">
+            </component>
         </div>
         <div class="componentcontainer-footer">
             <div>
@@ -87,6 +96,7 @@ const updateFreq = computed(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     @media (min-width: 1050px) {
         height: 370px;
@@ -130,14 +140,46 @@ const updateFreq = computed(() => {
         }
     }
 
+    &-control {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        z-index: 8;
+
+        button {
+            background-color: rgb(77, 77, 77);
+            padding: 4px 4px;
+            border-radius: 5px;
+            transition: color 0.2s, opacity 0.2s;
+            font-size: var(--font-s);
+            margin: 0 4px;
+            color: var(--color-complement-text);
+            opacity: 0.25;
+            text-align: center;
+
+            &:hover {
+                color: white;
+                opacity: 1;
+            }
+        }
+    }
+
     &-chart {
-        height: 70%;
+        height: 75%;
         overflow-y: scroll;
         position: relative;
+        padding-top: 5%;
 
         p {
             color: var(--color-border)
         }
+
+
     }
 
     &-footer {

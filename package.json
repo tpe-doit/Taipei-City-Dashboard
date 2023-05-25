@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.1.2",
+    "apexcharts": "^3.40.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
-    "highcharts": "^11.0.0",
-    "highcharts-vue": "^1.4.0",
     "mapbox-gl": "^2.14.1",
     "pinia": "^2.0.35",
     "uuid": "^9.0.0",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
