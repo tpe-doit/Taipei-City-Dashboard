@@ -4,7 +4,7 @@ const props = defineProps(['chart_config', 'activeChart', 'series'])
 
 const sum = computed(() => {
     let sum = 0;
-    props.series.forEach(item => sum += item.y)
+    props.series[0].data.forEach(item => sum += item.y)
     return Math.round(sum * 100) / 100
 })
 
@@ -21,7 +21,7 @@ const options = ref({
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.categoryLabels[dataPointIndex] + '</h6>' +
-                '<span>' + series[seriesIndex][dataPointIndex] + ' km2' + '</span>' +
+                '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
         }
     },
@@ -64,10 +64,10 @@ const options = ref({
 <template>
     <div v-if="activeChart === 'TreemapChart'" class="treemapchart">
         <div class="treemapchart-title">
-            <h5>面積總合</h5>
-            <h6>{{ sum }} km2</h6>
+            <h5>總合</h5>
+            <h6>{{ sum }} {{ chart_config.unit }}</h6>
         </div>
-        <apexchart width="100%" type="treemap" :options="options" :series="[{ data: series }]"></apexchart>
+        <apexchart width="100%" type="treemap" :options="options" :series="series"></apexchart>
     </div>
 </template>
 

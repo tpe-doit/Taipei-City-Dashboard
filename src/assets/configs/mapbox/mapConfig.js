@@ -182,7 +182,7 @@ export const TaipeiVillage = (mode) => {
 
 // Map layer config
 
-export const maplayerCommonStyle = {
+export const maplayerCommonPaint = {
   circle: {
     "circle-radius": [
       "interpolate",
@@ -247,38 +247,57 @@ export const maplayerCommonStyle = {
     "fill-extrusion-opacity": 0.5,
   },
   fill: {
-    "fill-opacity": 0.5,
+    "fill-opacity": ["interpolate", ["linear"], ["zoom"], 10, 0.3, 22, 0.15],
+  },
+  line: {
+    "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 0, 12, 1, 18, 3],
+  },
+  "line-wide": {
+    "line-width": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      10.99,
+      0,
+      12,
+      1.5,
+      18,
+      4,
+    ],
+  },
+  symbol: {},
+  "symbol-metro": {
+    "text-halo-width": 1,
   },
 };
 
-export const lineWideStyle = {
-  "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 0, 12, 0.5, 18, 3],
-};
-
-export const lineSuperWideStyle = {
-  "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 0, 12, 1, 18, 4],
-};
-
-export const fillCommonStyle = {
-  "fill-opacity": ["interpolate", ["linear"], ["zoom"], 10, 0.3, 22, 0.15],
-};
-
-export const circleCommonStyle = {
-  "circle-radius": [
-    "interpolate",
-    ["linear"],
-    ["zoom"],
-    11.99,
-    0,
-    12,
-    0.1,
-    13.5,
-    0.5,
-    15,
-    2.5,
-    22,
-    4,
-  ],
+export const maplayerCommonLayout = {
+  line: {
+    "line-join": "round",
+    "line-cap": "round",
+  },
+  fill: {},
+  "fill-extrusion": {},
+  circle: {},
+  symbol: {
+    "icon-allow-overlap": true,
+    "icon-ignore-placement": true,
+    "icon-padding": 0,
+    "icon-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.15,
+      14,
+      0.4,
+      22,
+      0.5,
+    ],
+  },
+  "symbol-metro": {
+    "icon-image": "metro",
+  },
 };
 
 export const circleHeatmapStyle = {
@@ -380,41 +399,6 @@ export const symbolBusStyle = {
     18,
     0.125,
   ],
-};
-
-export const symbolTextHaloStyle = {
-  paint: {
-    "text-halo-width": 1,
-  },
-  layout: {
-    "icon-image": "metro",
-    "icon-size": [
-      "interpolate",
-      ["linear"],
-      ["zoom"],
-      12.99,
-      0,
-      13,
-      0.1,
-      15,
-      0.3,
-    ],
-    "icon-allow-overlap": true,
-    "text-field": "○",
-    "text-size": [
-      "interpolate",
-      ["linear"],
-      ["zoom"],
-      12.99,
-      0,
-      13,
-      5,
-      14,
-      40,
-      22,
-      55,
-    ],
-  },
 };
 
 export const symbolHaloStyle = {

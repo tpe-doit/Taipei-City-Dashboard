@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import router from "../router";
-import { parseTimeFun } from "../assets/utilityFunctions/parseTime";
 import { v4 as uuidv4 } from "uuid";
 import { useDialogStore } from "./dialogStore";
 
@@ -16,6 +15,7 @@ export const useContentStore = defineStore("content", {
       components: {},
       content: [],
     },
+    mapLayers: [],
   }),
   getters: {},
   actions: {
@@ -61,6 +61,7 @@ export const useContentStore = defineStore("content", {
         .get("/dashboards/all_components.json")
         .then((rs) => {
           this.components = rs.data.data;
+          this.setMapLayers();
           this.setCurrentDashboardContent();
         })
         .catch((e) => console.log(e));
@@ -77,7 +78,18 @@ export const useContentStore = defineStore("content", {
       this.currentDashboard.components.forEach((component) => {
         this.currentDashboard.content.push(this.components[component]);
       });
+      if (this.currentDashboard.index === "map-layers") {
+        return;
+      }
       this.setCurrentDashboardChartData();
+    },
+    setMapLayers() {
+      const mapLayerInfo = this.dashboards.find(
+        (item) => item.index === "map-layers"
+      );
+      mapLayerInfo.components.forEach((component) => {
+        this.mapLayers.push(this.components[component]);
+      });
     },
     // Will look through the components and call every requested api (POST) to get chart info for each component.
     // This function will save the chart configs of the components that don't have api paths

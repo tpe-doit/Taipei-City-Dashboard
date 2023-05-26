@@ -5,7 +5,7 @@ const props = defineProps(['chart_config', 'activeChart', 'series'])
 const steps = ref(6) // How many data points to show before 'other'
 
 const parsedSeries = computed(() => {
-    const toParse = [...props.series]
+    const toParse = [...props.series[0].data]
     if (toParse.length <= steps.value) {
         return toParse.map((item) => item.y)
     }
@@ -20,7 +20,7 @@ const parsedSeries = computed(() => {
     return output
 })
 const parsedLabels = computed(() => {
-    const toParse = [...props.series]
+    const toParse = [...props.series[0].data]
     if (toParse.length <= steps.value) {
         return toParse.map((item) => item.x)
     }
@@ -48,7 +48,7 @@ const options = ref({
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.labels[seriesIndex] + '</h6>' +
-                '<span>' + series[seriesIndex] + '</span>' +
+                '<span>' + series[seriesIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
         }
     },

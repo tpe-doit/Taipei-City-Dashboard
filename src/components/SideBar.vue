@@ -23,12 +23,12 @@ function toggleExpand() {
                     <button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
                     <AddDashboard />
                 </div>
-                <SideBarTab v-for="item in contentStore.dashboards" :icon="item.icon" :title="item.name" :index="item.index"
-                    :type="`customized`" :key="item.index" :expanded="isExpanded" />
+                <SideBarTab v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers')"
+                    :icon="item.icon" :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
             </div>
             <div class="sidebar-sub">
                 <h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>
-                <SideBarTab :icon="`public`" :title="`圖資資訊`" :expanded="isExpanded" />
+                <SideBarTab :icon="`public`" :title="`圖資資訊`" :expanded="isExpanded" index="map-layers" />
             </div>
         </div>
         <button class="sidebar-collapse" @click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :

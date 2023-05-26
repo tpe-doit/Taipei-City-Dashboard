@@ -12,11 +12,10 @@ const dialogStore = useDialogStore()
     <div class="settingsbar">
         <div class="settingsbar-title">
             <span>{{ contentStore.currentDashboard.icon }}</span>
-            <h2>{{ contentStore.currentDashboard.name === 'defaultFav' ? '我的最愛' : contentStore.currentDashboard.name }}</h2>
-            <p>|</p>
-            <h3>{{ contentStore.currentDashboard.type === 'fixed' ? '官方儀表板' : '自訂儀表板' }}</h3>
+            <h2>{{ contentStore.currentDashboard.name }}
+            </h2>
         </div>
-        <div class="settingsbar-settings">
+        <div class="settingsbar-settings" v-if="contentStore.currentDashboard.index !== 'map-layers'">
             <button @click="dialogStore.showDialog('addComponent')"><span>add_chart</span>
                 新增組件
             </button>

@@ -9,38 +9,39 @@ const options = ref({
     stroke: {
         show: true,
         colors: ['#282a2c'],
-        width: 0,
+        width: 2,
     },
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
-                '<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
-                '<span>' + series[seriesIndex][dataPointIndex] + '</span>' +
+                '<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
+                '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
         }
     },
     dataLabels: {
         textAnchor: 'start',
-        offsetX: 20
     },
     plotOptions: {
         bar: {
             horizontal: true,
-            borderRadius: 2,
-            distributed: true
+            borderRadius: 5,
         }
     },
-    colors: props.chart_config.color,
+    colors: [props.chart_config.color[0], "#777"],
     grid: {
         show: false,
     },
     chart: {
         toolbar: {
             show: false
-        }
+        },
+        stacked: true,
+        stackType: '100%'
     },
     xaxis: {
         type: 'category',
+        categories: props.chart_config.categories ? props.chart_config.categories : [],
         labels: {
             show: false,
         },
@@ -54,14 +55,14 @@ const options = ref({
 })
 
 const height = computed(() => {
-    return `${40 + props.series.length * 16}`
+    return `${40 + props.series.length * 48}`
 })
 
 </script>
 
 <template>
-    <div v-if="activeChart === 'HorizontalBarChart'">
-        <apexchart width="100%" :height="height" type="bar" :options="options" :series="[{ data: series }]"></apexchart>
+    <div v-if="activeChart === 'BarPercentChart'">
+        <apexchart width="100%" :height="height" type="bar" :options="options" :series="series"></apexchart>
     </div>
 </template>
 

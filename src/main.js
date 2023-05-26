@@ -11,8 +11,15 @@ import VueApexCharts from "vue3-apexcharts";
 // Import Global Components
 import DistrictChart from "./components/charts/DistrictChart.vue";
 import DonutChart from "./components/charts/DonutChart.vue";
-import HorizontalBarChart from "./components/charts/HorizontalBarChart.vue";
+import BarChart from "./components/charts/BarChart.vue";
 import TreemapChart from "./components/charts/TreemapChart.vue";
+import ColumnChart from "./components/charts/ColumnChart.vue";
+import BarPercentChart from "./components/charts/BarPercentChart.vue";
+import GuageChart from "./components/charts/GuageChart.vue";
+import RadarChart from "./components/charts/RadarChart.vue";
+import TimelineSeparateChart from "./components/charts/TimelineSeparateChart.vue";
+import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
+import MapLegend from "./components/charts/MapLegend.vue";
 
 const app = createApp(App);
 
@@ -24,7 +31,14 @@ app.use(VueApexCharts);
 
 app.component("DistrictChart", DistrictChart);
 app.component("DonutChart", DonutChart);
-app.component("HorizontalBarChart", HorizontalBarChart);
+app.component("BarChart", BarChart);
 app.component("TreemapChart", TreemapChart);
+app.component("ColumnChart", ColumnChart);
+app.component("BarPercentChart", BarPercentChart);
+app.component("GuageChart", GuageChart);
+app.component("RadarChart", RadarChart);
+app.component("TimelineSeparateChart", TimelineSeparateChart);
+app.component("TimelineStackedChart", TimelineStackedChart);
+app.component("MapLegend", MapLegend);
 
 app.mount("#app");

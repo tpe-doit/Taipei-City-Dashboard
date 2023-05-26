@@ -11,6 +11,7 @@ const dialogStore = useDialogStore()
 const props = defineProps({
     content: { type: Object },
     notMoreInfo: { type: Boolean, default: true },
+    isMapLayer: { type: Boolean, default: false },
 })
 
 const dataTime = computed(() => {
@@ -47,7 +48,7 @@ function changeActiveChart(chartName) {
 </script>
 
 <template>
-    <div :class="{ 'componentcontainer': true, 'moreinfostyle': !notMoreInfo }">
+    <div :class="{ 'componentcontainer': true, 'moreinfostyle': !notMoreInfo, 'maplayerstyle': isMapLayer }">
         <div class="componentcontainer-header">
             <div>
                 <h3>{{ content.name }}</h3>
@@ -66,7 +67,7 @@ function changeActiveChart(chartName) {
             <button v-for="item in props.content.chart_config.types" @click="changeActiveChart(item)">{{
                 chartTypes[item] }}</button>
         </div>
-        <div class="componentcontainer-chart" v-if="content.chart_data">
+        <div :class="{ 'componentcontainer-chart': true, 'maplayerstyle-chart': isMapLayer }" v-if="content.chart_data">
             <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
                 :chart_config="content.chart_config" :series="content.chart_data">
             </component>
@@ -76,7 +77,7 @@ function changeActiveChart(chartName) {
                 <ComponentTag :icon="``" :text="updateFreq" />
                 <ComponentTag v-if="!content.map_config" :icon="`wrong_location`" :text="`沒有地圖`" />
             </div>
-            <button v-if="notMoreInfo" @click="dialogStore.showMoreInfo(content)">
+            <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)">
                 <p>組件資訊</p>
                 <span>arrow_circle_right</span>
             </button>
@@ -229,5 +230,30 @@ function changeActiveChart(chartName) {
         max-height: 520px;
     }
 
+}
+
+.maplayerstyle {
+    height: 180px;
+    max-height: 180px;
+
+    @media (min-width: 1050px) {
+        height: 210px;
+        max-height: 210px;
+    }
+
+
+    @media (min-width: 1650px) {
+        height: 225px;
+        max-height: 225px;
+    }
+
+    @media (min-width: 2200px) {
+        height: 275px;
+        max-height: 275px;
+    }
+
+    &-chart {
+        height: 60%;
+    }
 }
 </style>

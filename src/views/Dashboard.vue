@@ -3,12 +3,16 @@
 import { useContentStore } from '../store/contentStore'
 import ComponentContainer from '../components/components/ComponentContainer.vue'
 import MoreInfo from '../components/dialogs/MoreInfo.vue';
+
 const contentStore = useContentStore()
 
 </script>
 
 <template>
-    <div v-if="contentStore.currentDashboard.content.length !== 0" class="dashboard">
+    <div v-if="contentStore.currentDashboard.index === 'map-layers'" class="dashboard">
+        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :is-map-layer="true" />
+    </div>
+    <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="dashboard">
         <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" />
         <MoreInfo />
     </div>

@@ -14,7 +14,8 @@ import {
   TaipeiTown,
   TaipeiVillage,
   TaipeiBuilding,
-  maplayerCommonStyle,
+  maplayerCommonPaint,
+  maplayerCommonLayout,
 } from "../assets/configs/mapbox/mapConfig.js";
 
 export const useMapStore = defineStore("map", {
@@ -102,9 +103,21 @@ export const useMapStore = defineStore("map", {
             .addSource("taipei_village", { type: "geojson", data: data })
             .addLayer(TaipeiVillage("dark"));
         });
+      this.addSymbolSources();
     },
     // Called when the mapbox instance is first initialized and adds 3d renderings of taipei buildings to the map
     initialize3DLayers() {},
+
+    // Called when the mapbox instance is first initialized and adds the icons that will be used in the map
+    addSymbolSources() {
+      const images = ["metro"];
+      images.forEach((element) => {
+        this.map.loadImage(`/images/${element}.png`, (error, image) => {
+          if (error) throw error;
+          this.map.addImage(element, image);
+        });
+      });
+    },
 
     addMapLayerSource(map_config, data) {
       this.map.addSource(`${map_config.layerId}-source`, {
@@ -115,19 +128,37 @@ export const useMapStore = defineStore("map", {
     },
 
     addMapLayer(map_config) {
-      let extra_configs = {};
+      let extra_paint_configs = {};
+      let extra_layout_configs = {};
       if (map_config.icon) {
-        extra_configs = {
-          ...maplayerCommonStyle[`${map_config.type}-${map_config.icon}`],
+        extra_paint_configs = {
+          ...maplayerCommonPaint[`${map_config.type}-${map_config.icon}`],
+        };
+        extra_layout_configs = {
+          ...maplayerCommonLayout[`${map_config.type}-${map_config.icon}`],
+        };
+      }
+      if (map_config.size) {
+        extra_paint_configs = {
+          ...extra_paint_configs,
+          ...maplayerCommonPaint[`${map_config.type}-${map_config.size}`],
+        };
+        extra_layout_configs = {
+          ...extra_layout_configs,
+          ...maplayerCommonLayout[`${map_config.type}-${map_config.size}`],
         };
       }
       this.map.addLayer({
         id: map_config.layerId,
         type: map_config.type,
         paint: {
-          ...maplayerCommonStyle[`${map_config.type}`],
-          ...extra_configs,
+          ...maplayerCommonPaint[`${map_config.type}`],
+          ...extra_paint_configs,
           ...map_config.paint,
+        },
+        layout: {
+          ...maplayerCommonLayout[`${map_config.type}`],
+          ...extra_layout_configs,
         },
         source: `${map_config.layerId}-source`,
       });

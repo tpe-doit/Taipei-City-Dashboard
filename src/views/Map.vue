@@ -10,8 +10,16 @@ const contentStore = useContentStore()
 <template>
     <div class="map">
         <div class="map-charts">
-            <ComponentMapChart v-if="contentStore.currentDashboard.content.length !== 0"
-                v-for="item in contentStore.currentDashboard.content" :content="item" :key="item.index" />
+            <ComponentMapChart v-if="contentStore.currentDashboard.index === 'map-layers'"
+                v-for="item in contentStore.currentDashboard.content" :content="item" :key="`map-layer-${item.index}`"
+                :is-map-layer="true" />
+            <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="map-charts">
+                <ComponentMapChart v-for="item in contentStore.currentDashboard.content" :content="item"
+                    :key="item.index" />
+                <h2>基本圖層</h2>
+                <ComponentMapChart v-for="item in contentStore.mapLayers" :content="item" :key="`map-layer-${item.index}`"
+                    :is-map-layer="true" />
+            </div>
             <div v-else class="map-charts-nodashboard">
                 <span>sentiment_very_dissatisfied</span>
                 <h2>尚未加入組件</h2>

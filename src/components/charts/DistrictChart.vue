@@ -6,13 +6,16 @@ const target = ref(null)
 const districtData = computed(() => {
     let output = {}
     let highest = 0
-    props.series.forEach((item) => {
+    let sum = 0
+    props.series[0].data.forEach((item) => {
         output[item.x] = item.y
         if (item.y > highest) {
             highest = item.y
         }
+        sum += item.y
     })
     output.highest = highest
+    output.sum = sum
     return output
 })
 const districtColor = ref(props.chart_config.color[0])
@@ -36,7 +39,11 @@ function updateMouseLocation(e) {
 
 <template>
     <div v-if="activeChart === 'DistrictChart'" class="districtchart">
-        <div v-if="!isHighchart" class="districtchart-district">
+        <div class="districtchart-title">
+            <h5>總合</h5>
+            <h6>{{ districtData.sum }} {{ chart_config.unit }}</h6>
+        </div>
+        <div class="districtchart-district">
             <svg viewBox="0 0 413 550" xmlns="http://www.w3.org/2000/svg">
                 <g>
                     <path data-name="北投區" :class="{ active: target === '北投區' }" @mouseenter="toggleActive"
@@ -92,7 +99,7 @@ function updateMouseLocation(e) {
             <Teleport to="body">
                 <div v-if="target" class="districtchart-district-info chart-tooltip" :style="districtInfoStyle">
                     <h6>{{ target }}</h6>
-                    <span>{{ districtData[target] }}</span>
+                    <span>{{ districtData[target] }} {{ chart_config.unit }}</span>
                 </div>
             </Teleport>
         </div>
@@ -103,6 +110,27 @@ function updateMouseLocation(e) {
 .districtchart {
     max-height: 100%;
     overflow-y: scroll;
+    position: relative;
+
+    &-title {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0.5rem 0 -0.5rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        h5 {
+            color: var(--color-complement-text)
+        }
+
+        h6 {
+            font-size: var(--font-m);
+            font-weight: 400;
+            color: var(--color-complement-text)
+        }
+    }
 
     &-district {
         display: flex;
@@ -119,33 +147,6 @@ function updateMouseLocation(e) {
         &-info {
             position: fixed;
             z-index: 20;
-        }
-    }
-
-    &-control {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 0;
-
-        button {
-            background-color: rgb(77, 77, 77);
-            padding: 4px 4px;
-            border-radius: 5px;
-            transition: color 0.2s, opacity 0.2s;
-            font-size: var(--font-s);
-            margin: 0 4px;
-            color: var(--color-complement-text);
-            opacity: 0.25;
-            text-align: center;
-
-            &:hover {
-                color: white;
-                opacity: 1;
-            }
         }
     }
 

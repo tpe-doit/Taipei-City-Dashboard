@@ -5,7 +5,8 @@ import LoadingImage from '../LoadingImage.vue';
 import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
 const props = defineProps({
-    content: { type: Object }
+    content: { type: Object },
+    isMapLayer: { type: Boolean, default: false },
 })
 const mapStore = useMapStore()
 
@@ -41,7 +42,7 @@ function changeActiveChart(chartName) {
 </script>
 
 <template>
-    <div :class="{ componentmapchart: true, checked: checked }">
+    <div :class="{ componentmapchart: true, checked: checked, 'maplayerstyle': isMapLayer && checked }">
         <div class="componentmapchart-header">
             <div>
                 <div>
@@ -209,5 +210,10 @@ function changeActiveChart(chartName) {
         transform: translateX(1rem);
         background-color: white;
     }
+}
+
+.maplayerstyle {
+    height: 160px;
+    max-height: 160px;
 }
 </style>

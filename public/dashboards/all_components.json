@@ -13,7 +13,8 @@
           "#17675a",
           "#C2d1d0"
         ],
-        "types": ["HorizontalBarChart", "DonutChart"]
+        "types": ["BarChart", "DonutChart"],
+        "unit": "件"
       },
       "source": "1999話務系統",
       "time_from": "2023-05-09T17:05:17+08:00",
@@ -33,7 +34,8 @@
       "map_config": null,
       "chart_config": {
         "color": ["#F3847E", "#e06666", "#fdb7ba", "#fb8c8c", "#C53E5E"],
-        "types": ["DonutChart", "HorizontalBarChart"]
+        "types": ["DonutChart", "BarChart"],
+        "unit": "件"
       },
       "source": "警察局",
       "time_from": "2022-11-01T00:00:00+08:00",
@@ -80,7 +82,8 @@
       ],
       "chart_config": {
         "color": ["#CA0020", "#ff996d", "#f8c3ac"],
-        "types": ["DonutChart", "HorizontalBarChart"]
+        "types": ["DonutChart", "BarChart"],
+        "unit": "件"
       },
       "source": "警察局",
       "time_from": "2023-01-31T14:01:00Z",
@@ -135,20 +138,29 @@
         }
       ],
       "chart_config": {
-        "color": ["#d76c29", "#77dddf"],
-        "types": ["HorizontalBarChart"]
+        "types": ["MapLegend"],
+        "unit": "人"
       },
+      "chart_data": [
+        {
+          "type": "fill-extrusion",
+          "color": "#d76c29",
+          "name": "居住推估人數",
+          "value": 2350032
+        },
+        {
+          "type": "fill-extrusion",
+          "color": "#77dddf",
+          "name": "工作推估人數",
+          "value": 2759779
+        }
+      ],
       "source": "遠傳電信",
       "time_from": "2020-06-16T00:00:00+08:00",
       "time_to": null,
       "update_freq": null,
       "update_freq_unit": null,
-      "name": "居職人口推估",
-      "short_desc": "",
-      "long_desc": "",
-      "use_case": "",
-      "links": "",
-      "tags": [""]
+      "name": "居職人口推估"
     },
     "34": {
       "id": 34,
@@ -246,7 +258,8 @@
           "#00ff00",
           "#00ff00"
         ],
-        "types": ["TreemapChart", "HorizontalBarChart"]
+        "types": ["TreemapChart", "BarChart"],
+        "unit": "km²"
       },
       "source": "都發局",
       "time_from": null,
@@ -254,6 +267,141 @@
       "update_freq": null,
       "update_freq_unit": null,
       "name": "都市計畫用地類型",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "73": {
+      "id": 73,
+      "index": "5f2dda57",
+      "map_config": [
+        {
+          "color": "#555",
+          "index": "traffic_metro_line",
+          "paint": {
+            "line-color": [
+              "match",
+              ["get", "mrtid"],
+              ["BL"],
+              "#0070bd",
+              ["O"],
+              "#f8b61c",
+              ["G"],
+              "#008659",
+              ["R"],
+              "#e3002c",
+              ["BR"],
+              "#c48c31",
+              ["Y"],
+              "#ffdb00",
+              "#505050"
+            ]
+          },
+          "property": [
+            { "key": "mrtsys", "name": "系統" },
+            { "key": "mrtid", "name": "代號" },
+            { "key": "mrtcode", "name": "路線" }
+          ],
+          "type": "line",
+          "size": null,
+          "icon": null,
+          "title": "捷運路線"
+        },
+        {
+          "index": "traffic_metro_station",
+          "property": [
+            { "key": "stationid", "name": "ID" },
+            { "key": "stationname2", "name": "站名" }
+          ],
+          "type": "symbol",
+          "size": null,
+          "icon": "metro",
+          "title": "捷運站點"
+        }
+      ],
+      "chart_config": {
+        "color": ["#2e999b", "#80e3d4"],
+        "types": ["TimelineSeparateChart", "TimelineStackedChart"],
+        "unit": "人次"
+      },
+      "name": "捷運人流趨勢",
+      "source": "捷運工程局",
+      "time_from": "2023-05-26T23:29:00+08:00",
+      "time_to": null,
+      "update_freq": 30,
+      "update_freq_unit": "minute",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "90": {
+      "id": 90,
+      "index": "4d52e214",
+      "map_config": [
+        {
+          "index": "socl_welfare_people_by_vil_view",
+          "paint": {
+            "fill-color": [
+              "interpolate",
+              ["linear"],
+              ["to-number", ["get", "cnt_total"]],
+              0,
+              "rgba(8,103,136,0.1)",
+              250,
+              "rgba(8,103,136,0.5)",
+              500,
+              "rgba(7,160,195,0.5)",
+              750,
+              "rgba(7,160,195,0.75)",
+              1000,
+              "rgba(180,91,91,0.75)",
+              1600,
+              "#dd1c1a"
+            ]
+          },
+          "property": [
+            { "key": "vil", "name": "里界" },
+            { "key": "cnt_low_income", "name": "低收入人口數" },
+            { "key": "cnt_low_middle_income", "name": "中低收人口數" },
+            { "key": "cnt_disabled_allowance", "name": "身障補助數量" },
+            { "key": "cnt_disabled", "name": "身障人口數量" },
+            { "key": "cnt_total", "name": "社福人口總數" }
+          ],
+          "type": "fill",
+          "title": "社福人口",
+          "size": null,
+          "icon": null
+        }
+      ],
+      "chart_config": {
+        "color": ["#2e999b", "#80e3d4", "#1f9b85", "#a5ece0"],
+        "types": ["ColumnChart", "RadarChart"],
+        "unit": "人",
+        "categories": [
+          "士林區",
+          "大安區",
+          "文山區",
+          "松山區",
+          "南港區",
+          "大同區",
+          "中山區",
+          "內湖區",
+          "北投區",
+          "中正區",
+          "萬華區",
+          "信義區"
+        ]
+      },
+      "name": "社福人口",
+      "source": "社會局",
+      "time_from": "2023-05-02T08:00:18+08:00",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
       "short_desc": "",
       "long_desc": "",
       "use_case": "",
@@ -345,7 +493,8 @@
       ],
       "chart_config": {
         "color": ["#33C552"],
-        "types": ["DistrictChart", "HorizontalBarChart"]
+        "types": ["DistrictChart", "ColumnChart", "RadarChart"],
+        "unit": "棵"
       },
       "source": "工務局",
       "time_from": "2022-08-15T00:00:00Z",
@@ -353,6 +502,66 @@
       "update_freq": null,
       "update_freq_unit": null,
       "name": "行道樹",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": [""]
+    },
+    "114": {
+      "id": 114,
+      "index": "816ae26e",
+      "map_config": [
+        {
+          "index": "parking_realtime",
+          "paint": {
+            "circle-color": [
+              "interpolate",
+              ["linear"],
+              ["to-number", ["get", "occupied_rate"]],
+              -99,
+              "#999",
+              -98,
+              "#999",
+              0.499,
+              "#9bc874",
+              0.5,
+              "#ff9800",
+              0.8,
+              "#f44336",
+              1,
+              "#f44336",
+              1.1,
+              "#9c27b0"
+            ]
+          },
+          "property": [
+            { "key": "name", "name": "名稱" },
+            { "key": "summary", "name": "簡介" },
+            { "key": "car", "name": "汽車停車場" },
+            { "key": "motor", "name": "機車停車場" },
+            { "key": "charging", "name": "電動充電樁" },
+            { "key": "occupied_rate", "name": "使用率" },
+            { "key": "data_time", "name": "更新時間" }
+          ],
+          "type": "circle",
+          "size": null,
+          "icon": null,
+          "title": "公共停車場"
+        }
+      ],
+      "chart_config": {
+        "color": ["#2e999b", "#80e3d4", "#1f9b85"],
+        "types": ["GuageChart", "BarPercentChart"],
+        "unit": "個",
+        "categories": ["汽車車位使用量", "機車車位使用量", "充電站使用量"]
+      },
+      "source": "交通局",
+      "time_from": "2023-05-11T08:00:00+08:00",
+      "time_to": null,
+      "update_freq": 10,
+      "update_freq_unit": "minute",
+      "name": "公共停車場",
       "short_desc": "",
       "long_desc": "",
       "use_case": "",

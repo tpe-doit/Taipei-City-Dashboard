@@ -97,6 +97,13 @@ body {
 .chart-tooltip span {
   font-size: 1rem;
 }
-.apexcharts-yaxis-label {
+.apexcharts-yaxis-label,
+.apexcharts-xaxis-label,
+.apexcharts-legend-text {
+  color: var(--color-complement-text) !important;
   fill: var(--color-complement-text) !important;
+}
+.vue-apexcharts {
+  display: flex;
+  justify-content: center;
 }
