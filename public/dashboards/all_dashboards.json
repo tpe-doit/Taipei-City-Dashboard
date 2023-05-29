@@ -1,16 +1,16 @@
 {
   "data": [
     {
-      "name": "圖資資訊",
-      "index": "map-layers",
-      "components": ["32"],
-      "icon": "public"
-    },
-    {
       "name": "圖表類型",
       "index": "chart-types",
       "components": ["73", "4", "34", "22", "110", "114", "90"],
       "icon": "construction"
+    },
+    {
+      "name": "圖資資訊",
+      "index": "map-layers",
+      "components": ["32"],
+      "icon": "public"
     }
   ]
 }

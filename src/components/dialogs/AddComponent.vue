@@ -4,16 +4,11 @@ import DialogContainer from './DialogContainer.vue';
 import ComponentTag from '../utilities/ComponentTag.vue'
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
-import { useAuthStore } from '../../store/authStore';
-
-import { componentList } from '../../assets/data/dashboard_componentList'
-import { gidToComponents } from '../../assets/data/gidToComponents'
 
 import CustomCheckBox from '../utilities/CustomCheckBox.vue';
 
 const dialogStore = useDialogStore()
 const contentStore = useContentStore()
-const authStore = useAuthStore()
 
 const outputList = computed(() => {
 
@@ -26,28 +21,23 @@ const outputList = computed(() => {
         output = output.filter((item) => item.index.toString().includes(searchIndex.value))
     }
     if (filterSource.value.length > 0) {
-        output = output.filter((item) => filterSource.value.includes(item.source_from))
+        output = output.filter((item) => filterSource.value.includes(item.source))
     }
     if (filterControl.value.includes('有地理資料')) {
-        output = output.filter((item) => item.map_config !== 'NULL')
-    }
-    if (filterControl.value.includes('有歷史資料')) {
-        output = output.filter((item) => item.calculation_config !== 'NULL')
+        output = output.filter((item) => item.map_config !== null)
     }
 
     return output
 })
 const availableComponents = computed(() => {
-    const auth = gidToComponents[authStore.user.gid]
+    const allComponentIds = Object.keys(contentStore.components)
     const taken = contentStore.currentDashboard.content.map((item) => item.id)
-    const available = auth.filter(item => !taken.includes(item))
+    const maplayer = contentStore.mapLayers.map((item) => item.id)
+    const available = allComponentIds.filter(item => !taken.includes(+item) && !maplayer.includes(+item))
     const output = []
-    for (let i = 0; i < available.length; i++) {
-        if (componentList[available[i]]) {
-            componentList[available[i]].id = available[i]
-            output.push(componentList[available[i]])
-        }
-    }
+    available.forEach(element => {
+        output.push(contentStore.components[element])
+    });
     return output
 })
 
@@ -64,7 +54,32 @@ const filterItems = {
     source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局'],
     type: ['交通', '產業', '土地', '安全'],
     frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
-    control: ['有地理資料', '有歷史資料']
+    control: ['有地理資料']
+}
+
+function dataTime(time_from, time_to) {
+    if (!time_from) {
+        return '固定資料'
+    }
+    if (!time_to) {
+        return time_from.slice(0, 10)
+    }
+    return `${time_from.slice(0, 10)} ~ ${time_to.slice(0, 10)}`
+}
+
+function updateFreq(update_freq, update_freq_unit) {
+    const unitRef = {
+        minute: "分鐘",
+        hour: "小時",
+        day: "天",
+        week: "週",
+        month: "月",
+        year: "年"
+    }
+    if (!update_freq) {
+        return '不定期更新'
+    }
+    return `每${update_freq}${unitRef[update_freq_unit]}更新`
 }
 
 // Uncomment the following to restore add components function if new backend is connected
@@ -155,27 +170,21 @@ function clearFilters() {
                             <div>
                                 <div>
                                     <h2>{{ item.name }}</h2>
-                                    <h3>{{ `${item.source_from} | (顯示資料之時間)` }}</h3>
+                                    <h3>{{ `${item.source} | ${dataTime(item.time_from, item.time_to)}` }}</h3>
                                 </div>
                                 <div :style="{ margin: '0.75rem 0' }">
-                                    <p>{{ item.enduser_desc === 'NULL' ? `本組件整理了台北市現在各巴拉巴拉的進度，分別為，啦啦啦啊。` : item.enduser_desc
-                                    }}
-                                    </p>
+                                    <p>{{ item.short_desc }}</p>
                                     <br />
                                     <p><b>組件ID：</b>{{ item.id }}</p>
                                     <p><b>組件Index：</b>{{ item.index }}</p>
                                 </div>
                                 <div :style="{ display: 'flex', marginTop: '0.5rem' }">
-                                    <ComponentTag :icon="``" :text="`我是標籤`" mode="fill" />
-                                    <ComponentTag :icon="``" :text="`我是標籤`" mode="fill" />
-                                    <ComponentTag :icon="``" :text="`我是標籤`" mode="fill" />
+                                    <ComponentTag v-for="element in item.tags" icon="" :text="element" mode="fill" />
                                 </div>
                                 <div :style="{ display: 'flex', marginTop: '4px' }">
-                                    <ComponentTag :icon="``" :text="`更新頻率`" />
-                                    <ComponentTag v-if="item.map_config === 'NULL'" :icon="`wrong_location`"
-                                        :text="`沒有地圖`" />
-                                    <ComponentTag v-if="item.calculation_config !== 'NULL'" :icon="`insights`"
-                                        :text="`有歷史軸`" />
+                                    <ComponentTag :icon="``"
+                                        :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" />
+                                    <ComponentTag v-if="item.map_config === null" :icon="`wrong_location`" :text="`沒有地圖`" />
                                 </div>
                             </div>
                         </label>

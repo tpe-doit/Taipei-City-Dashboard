@@ -16,8 +16,10 @@ const dialogStore = useDialogStore()
                 <p>{{ dialogStore.moreInfoContent.long_desc }}</p>
                 <h3>使用情境</h3>
                 <p>{{ dialogStore.moreInfoContent.use_case }}</p>
-                <h3>相關連結</h3>
-                <p>連結</p>
+                <div v-if="dialogStore.moreInfoContent.links">
+                    <h3>相關連結</h3>
+                    <a>連結</a>
+                </div>
                 <div class="moreinfo-info-control">
                     <button><span>flag</span>回報問題</button>
                     <button><span>download</span>輸出</button>

@@ -26,7 +26,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "8": {
       "id": 8,
@@ -47,7 +47,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "22": {
       "id": 22,
@@ -95,7 +95,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "32": {
       "id": 32,
@@ -271,7 +271,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "73": {
       "id": 73,
@@ -336,7 +336,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "90": {
       "id": 90,
@@ -406,7 +406,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "110": {
       "id": 110,
@@ -506,7 +506,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     },
     "114": {
       "id": 114,
@@ -566,7 +566,7 @@
       "long_desc": "",
       "use_case": "",
       "links": "",
-      "tags": [""]
+      "tags": []
     }
   }
 }
