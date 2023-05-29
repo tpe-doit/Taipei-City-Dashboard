@@ -2,6 +2,7 @@
 import DialogContainer from './DialogContainer.vue';
 import { useDialogStore } from '../../store/dialogStore';
 import ComponentContainer from '../components/ComponentContainer.vue';
+import HistoryChart from '../utilities/HistoryChart.vue';
 
 const dialogStore = useDialogStore()
 
@@ -19,6 +20,12 @@ const dialogStore = useDialogStore()
                 <div v-if="dialogStore.moreInfoContent.links">
                     <h3>相關連結</h3>
                     <a>連結</a>
+                </div>
+                <div v-if="dialogStore.moreInfoContent.history_data">
+                    <h3>歷史軸</h3>
+                    <h4>*點擊並拉動以檢視細部區間資料</h4>
+                    <HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
+                        :series="dialogStore.moreInfoContent.history_data" />
                 </div>
                 <div class="moreinfo-info-control">
                     <button><span>flag</span>回報問題</button>
@@ -61,6 +68,12 @@ const dialogStore = useDialogStore()
         p {
             text-align: justify;
             margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: var(--color-complement-text);
+            font-weight: 400;
+            font-size: 10px;
         }
 
         @media (min-width: 820px) {

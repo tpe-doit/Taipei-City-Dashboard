@@ -103,6 +103,16 @@ export const useContentStore = defineStore("content", {
           .catch((e) => {
             console.log(e);
           });
+        if (this.currentDashboard.content[index].history_data) {
+          axios
+            .get(`/historyData/${component}.json`)
+            .then((rs) => {
+              this.currentDashboard.content[index].history_data = rs.data.data;
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        }
       });
     },
     createNewDashboard(name) {

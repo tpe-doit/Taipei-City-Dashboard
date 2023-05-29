@@ -184,7 +184,8 @@ function clearFilters() {
                                 <div :style="{ display: 'flex', marginTop: '4px' }">
                                     <ComponentTag :icon="``"
                                         :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" />
-                                    <ComponentTag v-if="item.map_config === null" :icon="`wrong_location`" :text="`沒有地圖`" />
+                                    <ComponentTag v-if="item.map_config === null" icon="wrong_location" text="沒有地圖" />
+                                    <ComponentTag v-if="item.history_data" icon="insights" text="有歷史軸" />
                                 </div>
                             </div>
                         </label>

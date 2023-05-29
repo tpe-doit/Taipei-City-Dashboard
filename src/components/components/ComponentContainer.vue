@@ -75,7 +75,8 @@ function changeActiveChart(chartName) {
         <div class="componentcontainer-footer">
             <div>
                 <ComponentTag :icon="``" :text="updateFreq" />
-                <ComponentTag v-if="!content.map_config" :icon="`wrong_location`" :text="`沒有地圖`" />
+                <ComponentTag v-if="!content.map_config" icon="wrong_location" text="沒有地圖" />
+                <ComponentTag v-if="content.history_data" icon="insights" text="有歷史軸" />
             </div>
             <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)">
                 <p>組件資訊</p>

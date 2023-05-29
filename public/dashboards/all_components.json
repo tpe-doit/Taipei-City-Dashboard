@@ -16,6 +16,7 @@
         "types": ["BarChart", "DonutChart"],
         "unit": "件"
       },
+      "history_data": false,
       "source": "1999話務系統",
       "time_from": "2023-05-09T17:05:17+08:00",
       "time_to": "2023-05-23T17:05:17+08:00",
@@ -37,6 +38,7 @@
         "types": ["DonutChart", "BarChart"],
         "unit": "件"
       },
+      "history_data": false,
       "source": "警察局",
       "time_from": "2022-11-01T00:00:00+08:00",
       "time_to": "2023-05-25T16:07:24+08:00",
@@ -85,6 +87,7 @@
         "types": ["DonutChart", "BarChart"],
         "unit": "件"
       },
+      "history_data": false,
       "source": "警察局",
       "time_from": "2023-01-31T14:01:00Z",
       "time_to": null,
@@ -155,6 +158,7 @@
           "value": 2759779
         }
       ],
+      "history_data": false,
       "source": "遠傳電信",
       "time_from": "2020-06-16T00:00:00+08:00",
       "time_to": null,
@@ -261,6 +265,7 @@
         "types": ["TreemapChart", "BarChart"],
         "unit": "km²"
       },
+      "history_data": false,
       "source": "都發局",
       "time_from": null,
       "time_to": null,
@@ -327,11 +332,34 @@
         "unit": "人次"
       },
       "name": "捷運人流趨勢",
+      "history_data": false,
       "source": "捷運工程局",
       "time_from": "2023-05-26T23:29:00+08:00",
       "time_to": null,
       "update_freq": 30,
       "update_freq_unit": "minute",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "83": {
+      "id": 83,
+      "index": "ff6f7150",
+      "map_config": null,
+      "chart_config": {
+        "color": ["#bc7262"],
+        "types": ["DistrictChart", "RadarChart", "ColumnChart"],
+        "unit": "件"
+      },
+      "name": "緊急救護服務",
+      "source": "消防局",
+      "history_data": true,
+      "time_from": "2023-05-01T00:00:00+08:00",
+      "time_to": "2023-05-29T14:50:55+08:00",
+      "update_freq": 1,
+      "update_freq_unit": "day",
       "short_desc": "",
       "long_desc": "",
       "use_case": "",
@@ -397,6 +425,7 @@
         ]
       },
       "name": "社福人口",
+      "history_data": false,
       "source": "社會局",
       "time_from": "2023-05-02T08:00:18+08:00",
       "time_to": null,
@@ -496,6 +525,7 @@
         "types": ["DistrictChart", "ColumnChart", "RadarChart"],
         "unit": "棵"
       },
+      "history_data": false,
       "source": "工務局",
       "time_from": "2022-08-15T00:00:00Z",
       "time_to": null,
@@ -556,6 +586,7 @@
         "unit": "個",
         "categories": ["汽車車位使用量", "機車車位使用量", "充電站使用量"]
       },
+      "history_data": false,
       "source": "交通局",
       "time_from": "2023-05-11T08:00:00+08:00",
       "time_to": null,

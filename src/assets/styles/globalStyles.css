@@ -107,3 +107,12 @@ body {
   display: flex;
   justify-content: center;
 }
+.apexcharts-zoom-icon {
+  display: none;
+}
+.apexcharts-reset-icon {
+  width: fit-content !important;
+}
+.apexcharts-reset-icon p {
+  color: var(--color-highlight) !important;
+}
