@@ -243,6 +243,19 @@ export const maplayerCommonPaint = {
       1,
     ],
   },
+  "circle-small": {
+    "circle-opacity": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.1,
+      13,
+      0.5,
+      17,
+      1,
+    ],
+  },
   "fill-extrusion": {
     "fill-extrusion-opacity": 0.5,
   },
@@ -297,6 +310,9 @@ export const maplayerCommonLayout = {
   },
   "symbol-metro": {
     "icon-image": "metro",
+  },
+  "symbol-triangle_green": {
+    "icon-image": "triangle_green",
   },
 };
 

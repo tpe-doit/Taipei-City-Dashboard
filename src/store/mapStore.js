@@ -110,7 +110,7 @@ export const useMapStore = defineStore("map", {
 
     // Called when the mapbox instance is first initialized and adds the icons that will be used in the map
     addSymbolSources() {
-      const images = ["metro"];
+      const images = ["metro", "triangle_green"];
       images.forEach((element) => {
         this.map.loadImage(`/images/${element}.png`, (error, image) => {
           if (error) throw error;

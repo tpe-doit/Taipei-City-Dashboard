@@ -2,10 +2,6 @@
 import { defineProps, ref, computed } from 'vue';
 const props = defineProps(['chart_config', 'series'])
 
-function parseTime(time) {
-    return time.slice(0, -15)
-}
-
 const options = ref({
     legend: {
         show: false
@@ -26,7 +22,7 @@ const options = ref({
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
-                '<h6>' + `${parseTime(w.config.series[seriesIndex].data[dataPointIndex].x)}` + '</h6>' +
+                '<h6>' + `${w.config.series[seriesIndex].data[dataPointIndex].x}` + '</h6>' +
                 '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
         }

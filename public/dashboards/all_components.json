@@ -16,7 +16,7 @@
         "types": ["BarChart", "DonutChart"],
         "unit": "件"
       },
-      "history_data": false,
+      "history_data": true,
       "source": "1999話務系統",
       "time_from": "2023-05-09T17:05:17+08:00",
       "time_to": "2023-05-23T17:05:17+08:00",
@@ -35,10 +35,10 @@
       "map_config": null,
       "chart_config": {
         "color": ["#F3847E", "#e06666", "#fdb7ba", "#fb8c8c", "#C53E5E"],
-        "types": ["DonutChart", "BarChart"],
+        "types": ["BarChart", "DonutChart"],
         "unit": "件"
       },
-      "history_data": false,
+      "history_data": true,
       "source": "警察局",
       "time_from": "2022-11-01T00:00:00+08:00",
       "time_to": "2023-05-25T16:07:24+08:00",
@@ -82,12 +82,13 @@
           "title": "交通事故統計"
         }
       ],
+      "map_filter": { "key": "", "valueFrom": "" },
       "chart_config": {
         "color": ["#CA0020", "#ff996d", "#f8c3ac"],
         "types": ["DonutChart", "BarChart"],
         "unit": "件"
       },
-      "history_data": false,
+      "history_data": true,
       "source": "警察局",
       "time_from": "2023-01-31T14:01:00Z",
       "time_to": null,
@@ -99,72 +100,6 @@
       "use_case": "",
       "links": "",
       "tags": []
-    },
-    "32": {
-      "id": 32,
-      "index": "work_live",
-      "map_config": [
-        {
-          "index": "tp_fet_work_live",
-          "paint": {
-            "fill-extrusion-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "work_l_w"],
-              -11533,
-              "#77dddf",
-              -4,
-              "#000000",
-              8,
-              "#000000",
-              2551,
-              "#d76c29"
-            ],
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["get", "work_l+w"],
-              0,
-              0,
-              19895,
-              1000
-            ]
-          },
-          "property": [
-            { "key": "pop_live", "name": "居住推估人數" },
-            { "key": "pop_work", "name": "工作推估人數" }
-          ],
-          "type": "fill-extrusion",
-          "size": null,
-          "icon": null,
-          "title": "居職人口推估"
-        }
-      ],
-      "chart_config": {
-        "types": ["MapLegend"],
-        "unit": "人"
-      },
-      "chart_data": [
-        {
-          "type": "fill-extrusion",
-          "color": "#d76c29",
-          "name": "居住推估人數",
-          "value": 2350032
-        },
-        {
-          "type": "fill-extrusion",
-          "color": "#77dddf",
-          "name": "工作推估人數",
-          "value": 2759779
-        }
-      ],
-      "history_data": false,
-      "source": "遠傳電信",
-      "time_from": "2020-06-16T00:00:00+08:00",
-      "time_to": null,
-      "update_freq": null,
-      "update_freq_unit": null,
-      "name": "居職人口推估"
     },
     "34": {
       "id": 34,
@@ -332,7 +267,7 @@
         "unit": "人次"
       },
       "name": "捷運人流趨勢",
-      "history_data": false,
+      "history_data": true,
       "source": "捷運工程局",
       "time_from": "2023-05-26T23:29:00+08:00",
       "time_to": null,
@@ -598,6 +533,204 @@
       "use_case": "",
       "links": "",
       "tags": []
+    },
+    "32": {
+      "id": 32,
+      "index": "work_live",
+      "map_config": [
+        {
+          "index": "tp_fet_work_live",
+          "paint": {
+            "fill-extrusion-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "work_l_w"],
+              -11533,
+              "#77dddf",
+              -4,
+              "#000000",
+              8,
+              "#000000",
+              2551,
+              "#d76c29"
+            ],
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["get", "work_l+w"],
+              0,
+              0,
+              19895,
+              1000
+            ]
+          },
+          "property": [
+            { "key": "pop_live", "name": "居住推估人數" },
+            { "key": "pop_work", "name": "工作推估人數" }
+          ],
+          "type": "fill-extrusion",
+          "size": null,
+          "icon": null,
+          "title": "居職人口推估"
+        }
+      ],
+      "chart_config": {
+        "types": ["MapLegend"],
+        "unit": "人"
+      },
+      "chart_data": [
+        {
+          "type": "fill-extrusion",
+          "color": "#d76c29",
+          "name": "居住推估人數",
+          "value": 2350032
+        },
+        {
+          "type": "fill-extrusion",
+          "color": "#77dddf",
+          "name": "工作推估人數",
+          "value": 2759779
+        }
+      ],
+      "source": "遠傳電信",
+      "time_from": "2020-06-16T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "name": "居職人口推估"
+    },
+    "15": {
+      "id": 15,
+      "index": "fire_respondent",
+      "map_config": [
+        {
+          "index": "fire_hydrant_location",
+          "property": [
+            { "key": "type", "name": "類型" },
+            { "key": "location", "name": "位置" }
+          ],
+          "paint": {
+            "circle-color": "#3f51b5"
+          },
+          "type": "circle",
+          "title": "消防栓",
+          "size": "small",
+          "icon": null
+        },
+        {
+          "cover": true,
+          "index": "patrol_fire_brigade",
+          "property": [{ "key": "name", "name": "名稱" }],
+          "icon": "triangle_green",
+          "title": "消防隊",
+          "size": null,
+          "type": "symbol"
+        }
+      ],
+      "chart_config": {
+        "types": ["MapLegend"]
+      },
+      "chart_data": [
+        {
+          "type": "symbol",
+          "color": "#d76c29",
+          "name": "消防隊",
+          "value": null,
+          "icon": "triangle_green"
+        },
+        {
+          "type": "circle",
+          "color": "#3f51b5",
+          "name": "消防栓",
+          "value": null
+        }
+      ],
+      "name": "火災應變設施",
+      "source": "消防局",
+      "time_from": null,
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null
+    },
+    "105": {
+      "id": 105,
+      "index": "621b6265",
+      "map_config": [
+        {
+          "index": "work_sidewalk",
+          "paint": { "fill-opacity": 1, "fill-color": "#9D9152" },
+          "property": [
+            { "key": "name", "name": "名稱" },
+            { "key": "dist", "name": "行政區" },
+            { "key": "width", "name": "寬度" }
+          ],
+          "type": "fill",
+          "title": "人行道"
+        }
+      ],
+      "chart_config": {
+        "types": ["MapLegend"]
+      },
+      "chart_data": [
+        {
+          "type": "fill",
+          "color": "#9D9152",
+          "name": "人行道"
+        }
+      ],
+      "name": "人行道分布",
+      "source": "工務局新工處",
+      "time_from": null,
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null
+    },
+    "109": {
+      "id": 109,
+      "index": "c2832495",
+      "map_config": [
+        {
+          "index": "bike_path",
+          "paint": {
+            "line-color": [
+              "match",
+              ["get", "type"],
+              "市區",
+              "#a0b8e8",
+              "河濱",
+              "#b7ff98",
+              "red"
+            ]
+          },
+          "property": [
+            { "key": "type", "name": "類型" },
+            { "key": "name", "name": "名稱" }
+          ],
+          "type": "line",
+          "title": "自行車道"
+        }
+      ],
+      "chart_config": {
+        "types": ["MapLegend"]
+      },
+      "chart_data": [
+        {
+          "type": "line",
+          "color": "#a0b8e8",
+          "name": "市區自行車道"
+        },
+        {
+          "type": "line",
+          "color": "#b7ff98",
+          "name": "河濱自行車道"
+        }
+      ],
+      "name": "自行車道",
+      "source": "交通局交工處",
+      "time_from": null,
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null
     }
   }
 }

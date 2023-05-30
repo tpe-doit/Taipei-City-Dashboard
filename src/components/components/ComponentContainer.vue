@@ -55,12 +55,10 @@ function changeActiveChart(chartName) {
                 <h4>{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <div v-if="notMoreInfo">
-                <button title="回報問題"><span>flag</span></button>
-
-                <!-- If you wish to implement the "delete component" function, uncomment the following -->
-                <!-- <button v-if="contentStore.currentDashboard.type === 'customized'"
-                    @click="contentStore.deleteComponent(content.topic_id, content.id, content.name)"><span>delete</span></button> -->
-
+                <button title="回報問題"
+                    @click="dialogStore.showNotification('fail', '目前尚未新增回報問題功能，無法回報問題')"><span>flag</span></button>
+                <!-- Change @click to a delete function to implement functionality -->
+                <button @click="dialogStore.showNotification('fail', '目前尚未新增刪除組件功能，無法刪除組件')"><span>delete</span></button>
             </div>
         </div>
         <div class="componentcontainer-control" v-if="props.content.chart_config.types.length > 1">

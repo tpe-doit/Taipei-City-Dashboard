@@ -10,10 +10,11 @@ const contentStore = useContentStore()
 
 <template>
     <div v-if="contentStore.currentDashboard.index === 'map-layers'" class="dashboard">
-        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :is-map-layer="true" />
+        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :is-map-layer="true"
+            :key="item.index" />
     </div>
     <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="dashboard">
-        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" />
+        <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :key="item.index" />
         <MoreInfo />
     </div>
     <div v-else class="dashboard nodashboard">

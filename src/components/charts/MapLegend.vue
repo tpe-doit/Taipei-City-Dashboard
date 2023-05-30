@@ -1,14 +1,15 @@
 <script setup>
-const props = defineProps(['chart_config', 'activeChart', 'series'])
+const props = defineProps(['chart_config', 'series'])
 </script>
 
 <template>
     <div class="maplegend">
         <div class="maplegend-legend">
             <div v-for="item in series" :key="item.name" class="maplegend-legend-item">
-                <div
+                <div v-if="item.type !== 'symbol'"
                     :style="{ backgroundColor: `${item.color}`, height: item.type === 'line' ? '0.4rem' : '1rem', borderRadius: item.type === 'circle' ? '50%' : '2px' }">
                 </div>
+                <img v-else :src="`/images/${item.icon}.png`" />
                 <div v-if="item.value">
                     <h5>{{ item.name }}</h5>
                     <h6>{{ item.value }} {{ chart_config.unit }}</h6>
@@ -47,7 +48,8 @@ const props = defineProps(['chart_config', 'activeChart', 'series'])
             padding: 5px 10px 5px 5px;
             box-shadow: 0px 0px 5px black;
 
-            div:first-child {
+            div:first-child,
+            img {
                 width: 1rem;
                 margin-right: 0.75rem;
             }

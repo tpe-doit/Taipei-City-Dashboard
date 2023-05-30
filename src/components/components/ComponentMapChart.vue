@@ -66,8 +66,10 @@ function changeActiveChart(chartName) {
                 :chart_config="content.chart_config" :series="content.chart_data">
             </component>
         </div>
-
-        <div class="componentmapchart-footer"></div>
+        <!-- <div class="componentmapchart-filter" v-if="checked && content.map_filter">
+            <h3>地圖篩選</h3>
+            <input type="range" min="0" max="12" />
+        </div> -->
     </div>
 </template>
 
@@ -155,6 +157,17 @@ function changeActiveChart(chartName) {
         }
     }
 
+    &-filter {
+        h3 {
+            color: var(--color-complement-text)
+        }
+
+        input {
+            padding: 0;
+            cursor: pointer;
+            width: 100%;
+        }
+    }
 
 }
 
@@ -216,5 +229,14 @@ function changeActiveChart(chartName) {
 .maplayerstyle {
     height: 160px;
     max-height: 160px;
+}
+
+.filter {
+    height: 330px;
+    max-height: 330px;
+
+    .componentmapchart-chart {
+        height: 70%;
+    }
 }
 </style>
