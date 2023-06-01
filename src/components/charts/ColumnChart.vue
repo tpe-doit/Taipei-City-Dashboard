@@ -26,7 +26,7 @@ const options = ref({
     },
     plotOptions: {
         bar: {
-            borderRadius: 2,
+            borderRadius: 5,
         }
     },
     colors: props.chart_config.color,

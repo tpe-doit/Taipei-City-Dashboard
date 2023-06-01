@@ -110,7 +110,12 @@ export const useMapStore = defineStore("map", {
 
     // Called when the mapbox instance is first initialized and adds the icons that will be used in the map
     addSymbolSources() {
-      const images = ["metro", "triangle_green"];
+      const images = [
+        "metro",
+        "triangle_green",
+        "triangle_white",
+        "bike_green",
+      ];
       images.forEach((element) => {
         this.map.loadImage(`/images/${element}.png`, (error, image) => {
           if (error) throw error;
@@ -235,6 +240,25 @@ export const useMapStore = defineStore("map", {
       this.map = null;
       this.currentVisibleLayers = [];
       this.removePopup();
+    },
+
+    /* Functions that change the viewing experience of the map */
+    easeToLocation(coordinates, zoom, duration, pitch, bearing) {
+      this.map.easeTo({
+        center: coordinates,
+        zoom: zoom,
+        duration: duration,
+        pitch: pitch,
+        bearing: bearing,
+      });
+    },
+    // Force map to resize after sidebar collapses
+    resizeMap() {
+      if (this.map) {
+        setTimeout(() => {
+          this.map.resize();
+        }, 200);
+      }
     },
   },
 });

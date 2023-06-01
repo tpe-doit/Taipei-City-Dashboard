@@ -227,8 +227,9 @@ function changeActiveChart(chartName) {
 }
 
 .maplayerstyle {
-    height: 160px;
-    max-height: 160px;
+    height: 200px;
+    max-height: 200px;
+    padding-bottom: 0;
 }
 
 .filter {

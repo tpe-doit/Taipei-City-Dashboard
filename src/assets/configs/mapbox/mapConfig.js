@@ -256,6 +256,23 @@ export const maplayerCommonPaint = {
       1,
     ],
   },
+  "circle-big": {
+    "circle-radius": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      3.5,
+      12,
+      3.5,
+      13.5,
+      4,
+      15,
+      5,
+      22,
+      7,
+    ],
+  },
   "fill-extrusion": {
     "fill-extrusion-opacity": 0.5,
   },
@@ -277,6 +294,9 @@ export const maplayerCommonPaint = {
       18,
       4,
     ],
+  },
+  "line-dash": {
+    "line-dasharray": [2, 4],
   },
   symbol: {},
   "symbol-metro": {
@@ -313,6 +333,37 @@ export const maplayerCommonLayout = {
   },
   "symbol-triangle_green": {
     "icon-image": "triangle_green",
+  },
+  "symbol-triangle_white": {
+    "icon-image": "triangle_white",
+  },
+  "symbol-youbike": {
+    "icon-image": "bike_green",
+    "icon-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      1,
+      14,
+      1.5,
+      22,
+      2,
+    ],
+  },
+  "symbol-bus": {
+    "icon-image": "bus",
+    "icon-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.7,
+      14,
+      1.1,
+      22,
+      1.4,
+    ],
   },
 };
 

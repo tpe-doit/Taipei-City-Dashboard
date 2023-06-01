@@ -37,7 +37,7 @@ const contentStore = useContentStore()
     height: calc(100vh - 127px);
 
     &-charts {
-        width: 300px;
+        width: 360px;
         max-height: 100%;
         height: fit-content;
         display: grid;
@@ -47,7 +47,7 @@ const contentStore = useContentStore()
         border-radius: 5px;
 
         @media (min-width: 1000px) {
-            width: 350px;
+            width: 370px;
         }
 
         @media (min-width: 2000px) {

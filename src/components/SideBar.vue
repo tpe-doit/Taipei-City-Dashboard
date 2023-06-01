@@ -3,14 +3,19 @@ import SideBarTab from './utilities/SideBarTab.vue';
 import { ref } from 'vue';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
+import { useMapStore } from '../store/mapStore';
 import AddDashboard from './dialogs/AddDashboard.vue';
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
+const mapStore = useMapStore()
 
 const isExpanded = ref(true);
 function toggleExpand() {
     isExpanded.value = isExpanded.value ? false : true
+    if (!isExpanded.value) {
+        mapStore.resizeMap();
+    }
 }
 </script>
 

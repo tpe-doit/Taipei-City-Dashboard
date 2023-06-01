@@ -45,21 +45,22 @@ const options = ref({
         width: 3,
     },
     tooltip: {
+        followCursor: false,
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.labels[seriesIndex] + '</h6>' +
                 '<span>' + series[seriesIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
-        }
+        },
     },
     dataLabels: {
         formatter: function (val, { seriesIndex, dataPointIndex, w }) {
-            return w.globals.labels[seriesIndex]
+            let value = w.globals.labels[seriesIndex]
+            return value.length > 7 ? value.slice(0, 6) + "..." : value
         }
     },
     plotOptions: {
         pie: {
-
             dataLabels: {
                 offset: 15,
             },
@@ -69,6 +70,9 @@ const options = ref({
         }
     },
     colors: props.series.length >= steps.value ? [...props.chart_config.color, '#848c94'] : props.chart_config.color,
+    chart: {
+        offsetY: 15,
+    }
 })
 </script>
 
@@ -89,7 +93,7 @@ const options = ref({
     align-items: center;
     height: 100%;
     width: 100%;
-    overflow-x: visible;
+    overflow-y: visible;
     position: relative;
 
     &-title {

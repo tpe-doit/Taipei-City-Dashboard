@@ -20,6 +20,7 @@ import RadarChart from "./components/charts/RadarChart.vue";
 import TimelineSeparateChart from "./components/charts/TimelineSeparateChart.vue";
 import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
 import MapLegend from "./components/charts/MapLegend.vue";
+import MetroChart from "./components/charts/MetroChart.vue";
 
 const app = createApp(App);
 
@@ -40,5 +41,6 @@ app.component("RadarChart", RadarChart);
 app.component("TimelineSeparateChart", TimelineSeparateChart);
 app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
+app.component("MetroChart", MetroChart);
 
 app.mount("#app");

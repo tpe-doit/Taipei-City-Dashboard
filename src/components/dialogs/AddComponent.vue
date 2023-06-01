@@ -52,9 +52,9 @@ const componentsSelected = ref([])
 
 const filterItems = {
     source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局'],
-    type: ['交通', '產業', '土地', '安全'],
-    frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
-    control: ['有地理資料']
+    // type: ['交通', '產業', '土地', '安全'],
+    // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
+    control: ['有地理資料', "有歷史軸"]
 }
 
 function dataTime(time_from, time_to) {
@@ -135,7 +135,7 @@ function clearFilters() {
                         <input type="checkbox" :id="item" :value="item" v-model="filterSource" class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
                     </div>
-                    <h3>依類別標籤篩選</h3>
+                    <!-- <h3>依類別標籤篩選</h3>
                     <div v-for="item in filterItems.type" :key="item">
                         <input type="checkbox" :id="item" :value="item" v-model="filterType" class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
@@ -145,7 +145,7 @@ function clearFilters() {
                         <input type="checkbox" :id="item" :value="item" v-model="filterFrequency"
                             class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
-                    </div>
+                    </div> -->
                     <h3>依功能種類篩選</h3>
                     <div>
                         <div v-for="item in filterItems.control" :key="item">
@@ -205,19 +205,21 @@ function clearFilters() {
     grid-template-areas:
         "header header"
         "filter list";
-    grid-template-rows: 5rem 1fr;
+    grid-template-rows: 5.5rem 1fr;
+
+    padding: 10px;
 
     &-header {
         grid-area: header;
 
         h2 {
-            font-size: var(--font-l);
+            font-size: var(--font-m);
         }
 
         &-search {
             display: flex;
             justify-content: space-between;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
 
             input {
                 margin-right: 0.5rem;

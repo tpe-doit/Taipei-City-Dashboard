@@ -35,11 +35,11 @@ const contentStore = useContentStore()
     max-height: calc(100vh - 127px);
     overflow-y: scroll;
 
-    @media (min-width: 820px) {
+    @media (min-width: 920px) {
         grid-template-columns: 1fr 1fr;
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1300px) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 

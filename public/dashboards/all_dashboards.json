@@ -3,37 +3,37 @@
     {
       "name": "民情熱議",
       "index": "public-opinion",
-      "components": ["4"],
+      "components": ["4", "5", "72"],
       "icon": "mic"
     },
     {
       "name": "社會安全",
       "index": "security",
-      "components": ["8", "83", "22"],
+      "components": ["8", "83", "22", "7", "107", "136"],
       "icon": "security"
     },
     {
       "name": "交通運輸",
       "index": "transport",
-      "components": ["73", "114"],
+      "components": ["73", "114", "79", "116", "60"],
       "icon": "train"
     },
     {
       "name": "城市建設",
       "index": "construction",
-      "components": ["34"],
+      "components": ["34", "108"],
       "icon": "construction"
     },
     {
       "name": "生態環境",
       "index": "environment",
-      "components": ["110"],
+      "components": ["110", "103", "104", "111", "43", "59"],
       "icon": "forest"
     },
     {
       "name": "社會福利",
       "index": "welfare",
-      "components": ["90"],
+      "components": ["90", "82"],
       "icon": "handshake"
     },
     {
@@ -45,7 +45,18 @@
     {
       "name": "圖資資訊",
       "index": "map-layers",
-      "components": ["32", "15", "105", "109"],
+      "components": [
+        "32",
+        "15",
+        "105",
+        "109",
+        "91",
+        "11",
+        "14",
+        "115",
+        "9",
+        "16"
+      ],
       "icon": "public"
     }
   ]

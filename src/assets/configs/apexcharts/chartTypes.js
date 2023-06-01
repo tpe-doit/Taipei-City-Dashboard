@@ -5,7 +5,7 @@ export const chartTypes = {
   BarPercentChart: "長條圖(%)", // [V]
   TreemapChart: "矩形圖", // [V]
   DistrictChart: "行政區圖", // [V]
-  MetroChart: "捷運行駛圖", // []
+  MetroChart: "捷運行駛圖", // [V]
   TimelineSeparateChart: "折線圖(比較)", // [V]
   TimelineStackedChart: "折線圖(堆疊)", // [V]
   GuageChart: "量表圖", // [V]

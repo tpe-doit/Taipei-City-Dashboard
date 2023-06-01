@@ -12,6 +12,7 @@ const options = ref({
         width: 0,
     },
     tooltip: {
+        followCursor: true,
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
@@ -39,11 +40,12 @@ const options = ref({
             show: false
         },
         stacked: true,
+        offsetY: 15,
     },
     xaxis: {
         type: 'category',
         labels: {
-            show: false,
+            show: false
         },
         axisTicks: {
             show: false,
@@ -52,6 +54,13 @@ const options = ref({
             show: false
         }
     },
+    yaxis: {
+        labels: {
+            formatter: function (value) {
+                return value.length > 7 ? value.slice(0, 6) + "..." : value
+            }
+        }
+    }
 })
 
 const height = computed(() => {

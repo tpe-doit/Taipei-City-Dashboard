@@ -34,6 +34,7 @@ const options = ref({
         treemap: {
             distributed: true,
             shadeIntensity: 0,
+
         }
     },
     colors: props.chart_config.color,
@@ -43,7 +44,8 @@ const options = ref({
     chart: {
         toolbar: {
             show: false
-        }
+        },
+        borderRadius: 5,
     },
     xaxis: {
         type: 'category',

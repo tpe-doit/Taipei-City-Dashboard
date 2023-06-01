@@ -97,6 +97,10 @@ body {
 .chart-tooltip span {
   font-size: 1rem;
 }
+.apexcharts-canvas,
+.vue-apexcharts {
+  overflow: visible !important;
+}
 .apexcharts-yaxis-label,
 .apexcharts-xaxis-label,
 .apexcharts-legend-text {
