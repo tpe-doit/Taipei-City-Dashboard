@@ -1,10 +1,10 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref } from 'vue';
 const props = defineProps(['chart_config', 'series'])
 
 const options = ref({
     legend: {
-        show: false
+        show: props.series.length > 1 ? true : false
     },
     stroke: {
         show: true,

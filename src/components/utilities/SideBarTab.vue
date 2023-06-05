@@ -36,7 +36,6 @@ const linkActiveOrNot = computed(() => {
     margin: var(--font-s) 0;
     border-left: solid 4px transparent;
     max-height: var(--font-xl);
-    padding-right: var(--font-s);
     transition: background-color 0.2s;
     border-radius: 0 5px 5px 0;
     white-space: nowrap;

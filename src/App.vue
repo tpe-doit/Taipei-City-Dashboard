@@ -38,13 +38,19 @@ onBeforeMount(() => {
     width: 100vw;
     max-width: 100vw;
     display: flex;
-    min-height: calc(100vh - 60px);
+    height: calc(100vh - 60px);
 
     &-main {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
+  }
+}
+
+@media (max-width: 760px) {
+  .app-content {
+    height: calc(100vh - 120px);
   }
 }
 </style>

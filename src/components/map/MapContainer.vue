@@ -1,9 +1,13 @@
 <script setup>
-
 import { onMounted } from 'vue';
 import { useMapStore } from '../../store/mapStore';
+import { useDialogStore } from '../../store/dialogStore';
+import { useContentStore } from '../../store/contentStore';
+import MobileLayers from '../dialogs/MobileLayers.vue';
 
 const mapStore = useMapStore()
+const dialogStore = useDialogStore()
+const contentStore = useContentStore()
 
 onMounted(() => {
     mapStore.initializeMapBox()
@@ -12,8 +16,14 @@ onMounted(() => {
 
 <template>
     <div class="mapcontainer">
-        <div id="mapboxBox" />
-        <div class="mapcontainer-controls">
+        <div id="mapboxBox">
+            <button class="mapcontainer-layers show-if-mobile"
+                @click="dialogStore.showDialog('mobileLayers')"><span>layers</span></button>
+            <KeepAlive>
+                <MobileLayers :key="contentStore.currentDashboard.index" />
+            </KeepAlive>
+        </div>
+        <div class="mapcontainer-controls hide-if-mobile">
             <button @click="mapStore.easeToLocation([121.536609, 25.044808], 12.5, 4000, 0, 0)">返回預設</button>
             <button
                 @click="mapStore.easeToLocation([121.56719891052944, 25.036536501522235], 15.5, 4000, 67.5, 45)">台北市政府</button>
@@ -33,16 +43,12 @@ onMounted(() => {
 <style scoped lang="scss">
 .mapcontainer {
     width: 100%;
-    height: calc(100% - var(--font-m));
+    height: calc(100%);
     flex: 1;
 
     &-controls {
         margin-top: 8px;
         display: flex;
-
-        @media (max-width: 1000px) {
-            display: none;
-        }
 
         button {
             margin-right: 6px;
@@ -57,6 +63,26 @@ onMounted(() => {
                 animation-name: colorfade;
                 animation-duration: 4s;
             }
+        }
+    }
+
+    &-layers {
+        background-color: white;
+        width: 1.75rem;
+        height: 1.75rem;
+        position: absolute;
+        z-index: 1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 10px;
+        top: 108px;
+
+        span {
+            font-family: var(--font-icon);
+            color: var(--color-component-background);
+            font-size: 1.2rem;
         }
     }
 }

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 import MetroCarDensity from '../utilities/MetroCarDensity.vue';
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 

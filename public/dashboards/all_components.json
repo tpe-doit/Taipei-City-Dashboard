@@ -342,7 +342,7 @@
       ],
       "chart_config": {
         "color": ["#2e999b", "#80e3d4", "#1f9b85", "#a5ece0"],
-        "types": ["ColumnChart", "RadarChart"],
+        "types": ["ColumnChart", "RadarChart", "BarPercentChart"],
         "unit": "人",
         "categories": [
           "士林區",
@@ -1238,7 +1238,7 @@
         "color": ["#B53535"],
         "unit": "件"
       },
-      "source_from": "台北市政府",
+      "source": "台北市政府",
       "time_from": "2023-01-01T00:00:00+08:00",
       "time_to": "2023-06-01T00:00:00+08:00",
       "update_freq": null,
@@ -1248,6 +1248,620 @@
       "use_case": "",
       "links": "",
       "tags": []
+    },
+    "20": {
+      "id": 20,
+      "index": "traffic_todaywork",
+      "map_config": [
+        {
+          "index": "traffic_todaywork_view",
+          "property": [
+            { "key": "npurp", "name": "施工類型" },
+            { "key": "app_name", "name": "主管機關" },
+            { "key": "tc_na", "name": "施工單位" },
+            { "key": "co_ti", "name": "時段" },
+            { "key": "起始日期", "name": "起始日期" },
+            { "key": "結束日期", "name": "結束日期" }
+          ],
+          "type": "symbol",
+          "icon": "triangle_green",
+          "title": "施工路段"
+        }
+      ],
+      "history_data": true,
+      "chart_config": {
+        "color": ["#2f9ca1"],
+        "types": ["RadarChart", "DistrictChart", "BarChart"],
+        "unit": "件"
+      },
+      "name": "道路施工",
+      "source": "工務局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 10,
+      "update_freq_unit": "minute",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "57": {
+      "id": 57,
+      "index": "3dcb5622",
+      "map_config": [
+        {
+          "index": "traffic_live_view",
+          "paint": {
+            "fill-color": [
+              "match",
+              ["get", "壅塞程度"],
+              "壅塞",
+              "#EC4037",
+              "車多",
+              "#ff8c1a",
+              "順暢",
+              "#4dd97a",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "snippet", "name": "路段代號" },
+            { "key": "壅塞程度", "name": "壅塞程度" },
+            { "key": "description", "name": "描述" },
+            { "key": "update_at", "name": "更新時間" }
+          ],
+          "type": "fill",
+          "title": "壅塞程度"
+        }
+      ],
+      "history_data": true,
+      "chart_config": {
+        "color": ["#4dd97a", "#ff8c1a", "#EC4037"],
+        "types": ["DonutChart", "BarChart"],
+        "unit": "%"
+      },
+      "name": "交通路況",
+      "source": "交通局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 10,
+      "update_freq_unit": "minute",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "26": {
+      "id": 26,
+      "index": "bus",
+      "map_config": [
+        {
+          "index": "traffic_bus_route_view",
+          "property": [
+            { "key": "RouteName", "name": "公車", "obj": "En" },
+            { "key": "DutyStatus", "name": "運行狀態" },
+            { "key": "RouteUID", "name": "路線ID" },
+            { "key": "PlateNumb", "name": "車牌號碼" },
+            { "key": "GPSTime", "name": "GPS更新時間" }
+          ],
+          "paint": { "line-color": "#d59f0b" },
+          "title": "運行中公車",
+          "type": "line"
+        }
+      ],
+      "chart_config": {
+        "color": ["#d59f0b", "#ff8c1a"],
+        "types": ["GuageChart", "BarPercentChart"],
+        "unit": "個",
+        "categories": ["運行中公車", "運行中路線"]
+      },
+      "name": "公車行駛狀態",
+      "source": "交通局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 3,
+      "update_freq_unit": "minute",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "28": {
+      "id": 28,
+      "index": "building_renew",
+      "map_config": [
+        {
+          "index": "building_renewunit_30",
+          "paint": {
+            "line-color": "#67baca"
+          },
+          "property": [
+            { "key": "案件編號", "name": "案件編號" },
+            { "key": "area", "name": "面積" }
+          ],
+          "type": "line",
+          "title": "核准自劃單元"
+        },
+        {
+          "index": "building_renewunit_12",
+          "paint": {
+            "line-color": "#598965"
+          },
+          "property": [
+            { "key": "案件編號", "name": "案件編號" },
+            { "key": "area", "name": "面積" }
+          ],
+          "type": "line",
+          "title": "公劃地區內事業(權變案件)"
+        },
+        {
+          "index": "building_renewunit_20",
+          "paint": {
+            "line-color": "#477653"
+          },
+          "property": [
+            { "key": "案件編號", "name": "案件編號" },
+            { "key": "area", "name": "面積" }
+          ],
+          "type": "line",
+          "title": "公告自劃單元"
+        },
+        {
+          "index": "building_renewarea_10",
+          "paint": {
+            "fill-color": "#9b976c"
+          },
+          "property": [{ "key": "案件編號", "name": "案件編號" }],
+          "type": "fill",
+          "title": "公劃更新地區"
+        },
+        {
+          "index": "building_renewarea_40",
+          "paint": {
+            "fill-color": "#fbf3ac"
+          },
+          "property": [{ "key": "案件編號", "name": "案件編號" }],
+          "type": "fill",
+          "title": "都市計畫劃定更新地區"
+        }
+      ],
+      "chart_config": {
+        "color": ["#67baca", "#5a8965", "#477653", "#9b976c", "#fbf3ac"],
+        "types": ["DonutChart", "BarChart"],
+        "unit": "件"
+      },
+      "name": "都市更新案件",
+      "source": "都發局都市更新處",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 1,
+      "update_freq_unit": "day",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "81": {
+      "id": 81,
+      "index": "0811c96e",
+      "map_config": [
+        {
+          "index": "it_tpmo_poc_location",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "icon_status"],
+              "階段完成",
+              "#D9ED92",
+              "實驗進行中",
+              "#5EBB6D",
+              "階段終止",
+              "#e91e63",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "type", "name": "類別" },
+            { "key": "icon_status", "name": "狀態" },
+            { "key": "name", "name": "名稱" },
+            { "key": "locname", "name": "地點" },
+            { "key": "address", "name": "地址" }
+          ],
+          "type": "circle",
+          "size": "big",
+          "title": "TPMO智慧城市專案"
+        }
+      ],
+      "name": "TPMO智慧城市專案",
+      "chart_config": {
+        "color": ["#52B69A"],
+        "types": ["ColumnChart", "BarChart", "RadarChart"],
+        "unit": "件"
+      },
+      "source": "TPMO",
+      "time_from": null,
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "33": {
+      "id": 33,
+      "index": "building_publand",
+      "map_config": [
+        {
+          "index": "building_publand_0",
+          "paint": {
+            "fill-color": [
+              "match",
+              ["get", "publand_1_土地權屬情形"],
+              "國有",
+              "#2d7b7d",
+              "臺北市有",
+              "#38b19f",
+              "公私共有或其他",
+              "#07a0d4",
+              "臺北市及國有共有",
+              "#27d5d7",
+              "其他政府機關有",
+              "#007aff",
+              "臺北市有、國有及其他政府機關共有",
+              "#3975b7",
+              "臺北市有及非國有政府機關共有",
+              "#223477",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "publand_1_類型", "name": "類型" },
+            { "key": "publand_1_土地權屬情形", "name": "土地權屬情形" }
+          ],
+          "type": "fill",
+          "title": "公有土地"
+        },
+        {
+          "index": "building_publand_1",
+          "paint": {
+            "fill-color": [
+              "match",
+              ["get", "publand_1_土地權屬情形"],
+              "國有",
+              "#2d7b7d",
+              "臺北市有",
+              "#38b19f",
+              "公私共有或其他",
+              "#07a0d4",
+              "臺北市及國有共有",
+              "#27d5d7",
+              "其他政府機關有",
+              "#007aff",
+              "臺北市有、國有及其他政府機關共有",
+              "#3975b7",
+              "臺北市有及非國有政府機關共有",
+              "#223477",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "publand_1_類型", "name": "類型" },
+            { "key": "publand_1_土地權屬情形", "name": "土地權屬情形" }
+          ],
+          "type": "fill",
+          "title": "公有土地"
+        },
+        {
+          "index": "building_publand_2",
+          "paint": {
+            "fill-color": [
+              "match",
+              ["get", "publand_1_土地權屬情形"],
+              "國有",
+              "#2d7b7d",
+              "臺北市有",
+              "#38b19f",
+              "公私共有或其他",
+              "#07a0d4",
+              "臺北市及國有共有",
+              "#27d5d7",
+              "其他政府機關有",
+              "#007aff",
+              "臺北市有、國有及其他政府機關共有",
+              "#3975b7",
+              "臺北市有及非國有政府機關共有",
+              "#223477",
+              "#ccc"
+            ]
+          },
+          "property": [
+            { "key": "publand_1_類型", "name": "類型" },
+            { "key": "publand_1_土地權屬情形", "name": "土地權屬情形" }
+          ],
+          "type": "fill",
+          "title": "公有土地"
+        }
+      ],
+      "chart_config": {
+        "color": [
+          "#2d7b7d",
+          "#38b19f",
+          "#07a0d4",
+          "#27d5d7",
+          "#007aff",
+          "#3975b7",
+          "#223477"
+        ],
+        "types": ["BarChart", "TreemapChart"],
+        "unit": "km²"
+      },
+      "name": "公有土地",
+      "source": "地政局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 1,
+      "update_freq_unit": "day",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "42": {
+      "id": 42,
+      "index": "f092b008",
+      "map_config": [
+        {
+          "index": "building_age",
+          "paint": {
+            "circle-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "age_2021"],
+              5,
+              "#8ce8ff",
+              6,
+              "#7febd0",
+              21,
+              "#b7e28e",
+              41,
+              "#81612a"
+            ],
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              11.99,
+              0,
+              12,
+              0.5,
+              15,
+              2,
+              18,
+              5
+            ]
+          },
+          "property": [
+            { "key": "ptname", "name": "行政區" },
+            { "key": "addr_key", "name": "地址" },
+            { "key": "age_2021", "name": "屋齡" }
+          ],
+          "type": "circle",
+          "title": "屋齡"
+        }
+      ],
+
+      "chart_config": {
+        "color": ["#9c7a3e", "#b7e28e", "#7febd0", "#8ce8ff"],
+        "types": ["BarPercentChart", "ColumnChart", "RadarChart"],
+        "unit": "棟",
+        "categories": [
+          "北投區",
+          "南港區",
+          "大同區",
+          "文山區",
+          "士林區",
+          "大安區",
+          "松山區",
+          "萬華區",
+          "中山區",
+          "中正區",
+          "信義區",
+          "內湖區"
+        ]
+      },
+      "name": "全市屋齡分布",
+      "source": "都發局/消防局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": null,
+      "update_freq_unit": null,
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "29": {
+      "id": 29,
+      "index": "social_house",
+      "map_config": [
+        {
+          "index": "building_social_house",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "progress"],
+              "已完工",
+              "#fff495",
+              "施工中及待開工",
+              "#ddb11f",
+              "規劃中",
+              "#e3863a",
+              "招標中及待上鋼",
+              "#c2651c",
+              "#a65818"
+            ]
+          },
+          "property": [
+            { "key": "progress", "name": "進度" },
+            { "key": "name", "name": "名稱" },
+            { "key": "address", "name": "地址" },
+            { "key": "floors1", "name": "樓層" },
+            { "key": "households", "name": "戶數" }
+          ],
+          "type": "circle",
+          "size": "big",
+          "title": "社會住宅"
+        }
+      ],
+      "chart_config": {
+        "color": ["#fff495", "#ddb11f", "#e3863a", "#c2651c", "#a65818"],
+        "types": ["DonutChart", "BarChart"],
+        "unit": "棟"
+      },
+      "name": "社會住宅建設進度",
+      "source": "都發局",
+      "time_from": "2023-06-02T00:00:00+08:00",
+      "time_to": null,
+      "update_freq": 1,
+      "update_freq_unit": "day",
+      "short_desc": "",
+      "long_desc": "",
+      "use_case": "",
+      "links": "",
+      "tags": []
+    },
+    "30": {
+      "admin_desc": null,
+      "alarm_data": null,
+      "calculation_config": null,
+      "enduser_desc": null,
+      "id": 30,
+      "index": "building_unsued",
+      "map_config": [
+        {
+          "index": "building_unused_land",
+          "paint": {
+            "fill-color": "#d16ae2"
+          },
+          "property": [
+            { "key": "10712土地_1_土地權屬情形", "name": "土地權屬情形" },
+            { "key": "10712土地_1_管理機關", "name": "管理機關" }
+          ],
+          "type": "fill",
+          "title": "閒置市有公有地"
+        },
+        {
+          "index": "building_unused_public",
+          "paint": {
+            "circle-color": "#655fad"
+          },
+          "property": [
+            { "key": "門牌", "name": "門牌" },
+            { "key": "房屋現況", "name": "房屋現況" },
+            { "key": "目前執行情形", "name": "目前執行情形" },
+            {
+              "key": "閒置樓層_閒置樓層/該建物總樓層",
+              "name": "閒置樓層/總樓層"
+            },
+            { "key": "閒置面積㎡", "name": "閒置面積㎡" },
+            { "key": "基地管理機關", "name": "基地管理機關" },
+            { "key": "建物管理機關", "name": "建物管理機關" },
+            { "key": "原使用用途", "name": "原使用用途" },
+            { "key": "基地所有權人", "name": "基地所有權人" },
+            { "key": "建物標示", "name": "建物標示" },
+            { "key": "建築完成日期", "name": "建築完成日期" }
+          ],
+          "type": "circle",
+          "size": "big",
+          "title": "閒置市有(公用)建物"
+        }
+      ],
+      "name": "閒置市有財產",
+      "chart_config": {
+        "types": ["MapLegend"],
+        "unit": "處"
+      },
+      "chart_data": [
+        {
+          "type": "fill",
+          "name": "閒置市有公有地",
+          "color": "#d16ae2",
+          "value": 95
+        },
+        {
+          "type": "circle",
+          "name": "閒置市有(公用)建物",
+          "color": "#655fad",
+          "value": 48
+        }
+      ],
+      "source": "財政局"
+    },
+    "106": {
+      "id": 106,
+      "index": "bc37accf",
+      "map_config": [
+        {
+          "index": "medical_institution",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "type"],
+              "醫院",
+              "#86e9f6",
+              "診所",
+              "#03a9f4",
+              "white"
+            ],
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              12.99,
+              2,
+              13,
+              ["match", ["get", "type"], "診所", 2.5, "醫院", 5, 3],
+              18,
+              ["match", ["get", "type"], "診所", 6, "醫院", 14, 8]
+            ]
+          },
+          "property": [
+            { "key": "type", "name": "類型" },
+            { "key": "name", "name": "名稱" },
+            { "key": "addr", "name": "地址" }
+          ],
+          "type": "circle",
+          "title": "醫療機構"
+        }
+      ],
+      "name": "醫療院所分布",
+      "chart_config": {
+        "types": ["MapLegend"],
+        "unit": "間"
+      },
+      "chart_data": [
+        {
+          "type": "circle",
+          "name": "醫院",
+          "color": "#86e9f6",
+          "value": 36
+        },
+        {
+          "type": "circle",
+          "name": "診所",
+          "color": "#03a9f4",
+          "value": 3621
+        }
+      ],
+      "source": "衛生局"
     },
     "32": {
       "id": 32,
@@ -1333,7 +1947,6 @@
           "icon": null
         },
         {
-          "cover": true,
           "index": "patrol_fire_brigade",
           "property": [{ "key": "name", "name": "名稱" }],
           "icon": "triangle_green",

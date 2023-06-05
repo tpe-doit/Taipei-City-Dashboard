@@ -120,3 +120,14 @@ body {
 .apexcharts-reset-icon p {
   color: var(--color-highlight) !important;
 }
+
+@media (min-width: 1000px) {
+  .show-if-mobile {
+    display: none !important;
+  }
+}
+@media (max-width: 1000px) {
+  .hide-if-mobile {
+    display: none !important;
+  }
+}

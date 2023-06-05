@@ -28,17 +28,19 @@ const linkQuery = computed(() => {
                 <h2>Taipei City Dashboard</h2>
             </div>
         </div>
-        <div class="navbar-tabs">
+        <div class="navbar-tabs hide-if-mobile">
             <router-link :to="`/dashboard${linkQuery}`">儀表板總覽</router-link>
             <router-link :to="`/mapview${linkQuery}`">地圖交叉比對</router-link>
         </div>
         <div class="navbar-user">
-            <button><span>school</span></button>
-            <button @click="toggle"><span>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</span></button>
+            <button class="hide-if-mobile"><span>school</span></button>
+            <button class="hide-if-mobile" @click="toggle"><span>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen'
+            }}</span></button>
             <div class="navbar-user-user">
-                <button>{{ authStore.user.name }}</button>
+                <button class="hide-if-mobile">{{ authStore.user.name }}</button>
+                <button class="show-if-mobile"><span>account_circle</span></button>
                 <ul>
-                    <li><button @click="dialogStore.showDialog('userSettings')">用戶設定</button></li>
+                    <li class="hide-if-mobile"><button @click="dialogStore.showDialog('userSettings')">用戶設定</button></li>
                     <li><button @click="authStore.handleLogout">登出</button></li>
                 </ul>
                 <teleport to="body">

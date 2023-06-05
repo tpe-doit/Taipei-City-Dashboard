@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
 const sum = computed(() => {

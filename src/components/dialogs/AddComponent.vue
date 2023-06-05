@@ -26,6 +26,9 @@ const outputList = computed(() => {
     if (filterControl.value.includes('有地理資料')) {
         output = output.filter((item) => item.map_config !== null)
     }
+    if (filterControl.value.includes('有歷史軸')) {
+        output = output.filter((item) => item.history_data)
+    }
 
     return output
 })
@@ -51,7 +54,7 @@ const filterControl = ref([])
 const componentsSelected = ref([])
 
 const filterItems = {
-    source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局'],
+    source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局', '衛生局'],
     // type: ['交通', '產業', '土地', '安全'],
     // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
     control: ['有地理資料', "有歷史軸"]

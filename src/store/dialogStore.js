@@ -9,6 +9,8 @@ export const useDialogStore = defineStore("dialog", {
       dashboardSettings: false,
       moreInfo: false,
       userSettings: false,
+      mobileNavigation: false,
+      mobileLayers: false,
     },
     notification: {
       status: "",

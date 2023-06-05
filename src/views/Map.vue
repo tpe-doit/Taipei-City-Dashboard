@@ -9,7 +9,7 @@ const contentStore = useContentStore()
 
 <template>
     <div class="map">
-        <div class="map-charts">
+        <div class="map-charts hide-if-mobile">
             <ComponentMapChart v-if="contentStore.currentDashboard.index === 'map-layers'"
                 v-for="item in contentStore.currentDashboard.content" :content="item" :key="`map-layer-${item.index}`"
                 :is-map-layer="true" />

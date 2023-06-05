@@ -15,13 +15,13 @@
     {
       "name": "交通運輸",
       "index": "transport",
-      "components": ["73", "114", "79", "116", "60"],
+      "components": ["73", "114", "79", "116", "60", "57", "26"],
       "icon": "train"
     },
     {
       "name": "城市建設",
       "index": "construction",
-      "components": ["34", "108"],
+      "components": ["34", "108", "20", "28", "81", "33", "42"],
       "icon": "construction"
     },
     {
@@ -33,7 +33,7 @@
     {
       "name": "社會福利",
       "index": "welfare",
-      "components": ["90", "82"],
+      "components": ["90", "82", "29"],
       "icon": "handshake"
     },
     {
@@ -55,7 +55,9 @@
         "14",
         "115",
         "9",
-        "16"
+        "16",
+        "30",
+        "106"
       ],
       "icon": "public"
     }

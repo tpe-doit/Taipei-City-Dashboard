@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
 const options = ref({
@@ -46,6 +46,9 @@ const options = ref({
         categories: props.chart_config.categories ? props.chart_config.categories : [],
         labels: {
             offsetY: 5,
+            formatter: function (value) {
+                return value.length > 7 ? value.slice(0, 6) + "..." : value
+            }
         }
     },
     yaxis: {

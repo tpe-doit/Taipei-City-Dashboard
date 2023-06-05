@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useMapStore } from '../../store/mapStore';
-import LoadingImage from '../LoadingImage.vue';
 import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
 const props = defineProps({
@@ -176,7 +175,7 @@ function changeActiveChart(chartName) {
     display: inline-block;
     height: 1rem;
     width: 2rem;
-    margin-top: 4px;
+    top: 4px;
 
     input {
         opacity: 0;

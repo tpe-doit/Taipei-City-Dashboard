@@ -76,7 +76,7 @@ function changeActiveChart(chartName) {
                 <ComponentTag v-if="!content.map_config" icon="wrong_location" text="沒有地圖" />
                 <ComponentTag v-if="content.history_data" icon="insights" text="有歷史軸" />
             </div>
-            <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)">
+            <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)" class="hide-more-info">
                 <p>組件資訊</p>
                 <span>arrow_circle_right</span>
             </button>
@@ -253,6 +253,12 @@ function changeActiveChart(chartName) {
 
     &-chart {
         height: 60%;
+    }
+}
+
+@media (max-width: 760px) {
+    .hide-more-info {
+        display: none !important;
     }
 }
 </style>

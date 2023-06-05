@@ -1,10 +1,12 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
 const options = ref({
     legend: {
-        show: false
+        show: props.series.length > 2 ? true : false,
+        position: "top",
+        offsetY: 20
     },
     stroke: {
         show: true,
@@ -28,7 +30,7 @@ const options = ref({
             borderRadius: 5,
         }
     },
-    colors: [props.chart_config.color[0], "#777"],
+    colors: props.series.length > 2 ? props.chart_config.color : [props.chart_config.color[0], "#777"],
     grid: {
         show: false,
     },
@@ -55,7 +57,7 @@ const options = ref({
 })
 
 const height = computed(() => {
-    return `${40 + props.series.length * 48}`
+    return `${40 + props.series[0].data.length * 30}`
 })
 
 </script>
