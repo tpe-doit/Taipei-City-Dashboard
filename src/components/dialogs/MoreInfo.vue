@@ -1,11 +1,13 @@
+<!-- Cleaned -->
+
 <script setup>
-import DialogContainer from './DialogContainer.vue';
 import { useDialogStore } from '../../store/dialogStore';
+
+import DialogContainer from './DialogContainer.vue';
 import ComponentContainer from '../components/ComponentContainer.vue';
 import HistoryChart from '../utilities/HistoryChart.vue';
 
 const dialogStore = useDialogStore()
-
 </script>
 
 <template>
@@ -27,13 +29,12 @@ const dialogStore = useDialogStore()
                     <HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
                         :series="dialogStore.moreInfoContent.history_data" />
                 </div>
-                <div class="moreinfo-info-control">
+                <!-- <div class="moreinfo-info-control">
                     <button><span>flag</span>回報問題</button>
                     <button><span>download</span>輸出</button>
-                </div>
+                </div> -->
             </div>
         </div>
-
     </DialogContainer>
 </template>
 
@@ -60,14 +61,14 @@ const dialogStore = useDialogStore()
     }
 
     &-info {
-        padding: 1rem;
-        border-top: solid 1px var(--color-border);
         display: flex;
         flex-direction: column;
+        padding: 1rem;
+        border-top: solid 1px var(--color-border);
 
         p {
-            text-align: justify;
             margin-bottom: 0.75rem;
+            text-align: justify;
         }
 
         h4 {
@@ -82,27 +83,26 @@ const dialogStore = useDialogStore()
         }
 
         &-control {
-            flex: 1;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
+            flex: 1;
 
             span {
+                margin-right: 4px;
                 font-family: var(--font-icon);
                 font-size: calc(var(--font-m) * var(--font-to-icon));
-                margin-right: 4px
             }
 
             button {
                 display: flex;
                 align-items: center;
                 margin-left: 8px;
-                font-size: var(--font-m);
+                padding: 2px 4px;
                 border-radius: 5px;
                 background-color: var(--color-highlight);
-                padding: 2px 4px;
+                font-size: var(--font-m);
             }
-
         }
     }
 }

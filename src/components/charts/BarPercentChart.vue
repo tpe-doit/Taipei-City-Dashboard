@@ -1,62 +1,66 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref, computed } from 'vue';
+
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
-const options = ref({
+const chartOptions = ref({
+    chart: {
+        stacked: true,
+        stackType: '100%',
+        toolbar: {
+            show: false
+        },
+    },
+    colors: props.series.length > 2 ? props.chart_config.color : [props.chart_config.color[0], "#777"],
+    dataLabels: {
+        textAnchor: 'start',
+    },
+    grid: {
+        show: false,
+    },
     legend: {
-        show: props.series.length > 2 ? true : false,
+        offsetY: 20,
         position: "top",
-        offsetY: 20
+        show: props.series.length > 2 ? true : false,
+    },
+    plotOptions: {
+        bar: {
+            borderRadius: 5,
+            horizontal: true,
+        }
     },
     stroke: {
-        show: true,
         colors: ['#282a2c'],
+        show: true,
         width: 2,
     },
     tooltip: {
+        // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
                 '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
-        }
-    },
-    dataLabels: {
-        textAnchor: 'start',
-    },
-    plotOptions: {
-        bar: {
-            horizontal: true,
-            borderRadius: 5,
-        }
-    },
-    colors: props.series.length > 2 ? props.chart_config.color : [props.chart_config.color[0], "#777"],
-    grid: {
-        show: false,
-    },
-    chart: {
-        toolbar: {
-            show: false
         },
-        stacked: true,
-        stackType: '100%'
     },
     xaxis: {
-        type: 'category',
-        categories: props.chart_config.categories ? props.chart_config.categories : [],
-        labels: {
-            show: false,
+        axisBorder: {
+            show: false
         },
         axisTicks: {
             show: false,
         },
-        axisBorder: {
-            show: false
-        }
+        categories: props.chart_config.categories ? props.chart_config.categories : [],
+        labels: {
+            show: false,
+        },
+        type: 'category',
     },
 })
 
-const height = computed(() => {
+const chartHeight = computed(() => {
     return `${40 + props.series[0].data.length * 30}`
 })
 
@@ -64,8 +68,6 @@ const height = computed(() => {
 
 <template>
     <div v-if="activeChart === 'BarPercentChart'">
-        <apexchart width="100%" :height="height" type="bar" :options="options" :series="series"></apexchart>
+        <apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
-
-<style scoped></style>

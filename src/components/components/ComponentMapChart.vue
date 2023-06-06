@@ -1,27 +1,28 @@
+<!-- Cleaned -->
+
+<!-- This component has two modes 'normal mapview charts' / 'basic map layers' -->
+<!-- The different modes are controlled by the prop "isMapLayer" (default false) -->
+
 <script setup>
 import { ref, computed } from 'vue';
 import { useMapStore } from '../../store/mapStore';
+
 import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
+const mapStore = useMapStore()
+
 const props = defineProps({
+    // The complete config (incl. chart data) of a dashboard component will be passed in
     content: { type: Object },
     isMapLayer: { type: Boolean, default: false },
 })
-const mapStore = useMapStore()
 
+// The default active chart is the first one in the list defined in the dashboard component
+const activeChart = ref(props.content.chart_config.types[0])
+// Stores whether the component is toggled on or not
 const checked = ref(false)
 
-function handleToggle() {
-    if (!props.content.map_config) {
-        return
-    }
-    if (checked.value) {
-        mapStore.addToMapLayerList(props.content.map_config)
-    } else {
-        mapStore.turnOffMapLayerVisibility(props.content.map_config)
-    }
-}
-
+// Parses time data into display format
 const dataTime = computed(() => {
     if (!props.content.time_from) {
         return '固定資料'
@@ -32,16 +33,25 @@ const dataTime = computed(() => {
     return `${props.content.time_from.slice(0, 10)} ~ ${props.content.time_to.slice(0, 10)}`
 })
 
-const activeChart = ref(props.content.chart_config.types[0])
-
+// Open and closes the component as well as communicates to the mapStore to turn on and off map layers
+function handleToggle() {
+    if (!props.content.map_config) {
+        return
+    }
+    if (checked.value) {
+        mapStore.addToMapLayerList(props.content.map_config)
+    } else {
+        mapStore.turnOffMapLayerVisibility(props.content.map_config)
+    }
+}
+// Toggles between chart types defined in the dashboard component
 function changeActiveChart(chartName) {
     activeChart.value = chartName
 }
-
 </script>
 
 <template>
-    <div :class="{ componentmapchart: true, checked: checked, 'maplayerstyle': isMapLayer && checked }">
+    <div :class="{ componentmapchart: true, checked: checked, 'maplayer': isMapLayer && checked }">
         <div class="componentmapchart-header">
             <div>
                 <div>
@@ -51,6 +61,7 @@ function changeActiveChart(chartName) {
                 </div>
                 <h4 v-if="checked">{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
+            <!-- The class "toggleswitch" could be edited in /assets/styles/toggleswitch.css -->
             <label class="toggleswitch">
                 <input type="checkbox" @change="handleToggle" v-model="checked">
                 <span class="toggleswitch-slider"></span>
@@ -61,33 +72,25 @@ function changeActiveChart(chartName) {
                 chartTypes[item] }}</button>
         </div>
         <div class="componentmapchart-chart" v-if="checked && content.chart_data">
+            <!-- The components referenced here can be edited in /components/charts -->
             <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
                 :chart_config="content.chart_config" :series="content.chart_data">
             </component>
         </div>
-        <!-- <div class="componentmapchart-filter" v-if="checked && content.map_filter">
-            <h3>地圖篩選</h3>
-            <input type="range" min="0" max="12" />
-        </div> -->
     </div>
 </template>
 
 <style scoped lang="scss">
-.checked {
-    max-height: 300px;
-    height: 300px;
-}
-
 .componentmapchart {
-    background-color: var(--color-component-background);
-    border-radius: 5px;
     width: calc(100% - var(--font-m) *2);
     max-width: calc(100% - var(--font-m) *2);
-    padding: var(--font-m);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    padding: var(--font-m);
+    border-radius: 5px;
+    background-color: var(--color-component-background);
 
     &-header {
         display: flex;
@@ -110,15 +113,14 @@ function changeActiveChart(chartName) {
             }
 
             span {
-                font-family: var(--font-icon);
-                color: var(--color-complement-text);
                 margin-left: 8px;
+                color: var(--color-complement-text);
+                font-family: var(--font-icon);
             }
         }
     }
 
     &-control {
-        position: absolute;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -129,114 +131,43 @@ function changeActiveChart(chartName) {
         z-index: 10;
 
         button {
-            background-color: rgb(77, 77, 77);
+            margin: 0 4px;
             padding: 4px 4px;
             border-radius: 5px;
-            transition: color 0.2s, opacity 0.2s;
-            font-size: var(--font-s);
-            margin: 0 4px;
-            color: var(--color-complement-text);
+            background-color: rgb(77, 77, 77);
             opacity: 0.25;
+            color: var(--color-complement-text);
+            font-size: var(--font-s);
             text-align: center;
+            ;
+            transition: color 0.2s, opacity 0.2s;
 
             &:hover {
-                color: white;
                 opacity: 1;
+                color: white;
             }
         }
     }
 
     &-chart {
         height: 80%;
-        overflow-y: scroll;
         position: relative;
+        overflow-y: scroll;
 
         p {
             color: var(--color-border)
         }
     }
-
-    &-filter {
-        h3 {
-            color: var(--color-complement-text)
-        }
-
-        input {
-            padding: 0;
-            cursor: pointer;
-            width: 100%;
-        }
-    }
-
 }
 
-.toggleswitch {
-    position: relative;
-    display: inline-block;
-    height: 1rem;
-    width: 2rem;
-    top: 4px;
-
-    input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    &-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--color-complement-text);
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: var(--font-m);
-    }
-
-    &-slider::before {
-        position: absolute;
-        content: "";
-        height: 0.7rem;
-        width: 0.7rem;
-        left: 0.15rem;
-        bottom: 0.15rem;
-        background-color: var(--color-border);
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
-    }
-
-    input:checked+&-slider {
-        background-color: var(--color-highlight);
-    }
-
-    input:focus+&-slider {
-        box-shadow: 0 0 1px var(--color-highlight);
-    }
-
-    input:checked+&-slider:before {
-        -webkit-transform: translateX(1rem);
-        -ms-transform: translateX(1rem);
-        transform: translateX(1rem);
-        background-color: white;
-    }
+.checked {
+    max-height: 300px;
+    height: 300px;
 }
 
-.maplayerstyle {
+.maplayer {
     height: 200px;
     max-height: 200px;
     padding-bottom: 0;
-}
-
-.filter {
-    height: 330px;
-    max-height: 330px;
-
-    .componentmapchart-chart {
-        height: 70%;
-    }
 }
 </style>

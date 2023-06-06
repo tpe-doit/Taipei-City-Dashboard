@@ -1,17 +1,51 @@
+<!-- Cleaned -->
+
+<!-- This component only serves a functional purpose if a backend is connected -->
+<!-- For static applications, this component could be removed or modified to be a dashboard component overviewer -->
+
 <script setup>
 import { computed, ref } from 'vue';
-import DialogContainer from './DialogContainer.vue';
-import ComponentTag from '../utilities/ComponentTag.vue'
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
 
+import DialogContainer from './DialogContainer.vue';
+import ComponentTag from '../utilities/ComponentTag.vue'
 import CustomCheckBox from '../utilities/CustomCheckBox.vue';
 
 const dialogStore = useDialogStore()
 const contentStore = useContentStore()
 
-const outputList = computed(() => {
+// The following six states store the filters / parameters inputted by the user
+const searchName = ref('');
+const searchIndex = ref('');
+const filterSource = ref([])
+const filterType = ref([])
+const filterFrequency = ref([])
+const filterControl = ref([])
+// This state stores the components currently selected
+const componentsSelected = ref([])
+// The options for each filter (source, type, frequency, control)
+const filterOptions = {
+    source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局', '衛生局'],
+    // type: ['交通', '產業', '土地', '安全'],
+    // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
+    control: ['有地理資料', "有歷史軸"]
+}
 
+// Filters out components already in the dashboard / maplayer components
+const availableComponents = computed(() => {
+    const allComponentIds = Object.keys(contentStore.components)
+    const taken = contentStore.currentDashboard.content.map((item) => item.id)
+    const maplayer = contentStore.mapLayers.map((item) => item.id)
+    const available = allComponentIds.filter(item => !taken.includes(+item) && !maplayer.includes(+item))
+    const output = []
+    available.forEach(element => {
+        output.push(contentStore.components[element])
+    });
+    return output
+})
+// Applies the filters selected by the user to "availableComponents"
+const outputList = computed(() => {
     let output = [...availableComponents.value]
 
     if (searchName.value) {
@@ -32,34 +66,8 @@ const outputList = computed(() => {
 
     return output
 })
-const availableComponents = computed(() => {
-    const allComponentIds = Object.keys(contentStore.components)
-    const taken = contentStore.currentDashboard.content.map((item) => item.id)
-    const maplayer = contentStore.mapLayers.map((item) => item.id)
-    const available = allComponentIds.filter(item => !taken.includes(+item) && !maplayer.includes(+item))
-    const output = []
-    available.forEach(element => {
-        output.push(contentStore.components[element])
-    });
-    return output
-})
 
-const searchName = ref('');
-const searchIndex = ref('');
-const filterSource = ref([])
-const filterType = ref([])
-const filterFrequency = ref([])
-const filterControl = ref([])
-
-const componentsSelected = ref([])
-
-const filterItems = {
-    source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局', '衛生局'],
-    // type: ['交通', '產業', '土地', '安全'],
-    // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
-    control: ['有地理資料', "有歷史軸"]
-}
-
+// Parses time data into display format
 function dataTime(time_from, time_to) {
     if (!time_from) {
         return '固定資料'
@@ -69,7 +77,7 @@ function dataTime(time_from, time_to) {
     }
     return `${time_from.slice(0, 10)} ~ ${time_to.slice(0, 10)}`
 }
-
+// Parses update frequency data into display format
 function updateFreq(update_freq, update_freq_unit) {
     const unitRef = {
         minute: "分鐘",
@@ -85,8 +93,8 @@ function updateFreq(update_freq, update_freq_unit) {
     return `每${update_freq}${unitRef[update_freq_unit]}更新`
 }
 
-// Uncomment the following to restore add components function if new backend is connected
 function handleSubmit() {
+    // Uncomment the following to restore add components function if new backend is connected
     // contentStore.addComponents(componentsSelected.value)
     dialogStore.showNotification('fail', '尚未新增新增儀表板功能，無法新增組件')
     handleClose();
@@ -104,7 +112,6 @@ function clearFilters() {
     filterType.value = []
     filterFrequency.value = []
 }
-
 </script>
 
 <template>
@@ -113,17 +120,17 @@ function clearFilters() {
             <div class="addcomponent-header">
                 <h2>新增組件</h2>
                 <div class="addcomponent-header-search">
-                    <div class="flex">
-                        <div :style="{ position: 'relative' }">
+                    <div>
+                        <div>
                             <input type="text" placeholder="以組件名稱搜尋" v-model="searchName" />
-                            <span class="clear" v-if="searchName" @click="() => { searchName = '' }">cancel</span>
+                            <span v-if="searchName" @click="() => { searchName = '' }">cancel</span>
                         </div>
-                        <div :style="{ position: 'relative' }">
+                        <div>
                             <input type="text" placeholder="以組件Index搜尋" v-model="searchIndex" />
-                            <span class="clear" v-if="searchIndex" @click="() => { searchIndex = '' }">cancel</span>
+                            <span v-if="searchIndex" @click="() => { searchIndex = '' }">cancel</span>
                         </div>
                     </div>
-                    <div class="flex">
+                    <div>
                         <button @click="handleClose">取消</button>
                         <button v-if="componentsSelected.length > 0"
                             @click="handleSubmit"><span>add_chart</span>確認新增</button>
@@ -134,24 +141,24 @@ function clearFilters() {
                 <button @click="clearFilters">清除篩選條件</button>
                 <div>
                     <h3>依資料來源篩選</h3>
-                    <div v-for="item in filterItems.source" :key="item">
+                    <div v-for="item in filterOptions.source" :key="item">
                         <input type="checkbox" :id="item" :value="item" v-model="filterSource" class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
                     </div>
                     <!-- <h3>依類別標籤篩選</h3>
-                    <div v-for="item in filterItems.type" :key="item">
+                    <div v-for="item in filterOptions.type" :key="item">
                         <input type="checkbox" :id="item" :value="item" v-model="filterType" class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
                     </div>
                     <h3>依更新頻率篩選</h3>
-                    <div v-for="item in filterItems.frequency" :key="item">
+                    <div v-for="item in filterOptions.frequency" :key="item">
                         <input type="checkbox" :id="item" :value="item" v-model="filterFrequency"
                             class="custom-check-input" />
                         <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
                     </div> -->
                     <h3>依功能種類篩選</h3>
                     <div>
-                        <div v-for="item in filterItems.control" :key="item">
+                        <div v-for="item in filterOptions.control" :key="item">
                             <input type="checkbox" :id="item" :value="item" v-model="filterControl"
                                 class="custom-check-input" />
                             <CustomCheckBox :for="item">{{ item }}</CustomCheckBox>
@@ -164,8 +171,7 @@ function clearFilters() {
                     componentsSelected.length }} 個</p>
                 <div class="addcomponent-list">
                     <div v-for="item in outputList" :key="item.id">
-                        <input type="checkbox" :id="item.name" :value="item.id" v-model="componentsSelected"
-                            :style="{ display: 'none' }" />
+                        <input type="checkbox" :id="item.name" :value="item.id" v-model="componentsSelected" />
                         <label :for="item.name" class="addcomponent-list-item">
                             <div>
                                 我是縮圖
@@ -175,16 +181,16 @@ function clearFilters() {
                                     <h2>{{ item.name }}</h2>
                                     <h3>{{ `${item.source} | ${dataTime(item.time_from, item.time_to)}` }}</h3>
                                 </div>
-                                <div :style="{ margin: '0.75rem 0' }">
+                                <div>
                                     <p>{{ item.short_desc }}</p>
                                     <br />
                                     <p><b>組件ID：</b>{{ item.id }}</p>
                                     <p><b>組件Index：</b>{{ item.index }}</p>
                                 </div>
-                                <div :style="{ display: 'flex', marginTop: '0.5rem' }">
+                                <div>
                                     <ComponentTag v-for="element in item.tags" icon="" :text="element" mode="fill" />
                                 </div>
-                                <div :style="{ display: 'flex', marginTop: '4px' }">
+                                <div>
                                     <ComponentTag :icon="``"
                                         :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" />
                                     <ComponentTag v-if="item.map_config === null" icon="wrong_location" text="沒有地圖" />
@@ -201,15 +207,14 @@ function clearFilters() {
 
 <style scoped lang="scss">
 .addcomponent {
-    display: grid;
     width: 800px;
     height: 600px;
+    display: grid;
     grid-template-columns: 180px 1fr;
     grid-template-areas:
         "header header"
         "filter list";
     grid-template-rows: 5.5rem 1fr;
-
     padding: 10px;
 
     &-header {
@@ -224,42 +229,57 @@ function clearFilters() {
             justify-content: space-between;
             margin-top: 1rem;
 
-            input {
-                margin-right: 0.5rem;
-                width: 200px;
-            }
-
-            span {
-                font-family: var(--font-icon);
-                font-size: calc(var(--font-m) * var(--font-to-icon));
-                margin-right: 4px
-            }
-
-            button {
+            >div {
                 display: flex;
-                align-items: center;
-                margin-right: 0.4rem;
-                font-size: var(--font-m);
-                border-radius: 5px;
-                justify-self: baseline;
+                justify-content: space-between;
 
-                &:nth-child(2) {
-                    background-color: var(--color-highlight);
-                    padding: 2px 4px;
+                &:first-child {
+                    div {
+                        position: relative;
+                    }
+
+                    input {
+                        width: 200px;
+                        margin-right: 0.5rem;
+                    }
+
+                    span {
+                        position: absolute;
+                        right: 0.5rem;
+                        top: 0.4rem;
+                        margin-right: 4px;
+                        color: var(--color-complement-text);
+                        font-family: var(--font-icon);
+                        font-size: var(--font-m);
+                        cursor: pointer;
+                        transition: color 0.2s;
+
+                        &:hover {
+                            color: var(--color-highlight);
+                        }
+                    }
                 }
-            }
 
-            .clear {
-                font-size: var(--font-m);
-                color: var(--color-complement-text);
-                position: absolute;
-                right: 0.5rem;
-                top: 0.4rem;
-                cursor: pointer;
-                transition: color 0.2s;
+                &:last-child {
+                    span {
+                        margin-right: 4px;
+                        font-family: var(--font-icon);
+                        font-size: calc(var(--font-m) * var(--font-to-icon));
+                    }
 
-                &:hover {
-                    color: var(--color-highlight)
+                    button {
+                        display: flex;
+                        align-items: center;
+                        justify-self: baseline;
+                        margin-right: 0.4rem;
+                        border-radius: 5px;
+                        font-size: var(--font-m);
+
+                        &:nth-child(2) {
+                            padding: 2px 4px;
+                            background-color: var(--color-highlight);
+                        }
+                    }
                 }
             }
         }
@@ -281,10 +301,10 @@ function clearFilters() {
         }
 
         h3 {
+            margin: 0.5rem 0;
+            color: var(--color-complement-text);
             font-size: var(--font-m);
             font-weight: 400;
-            color: var(--color-complement-text);
-            margin: 0.5rem 0;
         }
 
         label {
@@ -298,47 +318,64 @@ function clearFilters() {
     }
 
     &-list {
-        grid-area: list;
-        overflow-y: scroll;
-        padding-left: 1rem;
         max-height: calc(100% - 1rem);
+        grid-area: list;
+        padding-left: 1rem;
+        overflow-y: scroll;
 
         &-item {
             width: calc(100% - 1.2rem);
-            border-radius: 5px;
-            border: solid 1px var(--color-border);
-            padding: 0.5rem;
-            margin: 0.5rem 0;
             display: grid;
-            cursor: pointer;
             grid-template-columns: 150px 1fr;
             column-gap: 1rem;
-
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: solid 1px var(--color-border);
+            border-radius: 5px;
             transition: border-color 0.2s,
                 border-width 0.2s;
+            cursor: pointer;
 
             h3 {
+                color: var(--color-complement-text);
                 font-weight: 400;
-                color: var(--color-complement-text)
             }
 
             >div:first-child {
-                background-color: rgb(75, 75, 75);
-                border-radius: 5px;
+                max-width: 150px;
+                max-height: 150px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border-radius: 5px;
+                background-color: gray;
+                pointer-events: none;
             }
+
+            >div:nth-child(2) {
+                >div:nth-child(2) {
+                    margin: 0.75rem 0;
+                }
+
+                >div:nth-child(3) {
+                    display: flex;
+                    margin-top: 0.5rem;
+                }
+
+                >div:nth-child(4) {
+                    display: flex;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        input {
+            display: none;
         }
 
         input:checked+&-item {
             border-color: var(--color-highlight);
         }
     }
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
 }
 </style>

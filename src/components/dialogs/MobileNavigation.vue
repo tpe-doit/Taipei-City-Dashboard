@@ -1,6 +1,9 @@
+<!-- Cleaned -->
+
 <script setup>
 import { useDialogStore } from '../../store/dialogStore'
 import { useContentStore } from '../../store/contentStore';
+
 import SideBarTab from '../utilities/SideBarTab.vue';
 
 const dialogStore = useDialogStore()
@@ -32,41 +35,47 @@ const contentStore = useContentStore()
 .dialogcontainer {
     width: 100vw;
     height: 100vh;
-    top: 0;
-    left: 0;
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
     opacity: 1;
     z-index: 10;
 
     &-dialog {
-        position: absolute;
-        z-index: 2;
-        background-color: rgb(30, 30, 30);
-        border: solid 1px var(--color-border);
-        border-radius: 5px;
-        padding: var(--font-m);
         width: fit-content;
         height: fit-content;
-        transform: translateY(0);
+        position: absolute;
         top: 110px;
-        left: 45px
+        left: 45px;
+        padding: var(--font-m);
+        border: solid 1px var(--color-border);
+        border-radius: 5px;
+        background-color: rgb(30, 30, 30);
+        transform: translateY(0);
+        z-index: 2;
     }
 
     &-background {
+        width: 100vw;
+        height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
         background-color: rgba(0, 0, 0, 0.66);
     }
-
-
 }
 
+.mobilenavigation {
+    width: 170px;
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+// Classes that are provided by vue transitions. Read the official docs for more instructions.
+// https://vuejs.org/guide/built-ins/transition.html
 .dialog-enter-from,
 .dialog-leave-to {
     opacity: 0;
@@ -83,11 +92,5 @@ const contentStore = useContentStore()
     .dialogcontainer-dialog {
         transition: transform 0.3s ease;
     }
-}
-
-.mobilenavigation {
-    width: 170px;
-    max-height: 350px;
-    overflow-y: scroll;
 }
 </style>

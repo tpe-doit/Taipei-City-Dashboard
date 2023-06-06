@@ -1,12 +1,14 @@
+<!-- Cleaned -->
+
 <script setup>
 const props = defineProps(['direction', 'weight'])
+
 const numToColor = {
     "1": "#acc22a",
     "2": "#fcd100",
     "3": "#ed8502",
     "4": "#ce161a",
 }
-
 </script>
 
 <template>
@@ -28,8 +30,8 @@ const numToColor = {
     justify-content: center;
 
     span {
-        font-family: var(--font-icon);
         color: var(--color-complement-text);
+        font-family: var(--font-icon);
         pointer-events: none;
         user-select: none;
     }
@@ -41,12 +43,12 @@ const numToColor = {
     }
 
     &-item {
-        font-size: 0.8rem;
         width: 1rem;
         height: 1rem;
         border-radius: 2px;
-        text-align: center;
         color: black;
+        font-size: 0.8rem;
+        text-align: center;
         pointer-events: none;
         user-select: none;
     }

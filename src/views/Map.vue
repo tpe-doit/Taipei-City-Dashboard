@@ -2,8 +2,10 @@
 import ComponentMapChart from '../components/components/ComponentMapChart.vue'
 import MapContainer from '../components/map/MapContainer.vue'
 import { useContentStore } from '../store/contentStore'
+import { useDialogStore } from '../store/dialogStore';
 
 const contentStore = useContentStore()
+const dialogStore = useDialogStore()
 
 </script>
 
@@ -23,7 +25,7 @@ const contentStore = useContentStore()
             <div v-else class="map-charts-nodashboard">
                 <span>sentiment_very_dissatisfied</span>
                 <h2>尚未加入組件</h2>
-                <p>加入您的第一個組件</p>
+                <button @click="dialogStore.showDialog('addComponent')">加入您的第一個組件</button>
             </div>
         </div>
         <MapContainer />
@@ -66,6 +68,10 @@ const contentStore = useContentStore()
                 font-family: var(--font-icon);
                 font-size: 2rem;
                 margin-bottom: 1rem;
+            }
+
+            button {
+                color: var(--color-highlight);
             }
         }
     }

@@ -1,7 +1,12 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref, computed } from 'vue';
+
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
+// Guage charts in apexcharts uses a slightly different data format from other chart types
+// As such, the following parsing function are required
 const parseSeries = computed(() => {
     let output = {}
     let parsedSeries = []
@@ -11,67 +16,63 @@ const parseSeries = computed(() => {
         parsedSeries.push(Math.round(props.series[0].data[i] / total * 100))
         parsedTooltip.push(`${props.series[0].data[i]} / ${props.series[1].data[i]}`)
     }
-
     output.series = parsedSeries
     output.tooltipText = parsedTooltip
-
     return output
 })
 
-const options = ref({
+// chartOptions needs to be in the bottom since it uses computed data
+const chartOptions = ref({
+    chart: {
+        toolbar: {
+            show: false,
+        },
+    },
+    colors: props.chart_config.color,
+    labels: props.chart_config.categories ? props.chart_config.categories : [],
     legend: {
-        show: false
+        show: false,
+    },
+    plotOptions: {
+        radialBar: {
+            dataLabels: {
+                name: {
+                    color: '#888787',
+                    fontSize: '0.8rem',
+                },
+                total: {
+                    color: '#888787',
+                    fontSize: '0.8rem',
+                    label: '平均',
+                    show: true,
+                },
+                value: {
+                    color: '#888787',
+                    fontSize: '16px',
+                    offsetY: 5,
+                },
+            },
+            track: {
+                background: "#777"
+            },
+        }
     },
     tooltip: {
-        enabled: true,
-        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        custom: function ({ seriesIndex, w }) {
+            // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
                 '<span>' + `${parseSeries.value.tooltipText[seriesIndex]}` + '</span>' +
                 '</div>'
-        }
-    },
-    plotOptions: {
-        radialBar: {
-            track: {
-                background: "#777"
-            },
-            dataLabels: {
-                name: {
-                    fontSize: '0.8rem',
-                    color: '#888787',
-                },
-                value: {
-                    fontSize: '16px',
-                    color: '#888787',
-                    offsetY: 5,
-                },
-                total: {
-                    show: true,
-                    fontSize: '0.8rem',
-                    color: '#888787',
-                    label: '平均'
-                },
-            }
-
-        }
-    },
-    colors: props.chart_config.color,
-    chart: {
-        toolbar: {
-            show: false
         },
+        enabled: true,
     },
-    labels: props.chart_config.categories ? props.chart_config.categories : []
 })
-
 </script>
 
 <template>
-    <div v-if="activeChart === 'GuageChart'" class="guagechart">
-        <apexchart width="80%" height="300px" type="radialBar" :options="options" :series="parseSeries.series">
+    <div v-if="activeChart === 'GuageChart'">
+        <apexchart width="80%" height="300px" type="radialBar" :options="chartOptions" :series="parseSeries.series">
         </apexchart>
     </div>
 </template>
-
-<style scoped lang="scss"></style>

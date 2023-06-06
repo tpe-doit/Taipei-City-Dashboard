@@ -1,54 +1,57 @@
+<!-- Cleaned -->
+
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
+
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
-const options = ref({
+const chartOptions = ref({
+    chart: {
+        stacked: true,
+        toolbar: {
+            show: false
+        },
+    },
+    colors: props.chart_config.color,
+    dataLabels: {
+        enabled: props.chart_config.categories ? false : true,
+        offsetY: 20,
+    },
+    grid: {
+        show: false,
+    },
     legend: {
         show: props.chart_config.categories ? true : false,
 
     },
+    plotOptions: {
+        bar: {
+            borderRadius: 5,
+        },
+    },
     stroke: {
-        show: true,
         colors: ['#282a2c'],
+        show: true,
         width: 2,
     },
     tooltip: {
+        // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.labels[dataPointIndex] + `${props.chart_config.categories ? '-' + w.globals.seriesNames[seriesIndex] : ''}` + '</h6>' +
                 '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
-        }
-    },
-    dataLabels: {
-        enabled: props.chart_config.categories ? false : true,
-        offsetY: 20
-    },
-    plotOptions: {
-        bar: {
-            borderRadius: 5,
-        }
-    },
-    colors: props.chart_config.color,
-    grid: {
-        show: false,
-    },
-    chart: {
-        toolbar: {
-            show: false
         },
-        stacked: true,
-
     },
     xaxis: {
-        type: 'category',
-        categories: props.chart_config.categories ? props.chart_config.categories : [],
         axisTicks: {
             show: false,
         },
+        categories: props.chart_config.categories ? props.chart_config.categories : [],
         labels: {
             offsetY: 5,
-        }
+        },
+        type: 'category',
     },
 })
 
@@ -56,8 +59,6 @@ const options = ref({
 
 <template>
     <div v-if="activeChart === 'ColumnChart'">
-        <apexchart width="100%" height="270px" type="bar" :options="options" :series="series"></apexchart>
+        <apexchart width="100%" height="270px" type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
-
-<style scoped></style>

@@ -1,19 +1,28 @@
+<!-- Cleaned -->
+
+<!-- This component has three modes 'normal dashboard' / 'more info' / 'basic map layers' -->
+<!-- The different modes are controlled by the props "notMoreInfo" (default true) and "isMapLayer" (default false) -->
+
 <script setup>
-import { useContentStore } from '../../store/contentStore';
-import { useDialogStore } from '../../store/dialogStore';
-import ComponentTag from '../utilities/ComponentTag.vue';
 import { computed, ref } from 'vue';
+import { useDialogStore } from '../../store/dialogStore';
+
+import ComponentTag from '../utilities/ComponentTag.vue';
 import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
-const contentStore = useContentStore()
 const dialogStore = useDialogStore()
 
 const props = defineProps({
+    // The complete config (incl. chart data) of a dashboard component will be passed in
     content: { type: Object },
     notMoreInfo: { type: Boolean, default: true },
     isMapLayer: { type: Boolean, default: false },
 })
 
+// The default active chart is the first one in the list defined in the dashboard component
+const activeChart = ref(props.content.chart_config.types[0])
+
+// Parses time data into display format
 const dataTime = computed(() => {
     if (!props.content.time_from) {
         return '固定資料'
@@ -23,7 +32,7 @@ const dataTime = computed(() => {
     }
     return `${props.content.time_from.slice(0, 10)} ~ ${props.content.time_to.slice(0, 10)}`
 })
-
+// Parses update frequency data into display format
 const updateFreq = computed(() => {
     const unitRef = {
         minute: "分鐘",
@@ -39,22 +48,21 @@ const updateFreq = computed(() => {
     return `每${props.content.update_freq}${unitRef[props.content.update_freq_unit]}更新`
 })
 
-const activeChart = ref(props.content.chart_config.types[0])
-
+// Toggles between chart types defined in the dashboard component
 function changeActiveChart(chartName) {
     activeChart.value = chartName
 }
-
 </script>
 
 <template>
-    <div :class="{ 'componentcontainer': true, 'moreinfostyle': !notMoreInfo, 'maplayerstyle': isMapLayer }">
+    <div :class="{ 'componentcontainer': true, 'moreinfostyle': !notMoreInfo, 'maplayer': isMapLayer }">
         <div class="componentcontainer-header">
             <div>
                 <h3>{{ content.name }}</h3>
                 <h4>{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <div v-if="notMoreInfo">
+                <!-- Change @click to a report issue function to implement functionality -->
                 <button title="回報問題"
                     @click="dialogStore.showNotification('fail', '目前尚未新增回報問題功能，無法回報問題')"><span>flag</span></button>
                 <!-- Change @click to a delete function to implement functionality -->
@@ -65,18 +73,20 @@ function changeActiveChart(chartName) {
             <button v-for="item in props.content.chart_config.types" @click="changeActiveChart(item)">{{
                 chartTypes[item] }}</button>
         </div>
-        <div :class="{ 'componentcontainer-chart': true, 'maplayerstyle-chart': isMapLayer }" v-if="content.chart_data">
+        <div :class="{ 'componentcontainer-chart': true, 'maplayer-chart': isMapLayer }" v-if="content.chart_data">
+            <!-- The components referenced here can be edited in /components/charts -->
             <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
                 :chart_config="content.chart_config" :series="content.chart_data">
             </component>
         </div>
         <div class="componentcontainer-footer">
             <div>
-                <ComponentTag :icon="``" :text="updateFreq" />
+                <ComponentTag icon="" :text="updateFreq" />
                 <ComponentTag v-if="!content.map_config" icon="wrong_location" text="沒有地圖" />
                 <ComponentTag v-if="content.history_data" icon="insights" text="有歷史軸" />
             </div>
-            <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)" class="hide-more-info">
+            <!-- The content in the target component should be passed into the "showMoreInfo" function of the mapStore to show more info -->
+            <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)">
                 <p>組件資訊</p>
                 <span>arrow_circle_right</span>
             </button>
@@ -86,23 +96,22 @@ function changeActiveChart(chartName) {
 
 <style scoped lang="scss">
 .componentcontainer {
-    background-color: var(--color-component-background);
-    border-radius: 5px;
     height: 330px;
     max-height: 330px;
     width: calc(100% - var(--font-m) *2);
     max-width: calc(100% - var(--font-m) *2);
-    padding: var(--font-m);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    padding: var(--font-m);
+    border-radius: 5px;
+    background-color: var(--color-component-background);
 
     @media (min-width: 1050px) {
         height: 370px;
         max-height: 370px;
     }
-
 
     @media (min-width: 1650px) {
         height: 400px;
@@ -129,19 +138,18 @@ function changeActiveChart(chartName) {
         }
 
         button span {
+            color: var(--color-complement-text);
             font-family: var(--font-icon);
             font-size: calc(var(--font-l) * var(--font-to-icon));
-            color: var(--color-complement-text);
             transition: color 0.2s;
 
             &:hover {
-                color: white
+                color: white;
             }
         }
     }
 
     &-control {
-        position: absolute;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -152,34 +160,32 @@ function changeActiveChart(chartName) {
         z-index: 8;
 
         button {
-            background-color: rgb(77, 77, 77);
+            margin: 0 4px;
             padding: 4px 4px;
             border-radius: 5px;
-            transition: color 0.2s, opacity 0.2s;
-            font-size: var(--font-s);
-            margin: 0 4px;
-            color: var(--color-complement-text);
+            background-color: rgb(77, 77, 77);
             opacity: 0.25;
+            color: var(--color-complement-text);
+            font-size: var(--font-s);
             text-align: center;
+            transition: color 0.2s, opacity 0.2s;
 
             &:hover {
-                color: white;
                 opacity: 1;
+                color: white;
             }
         }
     }
 
     &-chart {
         height: 75%;
-        overflow-y: scroll;
         position: relative;
         padding-top: 5%;
+        overflow-y: scroll;
 
         p {
-            color: var(--color-border)
+            color: var(--color-border);
         }
-
-
     }
 
     &-footer {
@@ -196,17 +202,20 @@ function changeActiveChart(chartName) {
             display: flex;
             align-items: center;
 
+            @media (max-width: 760px) {
+                display: none !important;
+            }
+
             span {
-                font-family: var(--font-icon);
+                margin-left: 4px;
                 color: var(--color-highlight);
-                margin-left: 4px
+                font-family: var(--font-icon);
             }
 
             p {
                 color: var(--color-highlight);
             }
         }
-
     }
 }
 
@@ -231,7 +240,7 @@ function changeActiveChart(chartName) {
 
 }
 
-.maplayerstyle {
+.maplayer {
     height: 180px;
     max-height: 180px;
 
@@ -239,7 +248,6 @@ function changeActiveChart(chartName) {
         height: 210px;
         max-height: 210px;
     }
-
 
     @media (min-width: 1650px) {
         height: 225px;
@@ -253,12 +261,6 @@ function changeActiveChart(chartName) {
 
     &-chart {
         height: 60%;
-    }
-}
-
-@media (max-width: 760px) {
-    .hide-more-info {
-        display: none !important;
     }
 }
 </style>

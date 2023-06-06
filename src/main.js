@@ -1,6 +1,7 @@
 // Import the Essentials
 import { createApp } from "vue";
 import "./assets/styles/globalStyles.css";
+import "./assets/styles/toggleswitch.css";
 import App from "./App.vue";
 
 // Import Core Packages: Vue-Router, Pinia, Apexcharts

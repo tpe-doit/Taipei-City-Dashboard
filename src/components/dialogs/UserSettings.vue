@@ -1,16 +1,19 @@
+<!-- Cleaned -->
+
 <script setup>
-import DialogContainer from './DialogContainer.vue';
 import { useDialogStore } from '../../store/dialogStore';
 import { useAuthStore } from '../../store/authStore';
+
+import DialogContainer from './DialogContainer.vue';
 
 const dialogStore = useDialogStore()
 const authStore = useAuthStore()
 
+const accountTypes = ['Email用戶', '台北通', '台北on']
+
 function handleClose() {
     dialogStore.hideAllDialogs()
 }
-const accountType = ['Email用戶', '台北通', '台北on']
-
 </script>
 
 <template>
@@ -23,7 +26,7 @@ const accountType = ['Email用戶', '台北通', '台北on']
             </tr>
             <tr>
                 <th>類型</th>
-                <td>{{ accountType[authStore.user.type] }}</td>
+                <td>{{ accountTypes[authStore.user.type] }}</td>
                 <th>用戶代碼</th>
                 <td>{{ authStore.user.id }}</td>
             </tr>
@@ -39,16 +42,16 @@ const accountType = ['Email用戶', '台北通', '台北on']
 
 <style scoped lang="scss">
 .usersettings {
-    margin: 1rem 0 0.5rem;
     width: 500px;
+    margin: 1rem 0 0.5rem;
     border-spacing: 0;
     border: solid 1px var(--color-border);
     border-radius: 5px;
 
     td,
     th {
-        border: solid 1px var(--color-border);
         height: 2rem;
+        border: solid 1px var(--color-border);
         color: var(--color-complement-text);
     }
 

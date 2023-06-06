@@ -1,26 +1,41 @@
+<!-- Cleaned -->
+
 <script setup>
-import SideBarTab from './utilities/SideBarTab.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
 import { useMapStore } from '../store/mapStore';
+
 import AddDashboard from './dialogs/AddDashboard.vue';
+import SideBarTab from './utilities/SideBarTab.vue';
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
 const mapStore = useMapStore()
 
+// The expanded state is also stored in localstorage to retain the setting after refresh
 const isExpanded = ref(true);
+
 function toggleExpand() {
-    isExpanded.value = isExpanded.value ? false : true
+    isExpanded.value = isExpanded.value ? false : true;
+    localStorage.setItem('isExpanded', isExpanded.value)
     if (!isExpanded.value) {
         mapStore.resizeMap();
     }
 }
+
+onMounted(() => {
+    const storedExpandedState = localStorage.getItem('isExpanded')
+    if (storedExpandedState === "false") {
+        isExpanded.value = false
+    } else {
+        isExpanded.value = true
+    }
+})
 </script>
 
 <template>
-    <div :class="{ sidebar: true, collapse: !isExpanded, 'hide-if-mobile': true }">
+    <div :class="{ sidebar: true, 'sidebar-collapse': !isExpanded, 'hide-if-mobile': true }">
         <div class="sidebar-sub-add">
             <h2>{{ isExpanded ? `儀表板列表` : `列表` }}</h2>
             <button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
@@ -30,7 +45,7 @@ function toggleExpand() {
             :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
         <h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>
         <SideBarTab :icon="`public`" :title="`圖資資訊`" :expanded="isExpanded" index="map-layers" />
-        <button class="sidebar-collapse" @click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :
+        <button class="sidebar-collapse-button" @click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :
             "keyboard_double_arrow_right"
         }}</span></button>
     </div>
@@ -40,15 +55,15 @@ function toggleExpand() {
 .sidebar {
     width: 170px;
     min-width: 170px;
-    border-right: 1px solid var(--color-border);
-    padding: 0 10px 0 var(--font-m);
-    margin-top: 20px;
     height: calc(100vh - 80px);
     max-height: calc(100vh - 80px);
+    position: relative;
+    padding: 0 10px 0 var(--font-m);
+    margin-top: 20px;
+    border-right: 1px solid var(--color-border);
     transition: min-width 0.2s ease-out;
     overflow-x: hidden;
     overflow-y: scroll;
-    position: relative;
 
     h2 {
         color: var(--color-complement-text);
@@ -59,8 +74,8 @@ function toggleExpand() {
         margin-bottom: var(--font-s);
 
         &-add {
-            display: flex;
             width: 100%;
+            display: flex;
             justify-content: space-between;
 
             button {
@@ -70,31 +85,31 @@ function toggleExpand() {
     }
 
     &-collapse {
-        position: absolute;
-        padding: 5px;
-        border-radius: 5px;
-        transition: background-color 0.2s;
-        height: fit-content;
-        bottom: 10px;
-        right: 10px;
+        width: 45px;
+        min-width: 45px;
 
-        &:hover {
-            background-color: var(--color-component-background);
+        h2 {
+            margin-left: 5px;
         }
 
-        span {
-            font-family: var(--font-icon);
-            font-size: var(--font-l);
+        &-button {
+            height: fit-content;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: var(--color-component-background);
+            }
+
+            span {
+                font-family: var(--font-icon);
+                font-size: var(--font-l);
+            }
         }
-    }
-}
-
-.collapse {
-    width: 45px;
-    min-width: 45px;
-
-    h2 {
-        margin-left: 5px;
     }
 }
 </style>

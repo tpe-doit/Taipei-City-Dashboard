@@ -1,3 +1,7 @@
+<!-- Cleaned -->
+
+<!-- This component is mounted programmically by the mapstore. "mapConfig" and "popupContent" are passed in in the mapStore -->
+<!-- !! Do not delete the script tag !! -->
 <script setup>
 </script>
 
@@ -26,19 +30,18 @@
 }
 
 .mapboxgl-popup {
-    animation: easein 0.2s linear;
+    width: max-content;
     min-width: 200px;
     max-width: 400px;
-    width: max-content;
+    animation: easein 0.2s linear;
 }
 
 .mapboxgl-popup-content {
-    background-color: var(--color-component-background) !important;
+    padding: 10px !important;
     border: solid 1px var(--color-border);
     box-shadow: 0px 0px 10px rgb(35, 35, 35) !important;
     border-radius: 5px !important;
-    padding: 10px !important;
-
+    background-color: var(--color-component-background) !important;
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
@@ -62,26 +65,25 @@
 }
 
 .mapboxgl-popup-close-button {
-    font-size: 1.2rem;
-    color: var(--color-complement-text);
     right: 15px !important;
     top: 10px !important;
+    color: var(--color-complement-text);
+    font-size: 1.2rem;
     line-height: 1rem;
 }
 
 .mappopup {
-    h2 {
-        color: var(--color-complement-text);
-        margin-bottom: 0.5rem;
-    }
-
     max-height: 200px;
     overflow-y: scroll;
 
-    &-content {
-        display: flex;
+    h2 {
+        margin-bottom: 0.5rem;
+        color: var(--color-complement-text);
+    }
 
+    &-content {
         width: fit-content;
+        display: flex;
 
         h3 {
             min-width: 80px;

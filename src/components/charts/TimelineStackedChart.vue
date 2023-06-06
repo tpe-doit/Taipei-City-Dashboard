@@ -1,72 +1,73 @@
+<!-- Cleaned -->
+
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
+
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
-function parseTime(time) {
-    return time.replace('T', ' ').slice(0, -4)
-}
-
-const options = ref({
-    legend: {
-        show: props.series.length > 1 ? true : false
-    },
-    stroke: {
-        show: true,
-        colors: props.chart_config.color,
-        width: 2,
-        curve: 'smooth'
-    },
-    markers: {
-        size: 3,
-        strokeWidth: 0,
-        hover: {
-            size: 5,
-        }
-    },
-    tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-            return '<div class="chart-tooltip">' +
-                '<h6>' + `${parseTime(w.config.series[seriesIndex].data[dataPointIndex].x)}` + ` - ${w.globals.seriesNames[seriesIndex]}` + '</h6>' +
-                '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
-                '</div>'
-        }
-    },
-    dataLabels: {
-        enabled: false
-    },
-    colors: props.chart_config.color,
-    grid: {
-        show: false,
-    },
+const chartOptions = ref({
     chart: {
+        stacked: true,
         toolbar: {
             show: false,
             tools: {
                 zoom: false,
-            }
+            },
         },
-        stacked: true
+    },
+    colors: props.chart_config.color,
+    dataLabels: {
+        enabled: false,
+    },
+    grid: {
+        show: false,
+    },
+    legend: {
+        show: props.series.length > 1 ? true : false,
+    },
+    markers: {
+        hover: {
+            size: 5,
+        },
+        size: 3,
+        strokeWidth: 0,
+    },
+    stroke: {
+        colors: props.chart_config.color,
+        curve: 'smooth',
+        show: true,
+        width: 2,
+    },
+    tooltip: {
+        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
+            return '<div class="chart-tooltip">' +
+                '<h6>' + `${parseTime(w.config.series[seriesIndex].data[dataPointIndex].x)}` + ` - ${w.globals.seriesNames[seriesIndex]}` + '</h6>' +
+                '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
+                '</div>'
+        },
     },
     xaxis: {
-        type: 'datetime',
         axisTicks: {
             show: false,
         },
         crosshairs: {
-            show: false
+            show: false,
         },
         tooltip: {
-            enabled: false
-        }
+            enabled: false,
+        },
+        type: 'datetime',
     },
 })
 
+function parseTime(time) {
+    return time.replace('T', ' ').slice(0, -4)
+}
 </script>
 
 <template>
     <div v-if="activeChart === 'TimelineStackedChart'">
-        <apexchart width="100%" height="260px" type="area" :options="options" :series="series"></apexchart>
+        <apexchart width="100%" height="260px" type="area" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
-
-<style scoped></style>

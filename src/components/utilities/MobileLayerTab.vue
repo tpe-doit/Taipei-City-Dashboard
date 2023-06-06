@@ -1,3 +1,5 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref } from 'vue';
 import { useMapStore } from '../../store/mapStore';
@@ -5,8 +7,10 @@ import { useMapStore } from '../../store/mapStore';
 const mapStore = useMapStore()
 
 const props = defineProps(['content'])
+
 const checked = ref(false)
 
+// Communicates with the mapStore to open and close map layers on mobile
 function handleToggle() {
     if (!props.content.map_config) {
         return
@@ -17,13 +21,12 @@ function handleToggle() {
         mapStore.turnOffMapLayerVisibility(props.content.map_config)
     }
 }
-
 </script>
 
 <template>
     <div class="mobilelayertab">
         <input :id="content.index" type="checkbox" v-model="checked" @change="handleToggle" />
-        <label :for="content.index"></label>
+        <label :for="content.index" :class="{ checked: checked }"></label>
         <p>{{ content.name.length > 6 ? `${content.name.slice(0, 5)}...` : content.name }}</p>
     </div>
 </template>
@@ -31,20 +34,20 @@ function handleToggle() {
 <style scoped lang="scss">
 .mobilelayertab {
     input {
-        opacity: 0;
         width: 0;
         height: 0;
+        opacity: 0;
     }
 
     label {
-        display: inline-block;
         width: 73px;
         height: 73px;
+        display: inline-block;
         border: solid 1px transparent;
         border-radius: 5px;
-        cursor: pointer;
         background-color: rgb(78, 71, 71);
         transition: border 0.2s;
+        cursor: pointer;
     }
 
     input:checked+label {
@@ -58,5 +61,9 @@ function handleToggle() {
     }
 
     margin-bottom: 8px
+}
+
+.checked {
+    border: solid 1px var(--color-highlight);
 }
 </style>

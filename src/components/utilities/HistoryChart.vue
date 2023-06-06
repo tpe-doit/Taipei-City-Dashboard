@@ -1,67 +1,68 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref } from 'vue';
+
 const props = defineProps(['chart_config', 'series'])
 
-const options = ref({
-    legend: {
-        show: props.series.length > 1 ? true : false
+const chartOptions = ref({
+    chart: {
+        toolbar: {
+            tools: {
+                download: false,
+                pan: false,
+                reset: '<p>' + '重置' + '</p>',
+                zoomin: false,
+                zoomout: false,
+            }
+        }
     },
-    stroke: {
-        show: true,
-        colors: props.chart_config.color,
-        width: 2,
-        curve: 'smooth'
+    colors: props.chart_config.color,
+    dataLabels: {
+        enabled: false,
+    },
+    grid: {
+        show: false,
+    },
+    legend: {
+        show: props.series.length > 1 ? true : false,
     },
     markers: {
-        size: 3,
-        strokeWidth: 0,
         hover: {
             size: 5,
-        }
+        },
+        size: 3,
+        strokeWidth: 0,
+    },
+    stroke: {
+        colors: props.chart_config.color,
+        curve: 'smooth',
+        show: true,
+        width: 2,
     },
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
             return '<div class="chart-tooltip">' +
                 '<h6>' + `${w.config.series[seriesIndex].data[dataPointIndex].x}` + '</h6>' +
                 '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
-        }
-    },
-    dataLabels: {
-        enabled: false
-    },
-    colors: props.chart_config.color,
-    grid: {
-        show: false,
-    },
-    chart: {
-        toolbar: {
-            tools: {
-                zoomin: false,
-                zoomout: false,
-                pan: false,
-                download: false,
-                reset: '<p>' + '重置' + '</p>'
-            }
-        }
+        },
     },
     xaxis: {
-        type: 'datetime',
         crosshairs: {
-            show: false
+            show: false,
         },
         tooltip: {
-            enabled: false
+            enabled: false,
         },
+        type: 'datetime',
     },
 })
-
 </script>
 
 <template>
     <div>
-        <apexchart width="100%" height="140px" type="area" :options="options" :series="series"></apexchart>
+        <apexchart width="100%" height="140px" type="area" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
-
-<style scoped lang="scss"></style>

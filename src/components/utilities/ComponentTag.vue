@@ -1,3 +1,7 @@
+<!-- Cleaned -->
+
+<!-- This component has two modes "outline" and "fill" which is controlled via the prop "mode" -->
+
 <script setup>
 const props = defineProps({
     icon: String, text: String, mode: {
@@ -16,32 +20,34 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .componenttag {
-    display: flex;
-    align-items: center;
     height: 1.5rem;
     width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+    padding: 0 4px;
     border: solid 1px var(--color-complement-text);
     border-radius: 5px;
-    padding: 0 4px;
-    margin-right: 4px;
+    pointer-events: none;
+    user-select: none;
 
     span {
-        font-family: var(--font-icon);
-        color: var(--color-complement-text);
         margin-right: 4px;
+        color: var(--color-complement-text);
+        font-family: var(--font-icon);
     }
 
     p {
         color: var(--color-complement-text)
     }
-}
 
-.componenttag-fill {
-    background-color: var(--color-complement-text);
+    &-fill {
+        background-color: var(--color-complement-text);
 
-    span,
-    p {
-        color: white
+        span,
+        p {
+            color: white
+        }
     }
 }
 </style>

@@ -1,3 +1,7 @@
+<!-- Cleaned -->
+
+<!-- This component has two modes "success" and "fail". The modes are controlled via the mapStore -->
+
 <script setup>
 import { useDialogStore } from '../../store/dialogStore';
 
@@ -23,28 +27,28 @@ const dialogStore = useDialogStore()
 
 <style scoped lang="scss">
 .notificationcontainer {
-    position: fixed;
     width: 100vw;
-    top: 20px;
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 20px;
     padding-bottom: 1rem;
 
     &-notification {
         height: 3rem;
         width: fit-content;
-        background-color: rgb(63, 63, 63);
-        border: solid 1px var(--color-border);
-        border-radius: 5px;
         display: flex;
         align-items: center;
         padding: 0 1rem;
+        border: solid 1px var(--color-border);
+        border-radius: 5px;
         box-shadow: 0px 5px 10px black;
+        background-color: rgb(63, 63, 63);
 
         span {
+            margin-right: 10px;
             font-family: var(--font-icon);
             font-size: var(--font-l);
-            margin-right: 10px;
         }
 
         h5 {
@@ -54,13 +58,15 @@ const dialogStore = useDialogStore()
 }
 
 .success {
-    color: greenyellow
+    color: greenyellow;
 }
 
 .fail {
-    color: rgb(237, 90, 90)
+    color: rgb(237, 90, 90);
 }
 
+// Classes that are provided by vue transitions. Read the official docs for more instructions.
+// https://vuejs.org/guide/built-ins/transition.html
 .notification-enter-from,
 .notification-leave-to {
     top: -60px;

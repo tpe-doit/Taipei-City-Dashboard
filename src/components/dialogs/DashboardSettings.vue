@@ -1,34 +1,41 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref } from 'vue';
-import DialogContainer from './DialogContainer.vue';
-import CustomCheckBox from '../utilities/CustomCheckBox.vue'
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
+
+import DialogContainer from './DialogContainer.vue';
+import CustomCheckBox from '../utilities/CustomCheckBox.vue'
 import { validateStrInput } from '../../assets/utilityFunctions/validate'
 
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
+
+// Stores the user inputted new name
 const newName = ref('')
-const error = ref(null)
+const errorMessage = ref(null)
+// Stores whether the user confirmed to enable the delete dashboard function
 const deleteConfirm = ref(false)
 
-// Uncomment the following to restore dashboard settings function if new backend is connected
 function handleSubmit() {
     if (validateStrInput(newName.value) !== true) {
-        error.value = validateStrInput(newName.value)
+        errorMessage.value = validateStrInput(newName.value)
         return
     }
+    // Uncomment the following to restore the change dashboard name function if new backend is connected
     // contentStore.changeCurrentDashboardName(newName.value);
     dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
     handleClose()
 }
 function handleClose() {
     newName.value = ''
-    error.value = null
+    errorMessage.value = null
     deleteConfirm.value = false
     dialogStore.hideAllDialogs();
 }
 function handleDelete() {
+    // Uncomment the following to restore the delete dashboard function if new backend is connected
     // contentStore.deleteCurrentDashboard();
     dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
     handleClose()
@@ -40,22 +47,20 @@ function handleDelete() {
         <div class="dashboardsettings">
             <h2>儀表板設定</h2>
             <div class="dashboardsettings-input">
-                <p v-if="error">{{ error }}</p>
+                <p v-if="errorMessage">{{ errorMessage }}</p>
                 <label for="name">
                     更改名稱
                 </label>
                 <input name="name" v-model="newName" :placeholder="contentStore.currentDashboard.name" />
-                <div :style="{ marginTop: '0.5rem' }">
-                    <input type="checkbox" id="delete" :value="true" v-model="deleteConfirm" class="custom-check-input"
-                        :style="{ display: 'none' }" />
+                <div>
+                    <input type="checkbox" id="delete" :value="true" v-model="deleteConfirm" class="custom-check-input" />
                     <CustomCheckBox for="delete">啟動刪除儀表板功能</CustomCheckBox>
                 </div>
             </div>
-
-            <div class="dashboardsettings-button">
-                <button class="dashboardsettings-button-simple" @click="handleClose">取消</button>
-                <button class="dashboardsettings-button-fancy" @click="handleSubmit">確定更改</button>
-                <button v-if="deleteConfirm" class="dashboardsettings-button-delete" @click="handleDelete">刪除儀表板</button>
+            <div class="dashboardsettings-control">
+                <button class="dashboardsettings-control-cancel" @click="handleClose">取消</button>
+                <button class="dashboardsettings-control-confirm" @click="handleSubmit">確定更改</button>
+                <button v-if="deleteConfirm" class="dashboardsettings-control-delete" @click="handleDelete">刪除儀表板</button>
             </div>
         </div>
     </DialogContainer>
@@ -71,8 +76,8 @@ function handleDelete() {
         margin: 1rem 0 1.5rem;
 
         label {
+            margin-bottom: 0.5rem;
             font-size: var(--font-s);
-            margin-bottom: 0.5rem
         }
 
         p {
@@ -80,39 +85,47 @@ function handleDelete() {
         }
 
         input {
-            background-color: transparent;
+            padding: 4px 6px;
             border: solid 1px var(--color-border);
             border-radius: 5px;
+            background-color: transparent;
             font-size: var(--font-m);
-            padding: 4px 6px;
 
             &:focus {
                 outline: none;
-                border: solid 1px var(--color-highlight)
+                border: solid 1px var(--color-highlight);
+            }
+        }
+
+        div {
+            margin-top: 0.5rem;
+
+            input {
+                display: none;
             }
         }
     }
 
-    &-button {
+    &-control {
         display: flex;
         justify-content: flex-end;
 
-        &-simple {
+        &-cancel {
+            margin: 0 2px;
             padding: 4px 6px;
             border-radius: 5px;
-            margin: 0 2px;
             transition: color 0.2s;
 
             &:hover {
-                color: var(--color-highlight)
+                color: var(--color-highlight);
             }
         }
 
-        &-fancy {
-            background-color: var(--color-highlight);
+        &-confirm {
+            margin: 0 2px;
             padding: 4px 10px;
             border-radius: 5px;
-            margin: 0 2px;
+            background-color: var(--color-highlight);
             transition: opacity 0.2s;
 
             &:hover {
@@ -121,10 +134,10 @@ function handleDelete() {
         }
 
         &-delete {
-            background-color: rgb(192, 67, 67);
+            margin: 0 2px;
             padding: 4px 10px;
             border-radius: 5px;
-            margin: 0 2px;
+            background-color: rgb(192, 67, 67);
             transition: opacity 0.2s;
 
             &:hover {

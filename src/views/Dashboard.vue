@@ -1,10 +1,12 @@
 <script setup>
 
 import { useContentStore } from '../store/contentStore'
+import { useDialogStore } from '../store/dialogStore';
 import ComponentContainer from '../components/components/ComponentContainer.vue'
 import MoreInfo from '../components/dialogs/MoreInfo.vue';
 
 const contentStore = useContentStore()
+const dialogStore = useDialogStore()
 
 </script>
 
@@ -21,7 +23,7 @@ const contentStore = useContentStore()
         <div class="dashboard-nodashboard">
             <span>sentiment_very_dissatisfied</span>
             <h2>尚未加入組件</h2>
-            <p>加入您的第一個組件</p>
+            <button @click="dialogStore.showDialog('addComponent')">加入您的第一個組件</button>
         </div>
     </div>
 </template>
@@ -63,6 +65,10 @@ const contentStore = useContentStore()
             font-family: var(--font-icon);
             font-size: 2rem;
             margin-bottom: 1rem;
+        }
+
+        button {
+            color: var(--color-highlight)
         }
     }
 }

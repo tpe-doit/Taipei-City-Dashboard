@@ -1,10 +1,15 @@
+<!-- Cleaned -->
+
+<!-- Navigation will be hidden from the navbar in mobile mode and moved to the settingsbar -->
+
 <script setup>
 const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from '../store/authStore';
-import { useFullscreen } from '@vueuse/core'
 import { useDialogStore } from '../store/dialogStore';
+import { useFullscreen } from '@vueuse/core'
+
 import UserSettings from './dialogs/UserSettings.vue';
 
 const route = useRoute();
@@ -16,7 +21,6 @@ const linkQuery = computed(() => {
     const query = route.query
     return `?index=${query.index}`
 })
-
 </script>
 
 <template>
@@ -74,9 +78,9 @@ const linkQuery = computed(() => {
         }
 
         img {
-            filter: invert(1);
             height: 45px;
-            margin: 0 var(--font-m)
+            margin: 0 var(--font-m);
+            filter: invert(1);
         }
     }
 
@@ -84,15 +88,15 @@ const linkQuery = computed(() => {
         display: flex;
 
         a {
+            height: 59px;
             display: flex;
             align-items: center;
-            height: 59px;
             margin-left: var(--font-s)
         }
 
         .router-link-active {
-            color: var(--color-highlight);
             border-bottom: solid 3px var(--color-highlight);
+            color: var(--color-highlight);
         }
     }
 
@@ -101,12 +105,12 @@ const linkQuery = computed(() => {
         align-items: center;
 
         button {
-            margin-right: var(--font-m);
-            font-size: var(--font-m);
             display: flex;
             align-items: center;
+            margin-right: var(--font-m);
             padding: 2px 4px;
             border-radius: 4px;
+            font-size: var(--font-m);
             transition: background-color 0.25s;
         }
 
@@ -130,23 +134,23 @@ const linkQuery = computed(() => {
             align-items: center;
 
             ul {
-                position: absolute;
-                z-index: 10;
-                background-color: rgb(85, 85, 85);
-                padding: 8px;
-                border-radius: 5px;
                 min-width: 100px;
                 display: none;
-                opacity: 0;
-                transition: opacity 0.25s;
+                position: absolute;
                 right: 20px;
                 top: 55px;
+                padding: 8px;
+                border-radius: 5px;
+                background-color: rgb(85, 85, 85);
+                opacity: 0;
+                transition: opacity 0.25s;
+                z-index: 10;
 
                 li {
-                    cursor: pointer;
                     padding: 8px 4px;
-                    transition: background-color 0.25s;
                     border-radius: 5px;
+                    transition: background-color 0.25s;
+                    cursor: pointer;
                 }
 
                 li:hover {
@@ -155,7 +159,5 @@ const linkQuery = computed(() => {
             }
         }
     }
-
-
 }
 </style>

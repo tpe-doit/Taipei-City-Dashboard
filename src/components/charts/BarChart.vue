@@ -1,78 +1,80 @@
+<!-- Cleaned -->
+
 <script setup>
 import { ref, computed } from 'vue';
+
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
-const options = ref({
+const chartOptions = ref({
+    chart: {
+        offsetY: 15,
+        stacked: true,
+        toolbar: {
+            show: false
+        },
+    },
+    colors: props.chart_config.color,
+    dataLabels: {
+        offsetX: 20,
+        textAnchor: 'start',
+    },
+    grid: {
+        show: false,
+    },
     legend: {
-        show: false
+        show: false,
+    },
+    plotOptions: {
+        bar: {
+
+            borderRadius: 2,
+            distributed: true,
+            horizontal: true,
+        }
     },
     stroke: {
-        show: true,
         colors: ['#282a2c'],
+        show: true,
         width: 0,
     },
+    // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
     tooltip: {
-        followCursor: true,
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
                 '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
                 '</div>'
-        }
-    },
-    dataLabels: {
-        textAnchor: 'start',
-        offsetX: 20
-    },
-    plotOptions: {
-        bar: {
-            horizontal: true,
-            borderRadius: 2,
-            distributed: true
-        }
-    },
-    colors: props.chart_config.color,
-    grid: {
-        show: false,
-    },
-    chart: {
-        toolbar: {
-            show: false
         },
-        stacked: true,
-        offsetY: 15,
+        followCursor: true,
     },
     xaxis: {
-        type: 'category',
-        labels: {
-            show: false
+        axisBorder: {
+            show: false,
         },
         axisTicks: {
             show: false,
         },
-        axisBorder: {
-            show: false
-        }
+        labels: {
+            show: false,
+        },
+        type: 'category',
     },
     yaxis: {
         labels: {
             formatter: function (value) {
                 return value.length > 7 ? value.slice(0, 6) + "..." : value
-            }
-        }
-    }
+            },
+        },
+    },
 })
 
-const height = computed(() => {
+const chartHeight = computed(() => {
     return `${40 + props.series[0].data.length * 16}`
 })
-
 </script>
 
 <template>
     <div v-if="activeChart === 'BarChart'">
-        <apexchart width="100%" :height="height" type="bar" :options="options" :series="series"></apexchart>
+        <apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
-
-<style scoped></style>

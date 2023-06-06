@@ -1,8 +1,11 @@
+<!-- Cleaned -->
+
 <script setup>
 import { onMounted } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
+
 import MobileLayers from '../dialogs/MobileLayers.vue';
 
 const mapStore = useMapStore()
@@ -19,9 +22,8 @@ onMounted(() => {
         <div id="mapboxBox">
             <button class="mapcontainer-layers show-if-mobile"
                 @click="dialogStore.showDialog('mobileLayers')"><span>layers</span></button>
-            <KeepAlive>
-                <MobileLayers :key="contentStore.currentDashboard.index" />
-            </KeepAlive>
+            <!-- The key prop informs vue that the component should be updated when switching dashboards -->
+            <MobileLayers :key="contentStore.currentDashboard.index" />
         </div>
         <div class="mapcontainer-controls hide-if-mobile">
             <button @click="mapStore.easeToLocation([121.536609, 25.044808], 12.5, 4000, 0, 0)">返回預設</button>
@@ -47,17 +49,17 @@ onMounted(() => {
     flex: 1;
 
     &-controls {
-        margin-top: 8px;
         display: flex;
+        margin-top: 8px;
 
         button {
-            margin-right: 6px;
-            color: var(--color-complement-text);
             height: 1.5rem;
             width: fit-content;
+            margin-right: 6px;
             padding: 4px;
             border-radius: 5px;
             background-color: var(--color-component-background);
+            color: var(--color-complement-text);
 
             &:focus {
                 animation-name: colorfade;
@@ -67,22 +69,22 @@ onMounted(() => {
     }
 
     &-layers {
-        background-color: white;
         width: 1.75rem;
         height: 1.75rem;
-        position: absolute;
-        z-index: 1;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: absolute;
         right: 10px;
         top: 108px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 1;
 
         span {
-            font-family: var(--font-icon);
             color: var(--color-component-background);
             font-size: 1.2rem;
+            font-family: var(--font-icon);
         }
     }
 }

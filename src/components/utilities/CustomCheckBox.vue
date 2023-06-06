@@ -1,3 +1,8 @@
+<!-- Cleaned -->
+
+<!-- The slot holds text for the checkbox -->
+<!-- This checkbox was created by Andreas Storm. Check out her original code here: https://codepen.io/avstorm/pen/deRvMy -->
+
 <script setup>
 const props = defineProps({ for: String })
 </script>
@@ -21,30 +26,17 @@ const props = defineProps({ for: String })
 }
 
 .check {
-    cursor: pointer;
-    position: relative;
     width: 16px;
     height: 16px;
+    position: relative;
     -webkit-tap-highlight-color: transparent;
     transform: translate3d(0, 0, 0);
+    cursor: pointer;
 }
 
 svg {
     margin-right: 0.5rem;
 }
-
-// .check:before {
-//     content: "";
-//     position: absolute;
-//     top: -15px;
-//     left: -15px;
-//     width: 48px;
-//     height: 48px;
-//     border-radius: 50%;
-//     background: rgba(34, 50, 84, 0.03);
-//     opacity: 0;
-//     transition: opacity 0.2s ease;
-// }
 
 .check svg {
     position: relative;
