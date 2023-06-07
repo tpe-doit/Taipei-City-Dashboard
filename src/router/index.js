@@ -1,10 +1,10 @@
+// Cleaned
+
 import { createRouter, createWebHistory } from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
-import Map from "../views/Map.vue";
 import { useContentStore } from "../store/contentStore";
 import { useMapStore } from "../store/mapStore";
-
-// Auth: 0 - Not Logged In, 1 - Logged In User, 2 - Logged In Admin
+import Dashboard from "../views/Dashboard.vue";
+import Map from "../views/Map.vue";
 
 const routes = [
   {
@@ -34,16 +34,19 @@ const router = createRouter({
   routes,
 });
 
-// Pass in route info to contentStore if the path starts with /dashboard or /mapview
 router.beforeEach((to) => {
   const contentStore = useContentStore();
   const mapStore = useMapStore();
+  // Pass in route info to contentStore if the path starts with /dashboard or /mapview
   if (to.path === "/dashboard" || to.path === "/mapview") {
     contentStore.setRouteParams(to.path, to.query.index);
   }
-  if (to.path === "/dashboard") {
+  // Clear the entire mapStore if the path doesn't start with /mapview
+  if (to.path !== "/mapview") {
     mapStore.clearEntireMap();
-  } else if (to.path === "/mapview") {
+  }
+  // Clear only map layers if the path starts with /mapview
+  else if (to.path === "/mapview") {
     mapStore.clearOnlyLayers();
   }
 });

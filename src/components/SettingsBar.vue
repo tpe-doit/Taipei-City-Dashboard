@@ -4,7 +4,7 @@
 <!-- Adding new components and settings is disabled in the map layer dashboard and the mobile version -->
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUpdated, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';

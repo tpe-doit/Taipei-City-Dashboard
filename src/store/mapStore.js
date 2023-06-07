@@ -1,71 +1,45 @@
+// Cleaned
+
+/* mapStore */
+/*
+The mapStore controls the map and includes methods to modify it.
+
+!! PLEASE BE SURE TO REFERENCE THE MAPBOX DOCUMENTATION IF ANYTHING IS UNCLEAR !!
+https://docs.mapbox.com/mapbox-gl-js/guides/
+*/
 import { createApp, defineComponent, nextTick } from "vue";
-import MapPopup from "../components/map/MapPopup.vue";
-
-import axios from "axios";
-import { defineStore, createPinia } from "pinia";
-import { useContentStore } from "./contentStore";
-
+import { defineStore } from "pinia";
 import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import axios from "axios";
+
 import mapStyle from "../assets/configs/mapbox/mapStyle.js";
-import { MapPositions } from "../assets/configs/mapbox/mapType.js";
 import {
   MapObjectConfig,
   TaipeiTown,
   TaipeiVillage,
-  TaipeiBuilding,
   maplayerCommonPaint,
   maplayerCommonLayout,
 } from "../assets/configs/mapbox/mapConfig.js";
+import MapPopup from "../components/map/MapPopup.vue";
 
 export const useMapStore = defineStore("map", {
   state: () => ({
+    // Array of layer IDs that are in the map
     currentLayers: [],
-    mapConfigs: {},
+    // Array of layer IDs that are in the map and currently visible
     currentVisibleLayers: [],
+    // Stores all map configs for all layers (to be used to render popups)
+    mapConfigs: {},
+    // Stores the mapbox map instance
     map: null,
+    // Stores popup information
     popup: null,
   }),
   getters: {},
   actions: {
-    addToMapLayerList(map_config) {
-      map_config.forEach((element) => {
-        let mapLayerId = `${element.index}-${element.type}`;
-        if (this.currentLayers.find((element) => element === mapLayerId)) {
-          this.turnOnMapLayerVisibility(mapLayerId);
-          if (
-            !this.currentVisibleLayers.find((element) => element === mapLayerId)
-          ) {
-            this.currentVisibleLayers.push(mapLayerId);
-          }
-          return;
-        }
-        let appendLayerId = { ...element };
-        appendLayerId.layerId = mapLayerId;
-        this.fetchLocalGeoJson(appendLayerId);
-      });
-    },
-
-    /* Functions that fetch map layers */
-
-    // Raster Maps were used in the official city dashboard due to file size concerns.
-    // The open source version doesn't feature any as all data is static and access to our raster maps are restricted to within the Taipei city gov's intranet
-    fetchRaster() {},
-
-    // Fetch map layer data for geojsons stored locally
-    fetchLocalGeoJson(map_config) {
-      axios
-        .get(`/mapData/${map_config.index}.geojson`)
-        .then((rs) => {
-          this.addMapLayerSource(map_config, rs.data);
-        })
-        .catch((e) => console.log(e));
-    },
-
-    // The open source version doesn't feature any as all data is static and access to our remote geoJSONs are restricted to within the Taipei city gov's intranet
-    fetchRemoteGeoJson(mapLayerInfo) {},
-
-    /* Functions that directly mutate the map */
+    /* Initialize Mapbox */
+    // 1. Creates the mapbox instance and passes in initial configs
     initializeMapBox() {
       const MAPBOXTOKEN = import.meta.env.VITE_MAPBOXTOKEN;
       mapboxGl.accessToken = MAPBOXTOKEN;
@@ -78,7 +52,6 @@ export const useMapStore = defineStore("map", {
       this.map
         .on("style.load", () => {
           this.initializeBasicLayers();
-          // this.initialize3DLayers();
         })
         .on("click", (event) => {
           if (this.popup) {
@@ -87,7 +60,7 @@ export const useMapStore = defineStore("map", {
           this.addPopup(event);
         });
     },
-    // Called when the mapbox instance is first initialized and adds two basic layers to the map
+    // 2. Adds two basic layers to the map (Taipei District and Taipei Village labels)
     initializeBasicLayers() {
       fetch(`/mapData/taipei_town.geojson`)
         .then((response) => response.json())
@@ -105,10 +78,7 @@ export const useMapStore = defineStore("map", {
         });
       this.addSymbolSources();
     },
-    // Called when the mapbox instance is first initialized and adds 3d renderings of taipei buildings to the map
-    initialize3DLayers() {},
-
-    // Called when the mapbox instance is first initialized and adds the icons that will be used in the map
+    // 3. Adds symbols that will be used by some map layers
     addSymbolSources() {
       const images = [
         "metro",
@@ -124,6 +94,37 @@ export const useMapStore = defineStore("map", {
       });
     },
 
+    /* Adding Map Layers */
+    // 1. Passes in the map_config (an Array of Objects) of a component and adds all layers to the map layer list
+    addToMapLayerList(map_config) {
+      map_config.forEach((element) => {
+        let mapLayerId = `${element.index}-${element.type}`;
+        // 1-1. If the layer exists, simply turn on the visibility and add it to the visible layers list
+        if (this.currentLayers.find((element) => element === mapLayerId)) {
+          this.turnOnMapLayerVisibility(mapLayerId);
+          if (
+            !this.currentVisibleLayers.find((element) => element === mapLayerId)
+          ) {
+            this.currentVisibleLayers.push(mapLayerId);
+          }
+          return;
+        }
+        let appendLayerId = { ...element };
+        appendLayerId.layerId = mapLayerId;
+        // 1-2. If the layer doesn't exist, call an API to get the layer data
+        this.fetchLocalGeoJson(appendLayerId);
+      });
+    },
+    // 2. Call an API to get the layer data
+    fetchLocalGeoJson(map_config) {
+      axios
+        .get(`/mapData/${map_config.index}.geojson`)
+        .then((rs) => {
+          this.addMapLayerSource(map_config, rs.data);
+        })
+        .catch((e) => console.log(e));
+    },
+    // 3. Add the layer data as a source in mapbox
     addMapLayerSource(map_config, data) {
       this.map.addSource(`${map_config.layerId}-source`, {
         type: "geojson",
@@ -131,7 +132,8 @@ export const useMapStore = defineStore("map", {
       });
       this.addMapLayer(map_config);
     },
-
+    // 4. Using the mapbox source and map config, create a new layer
+    // The styles and configs can be edited in /assets/configs/mapbox/mapConfig.js
     addMapLayer(map_config) {
       let extra_paint_configs = {};
       let extra_layout_configs = {};
@@ -171,45 +173,11 @@ export const useMapStore = defineStore("map", {
       this.mapConfigs[map_config.layerId] = map_config;
       this.currentVisibleLayers.push(map_config.layerId);
     },
-
-    addPopup(event) {
-      const clickFeatureDatas = this.map.queryRenderedFeatures(event.point, {
-        layers: this.currentVisibleLayers,
-      });
-      if (!clickFeatureDatas || clickFeatureDatas.length === 0) {
-        return;
-      }
-      const mapConfigs = this.mapConfigs;
-      this.popup = new mapboxGl.Popup()
-        .setLngLat(event.lngLat)
-        .setHTML('<div id="vue-popup-content"></div>')
-        .addTo(this.map);
-      const PopupComponent = defineComponent({
-        extends: MapPopup,
-        setup() {
-          return {
-            popupContent: clickFeatureDatas[0],
-            mapConfig: mapConfigs[clickFeatureDatas[0].layer.id],
-          };
-        },
-      });
-      nextTick(() => {
-        const app = createApp(PopupComponent);
-        app.mount("#vue-popup-content");
-      });
-    },
-    removePopup() {
-      if (this.popup) {
-        this.popup.remove();
-      }
-      this.popup = null;
-    },
-
+    //  5. Turn on the visibility for a exisiting map layer
     turnOnMapLayerVisibility(mapLayerId) {
       this.map.setLayoutProperty(mapLayerId, "visibility", "visible");
     },
-
-    // Called by ComponentMapCharts to turn the visibility off for a layer but not removing it from the store
+    // 6. Turn off the visibility of an exisiting map layer but don't remove it completely
     turnOffMapLayerVisibility(map_config) {
       map_config.forEach((element) => {
         let mapLayerId = `${element.index}-${element.type}`;
@@ -222,6 +190,73 @@ export const useMapStore = defineStore("map", {
       });
       this.removePopup();
     },
+
+    /* Popup Related Functions */
+    // Adds a popup when the user clicks on a item. The event will be passed in.
+    addPopup(event) {
+      // Gets the info that is contained in the coordinates that the user clicked on (only visible layers)
+      const clickFeatureDatas = this.map.queryRenderedFeatures(event.point, {
+        layers: this.currentVisibleLayers,
+      });
+      // Return if there is no info in the click
+      if (!clickFeatureDatas || clickFeatureDatas.length === 0) {
+        return;
+      }
+      // This variable assignment is necessary since the "this" instant cannot be accessed in "defineComponent"
+      const mapConfigs = this.mapConfigs;
+      // Create a new mapbox popup
+      this.popup = new mapboxGl.Popup()
+        .setLngLat(event.lngLat)
+        .setHTML('<div id="vue-popup-content"></div>')
+        .addTo(this.map);
+      // Mount a vue component (MapPopup) to the id "vue-popup-content" and pass in data
+      const PopupComponent = defineComponent({
+        extends: MapPopup,
+        setup() {
+          // Only show the data of the topmost layer
+          return {
+            popupContent: clickFeatureDatas[0],
+            mapConfig: mapConfigs[clickFeatureDatas[0].layer.id],
+          };
+        },
+      });
+      // This helps vue determine the most optimal time to mount the component
+      nextTick(() => {
+        const app = createApp(PopupComponent);
+        app.mount("#vue-popup-content");
+      });
+    },
+    // Remove the current popup
+    removePopup() {
+      if (this.popup) {
+        this.popup.remove();
+      }
+      this.popup = null;
+    },
+
+    /* Functions that change the viewing experience of the map */
+
+    // Zoom to a location
+    easeToLocation(coordinates, zoom, duration, pitch, bearing) {
+      this.map.easeTo({
+        center: coordinates,
+        zoom: zoom,
+        duration: duration,
+        pitch: pitch,
+        bearing: bearing,
+      });
+    },
+    // Force map to resize after sidebar collapses
+    resizeMap() {
+      if (this.map) {
+        setTimeout(() => {
+          this.map.resize();
+        }, 200);
+      }
+    },
+
+    /* Clearing the map */
+
     // Called when the user is switching between maps
     clearOnlyLayers() {
       this.currentLayers.forEach((element) => {
@@ -240,25 +275,6 @@ export const useMapStore = defineStore("map", {
       this.map = null;
       this.currentVisibleLayers = [];
       this.removePopup();
-    },
-
-    /* Functions that change the viewing experience of the map */
-    easeToLocation(coordinates, zoom, duration, pitch, bearing) {
-      this.map.easeTo({
-        center: coordinates,
-        zoom: zoom,
-        duration: duration,
-        pitch: pitch,
-        bearing: bearing,
-      });
-    },
-    // Force map to resize after sidebar collapses
-    resizeMap() {
-      if (this.map) {
-        setTimeout(() => {
-          this.map.resize();
-        }, 200);
-      }
     },
   },
 });

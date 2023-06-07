@@ -1,8 +1,12 @@
+// Cleaned
+
 /* authStore */
-// The auth store stores authentication and user information.
-// Since this template doesn't implement user authentication, only dummy user info is stored.
-// If you wish to implement authentication, you can reference the logic below (based on the authentication system of Taipei City Dashboard)
-// or design a new system from scratch that tailors to your needs.
+/*
+The authStore stores authentication and user information.
+Since this template doesn't implement user authentication, only dummy user info is stored.
+If you wish to implement authentication, you can reference the logic below (based on the authentication system of Taipei City Dashboard)
+or design a new system from scratch that tailors to your needs. 
+*/
 
 import { defineStore } from "pinia";
 import { useDialogStore } from "./dialogStore";
@@ -26,7 +30,7 @@ export const useAuthStore = defineStore("auth", {
     // Call this function to log in
     handleLogin() {},
 
-    // Call this function to log out
+    // Call this function to log out (Currently just shows a 'cannot log out' notification)
     handleLogout() {
       const dialogStore = useDialogStore();
       dialogStore.showNotification("fail", "尚未新增用戶管理功能，無法登出");
