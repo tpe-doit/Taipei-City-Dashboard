@@ -44,7 +44,7 @@ const sum = computed(() => {
 // chartOptions needs to be in the bottom since it uses computed data
 const chartOptions = ref({
     chart: {
-        offsetY: 15,
+        offsetY: 10,
     },
     colors: props.series.length >= steps.value ? [...props.chart_config.color, '#848c94'] : props.chart_config.color,
     dataLabels: {
@@ -63,7 +63,7 @@ const chartOptions = ref({
                 offset: 15,
             },
             donut: {
-                size: '80%',
+                size: '77.5%',
             },
         }
     },

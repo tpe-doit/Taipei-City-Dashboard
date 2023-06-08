@@ -13,14 +13,15 @@ import { defineStore } from "pinia";
 export const useDialogStore = defineStore("dialog", {
   state: () => ({
     dialogs: {
-      addDashboard: false,
-      notificationBar: false,
       addComponent: false,
+      addDashboard: false,
       dashboardSettings: false,
-      moreInfo: false,
-      userSettings: false,
-      mobileNavigation: false,
+      initialWarning: false,
       mobileLayers: false,
+      mobileNavigation: false,
+      moreInfo: false,
+      notificationBar: false,
+      userSettings: false,
     },
     // Stores the content for notifications
     notification: {

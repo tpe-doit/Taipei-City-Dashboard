@@ -55,6 +55,7 @@ function handleToggle() {
     }
 
     p {
+        margin-top: 4px;
         color: var(--color-complement-text);
         font-size: 0.75rem;
         text-align: center;

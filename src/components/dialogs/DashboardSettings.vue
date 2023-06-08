@@ -43,7 +43,7 @@ function handleDelete() {
 </script>
 
 <template>
-    <DialogContainer :dialog="`dashboardSettings`" @on-close="handleClose">
+    <DialogContainer dialog="dashboardSettings" @on-close="handleClose">
         <div class="dashboardsettings">
             <h2>儀表板設定</h2>
             <div class="dashboardsettings-input">

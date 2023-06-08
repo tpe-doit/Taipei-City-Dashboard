@@ -3,6 +3,7 @@
 <!-- Map charts will be hidden in mobile mode and be replaced with the mobileLayers dialog -->
 
 <script setup>
+import { computed } from 'vue';
 import { useContentStore } from '../store/contentStore'
 import { useDialogStore } from '../store/dialogStore';
 
@@ -11,6 +12,15 @@ import MapContainer from '../components/map/MapContainer.vue'
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
+
+// Separate components with maps from those without
+const parseMapLayers = computed(() => {
+    const hasMap = contentStore.currentDashboard.content.filter((item) => item.map_config);
+    const noMap = contentStore.currentDashboard.content.filter((item) => !item.map_config);
+
+    return { hasMap: hasMap, noMap: noMap }
+})
+
 </script>
 
 <template>
@@ -22,10 +32,13 @@ const dialogStore = useDialogStore()
                 :is-map-layer="true" />
             <!-- other dashboards that have components -->
             <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="map-charts">
-                <ComponentMapChart v-for="item in contentStore.currentDashboard.content" :content="item"
-                    :key="item.index" />
+                <ComponentMapChart v-for="item in parseMapLayers.hasMap" :content="item" :key="item.index" />
                 <h2>基本圖層</h2>
                 <ComponentMapChart v-for="item in contentStore.mapLayers" :content="item" :key="`map-layer-${item.index}`"
+                    :is-map-layer="true" />
+                <h2 v-if="parseMapLayers.noMap.length > 0">無空間資料組件
+                </h2>
+                <ComponentMapChart v-for="item in parseMapLayers.noMap" :content="item" :key="`map-layer-${item.index}`"
                     :is-map-layer="true" />
             </div>
             <!-- other dashboards that don't have components -->

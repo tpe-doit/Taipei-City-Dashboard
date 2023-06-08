@@ -61,7 +61,7 @@ const chartOptions = ref({
 })
 
 const chartHeight = computed(() => {
-    return `${40 + props.series[0].data.length * 30}`
+    return `${45 + props.series[0].data.length * 30}`
 })
 
 </script>

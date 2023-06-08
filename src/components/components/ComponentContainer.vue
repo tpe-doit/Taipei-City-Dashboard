@@ -35,8 +35,8 @@ const dataTime = computed(() => {
 // Parses update frequency data into display format
 const updateFreq = computed(() => {
     const unitRef = {
-        minute: "分鐘",
-        hour: "小時",
+        minute: "分",
+        hour: "時",
         day: "天",
         week: "週",
         month: "月",
@@ -82,8 +82,8 @@ function changeActiveChart(chartName) {
         <div class="componentcontainer-footer">
             <div>
                 <ComponentTag icon="" :text="updateFreq" />
-                <ComponentTag v-if="!content.map_config" icon="wrong_location" text="沒有地圖" />
-                <ComponentTag v-if="content.history_data" icon="insights" text="有歷史軸" />
+                <ComponentTag v-if="content.map_config" icon="map" text="空間資料" />
+                <ComponentTag v-if="content.history_data" icon="insights" text="歷史資料" />
             </div>
             <!-- The content in the target component should be passed into the "showMoreInfo" function of the mapStore to show more info -->
             <button v-if="notMoreInfo && !isMapLayer" @click="dialogStore.showMoreInfo(content)">
@@ -164,11 +164,12 @@ function changeActiveChart(chartName) {
             padding: 4px 4px;
             border-radius: 5px;
             background-color: rgb(77, 77, 77);
-            opacity: 0.25;
+            opacity: 0.6;
             color: var(--color-complement-text);
             font-size: var(--font-s);
             text-align: center;
             transition: color 0.2s, opacity 0.2s;
+            user-select: none;
 
             &:hover {
                 opacity: 1;
@@ -210,10 +211,13 @@ function changeActiveChart(chartName) {
                 margin-left: 4px;
                 color: var(--color-highlight);
                 font-family: var(--font-icon);
+                user-select: none;
             }
 
             p {
+                max-height: 1.2rem;
                 color: var(--color-highlight);
+                user-select: none;
             }
         }
     }

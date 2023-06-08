@@ -56,7 +56,7 @@ function changeActiveChart(chartName) {
             <div>
                 <div>
                     <h3>{{ content.name }}</h3>
-                    <span v-if="!content.map_config">wrong_location</span>
+                    <span v-if="content.map_config">map</span>
                     <span v-if="content.history_data">insights</span>
                 </div>
                 <h4 v-if="checked">{{ `${content.source} | ${dataTime}` }}</h4>

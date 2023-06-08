@@ -29,7 +29,7 @@ const filterOptions = {
     source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局', '衛生局'],
     // type: ['交通', '產業', '土地', '安全'],
     // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
-    control: ['有地理資料', "有歷史軸"]
+    control: ['空間資料', "歷史資料"]
 }
 
 // Filters out components already in the dashboard / maplayer components
@@ -57,10 +57,10 @@ const outputList = computed(() => {
     if (filterSource.value.length > 0) {
         output = output.filter((item) => filterSource.value.includes(item.source))
     }
-    if (filterControl.value.includes('有地理資料')) {
+    if (filterControl.value.includes('空間資料')) {
         output = output.filter((item) => item.map_config !== null)
     }
-    if (filterControl.value.includes('有歷史軸')) {
+    if (filterControl.value.includes('歷史資料')) {
         output = output.filter((item) => item.history_data)
     }
 
@@ -80,8 +80,8 @@ function dataTime(time_from, time_to) {
 // Parses update frequency data into display format
 function updateFreq(update_freq, update_freq_unit) {
     const unitRef = {
-        minute: "分鐘",
-        hour: "小時",
+        minute: "分",
+        hour: "時",
         day: "天",
         week: "週",
         month: "月",
@@ -193,8 +193,8 @@ function clearFilters() {
                                 <div>
                                     <ComponentTag :icon="``"
                                         :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" />
-                                    <ComponentTag v-if="item.map_config === null" icon="wrong_location" text="沒有地圖" />
-                                    <ComponentTag v-if="item.history_data" icon="insights" text="有歷史軸" />
+                                    <ComponentTag v-if="item.map_config" icon="map" text="空間資料" />
+                                    <ComponentTag v-if="item.history_data" icon="insights" text="歷史資料" />
                                 </div>
                             </div>
                         </label>

@@ -29,7 +29,7 @@ const linkQuery = computed(() => {
             <img src="../assets/images/TUIC.svg" alt="tuic logo" />
             <div>
                 <h1>{{ VITE_APP_TITLE }}</h1>
-                <h2>Taipei City Dashboard</h2>
+                <h2>Taipei City Dashboard Open Source</h2>
             </div>
         </div>
         <div class="navbar-tabs hide-if-mobile">
@@ -64,6 +64,7 @@ const linkQuery = computed(() => {
     align-items: center;
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-component-background);
+    user-select: none;
 
     &-logo {
         display: flex;

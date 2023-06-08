@@ -46,16 +46,16 @@ onMounted(() => {
                 <span class="settingsbar-title-navigation">arrow_drop_down_circle</span>
             </button>
             <MobileNavigation />
-        </div>
-        <div class="settingsbar-settings hide-if-mobile" v-if="contentStore.currentDashboard.index !== 'map-layers'">
-            <button @click="dialogStore.showDialog('addComponent')"><span>add_chart</span>
-                新增組件
-            </button>
-            <AddComponent />
-            <button @click="dialogStore.showDialog('dashboardSettings')"><span>settings</span>
-                設定
-            </button>
-            <DashboardSettings />
+            <div class="settingsbar-settings hide-if-mobile" v-if="contentStore.currentDashboard.index !== 'map-layers'">
+                <button @click="dialogStore.showDialog('addComponent')"><span>add_chart</span>
+                    <p>新增組件</p>
+                </button>
+                <AddComponent />
+                <button @click="dialogStore.showDialog('dashboardSettings')"><span>settings</span>
+                    <p>設定</p>
+                </button>
+                <DashboardSettings />
+            </div>
         </div>
         <div class="settingsbar-navigation show-if-mobile">
             <p>圖表</p>
@@ -78,6 +78,7 @@ onMounted(() => {
     margin: 20px var(--font-m) 0;
     padding-bottom: 0.5rem;
     border-bottom: solid 1px var(--color-border);
+    user-select: none;
 
     &-title {
         display: flex;
@@ -88,23 +89,10 @@ onMounted(() => {
             font-size: calc(var(--font-m) * var(--font-to-icon));
         }
 
-        p {
-            margin-left: var(--font-s);
-            font-size: var(--font-l);
-            font-weight: 200;
-            line-height: var(--font-l);
-        }
-
-        h2,
-        h3 {
-            margin-left: var(--font-s);
+        h2 {
+            margin: 0 var(--font-s);
             font-weight: 400;
             font-size: var(--font-m);
-        }
-
-        h3,
-        p {
-            color: var(--color-complement-text)
         }
 
         &-navigation {
@@ -126,23 +114,32 @@ onMounted(() => {
         button {
             display: flex;
             align-items: center;
-            margin-left: 8px;
             border-radius: 5px;
-            font-size: var(--font-m);
+            margin-left: 4px;
 
-            &:first-child {
-                padding: 2px 4px;
-                background-color: var(--color-highlight);
+            p {
+                width: 0px;
+                max-height: 1.2rem;
+                font-size: 0.8rem;
+                text-align: left;
+                transition: width 0.2s, color 0.2s;
+                overflow-x: hidden;
             }
 
-            &:last-child {
-                padding: 1px 3px;
-                border: solid 1px var(--color-highlight);
+            &:hover p {
+                width: 55px;
                 color: var(--color-highlight);
+            }
 
-                span {
-                    color: var(--color-highlight)
-                }
+            span {
+                color: var(--color-complement-text);
+                transition: color 0.2s;
+
+
+            }
+
+            &:hover span {
+                color: var(--color-highlight)
             }
         }
     }
@@ -155,8 +152,10 @@ onMounted(() => {
             color: var(--color-complement-text)
         }
     }
-
 }
+
+
+
 
 .toggleswitch {
     margin: 0 4px;

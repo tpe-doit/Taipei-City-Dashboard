@@ -28,9 +28,10 @@ const filteredMapLayers = computed(() => {
             <div class="dialogcontainer-dialog">
                 <div class="mobilelayers">
                     <!-- Map Layers Dashboard -->
-                    <MobileLayerTab v-if="contentStore.currentDashboard.index === 'map-layers'"
-                        v-for="item in contentStore.currentDashboard.content" :content="item"
-                        :key="`map-layer-${item.index}`" />
+                    <div v-if="contentStore.currentDashboard.index === 'map-layers'">
+                        <MobileLayerTab v-for="item in contentStore.currentDashboard.content" :content="item"
+                            :key="`map-layer-${item.index}`" />
+                    </div>
                     <!-- other dashboards with components -->
                     <div v-else-if="filteredMapLayers.length !== 0">
                         <MobileLayerTab v-for="item in filteredMapLayers" :content="item" :key="item.index" />
@@ -89,6 +90,10 @@ const filteredMapLayers = computed(() => {
     max-height: 350px;
     padding: 0;
     overflow-y: scroll;
+
+    div {
+        display: grid;
+    }
 
     h2 {
         margin-bottom: 8px;

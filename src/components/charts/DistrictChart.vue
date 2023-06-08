@@ -30,7 +30,7 @@ const tooltipPosition = computed(() => {
 })
 
 function toggleActive(e) {
-    targetDistrict.value = e.targetDistrict.dataset.name
+    targetDistrict.value = e.target.dataset.name
 }
 function toggleActiveToNull() {
     targetDistrict.value = null
@@ -114,7 +114,7 @@ function updateMouseLocation(e) {
             </svg>
             <Teleport to="body">
                 <!-- The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css -->
-                <div v-if="targetDistrict" class="districtchart-district-info chart-tooltip" :style="tooltipPosition">
+                <div v-if="targetDistrict" class="districtchart-chart-info chart-tooltip" :style="tooltipPosition">
                     <h6>{{ targetDistrict }}</h6>
                     <span>{{ districtData[targetDistrict] }} {{ chart_config.unit }}</span>
                 </div>

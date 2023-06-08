@@ -47,6 +47,10 @@ const chartOptions = ref({
         },
     },
     xaxis: {
+        axisBorder: {
+            color: '#555',
+            height: '0.8',
+        },
         axisTicks: {
             show: false,
         },

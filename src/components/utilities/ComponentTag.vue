@@ -20,14 +20,17 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .componenttag {
-    height: 1.5rem;
+    min-height: 1.5rem;
+    max-height: 1.5rem;
     width: fit-content;
+    max-width: 88px;
     display: flex;
     align-items: center;
     margin-right: 4px;
     padding: 0 4px;
     border: solid 1px var(--color-complement-text);
     border-radius: 5px;
+    overflow-x: hidden;
     pointer-events: none;
     user-select: none;
 
@@ -38,7 +41,8 @@ const props = defineProps({
     }
 
     p {
-        color: var(--color-complement-text)
+        max-height: 1rem;
+        color: var(--color-complement-text);
     }
 
     &-fill {

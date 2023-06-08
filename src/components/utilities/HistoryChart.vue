@@ -50,6 +50,13 @@ const chartOptions = ref({
         },
     },
     xaxis: {
+        axisBorder: {
+            color: '#555',
+            height: '0.8',
+        },
+        axisTicks: {
+            color: '#555',
+        },
         crosshairs: {
             show: false,
         },

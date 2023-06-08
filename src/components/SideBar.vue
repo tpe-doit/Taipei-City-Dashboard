@@ -64,6 +64,7 @@ onMounted(() => {
     transition: min-width 0.2s ease-out;
     overflow-x: hidden;
     overflow-y: scroll;
+    user-select: none;
 
     h2 {
         color: var(--color-complement-text);

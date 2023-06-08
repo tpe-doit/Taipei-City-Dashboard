@@ -44,6 +44,9 @@ const chartOptions = ref({
         },
     },
     xaxis: {
+        axisBorder: {
+            show: false,
+        },
         axisTicks: {
             show: false,
         },

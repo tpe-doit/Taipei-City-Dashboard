@@ -14,7 +14,7 @@ const parseSeries = computed(() => {
     for (let i = 0; i < props.series[0].data.length; i++) {
         let total = props.series[0].data[i] + props.series[1].data[i]
         parsedSeries.push(Math.round(props.series[0].data[i] / total * 100))
-        parsedTooltip.push(`${props.series[0].data[i]} / ${props.series[1].data[i]}`)
+        parsedTooltip.push(`${props.series[0].data[i]} / ${total}`)
     }
     output.series = parsedSeries
     output.tooltipText = parsedTooltip
@@ -31,7 +31,12 @@ const chartOptions = ref({
     colors: props.chart_config.color,
     labels: props.chart_config.categories ? props.chart_config.categories : [],
     legend: {
-        show: false,
+        offsetY: -10,
+        onItemClick: {
+            toggleDataSeries: false
+        },
+        position: 'bottom',
+        show: parseSeries.value.series.length > 1 ? true : false,
     },
     plotOptions: {
         radialBar: {
