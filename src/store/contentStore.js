@@ -5,8 +5,9 @@
 The contentStore calls APIs to get content info and stores it.
 */
 
-import router from "../router";
+import router from "../router/index";
 import { defineStore } from "pinia";
+import { useDialogStore } from "./dialogStore";
 import axios from "axios";
 
 export const useContentStore = defineStore("content", {
@@ -17,6 +18,8 @@ export const useContentStore = defineStore("content", {
     components: {},
     // Picks out the components that are map layers and stores them here
     mapLayers: [],
+    // Picks out the components that are favorites and stores them here
+    favorites: [],
     // Stores information of the current dashboard
     currentDashboard: {
       // /mapview or /dashboard
@@ -65,6 +68,11 @@ export const useContentStore = defineStore("content", {
               },
             });
           }
+          // Pick out the list of favorite components
+          const favorites = this.dashboards.find(
+            (item) => item.index === "favorites"
+          );
+          this.favorites = [...favorites.components];
           // After getting dashboard info, call the setComponents (3.) method to get component info
           this.setComponents();
         })
@@ -99,6 +107,14 @@ export const useContentStore = defineStore("content", {
       const currentDashboardInfo = this.dashboards.find(
         (item) => item.index === this.currentDashboard.index
       );
+      if (!currentDashboardInfo) {
+        router.replace({
+          query: {
+            index: this.dashboards[0].index,
+          },
+        });
+        return;
+      }
       this.currentDashboard.name = currentDashboardInfo.name;
       this.currentDashboard.icon = currentDashboardInfo.icon;
       this.currentDashboard.content = currentDashboardInfo.components.map(
@@ -137,17 +153,140 @@ export const useContentStore = defineStore("content", {
       });
     },
 
-    /* Inactive Functions due to lack of backend */
+    /* Dummy Functions to demonstrate the logic of some functions that require a backend */
+    // Connect a backend to actually implement the following functions or remove altogether
 
-    // Call this function to create a new dashboard. Pass in the new dashboard name.
-    createNewDashboard(name) {},
+    // Call this function to create a new dashboard. Pass in the new dashboard name and icon.
+    createNewDashboard(name, icon) {
+      const dialogStore = useDialogStore();
+
+      this.dashboards.push({
+        name: name,
+        index: name,
+        components: [],
+        icon: icon,
+      });
+
+      router.replace({
+        query: {
+          index: name,
+        },
+      });
+
+      dialogStore.showNotification(
+        "success",
+        `成功加入${name}儀表板（因爲是展示版，僅暫存）`
+      );
+    },
     // Call this function to change the dashboard name. Pass in the new dashboard name.
-    changeCurrentDashboardName(name) {},
+    changeCurrentDashboardName(name) {
+      const dialogStore = useDialogStore();
+
+      this.currentDashboard.name = name;
+      this.dashboards.forEach((item) => {
+        if (item.index === this.currentDashboard.index) {
+          item.name = name;
+        }
+      });
+
+      dialogStore.showNotification(
+        "success",
+        `成功更改儀表板名稱至${name}（因爲是展示版，僅暫存）`
+      );
+    },
     // Call this function to delete the current active dashboard.
-    deleteCurrentDashboard() {},
+    deleteCurrentDashboard() {
+      const dialogStore = useDialogStore();
+
+      this.dashboards = this.dashboards.filter(
+        (item) => item.index !== this.currentDashboard.index
+      );
+      router.replace({
+        query: {
+          index: this.dashboards[0].index,
+        },
+      });
+
+      dialogStore.showNotification(
+        "success",
+        `成功刪除儀表板（因爲是展示版，僅暫存）`
+      );
+    },
     // Call this function to delete a component. Pass in related info.
-    deleteComponent(topic_id, component_id, name) {},
+    deleteComponent(component_id) {
+      const dialogStore = useDialogStore();
+
+      this.dashboards.forEach((item) => {
+        if (item.index === this.currentDashboard.index) {
+          item.components = item.components.filter(
+            (element) => +element !== component_id
+          );
+        }
+      });
+
+      this.setCurrentDashboardContent();
+
+      if (this.currentDashboard.index === "favorites") {
+        this.favorites = this.favorites.filter(
+          (item) => +item !== component_id
+        );
+        dialogStore.showNotification(
+          "success",
+          `成功從收藏移除（因爲是展示版，僅暫存）`
+        );
+      } else {
+        dialogStore.showNotification(
+          "success",
+          `成功刪除組件（因爲是展示版，僅暫存）`
+        );
+      }
+    },
     // Call this function to add components to the current dashboard. Pass in an array of component ids.
-    addComponents(component_ids) {},
+    addComponents(component_ids) {
+      const dialogStore = useDialogStore();
+
+      this.dashboards.forEach((item) => {
+        if (item.index === this.currentDashboard.index) {
+          item.components = item.components.concat(component_ids);
+        }
+      });
+      this.setCurrentDashboardContent();
+
+      dialogStore.showNotification(
+        "success",
+        `成功加入組件（因爲是展示版，僅暫存）`
+      );
+    },
+    favoriteComponent(component_id) {
+      const dialogStore = useDialogStore();
+
+      this.favorites.push(component_id.toString());
+      this.dashboards.forEach((item) => {
+        if (item.index === "favorites") {
+          item.components.push(component_id.toString());
+        }
+      });
+
+      dialogStore.showNotification(
+        "success",
+        `成功加入收藏（因爲是展示版，僅暫存）`
+      );
+    },
+    unfavoriteComponent(component_id) {
+      const dialogStore = useDialogStore();
+
+      this.favorites = this.favorites.filter((item) => +item !== component_id);
+      this.dashboards.forEach((item) => {
+        if (item.index === "favorites") {
+          item.components = item.components.filter(
+            (item) => +item !== component_id
+          );
+        }
+      });
+      dialogStore.showNotification(
+        "success",
+        `成功從收藏移除（因爲是展示版，僅暫存）`
+      );
+    },
   },
 });

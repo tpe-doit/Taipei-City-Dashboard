@@ -46,7 +46,8 @@ onMounted(() => {
                 <span class="settingsbar-title-navigation">arrow_drop_down_circle</span>
             </button>
             <MobileNavigation />
-            <div class="settingsbar-settings hide-if-mobile" v-if="contentStore.currentDashboard.index !== 'map-layers'">
+            <div class="settingsbar-settings hide-if-mobile"
+                v-if="contentStore.currentDashboard.index !== 'map-layers' && contentStore.currentDashboard.index !== 'favorites'">
                 <button @click="dialogStore.showDialog('addComponent')"><span>add_chart</span>
                     <p>新增組件</p>
                 </button>

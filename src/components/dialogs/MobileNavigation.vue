@@ -17,8 +17,12 @@ const contentStore = useContentStore()
                 <div class="dialogcontainer-background" @click="dialogStore.hideAllDialogs"></div>
                 <div class="dialogcontainer-dialog">
                     <div class="mobilenavigation">
+                        <h2>我的最愛</h2>
+                        <SideBarTab icon="favorite" title="收藏組件" :expanded="true" index="favorites"
+                            @click="dialogStore.hideAllDialogs" />
                         <h2>儀表板列表</h2>
-                        <SideBarTab v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers')"
+                        <SideBarTab
+                            v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers' && item.index !== 'favorites')"
                             :icon="item.icon" :title="item.name" :index="item.index" :key="item.index" :expanded="true"
                             @click="dialogStore.hideAllDialogs" />
                         <h2>基本地圖圖層</h2>

@@ -6,11 +6,13 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useDialogStore } from '../../store/dialogStore';
+import { useContentStore } from '../../store/contentStore';
 
 import ComponentTag from '../utilities/ComponentTag.vue';
 import { chartTypes } from '../../assets/configs/apexcharts/chartTypes';
 
 const dialogStore = useDialogStore()
+const contentStore = useContentStore()
 
 const props = defineProps({
     // The complete config (incl. chart data) of a dashboard component will be passed in
@@ -52,6 +54,13 @@ const updateFreq = computed(() => {
 function changeActiveChart(chartName) {
     activeChart.value = chartName
 }
+function toggleFavorite() {
+    if (contentStore.favorites.includes(`${props.content.id}`)) {
+        contentStore.unfavoriteComponent(props.content.id)
+    } else {
+        contentStore.favoriteComponent(props.content.id)
+    }
+}
 </script>
 
 <template>
@@ -62,11 +71,15 @@ function changeActiveChart(chartName) {
                 <h4>{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <div v-if="notMoreInfo">
+                <button v-if="!isMapLayer && contentStore.currentDashboard.index !== 'favorites'"
+                    :class="{ 'isfavorite': contentStore.favorites.includes(`${content.id}`) }"
+                    @click="toggleFavorite"><span>favorite</span></button>
                 <!-- Change @click to a report issue function to implement functionality -->
                 <button title="回報問題"
-                    @click="dialogStore.showNotification('fail', '目前尚未新增回報問題功能，無法回報問題')"><span>flag</span></button>
-                <!-- Change @click to a delete function to implement functionality -->
-                <button @click="dialogStore.showNotification('fail', '目前尚未新增刪除組件功能，無法刪除組件')"><span>delete</span></button>
+                    @click="dialogStore.showReportIssue(content.id, content.name)"><span>flag</span></button>
+                <!-- deleteComponent is currently a dummy function to demonstrate what adding components may look like
+                     Connect a backend to actually implement the function or remove altogether -->
+                <button v-if="!isMapLayer" @click="contentStore.deleteComponent(content.id)"><span>delete</span></button>
             </div>
         </div>
         <div class="componentcontainer-control" v-if="props.content.chart_config.types.length > 1">
@@ -145,6 +158,14 @@ function changeActiveChart(chartName) {
 
             &:hover {
                 color: white;
+            }
+        }
+
+        button.isfavorite span {
+            color: rgb(255, 65, 44);
+
+            &:hover {
+                color: rgb(160, 112, 106)
             }
         }
     }

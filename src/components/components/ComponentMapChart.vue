@@ -116,6 +116,8 @@ function changeActiveChart(chartName) {
                 margin-left: 8px;
                 color: var(--color-complement-text);
                 font-family: var(--font-icon);
+                user-select: none;
+                pointer-events: none;
             }
         }
     }

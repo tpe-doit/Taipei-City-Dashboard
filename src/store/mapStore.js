@@ -7,7 +7,7 @@ The mapStore controls the map and includes methods to modify it.
 !! PLEASE BE SURE TO REFERENCE THE MAPBOX DOCUMENTATION IF ANYTHING IS UNCLEAR !!
 https://docs.mapbox.com/mapbox-gl-js/guides/
 */
-import { createApp, defineComponent, nextTick } from "vue";
+import { createApp, defineComponent, nextTick, ref } from "vue";
 import { defineStore } from "pinia";
 import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -21,6 +21,7 @@ import {
   maplayerCommonPaint,
   maplayerCommonLayout,
 } from "../assets/configs/mapbox/mapConfig.js";
+import { savedLocations } from "../assets/configs/mapbox/savedLocations.js";
 import MapPopup from "../components/map/MapPopup.vue";
 
 export const useMapStore = defineStore("map", {
@@ -35,6 +36,8 @@ export const useMapStore = defineStore("map", {
     map: null,
     // Stores popup information
     popup: null,
+    // Stores saved locations
+    savedLocations: savedLocations,
   }),
   getters: {},
   actions: {
@@ -202,8 +205,18 @@ export const useMapStore = defineStore("map", {
       if (!clickFeatureDatas || clickFeatureDatas.length === 0) {
         return;
       }
-      // This variable assignment is necessary since the "this" instant cannot be accessed in "defineComponent"
-      const mapConfigs = this.mapConfigs;
+      // Parse clickFeatureDatas to get the first 3 unique layer datas, skip over already included layers
+      const mapConfigs = [];
+      const parsedPopupContent = [];
+      let previousParsedLayer = "";
+
+      for (let i = 0; i < clickFeatureDatas.length; i++) {
+        if (mapConfigs.length === 3) break;
+        if (previousParsedLayer === clickFeatureDatas[i].layer.id) continue;
+        previousParsedLayer = clickFeatureDatas[i].layer.id;
+        mapConfigs.push(this.mapConfigs[clickFeatureDatas[i].layer.id]);
+        parsedPopupContent.push(clickFeatureDatas[i]);
+      }
       // Create a new mapbox popup
       this.popup = new mapboxGl.Popup()
         .setLngLat(event.lngLat)
@@ -215,8 +228,9 @@ export const useMapStore = defineStore("map", {
         setup() {
           // Only show the data of the topmost layer
           return {
-            popupContent: clickFeatureDatas[0],
-            mapConfig: mapConfigs[clickFeatureDatas[0].layer.id],
+            popupContent: parsedPopupContent,
+            mapConfigs: mapConfigs,
+            activeTab: ref(0),
           };
         },
       });
@@ -236,15 +250,28 @@ export const useMapStore = defineStore("map", {
 
     /* Functions that change the viewing experience of the map */
 
+    // Add new saved location that users can quickly zoom to
+    addNewSavedLocation(name) {
+      const coordinates = this.map.getCenter();
+      const zoom = this.map.getZoom();
+      const pitch = this.map.getPitch();
+      const bearing = this.map.getBearing();
+      this.savedLocations.push([coordinates, zoom, pitch, bearing, name]);
+    },
     // Zoom to a location
-    easeToLocation(coordinates, zoom, duration, pitch, bearing) {
+    // [[lng, lat], zoom, pitch, bearing, savedLocationName]
+    easeToLocation(location_array) {
       this.map.easeTo({
-        center: coordinates,
-        zoom: zoom,
-        duration: duration,
-        pitch: pitch,
-        bearing: bearing,
+        center: location_array[0],
+        zoom: location_array[1],
+        duration: 4000,
+        pitch: location_array[2],
+        bearing: location_array[3],
       });
+    },
+    // Remove a saved location
+    removeSavedLocation(index) {
+      this.savedLocations.splice(index, 1);
     },
     // Force map to resize after sidebar collapses
     resizeMap() {

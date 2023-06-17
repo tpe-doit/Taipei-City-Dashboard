@@ -36,15 +36,18 @@ onMounted(() => {
 
 <template>
     <div :class="{ sidebar: true, 'sidebar-collapse': !isExpanded, 'hide-if-mobile': true }">
+        <h2>{{ isExpanded ? `我的最愛` : `最愛` }}</h2>
+        <SideBarTab icon="favorite" title="收藏組件" :expanded="isExpanded" index="favorites" />
         <div class="sidebar-sub-add">
             <h2>{{ isExpanded ? `儀表板列表` : `列表` }}</h2>
             <button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
             <AddDashboard />
         </div>
-        <SideBarTab v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers')" :icon="item.icon"
-            :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
+        <SideBarTab
+            v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers' && item.index !== 'favorites')"
+            :icon="item.icon" :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
         <h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>
-        <SideBarTab :icon="`public`" :title="`圖資資訊`" :expanded="isExpanded" index="map-layers" />
+        <SideBarTab icon="public" title="圖資資訊" :expanded="isExpanded" index="map-layers" />
         <button class="sidebar-collapse-button" @click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :
             "keyboard_double_arrow_right"
         }}</span></button>
@@ -77,9 +80,9 @@ onMounted(() => {
         &-add {
             width: 100%;
             display: flex;
-            justify-content: space-between;
 
             button {
+                margin-left: 0.5rem;
                 color: var(--color-highlight);
             }
         }

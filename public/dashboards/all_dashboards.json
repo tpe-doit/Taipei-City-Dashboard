@@ -37,10 +37,10 @@
       "icon": "handshake"
     },
     {
-      "name": "空",
-      "index": "empty",
-      "components": [],
-      "icon": "check_box_outline_blank"
+      "name": "收藏組件",
+      "index": "favorites",
+      "components": ["108", "22", "79", "60", "107"],
+      "icon": "favorite"
     },
     {
       "name": "圖資資訊",

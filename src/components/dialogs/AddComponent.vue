@@ -94,9 +94,9 @@ function updateFreq(update_freq, update_freq_unit) {
 }
 
 function handleSubmit() {
-    // Uncomment the following to restore add components function if new backend is connected
-    // contentStore.addComponents(componentsSelected.value)
-    dialogStore.showNotification('fail', '尚未新增新增儀表板功能，無法新增組件')
+    // addComponents is currently a dummy function to demonstrate what adding components may look like
+    // Connect a backend to actually implement the function or remove altogether
+    contentStore.addComponents(componentsSelected.value)
     handleClose();
 }
 function handleClose() {

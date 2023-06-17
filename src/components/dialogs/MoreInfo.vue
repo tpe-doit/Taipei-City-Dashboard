@@ -29,10 +29,11 @@ const dialogStore = useDialogStore()
                     <HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
                         :series="dialogStore.moreInfoContent.history_data" />
                 </div>
-                <!-- <div class="moreinfo-info-control">
-                    <button><span>flag</span>回報問題</button>
-                    <button><span>download</span>輸出</button>
-                </div> -->
+                <div class="moreinfo-info-control">
+                    <button
+                        @click="dialogStore.showReportIssue(dialogStore.moreInfoContent.id, dialogStore.moreInfoContent.name)"><span>flag</span>回報問題</button>
+                    <!-- <button><span>download</span>輸出</button> -->
+                </div>
             </div>
         </div>
     </DialogContainer>

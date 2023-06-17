@@ -6,6 +6,7 @@ import { useDialogStore } from '../store/dialogStore';
 
 import ComponentContainer from '../components/components/ComponentContainer.vue'
 import MoreInfo from '../components/dialogs/MoreInfo.vue';
+import ReportIssue from '../components/dialogs/ReportIssue.vue';
 
 const contentStore = useContentStore()
 const dialogStore = useDialogStore()
@@ -16,18 +17,22 @@ const dialogStore = useDialogStore()
     <div v-if="contentStore.currentDashboard.index === 'map-layers'" class="dashboard">
         <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :is-map-layer="true"
             :key="item.index" />
+        <ReportIssue />
     </div>
     <!-- other dashboards that have components -->
     <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="dashboard">
         <ComponentContainer v-for="item in contentStore.currentDashboard.content" :content="item" :key="item.index" />
         <MoreInfo />
+        <ReportIssue />
     </div>
     <!-- other dashboards that don't have components -->
     <div v-else class="dashboard dashboard-nodashboard">
         <div class="dashboard-nodashboard-content">
             <span>sentiment_very_dissatisfied</span>
             <h2>尚未加入組件</h2>
-            <button @click="dialogStore.showDialog('addComponent')">加入您的第一個組件</button>
+            <button @click="dialogStore.showDialog('addComponent')"
+                v-if="contentStore.currentDashboard.index !== 'favorites'">加入您的第一個組件</button>
+            <p v-else>點擊其他儀表板組件之愛心以新增至收藏組件</p>
         </div>
     </div>
 </template>

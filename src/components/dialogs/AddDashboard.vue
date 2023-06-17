@@ -3,14 +3,19 @@
 <script setup>
 import { ref } from 'vue';
 import { useDialogStore } from '../../store/dialogStore'
+import { useContentStore } from '../../store/contentStore'
 
 import DialogContainer from './DialogContainer.vue'
 import { validateStrInput } from '../../assets/utilityFunctions/validate'
 
 const dialogStore = useDialogStore()
+const contentStore = useContentStore()
 
 // Stores the inputted dashboard name
 const name = ref('')
+// Stores the inputted icon
+const icon = ref('')
+const icons = ['shopping_cart', 'info', 'language', 'event', 'paid', 'account_balance', 'work', 'gavel', 'build_circle', 'circle_notifications', 'accessible', 'health_and_safety', 'science', 'coronavirus', 'luggage', 'flash_on', 'call', 'place', 'park', 'directions_car', 'lunch_dining', 'traffic', 'attractions', 'star', 'help', 'warning', 'lightbulb', 'notifications_active']
 const errorMessage = ref(null)
 
 function handleSubmit() {
@@ -18,9 +23,9 @@ function handleSubmit() {
         errorMessage.value = validateStrInput(name.value)
         return
     }
-    // If a backend is connected, uncomment the following to implement the create dashboard function
-    // contentStore.createNewDashboard(name.value);
-    dialogStore.showNotification('fail', '尚未新增新增儀表板功能，無法新增儀表板')
+    // createNewDashboard is currently a dummy function to demonstrate what creating a new dashboard may look like
+    // Connect a backend to actually implement the function or remove altogether
+    contentStore.createNewDashboard(name.value, icon.value);
     handleClose();
 }
 function handleClose() {
@@ -36,14 +41,21 @@ function handleClose() {
             <h2>新增自訂儀表板</h2>
             <div class="adddashboard-input">
                 <p v-if="errorMessage">{{ errorMessage }}</p>
-                <label for="name">
+                <h3>
                     請輸入名稱
-                </label>
-                <input name="name" v-model="name" />
+                </h3>
+                <input type="text" v-model="name" />
+            </div>
+            <h3>請選擇圖示</h3>
+            <div class="adddashboard-icon">
+                <div v-for="item in icons">
+                    <input type="radio" v-model="icon" :id="item" :value="item" />
+                    <label :for="item">{{ item }}</label>
+                </div>
             </div>
             <div class="adddashboard-control">
                 <button class="adddashboard-control-cancel" @click="handleClose">取消</button>
-                <button class="adddashboard-control-confirm" @click="handleSubmit">確定</button>
+                <button v-if="name && icon" class="adddashboard-control-confirm" @click="handleSubmit">確定</button>
             </div>
         </div>
     </DialogContainer>
@@ -53,15 +65,16 @@ function handleClose() {
 .adddashboard {
     width: 300px;
 
+    h3 {
+        margin-bottom: 0.5rem;
+        font-size: var(--font-s);
+        font-weight: 400;
+    }
+
     &-input {
         display: flex;
         flex-direction: column;
-        margin: 1rem 0 1.5rem;
-
-        label {
-            margin-bottom: 0.5rem;
-            font-size: var(--font-s);
-        }
+        margin: 1rem 0 0.5rem;
 
         p {
             color: rgb(216, 52, 52);
@@ -77,6 +90,40 @@ function handleClose() {
             &:focus {
                 outline: none;
                 border: solid 1px var(--color-highlight)
+            }
+        }
+    }
+
+    &-icon {
+        display: grid;
+        grid-template-columns: 26px 26px 26px 26px 26px 26px 26px 26px 26px 26px;
+        column-gap: 4px;
+        row-gap: 4px;
+        margin-bottom: 0.5rem;
+
+        input {
+            display: none;
+            transition: border 0.2s;
+
+            &:checked+label {
+                border: solid 1px var(--color-highlight)
+            }
+        }
+
+        label {
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: solid 1px transparent;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-family: var(--font-icon);
+            cursor: pointer;
+
+            &:hover {
+                border: solid 1px var(--color-border)
             }
         }
     }

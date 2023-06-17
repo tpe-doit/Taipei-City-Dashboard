@@ -1,7 +1,7 @@
 <!-- Cleaned -->
 
 <script setup>
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
@@ -11,6 +11,13 @@ import MobileLayers from '../dialogs/MobileLayers.vue';
 const mapStore = useMapStore()
 const dialogStore = useDialogStore()
 const contentStore = useContentStore()
+
+const newSavedLocation = ref('')
+
+function handleSubmitNewLocation() {
+    mapStore.addNewSavedLocation(newSavedLocation.value)
+    newSavedLocation.value = ''
+}
 
 onMounted(() => {
     mapStore.initializeMapBox()
@@ -26,18 +33,15 @@ onMounted(() => {
             <MobileLayers :key="contentStore.currentDashboard.index" />
         </div>
         <div class="mapcontainer-controls hide-if-mobile">
-            <button @click="mapStore.easeToLocation([121.536609, 25.044808], 12.5, 4000, 0, 0)">返回預設</button>
-            <button
-                @click="mapStore.easeToLocation([121.56719891052944, 25.036536501522235], 15.5, 4000, 67.5, 45)">台北市政府</button>
-            <button
-                @click="mapStore.easeToLocation([121.55676686461811, 25.038745980403505], 14.5, 4000, 67, 35)">東區</button>
-            <button @click="mapStore.easeToLocation([121.52231934552663, 25.09131257257215], 15, 4000, 50, 30)">士林</button>
-            <button
-                @click="mapStore.easeToLocation([121.5228860863223, 25.068515771454074], 15.75, 4000, 60, 130)">花博公園</button>
-            <button
-                @click="mapStore.easeToLocation([121.51013649269608, 25.055775323336594], 16, 4000, 60, 50)">大稻埕</button>
-            <button
-                @click="mapStore.easeToLocation([121.55180953513364, 25.12898719167495], 13.25, 4000, 60, 0)">陽明山</button>
+            <button @click="mapStore.easeToLocation([[121.536609, 25.044808], 12.5, 0, 0])">返回預設</button>
+            <div v-for="(item, index) in mapStore.savedLocations" :key="`${item[4]}-${index}`">
+                <button @click="mapStore.easeToLocation(item)">{{ item[4] }}
+                </button>
+                <div class="mapcontainer-controls-delete" @click="mapStore.removeSavedLocation(index)"><span>delete</span>
+                </div>
+            </div>
+            <input v-if="mapStore.savedLocations.length < 10" type="text" placeholder="新增後按Enter" v-model="newSavedLocation"
+                maxlength="6" @focusout="newSavedLocation = ''" @keypress.enter="handleSubmitNewLocation" />
         </div>
     </div>
 </template>
@@ -51,6 +55,7 @@ onMounted(() => {
     &-controls {
         display: flex;
         margin-top: 8px;
+        overflow: visible;
 
         button {
             height: 1.5rem;
@@ -64,6 +69,62 @@ onMounted(() => {
             &:focus {
                 animation-name: colorfade;
                 animation-duration: 4s;
+            }
+        }
+
+        div {
+            position: relative;
+            overflow: visible;
+
+            div {
+                width: 1.2rem;
+                height: 1.2rem;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: -0.5rem;
+                right: -0.3rem;
+                border-radius: 50%;
+                opacity: 0;
+                background-color: var(--color-border);
+                box-shadow: 0 0 3px black;
+                transition: opacity 0.2s;
+                z-index: 10;
+                pointer-events: none;
+                cursor: pointer;
+
+                span {
+                    color: rgb(185, 185, 185);
+                    font-family: var(--font-icon);
+                    font-size: 0.8rem;
+                    transition: color 0.2s;
+                }
+
+                &:hover span {
+                    color: rgb(255, 65, 44);
+                }
+            }
+
+            &:hover div {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+
+        input {
+            height: calc(1.5rem - 4px);
+            width: 1.7rem;
+            margin-right: 6px;
+            padding: 2px 4px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(30, 30, 30);
+            color: var(--color-complement-text);
+            font-size: 0.82rem;
+
+            &:focus {
+                width: 5.4rem;
             }
         }
     }

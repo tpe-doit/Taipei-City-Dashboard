@@ -23,9 +23,9 @@ function handleSubmit() {
         errorMessage.value = validateStrInput(newName.value)
         return
     }
-    // Uncomment the following to restore the change dashboard name function if new backend is connected
-    // contentStore.changeCurrentDashboardName(newName.value);
-    dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
+    // changeCurrentDashboardName is currently a dummy function to demonstrate what changing a dashboard's name would look like
+    // Connect a backend to actually implement the function or remove altogether
+    contentStore.changeCurrentDashboardName(newName.value);
     handleClose()
 }
 function handleClose() {
@@ -35,9 +35,9 @@ function handleClose() {
     dialogStore.hideAllDialogs();
 }
 function handleDelete() {
-    // Uncomment the following to restore the delete dashboard function if new backend is connected
-    // contentStore.deleteCurrentDashboard();
-    dialogStore.showNotification('fail', '尚未新增儀表板設定功能，無法設定')
+    // deleteCurrentDashboard is currently a dummy function to demonstrate what deleting a dashboard
+    // Connect a backend to actually implement the function or remove altogether
+    contentStore.deleteCurrentDashboard();
     handleClose()
 }
 </script>
