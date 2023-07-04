@@ -45,8 +45,10 @@ function handleToggle() {
     }
 }
 // Toggles between chart types defined in the dashboard component
+// Also clear any map filters applied
 function changeActiveChart(chartName) {
     activeChart.value = chartName
+    mapStore.clearLayerFilter(`${props.content.map_config[0].index}-${props.content.map_config[0].type}`)
 }
 </script>
 
@@ -56,6 +58,7 @@ function changeActiveChart(chartName) {
             <div>
                 <div>
                     <h3>{{ content.name }}</h3>
+                    <span v-if="content.chart_config.map_filter && content.map_config">tune</span>
                     <span v-if="content.map_config">map</span>
                     <span v-if="content.history_data">insights</span>
                 </div>
@@ -74,8 +77,11 @@ function changeActiveChart(chartName) {
         <div class="componentmapchart-chart" v-if="checked && content.chart_data">
             <!-- The components referenced here can be edited in /components/charts -->
             <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
-                :chart_config="content.chart_config" :series="content.chart_data">
+                :chart_config="content.chart_config" :series="content.chart_data" :map_config="content.map_config">
             </component>
+        </div>
+        <div v-else-if="checked" class="componentmapchart-loading">
+            <div></div>
         </div>
     </div>
 </template>
@@ -151,13 +157,29 @@ function changeActiveChart(chartName) {
         }
     }
 
-    &-chart {
+    &-chart,
+    &-loading {
         height: 80%;
         position: relative;
         overflow-y: scroll;
 
         p {
             color: var(--color-border)
+        }
+    }
+
+    &-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: solid 4px var(--color-border);
+            border-top: solid 4px var(--color-highlight);
+            animation: spin 0.7s ease-in-out infinite;
         }
     }
 }

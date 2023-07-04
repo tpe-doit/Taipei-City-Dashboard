@@ -67,7 +67,9 @@ function toggleFavorite() {
     <div :class="{ 'componentcontainer': true, 'moreinfostyle': !notMoreInfo, 'maplayer': isMapLayer }">
         <div class="componentcontainer-header">
             <div>
-                <h3>{{ content.name }}</h3>
+                <h3>{{ content.name }}
+                    <ComponentTag icon="" :text="updateFreq" mode="small" />
+                </h3>
                 <h4>{{ `${content.source} | ${dataTime}` }}</h4>
             </div>
             <div v-if="notMoreInfo">
@@ -89,12 +91,15 @@ function toggleFavorite() {
         <div :class="{ 'componentcontainer-chart': true, 'maplayer-chart': isMapLayer }" v-if="content.chart_data">
             <!-- The components referenced here can be edited in /components/charts -->
             <component v-for="item in content.chart_config.types" :activeChart="activeChart" :is="item"
-                :chart_config="content.chart_config" :series="content.chart_data">
+                :chart_config="content.chart_config" :series="content.chart_data" :map_config="content.map_config">
             </component>
+        </div>
+        <div v-else :class="{ 'componentcontainer-loading': true, 'maplayer-loading': isMapLayer }">
+            <div></div>
         </div>
         <div class="componentcontainer-footer">
             <div>
-                <ComponentTag icon="" :text="updateFreq" />
+                <ComponentTag v-if="content.chart_config.map_filter && content.map_config" icon="tune" text="篩選地圖" />
                 <ComponentTag v-if="content.map_config" icon="map" text="空間資料" />
                 <ComponentTag v-if="content.history_data" icon="insights" text="歷史資料" />
             </div>
@@ -141,6 +146,8 @@ function toggleFavorite() {
         justify-content: space-between;
 
         h3 {
+            display: flex;
+            align-items: center;
             font-size: var(--font-m);
         }
 
@@ -199,7 +206,8 @@ function toggleFavorite() {
         }
     }
 
-    &-chart {
+    &-chart,
+    &-loading {
         height: 75%;
         position: relative;
         padding-top: 5%;
@@ -207,6 +215,21 @@ function toggleFavorite() {
 
         p {
             color: var(--color-border);
+        }
+    }
+
+    &-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: solid 4px var(--color-border);
+            border-top: solid 4px var(--color-highlight);
+            animation: spin 0.7s ease-in-out infinite;
         }
     }
 
@@ -241,6 +264,12 @@ function toggleFavorite() {
                 user-select: none;
             }
         }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -284,7 +313,8 @@ function toggleFavorite() {
         max-height: 275px;
     }
 
-    &-chart {
+    &-chart,
+    &-loading {
         height: 60%;
     }
 }

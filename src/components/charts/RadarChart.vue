@@ -1,7 +1,7 @@
 <!-- Cleaned -->
 
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps(['chart_config', 'activeChart', 'series'])
 
@@ -61,7 +61,22 @@ const chartOptions = ref({
         labels: {
             formatter: (value) => { return '' },
         },
-    },
+        // To fix a bug when there is more than 1 series
+        // Orginal behavior: max will default to the max sum of each series
+        max: function (max) {
+            if (!props.chart_config.categories) {
+                return max
+            }
+            let adjustedMax = 0
+            props.series.forEach((element) => {
+                const maxOfSeries = Math.max.apply(null, element.data)
+                if (maxOfSeries > adjustedMax) {
+                    adjustedMax = maxOfSeries
+                }
+            })
+            return adjustedMax * 1.1
+        },
+    }
 })
 </script>
 

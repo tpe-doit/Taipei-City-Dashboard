@@ -1,13 +1,33 @@
 <!-- Cleaned -->
 
 <script setup>
-const props = defineProps(['chart_config', 'series'])
+import { ref } from 'vue';
+import { useMapStore } from '../../store/mapStore';
+
+const props = defineProps(['chart_config', 'series', 'map_config'])
+const mapStore = useMapStore()
+
+const selectedIndex = ref(null)
+
+function handleDataSelection(index) {
+    if (!props.chart_config.map_filter) {
+        return
+    }
+    if (index !== selectedIndex.value) {
+        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index])
+        selectedIndex.value = index
+    } else {
+        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+        selectedIndex.value = null
+    }
+}
 </script>
 
 <template>
     <div class="maplegend">
         <div class="maplegend-legend">
-            <div v-for="item in series" :key="item.name" class="maplegend-legend-item">
+            <button v-for="(item, index) in series" :key="item.name" @click="handleDataSelection(index)"
+                :class="{ 'maplegend-legend-item': true, 'maplegend-selected': selectedIndex === index }">
                 <!-- Show different icons for different map types -->
                 <div v-if="item.type !== 'symbol'"
                     :style="{ backgroundColor: `${item.color}`, height: item.type === 'line' ? '0.4rem' : '1rem', borderRadius: item.type === 'circle' ? '50%' : '2px' }">
@@ -21,7 +41,7 @@ const props = defineProps(['chart_config', 'series'])
                 <div v-else>
                     <h6>{{ item.name }}</h6>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
 </template>
@@ -50,7 +70,7 @@ const props = defineProps(['chart_config', 'series'])
             padding: 5px 10px 5px 5px;
             border: 1px solid var(--color-border);
             border-radius: 5px;
-            box-shadow: 0px 0px 5px black;
+            transition: box-shadow 0.2s;
 
             div:first-child,
             img {
@@ -61,13 +81,23 @@ const props = defineProps(['chart_config', 'series'])
             h5 {
                 color: var(--color-complement-text);
                 font-size: 0.75rem;
+                text-align: left;
             }
 
             h6 {
                 font-size: 1rem;
                 font-weight: 400;
+                text-align: left;
+            }
+
+            &:hover {
+                box-shadow: 0px 0px 5px black;
             }
         }
+    }
+
+    &-selected {
+        box-shadow: 0px 0px 5px black;
     }
 }
 </style>

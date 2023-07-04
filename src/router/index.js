@@ -38,15 +38,18 @@ router.beforeEach((to) => {
   const contentStore = useContentStore();
   const mapStore = useMapStore();
   // Pass in route info to contentStore if the path starts with /dashboard or /mapview
-  if (to.path === "/dashboard" || to.path === "/mapview") {
+  if (
+    to.path.toLowerCase() === "/dashboard" ||
+    to.path.toLowerCase() === "/mapview"
+  ) {
     contentStore.setRouteParams(to.path, to.query.index);
   }
   // Clear the entire mapStore if the path doesn't start with /mapview
-  if (to.path !== "/mapview") {
+  if (to.path.toLowerCase() !== "/mapview") {
     mapStore.clearEntireMap();
   }
   // Clear only map layers if the path starts with /mapview
-  else if (to.path === "/mapview") {
+  else if (to.path.toLowerCase() === "/mapview") {
     mapStore.clearOnlyLayers();
   }
 });

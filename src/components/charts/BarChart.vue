@@ -2,8 +2,10 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useMapStore } from '../../store/mapStore';
 
-const props = defineProps(['chart_config', 'activeChart', 'series'])
+const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config'])
+const mapStore = useMapStore()
 
 const chartOptions = ref({
     chart: {
@@ -71,10 +73,26 @@ const chartOptions = ref({
 const chartHeight = computed(() => {
     return `${40 + props.series[0].data.length * 24}`
 })
+
+const selectedIndex = ref(null)
+
+function handleDataSelection(e, chartContext, config) {
+    if (!props.chart_config.map_filter) {
+        return
+    }
+    if (config.dataPointIndex !== selectedIndex.value) {
+        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.dataPointIndex])
+        selectedIndex.value = config.dataPointIndex
+    } else {
+        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+        selectedIndex.value = null
+    }
+}
 </script>
 
 <template>
     <div v-if="activeChart === 'BarChart'">
-        <apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"></apexchart>
+        <apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"
+            @dataPointSelection="handleDataSelection"></apexchart>
     </div>
 </template>

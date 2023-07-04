@@ -14,7 +14,8 @@
           "#C2d1d0"
         ],
         "types": ["BarChart", "DonutChart"],
-        "unit": "件"
+        "unit": "件",
+        "source": "https://projectonepremium.com"
       },
       "history_data": true,
       "source": "1999話務系統",
@@ -23,9 +24,9 @@
       "update_freq": "1",
       "update_freq_unit": "day",
       "name": "1999話務案件局處",
-      "short_desc": "",
-      "long_desc": "",
-      "use_case": "",
+      "short_desc": "本組件統計近14日台北市1999市民當家熱線收到的案件之局處分佈。",
+      "long_desc": "本組件統計近14日台北市1999市民當家熱線收到的案件之局處分佈，並且提供一年內各月案件總數的歷史統計。",
+      "use_case": "透過本組件可以概覽台北市近期哪些領域之案件較多，並藉由歷史軸比較一年內各月份案件數是否有明顯增減，如發現異常值便能進行更深入探討。",
       "links": "",
       "tags": []
     },
@@ -82,11 +83,11 @@
           "title": "交通事故統計"
         }
       ],
-      "map_filter": { "key": "", "valueFrom": "" },
       "chart_config": {
         "color": ["#CA0020", "#ff996d", "#f8c3ac"],
         "types": ["DonutChart", "BarChart"],
-        "unit": "件"
+        "unit": "件",
+        "map_filter": ["type", ["1", "2", "3"]]
       },
       "history_data": true,
       "source": "警察局",
@@ -179,7 +180,7 @@
           "#7fffff",
           "#00ff00",
           "#bf7fff",
-          "#e6e6e6",
+          "#ff003f",
           "#e6e6e6",
           "#007fff",
           "#7fff00",
@@ -198,7 +199,35 @@
           "#00ff00"
         ],
         "types": ["TreemapChart", "BarChart"],
-        "unit": "km²"
+        "unit": "km²",
+        "map_filter": [
+          "landuse group_metadata_用地分類",
+          [
+            "保護區",
+            "其他",
+            "住宅用地類",
+            "水域",
+            "綠地",
+            "文教用地類",
+            "商業用地類",
+            "交通用地類",
+            "機關用地類",
+            "農業區",
+            "工業區類",
+            "設施類",
+            "風景區",
+            "動物園用地",
+            "專用區類",
+            "醫療用地類",
+            "娛樂區",
+            "市場用地類",
+            "遊樂區",
+            "體育場",
+            "中正紀念堂",
+            "保存區",
+            "兒童遊樂場"
+          ]
+        ]
       },
       "history_data": false,
       "source": "都發局",
@@ -345,18 +374,18 @@
         "types": ["ColumnChart", "RadarChart", "BarPercentChart"],
         "unit": "人",
         "categories": [
-          "士林區",
-          "大安區",
-          "文山區",
-          "松山區",
-          "南港區",
-          "大同區",
-          "中山區",
-          "內湖區",
           "北投區",
+          "士林區",
+          "內湖區",
+          "南港區",
+          "松山區",
+          "信義區",
+          "中山區",
+          "大同區",
           "中正區",
           "萬華區",
-          "信義區"
+          "大安區",
+          "文山區"
         ]
       },
       "name": "社福人口",
@@ -371,6 +400,20 @@
       "use_case": "",
       "links": "",
       "tags": []
+    },
+    "92": {
+      "id": 92,
+      "index": "4d52e212",
+      "chart_config": {
+        "color": ["#2e999b", "#80e3d4", "#1f9b85", "#a5ece0"],
+        "types": ["RadarChart"],
+        "unit": "人",
+        "categories": ["低收", "中低收", "身障補助", "身障"]
+      },
+      "name": "社福人口",
+      "history_data": false,
+      "source": "社會局",
+      "time_from": "2023-05-02T08:00:18+08:00"
     },
     "110": {
       "id": 110,
@@ -438,7 +481,7 @@
               14,
               2,
               16,
-              ["interpolate", ["linear"], ["get", "diameter"], 0, 2, 2, 8]
+              ["interpolate", ["linear"], ["get", "diameter"], 0, 2, 2, 4]
             ]
           },
           "property": [
@@ -457,8 +500,25 @@
       ],
       "chart_config": {
         "color": ["#33C552"],
-        "types": ["DistrictChart", "ColumnChart", "RadarChart"],
-        "unit": "棵"
+        "types": ["DistrictChart", "ColumnChart"],
+        "unit": "棵",
+        "map_filter": [
+          "dist",
+          [
+            "北投區",
+            "士林區",
+            "內湖區",
+            "南港區",
+            "松山區",
+            "信義區",
+            "中山區",
+            "大同區",
+            "中正區",
+            "萬華區",
+            "大安區",
+            "文山區"
+          ]
+        ]
       },
       "history_data": false,
       "source": "工務局",
@@ -590,6 +650,7 @@
             { "key": "address", "name": "地址" }
           ],
           "type": "circle",
+          "size": "big",
           "title": "社福機構"
         }
       ],
@@ -605,7 +666,19 @@
           "#2F8AB1"
         ],
         "types": ["BarChart", "DonutChart"],
-        "unit": "間"
+        "unit": "間",
+        "map_filter": [
+          "main_type",
+          [
+            "銀髮族服務",
+            "身障機構",
+            "兒童與少年服務",
+            "社區服務、NPO",
+            "婦女服務",
+            "貧困危機家庭服務",
+            "保護性服務"
+          ]
+        ]
       },
       "name": "社福機構",
       "source": "社會局",
@@ -651,7 +724,8 @@
       "chart_config": {
         "color": ["#D2EE90", "#90EE90", "#4caf50", "#CAF245"],
         "types": ["TreemapChart", "BarChart"],
-        "unit": "km²"
+        "unit": "km²",
+        "map_filter": ["type", ["公園", "河濱公園", "公園生態化", "校園綠化"]]
       },
       "name": "公園綠地",
       "source": "工務局",
@@ -697,7 +771,11 @@
       "chart_config": {
         "types": ["BarChart", "TreemapChart"],
         "color": ["#08B36C", "#2B805C", "#64A2A2", "#1C8585"],
-        "unit": "km²"
+        "unit": "km²",
+        "map_filter": [
+          "type",
+          ["都市計畫保護區", "都市計畫農業區", "野雁保護區", "自然保留區"]
+        ]
       },
       "name": "都市綠地",
       "source": "工務局",
@@ -722,6 +800,7 @@
           },
           "property": [
             { "key": "name", "name": "地點" },
+            { "key": "dist", "name": "行政區" },
             { "key": "addr", "name": "地址" }
           ],
           "type": "circle",
@@ -729,9 +808,26 @@
         }
       ],
       "chart_config": {
-        "types": ["RadarChart", "DistrictChart", "ColumnChart"],
+        "types": ["DistrictChart", "ColumnChart"],
         "color": ["#A25FAD"],
-        "unit": "台"
+        "unit": "台",
+        "map_filter": [
+          "dist",
+          [
+            "北投區",
+            "士林區",
+            "內湖區",
+            "南港區",
+            "松山區",
+            "信義區",
+            "中山區",
+            "大同區",
+            "中正區",
+            "萬華區",
+            "大安區",
+            "文山區"
+          ]
+        ]
       },
       "name": "AED分布",
       "source": "衛生局",
@@ -776,9 +872,26 @@
         }
       ],
       "chart_config": {
-        "types": ["DistrictChart", "RadarChart", "ColumnChart"],
+        "types": ["DistrictChart", "ColumnChart"],
         "color": ["#FFE677"],
-        "unit": "盞"
+        "unit": "盞",
+        "map_filter": [
+          "dist",
+          [
+            "北投區",
+            "士林區",
+            "內湖區",
+            "南港區",
+            "松山區",
+            "信義區",
+            "中山區",
+            "大同區",
+            "中正區",
+            "萬華區",
+            "大安區",
+            "文山區"
+          ]
+        ]
       },
       "name": "路燈分佈",
       "source": "工務局公燈處",
@@ -829,7 +942,8 @@
       "chart_config": {
         "types": ["TreemapChart", "BarChart"],
         "color": ["#13b3a6", "#99E1E3", "#38BDC0", "#bdedee"],
-        "unit": "m²"
+        "unit": "m²",
+        "map_filter": ["type", ["小田園", "快樂農園", "綠屋頂", "市民農園"]]
       },
       "name": "田園城市",
       "source": "工務局",
@@ -852,7 +966,7 @@
         "types": ["MetroChart"],
         "unit": null
       },
-      "name": "板南線車廂擁擠程度",
+      "name": "板南線擁擠程度",
       "source": "臺北捷運公司",
       "time_from": "2023-05-31T00:00:00+08:00",
       "time_to": null,
@@ -873,7 +987,7 @@
         "types": ["MetroChart"],
         "unit": null
       },
-      "name": "淡水線車廂擁擠程度",
+      "name": "淡水線擁擠程度",
       "source": "臺北捷運公司",
       "time_from": "2023-05-31T00:00:00+08:00",
       "time_to": null,
@@ -985,7 +1099,29 @@
       "chart_config": {
         "types": ["BarChart", "DonutChart"],
         "color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
-        "unit": "件"
+        "unit": "件",
+        "map_filter": [
+          "案件類型",
+          [
+            "市區道路坑洞處理",
+            "路燈故障或設施損壞",
+            "交通標誌及設施物損壞(含汙損)、傾斜",
+            "道路側溝溝蓋(含周邊)損壞遺失",
+            "場所與設施噪音舉發",
+            "路樹處理",
+            "交通號誌異常",
+            "用戶無水、漏水報修",
+            "人孔蓋(含周邊)破損、遺失處理",
+            "鄰里無主垃圾清運",
+            "道路散落物或油漬處理",
+            "交通號誌電纜線垂落及設施損壞",
+            "污染舉發",
+            "道路側溝內溝牆(底)破損",
+            "雨水下水道側溝清淤",
+            "大型廢棄物清運聯繫",
+            "橋梁、隧道、車(人)行地下道及涵洞積淹水"
+          ]
+        ]
       },
       "name": "派工案件",
       "source": "派工系統",
@@ -1033,7 +1169,8 @@
         "types": ["GuageChart", "BarPercentChart"],
         "color": ["#ff9800"],
         "unit": "站",
-        "categories": ["啟動抽水站"]
+        "categories": ["啟動抽水站"],
+        "map_filter": ["all_pumb_lights", ["+", "-"]]
       },
       "name": "抽水站狀態",
       "source": "工務局水利處",
@@ -1316,6 +1453,7 @@
         }
       ],
       "history_data": true,
+      "history_data_color": ["#EC4037", "#BBB"],
       "chart_config": {
         "color": ["#4dd97a", "#ff8c1a", "#EC4037"],
         "types": ["DonutChart", "BarChart"],
@@ -1346,7 +1484,7 @@
             { "key": "PlateNumb", "name": "車牌號碼" },
             { "key": "GPSTime", "name": "GPS更新時間" }
           ],
-          "paint": { "line-color": "#d59f0b" },
+          "paint": { "line-color": "#d59f0b", "line-opacity": 0.5 },
           "title": "運行中公車",
           "type": "line"
         }
@@ -1507,7 +1645,7 @@
               "#2d7b7d",
               "臺北市有",
               "#38b19f",
-              "公私共有或其他",
+              "公私共有",
               "#07a0d4",
               "臺北市及國有共有",
               "#27d5d7",
@@ -1537,7 +1675,7 @@
               "#2d7b7d",
               "臺北市有",
               "#38b19f",
-              "公私共有或其他",
+              "公私共有",
               "#07a0d4",
               "臺北市及國有共有",
               "#27d5d7",
@@ -1567,7 +1705,7 @@
               "#2d7b7d",
               "臺北市有",
               "#38b19f",
-              "公私共有或其他",
+              "公私共有",
               "#07a0d4",
               "臺北市及國有共有",
               "#27d5d7",
@@ -1659,21 +1797,21 @@
 
       "chart_config": {
         "color": ["#9c7a3e", "#b7e28e", "#7febd0", "#8ce8ff"],
-        "types": ["BarPercentChart", "ColumnChart", "RadarChart"],
+        "types": ["BarPercentChart", "ColumnChart"],
         "unit": "棟",
         "categories": [
           "北投區",
-          "南港區",
-          "大同區",
-          "文山區",
           "士林區",
-          "大安區",
+          "內湖區",
+          "南港區",
           "松山區",
-          "萬華區",
-          "中山區",
-          "中正區",
           "信義區",
-          "內湖區"
+          "中山區",
+          "大同區",
+          "中正區",
+          "萬華區",
+          "大安區",
+          "文山區"
         ]
       },
       "name": "全市屋齡分布",
@@ -1704,7 +1842,7 @@
               "#ddb11f",
               "規劃中",
               "#e3863a",
-              "招標中及待上鋼",
+              "招標中及待上網",
               "#c2651c",
               "#a65818"
             ]
@@ -1724,7 +1862,17 @@
       "chart_config": {
         "color": ["#fff495", "#ddb11f", "#e3863a", "#c2651c", "#a65818"],
         "types": ["DonutChart", "BarChart"],
-        "unit": "棟"
+        "unit": "棟",
+        "map_filter": [
+          "progress",
+          [
+            "已完工",
+            "施工中及待開工",
+            "規劃中",
+            "招標中及待上網",
+            "都更聯開分回"
+          ]
+        ]
       },
       "name": "社會住宅建設進度",
       "source": "都發局",
@@ -1749,7 +1897,8 @@
         {
           "index": "building_unused_land",
           "paint": {
-            "fill-color": "#d16ae2"
+            "fill-color": "#d16ae2",
+            "fill-opacity": 0.7
           },
           "property": [
             { "key": "10712土地_1_土地權屬情形", "name": "土地權屬情形" },
@@ -1845,7 +1994,8 @@
       "name": "醫療院所分布",
       "chart_config": {
         "types": ["MapLegend"],
-        "unit": "間"
+        "unit": "間",
+        "map_filter": ["type", ["醫院", "診所"]]
       },
       "chart_data": [
         {
@@ -2039,7 +2189,8 @@
         }
       ],
       "chart_config": {
-        "types": ["MapLegend"]
+        "types": ["MapLegend"],
+        "map_filter": ["type", ["市區", "河濱"]]
       },
       "chart_data": [
         {
@@ -2195,9 +2346,9 @@
           "title": "土壤液化潛勢"
         }
       ],
-
       "chart_config": {
-        "types": ["MapLegend"]
+        "types": ["MapLegend"],
+        "map_filter": ["class", ["高", "中", "低"]]
       },
       "chart_data": [
         { "color": "#c87a74", "type": "fill", "name": "高潛勢" },

@@ -3,7 +3,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const props = defineProps(['chart_config', 'series'])
+const props = defineProps(['chart_config', 'series', 'history_data_color'])
 
 const chartOptions = ref({
     chart: {
@@ -17,7 +17,7 @@ const chartOptions = ref({
             }
         }
     },
-    colors: props.chart_config.color,
+    colors: props.history_data_color ? props.history_data_color : props.chart_config.color,
     dataLabels: {
         enabled: false,
     },
@@ -35,7 +35,7 @@ const chartOptions = ref({
         strokeWidth: 0,
     },
     stroke: {
-        colors: props.chart_config.color,
+        colors: props.history_data_color ? props.history_data_color : props.chart_config.color,
         curve: 'smooth',
         show: true,
         width: 2,

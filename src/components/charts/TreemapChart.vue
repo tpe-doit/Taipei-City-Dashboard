@@ -2,8 +2,10 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useMapStore } from '../../store/mapStore';
 
-const props = defineProps(['chart_config', 'activeChart', 'series'])
+const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config'])
+const mapStore = useMapStore()
 
 const chartOptions = ref({
     chart: {
@@ -63,6 +65,21 @@ const sum = computed(() => {
     props.series[0].data.forEach(item => sum += item.y)
     return Math.round(sum * 100) / 100
 })
+
+const selectedIndex = ref(null)
+
+function handleDataSelection(e, chartContext, config) {
+    if (!props.chart_config.map_filter) {
+        return
+    }
+    if (config.dataPointIndex !== selectedIndex.value) {
+        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.dataPointIndex])
+        selectedIndex.value = config.dataPointIndex
+    } else {
+        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+        selectedIndex.value = null
+    }
+}
 </script>
 
 <template>
@@ -71,7 +88,8 @@ const sum = computed(() => {
             <h5>總合</h5>
             <h6>{{ sum }} {{ chart_config.unit }}</h6>
         </div>
-        <apexchart width="100%" type="treemap" :options="chartOptions" :series="series"></apexchart>
+        <apexchart width="100%" type="treemap" :options="chartOptions" :series="series"
+            @dataPointSelection="handleDataSelection"></apexchart>
     </div>
 </template>
 

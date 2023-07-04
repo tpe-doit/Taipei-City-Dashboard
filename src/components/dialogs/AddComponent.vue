@@ -29,7 +29,7 @@ const filterOptions = {
     source: ['交通局', '警察局', '都發局', '消防局', '社會局', '工務局', '衛生局'],
     // type: ['交通', '產業', '土地', '安全'],
     // frequency: ['無定期更新', '每半年', '每個月', '每兩週', '每一週', '每一天', '每一小時'],
-    control: ['空間資料', "歷史資料"]
+    control: ['篩選地圖', '空間資料', "歷史資料"]
 }
 
 // Filters out components already in the dashboard / maplayer components
@@ -56,6 +56,9 @@ const outputList = computed(() => {
     }
     if (filterSource.value.length > 0) {
         output = output.filter((item) => filterSource.value.includes(item.source))
+    }
+    if (filterControl.value.includes('篩選地圖')) {
+        output = output.filter((item) => item.chart_config.map_filter)
     }
     if (filterControl.value.includes('空間資料')) {
         output = output.filter((item) => item.map_config !== null)
@@ -178,7 +181,10 @@ function clearFilters() {
                             </div>
                             <div>
                                 <div>
-                                    <h2>{{ item.name }}</h2>
+                                    <h2>{{ item.name }}
+                                        <ComponentTag icon=""
+                                            :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" mode="small" />
+                                    </h2>
                                     <h3>{{ `${item.source} | ${dataTime(item.time_from, item.time_to)}` }}</h3>
                                 </div>
                                 <div>
@@ -191,8 +197,8 @@ function clearFilters() {
                                     <ComponentTag v-for="element in item.tags" icon="" :text="element" mode="fill" />
                                 </div>
                                 <div>
-                                    <ComponentTag :icon="``"
-                                        :text="`${updateFreq(item.update_freq, item.update_freq_unit)}`" />
+                                    <ComponentTag v-if="item.chart_config.map_filter && item.map_config" icon="tune"
+                                        text="篩選地圖" />
                                     <ComponentTag v-if="item.map_config" icon="map" text="空間資料" />
                                     <ComponentTag v-if="item.history_data" icon="insights" text="歷史資料" />
                                 </div>
@@ -335,6 +341,12 @@ function clearFilters() {
             transition: border-color 0.2s,
                 border-width 0.2s;
             cursor: pointer;
+
+            h2 {
+                display: flex;
+                align-items: center;
+                font-size: var(--font-m);
+            }
 
             h3 {
                 color: var(--color-complement-text);

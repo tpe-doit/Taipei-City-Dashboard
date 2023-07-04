@@ -70,14 +70,14 @@ export const useMapStore = defineStore("map", {
         .then((data) => {
           this.map
             .addSource("taipei_town", { type: "geojson", data: data })
-            .addLayer(TaipeiTown("dark"));
+            .addLayer(TaipeiTown);
         });
       fetch(`/mapData/taipei_village.geojson`)
         .then((response) => response.json())
         .then((data) => {
           this.map
             .addSource("taipei_village", { type: "geojson", data: data })
-            .addLayer(TaipeiVillage("dark"));
+            .addLayer(TaipeiVillage);
         });
       this.addSymbolSources();
     },
@@ -185,6 +185,7 @@ export const useMapStore = defineStore("map", {
       map_config.forEach((element) => {
         let mapLayerId = `${element.index}-${element.type}`;
         if (this.map.getLayer(mapLayerId)) {
+          this.map.setFilter(mapLayerId, null);
           this.map.setLayoutProperty(mapLayerId, "visibility", "none");
         }
         this.currentVisibleLayers = this.currentVisibleLayers.filter(
@@ -280,6 +281,22 @@ export const useMapStore = defineStore("map", {
           this.map.resize();
         }, 200);
       }
+    },
+
+    /* Map Filtering */
+    // Add a filter based on a property on a map layer
+    addLayerFilter(layer_id, property, key) {
+      if (!this.map) {
+        return;
+      }
+      this.map.setFilter(layer_id, ["==", ["get", property], key]);
+    },
+    // Remove any filters on a map layer
+    clearLayerFilter(layer_id) {
+      if (!this.map) {
+        return;
+      }
+      this.map.setFilter(layer_id, null);
     },
 
     /* Clearing the map */

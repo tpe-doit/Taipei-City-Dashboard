@@ -38,8 +38,7 @@ const parseMapLayers = computed(() => {
                     :is-map-layer="true" />
                 <h2 v-if="parseMapLayers.noMap.length > 0">無空間資料組件
                 </h2>
-                <ComponentMapChart v-for="item in parseMapLayers.noMap" :content="item" :key="`map-layer-${item.index}`"
-                    :is-map-layer="true" />
+                <ComponentMapChart v-for="item in parseMapLayers.noMap" :content="item" :key="`map-layer-${item.index}`" />
             </div>
             <!-- other dashboards that don't have components -->
             <div v-else class="map-charts-nodashboard">

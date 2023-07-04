@@ -21,7 +21,7 @@
     {
       "name": "城市建設",
       "index": "construction",
-      "components": ["34", "108", "20", "28", "81", "33", "42"],
+      "components": ["34", "108", "20", "28", "33", "42"],
       "icon": "construction"
     },
     {

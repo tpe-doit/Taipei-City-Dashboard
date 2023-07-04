@@ -17,7 +17,7 @@ const dialogStore = useDialogStore()
             <div class="moreinfo-info">
                 <h3>組件說明</h3>
                 <p>{{ dialogStore.moreInfoContent.long_desc }}</p>
-                <h3>使用情境</h3>
+                <h3>範例情境</h3>
                 <p>{{ dialogStore.moreInfoContent.use_case }}</p>
                 <div v-if="dialogStore.moreInfoContent.links">
                     <h3>相關連結</h3>
@@ -27,7 +27,8 @@ const dialogStore = useDialogStore()
                     <h3>歷史軸</h3>
                     <h4>*點擊並拉動以檢視細部區間資料</h4>
                     <HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
-                        :series="dialogStore.moreInfoContent.history_data" />
+                        :series="dialogStore.moreInfoContent.history_data"
+                        :history_data_color="dialogStore.moreInfoContent.history_data_color" />
                 </div>
                 <div class="moreinfo-info-control">
                     <button
@@ -69,6 +70,7 @@ const dialogStore = useDialogStore()
 
         p {
             margin-bottom: 0.75rem;
+            color: var(--color-complement-text);
             text-align: justify;
         }
 

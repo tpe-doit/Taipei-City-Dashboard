@@ -12,8 +12,8 @@ const props = defineProps({
 </script>
 
 <template>
-    <div :class="{ 'componenttag': true, 'componenttag-fill': mode === 'fill' }">
-        <span>{{ icon }}</span>
+    <div :class="{ 'componenttag': true, 'componenttag-fill': mode === 'fill', 'componenttag-small': mode === 'small' }">
+        <span v-if="icon">{{ icon }}</span>
         <p>{{ text }}</p>
     </div>
 </template>
@@ -51,6 +51,17 @@ const props = defineProps({
         span,
         p {
             color: white
+        }
+    }
+
+    &-small {
+        min-height: 1.1rem;
+        max-height: 1.1rem;
+        padding: 0 2px;
+        margin-left: 8px;
+
+        p {
+            font-weight: 400;
         }
     }
 }

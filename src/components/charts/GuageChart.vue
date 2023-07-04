@@ -2,8 +2,10 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useMapStore } from '../../store/mapStore';
 
-const props = defineProps(['chart_config', 'activeChart', 'series'])
+const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config'])
+const mapStore = useMapStore()
 
 // Guage charts in apexcharts uses a slightly different data format from other chart types
 // As such, the following parsing function are required
@@ -73,11 +75,27 @@ const chartOptions = ref({
         enabled: true,
     },
 })
+
+const selectedIndex = ref(null)
+
+function handleDataSelection(e, chartContext, config) {
+    if (!props.chart_config.map_filter) {
+        return
+    }
+    if (config.seriesIndex !== selectedIndex.value) {
+        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.seriesIndex])
+        selectedIndex.value = config.seriesIndex
+    } else {
+        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+        selectedIndex.value = null
+    }
+}
 </script>
 
 <template>
     <div v-if="activeChart === 'GuageChart'">
-        <apexchart width="80%" height="300px" type="radialBar" :options="chartOptions" :series="parseSeries.series">
+        <apexchart width="80%" height="300px" type="radialBar" :options="chartOptions" :series="parseSeries.series"
+            @dataPointSelection="handleDataSelection">
         </apexchart>
     </div>
 </template>
