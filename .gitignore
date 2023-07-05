@@ -6,8 +6,8 @@
 
 # local env files
 .env.production
-# .env.local
-# .env.*.local
+.env.local
+.env.*.local
 
 # Log files
 npm-debug.log*
@@ -25,3 +25,8 @@ package-lock.json*
 *.sln
 *.sw?
 node_modules
+
+# Firebase
+/.firebase
+.firebaserc
+firebase.json
