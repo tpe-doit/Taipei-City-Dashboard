@@ -960,7 +960,48 @@
     "79": {
       "id": 79,
       "index": "58f50714",
-      "map_config": null,
+      "map_config": [
+        {
+          "index": "blue_line",
+          "paint": {
+            "line-color": "#0070bd"
+          },
+          "property": [
+            { "key": "mrtsys", "name": "系統" },
+            { "key": "mrtid", "name": "代號" },
+            { "key": "mrtcode", "name": "路線" }
+          ],
+          "title": "板南線",
+          "type": "line"
+        },
+        {
+          "index": "blue_line_station",
+          "paint": {
+            "text-color": [
+              "match",
+              ["get", "density"],
+              "舒適",
+              "#acc22a",
+              "普通",
+              "#fcd100",
+              "略多",
+              "#ed8502",
+              "人多",
+              "#ce161a",
+              "#333"
+            ]
+          },
+          "property": [
+            { "key": "stationid", "name": "ID" },
+            { "key": "stationname2", "name": "站名" },
+            { "key": "density", "name": "列車擁擠程度" }
+          ],
+          "type": "symbol",
+          "size": null,
+          "icon": "metro-density",
+          "title": "板南線車站"
+        }
+      ],
       "chart_config": {
         "color": ["#0070bd"],
         "types": ["MetroChart"],
@@ -981,7 +1022,48 @@
     "116": {
       "id": 116,
       "index": "7d8c37ae",
-      "map_config": null,
+      "map_config": [
+        {
+          "index": "red_line",
+          "paint": {
+            "line-color": "#e3002c"
+          },
+          "property": [
+            { "key": "mrtsys", "name": "系統" },
+            { "key": "mrtid", "name": "代號" },
+            { "key": "mrtcode", "name": "路線" }
+          ],
+          "title": "淡水信義線",
+          "type": "line"
+        },
+        {
+          "index": "red_line_station",
+          "paint": {
+            "text-color": [
+              "match",
+              ["get", "density"],
+              "舒適",
+              "#acc22a",
+              "普通",
+              "#fcd100",
+              "略多",
+              "#ed8502",
+              "人多",
+              "#ce161a",
+              "#333"
+            ]
+          },
+          "property": [
+            { "key": "stationid", "name": "ID" },
+            { "key": "stationname2", "name": "站名" },
+            { "key": "density", "name": "列車擁擠程度" }
+          ],
+          "type": "symbol",
+          "size": null,
+          "icon": "metro-density",
+          "title": "淡水信義線車站"
+        }
+      ],
       "chart_config": {
         "color": ["#e3002c"],
         "types": ["MetroChart"],
@@ -1368,13 +1450,37 @@
     "136": {
       "id": 136,
       "index": "88208994",
-      "map_config": null,
-      "name": "公安聯合稽查",
+      "map_config": [
+        {
+          "index": "ethc_check_dashboard_detail",
+          "paint": {
+            "circle-color": [
+              "match",
+              ["get", "last_audit_result"],
+              "合格",
+              "green",
+              "#B53535"
+            ]
+          },
+          "property": [
+            { "key": "name", "name": "機構" },
+            { "key": "addr", "name": "地址" },
+            { "key": "last_audit_result", "name": "最新稽查結果" },
+            { "key": "last_audit_date", "name": "最新稽查時間" },
+            { "key": "prev_audit_result", "name": "前次稽查結果" },
+            { "key": "prev_audit_date", "name": "前次稽查時間" }
+          ],
+          "title": "公安聯合稽查",
+          "type": "circle",
+          "icon": "heatmap"
+        }
+      ],
       "chart_config": {
         "types": ["DistrictChart", "ColumnChart", "RadarChart"],
         "color": ["#B53535"],
         "unit": "件"
       },
+      "name": "公安聯合稽查",
       "source": "台北市政府",
       "time_from": "2023-01-01T00:00:00+08:00",
       "time_to": "2023-06-01T00:00:00+08:00",
@@ -1491,7 +1597,7 @@
       ],
       "chart_config": {
         "color": ["#d59f0b", "#ff8c1a"],
-        "types": ["GuageChart", "BarPercentChart"],
+        "types": ["GuageChart"],
         "unit": "個",
         "categories": ["運行中公車", "運行中路線"]
       },

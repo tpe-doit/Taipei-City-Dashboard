@@ -111,9 +111,9 @@ export const maplayerCommonPaint = {
       ["linear"],
       ["zoom"],
       11.99,
-      0.1,
+      0.2,
       12,
-      0.1,
+      0.2,
       13.5,
       0.5,
       15,
@@ -126,7 +126,7 @@ export const maplayerCommonPaint = {
       ["linear"],
       ["zoom"],
       11.99,
-      0.1,
+      0.4,
       13,
       0.5,
       17,
@@ -157,7 +157,7 @@ export const maplayerCommonPaint = {
     "fill-opacity": ["interpolate", ["linear"], ["zoom"], 10, 0.3, 22, 0.15],
   },
   line: {
-    "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 0, 12, 1, 18, 3],
+    "line-width": ["interpolate", ["linear"], ["zoom"], 10.99, 1, 12, 1, 18, 3],
   },
   "line-wide": {
     "line-width": [
@@ -176,9 +176,6 @@ export const maplayerCommonPaint = {
     "line-dasharray": [2, 4],
   },
   symbol: {},
-  "symbol-metro": {
-    "text-halo-width": 1,
-  },
 };
 
 // Layout Properties
@@ -208,6 +205,17 @@ export const maplayerCommonLayout = {
   },
   "symbol-metro": {
     "icon-image": "metro",
+    "icon-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.4,
+      14,
+      0.5,
+      22,
+      1,
+    ],
   },
   "symbol-triangle_green": {
     "icon-image": "triangle_green",
@@ -241,6 +249,43 @@ export const maplayerCommonLayout = {
       1.1,
       22,
       1.4,
+    ],
+  },
+  "symbol-metro-density": {
+    "icon-image": "metro",
+    "icon-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      0.4,
+      14,
+      0.5,
+      22,
+      1,
+    ],
+    "text-field": "•",
+    "text-offset": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      ["literal", [0.3, -0.3]],
+      14,
+      ["literal", [0.4, -0.4]],
+      22,
+      ["literal", [0.8, -0.8]],
+    ],
+    "text-size": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      11.99,
+      32,
+      14,
+      40,
+      22,
+      60,
     ],
   },
 };
