@@ -224,7 +224,14 @@ export const maplayerCommonLayout = {
     "icon-image": "triangle_white",
   },
   "symbol-youbike": {
-    "icon-image": "bike_green",
+    "icon-image": [
+      "case",
+      ["==", ["get", "left_bikes"], ["get", "total_bikes"]],
+      "bike_red",
+      ["==", ["get", "left_bikes"], 0],
+      "bike_orange",
+      "bike_green",
+    ],
     "icon-size": [
       "interpolate",
       ["linear"],

@@ -28,17 +28,18 @@ const parseMapLayers = computed(() => {
         <div class="map-charts hide-if-mobile">
             <!-- If the dashboard is map layers -->
             <ComponentMapChart v-if="contentStore.currentDashboard.index === 'map-layers'"
-                v-for="item in contentStore.currentDashboard.content" :content="item" :key="`map-layer-${item.index}`"
-                :is-map-layer="true" />
+                v-for="item in contentStore.currentDashboard.content" :content="item"
+                :key="`map-layer-${item.index}-${contentStore.currentDashboard.index}`" :is-map-layer="true" />
             <!-- other dashboards that have components -->
             <div v-else-if="contentStore.currentDashboard.content.length !== 0" class="map-charts">
                 <ComponentMapChart v-for="item in parseMapLayers.hasMap" :content="item" :key="item.index" />
                 <h2>基本圖層</h2>
-                <ComponentMapChart v-for="item in contentStore.mapLayers" :content="item" :key="`map-layer-${item.index}`"
-                    :is-map-layer="true" />
+                <ComponentMapChart v-for="item in contentStore.mapLayers" :content="item"
+                    :key="`map-layer-${item.index}-${contentStore.currentDashboard.index}`" :is-map-layer="true" />
                 <h2 v-if="parseMapLayers.noMap.length > 0">無空間資料組件
                 </h2>
-                <ComponentMapChart v-for="item in parseMapLayers.noMap" :content="item" :key="`map-layer-${item.index}`" />
+                <ComponentMapChart v-for="item in parseMapLayers.noMap" :content="item"
+                    :key="`map-layer-${item.index}-${contentStore.currentDashboard.index}`" />
             </div>
             <!-- other dashboards that don't have components -->
             <div v-else class="map-charts-nodashboard">

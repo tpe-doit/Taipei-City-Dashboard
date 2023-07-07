@@ -1088,11 +1088,13 @@
       "index": "369ed27c",
       "map_config": [
         {
-          "index": "tran_youbike_station_type",
+          "index": "traffic_youbike",
           "paint": {},
           "property": [
             { "key": "station", "name": "場站名稱" },
-            { "key": "station_id", "name": "場站ID" }
+            { "key": "station_id", "name": "場站ID" },
+            { "key": "total_bikes", "name": "總車輛數" },
+            { "key": "left_bikes", "name": "剩餘車輛" }
           ],
           "icon": "youbike",
           "type": "symbol",

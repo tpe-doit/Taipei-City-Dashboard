@@ -27,6 +27,9 @@ onMounted(() => {
 <template>
     <div class="mapcontainer">
         <div id="mapboxBox">
+            <div class="mapcontainer-loading" v-if="mapStore.loadingLayers.length > 0">
+                <div></div>
+            </div>
             <button class="mapcontainer-layers show-if-mobile"
                 @click="dialogStore.showDialog('mobileLayers')"><span>layers</span></button>
             <!-- The key prop informs vue that the component should be updated when switching dashboards -->
@@ -48,9 +51,33 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .mapcontainer {
+    position: relative;
     width: 100%;
     height: calc(100%);
     flex: 1;
+
+    &-loading {
+        position: absolute;
+        top: 110px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+
+        @media (max-width: 1000px) {
+            top: 145px
+        }
+
+        div {
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            border: solid 4px var(--color-border);
+            border-top: solid 4px var(--color-highlight);
+            animation: spin 0.7s ease-in-out infinite;
+        }
+    }
 
     &-controls {
         display: flex;
@@ -171,6 +198,12 @@ onMounted(() => {
 
     100% {
         color: var(--color-complement-text)
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 </style>
