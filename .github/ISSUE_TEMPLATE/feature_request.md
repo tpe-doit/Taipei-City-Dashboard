@@ -9,11 +9,14 @@ assignees: igorho2000
 
 >Please submit all issues in English.
 
-## Is your feature request related to a problem? Please describe.
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Type
+- [ ] Application Functionalities
+- [ ] New Chart Type
+- [ ] New Map Type
+- [ ] Other
 
-## Describe the solution you'd like
-A clear and concise description of what you want to happen.
+## Please describe your feature request
+A clear and concise description.
 
 ## Describe alternatives you've considered
 A clear and concise description of any alternative solutions or features you've considered.
