@@ -2,7 +2,7 @@
 name: New Component
 about: Suggest a new component for Taipei City Dashboard
 title: '[Component]'
-labels: 'Component'
+labels: 'component'
 assignees: igorho2000
 
 ---
