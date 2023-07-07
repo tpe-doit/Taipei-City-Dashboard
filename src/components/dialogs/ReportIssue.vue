@@ -32,12 +32,12 @@ function handleClose() {
         name: "",
         contact: "",
     }
-    dialogStore.hideAllDialogs()
+    dialogStore.dialogs.reportIssue = false
 }
 </script>
 
 <template>
-    <DialogContainer dialog="reportIssue" @on-close="dialogStore.hideAllDialogs">
+    <DialogContainer dialog="reportIssue" @on-close="handleClose">
         <div class="reportissue">
             <h2>回報問題</h2>
             <h3>問題種類 (必填)</h3>

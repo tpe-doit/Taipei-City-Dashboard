@@ -72,7 +72,6 @@ export const useDialogStore = defineStore("dialog", {
     },
     // Show the report issue dialog and enter the id and name of the component of origin
     showReportIssue(id, name) {
-      this.hideAllDialogs();
       this.showDialog("reportIssue");
       this.issue = {
         id: id,

@@ -6,6 +6,7 @@ import { useDialogStore } from '../../store/dialogStore';
 import DialogContainer from './DialogContainer.vue';
 import ComponentContainer from '../components/ComponentContainer.vue';
 import HistoryChart from '../utilities/HistoryChart.vue';
+import DownloadData from './DownloadData.vue';
 
 const dialogStore = useDialogStore()
 </script>
@@ -33,8 +34,10 @@ const dialogStore = useDialogStore()
                 <div class="moreinfo-info-control">
                     <button
                         @click="dialogStore.showReportIssue(dialogStore.moreInfoContent.id, dialogStore.moreInfoContent.name)"><span>flag</span>回報問題</button>
-                    <!-- <button><span>download</span>輸出</button> -->
+                    <button v-if="dialogStore.moreInfoContent.chart_config.types[0] !== 'MetroChart'"
+                        @click="dialogStore.showDialog('downloadData')"><span>download</span>下載資料</button>
                 </div>
+                <DownloadData />
             </div>
         </div>
     </DialogContainer>

@@ -38,6 +38,8 @@ export const useMapStore = defineStore("map", {
     popup: null,
     // Stores saved locations
     savedLocations: savedLocations,
+    // Store currently loading layers,
+    loadingLayers: [],
   }),
   getters: {},
   actions: {
@@ -88,6 +90,8 @@ export const useMapStore = defineStore("map", {
         "triangle_green",
         "triangle_white",
         "bike_green",
+        "bike_orange",
+        "bike_red",
       ];
       images.forEach((element) => {
         this.map.loadImage(`/images/${element}.png`, (error, image) => {
@@ -115,6 +119,7 @@ export const useMapStore = defineStore("map", {
         let appendLayerId = { ...element };
         appendLayerId.layerId = mapLayerId;
         // 1-2. If the layer doesn't exist, call an API to get the layer data
+        this.loadingLayers.push(appendLayerId);
         this.fetchLocalGeoJson(appendLayerId);
       });
     },
@@ -175,6 +180,9 @@ export const useMapStore = defineStore("map", {
       this.currentLayers.push(map_config.layerId);
       this.mapConfigs[map_config.layerId] = map_config;
       this.currentVisibleLayers.push(map_config.layerId);
+      this.loadingLayers = this.loadingLayers.filter(
+        (el) => el === map_config.layerId
+      );
     },
     //  5. Turn on the visibility for a exisiting map layer
     turnOnMapLayerVisibility(mapLayerId) {

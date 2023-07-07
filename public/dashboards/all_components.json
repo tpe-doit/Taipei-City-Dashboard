@@ -279,15 +279,17 @@
           "title": "捷運路線"
         },
         {
-          "index": "traffic_metro_station",
+          "index": "traffic_metro_station_new",
           "property": [
             { "key": "stationid", "name": "ID" },
-            { "key": "stationname2", "name": "站名" }
+            { "key": "stationname2", "name": "站名" },
+            { "key": "enter", "name": "進站人數" },
+            { "key": "leave", "name": "出站人數" }
           ],
           "type": "symbol",
           "size": null,
           "icon": "metro",
-          "title": "捷運站點"
+          "title": "捷運近30分人流"
         }
       ],
       "chart_config": {
@@ -1086,11 +1088,13 @@
       "index": "369ed27c",
       "map_config": [
         {
-          "index": "tran_youbike_station_type",
+          "index": "traffic_youbike",
           "paint": {},
           "property": [
             { "key": "station", "name": "場站名稱" },
-            { "key": "station_id", "name": "場站ID" }
+            { "key": "station_id", "name": "場站ID" },
+            { "key": "total_bikes", "name": "總車輛數" },
+            { "key": "left_bikes", "name": "剩餘車輛" }
           ],
           "icon": "youbike",
           "type": "symbol",
@@ -1514,8 +1518,25 @@
       "history_data": true,
       "chart_config": {
         "color": ["#2f9ca1"],
-        "types": ["RadarChart", "DistrictChart", "BarChart"],
-        "unit": "件"
+        "types": ["DistrictChart", "BarChart"],
+        "unit": "件",
+        "map_filter": [
+          "c_name",
+          [
+            "北投",
+            "士林",
+            "內湖",
+            "南港",
+            "松山",
+            "信義",
+            "中山",
+            "大同",
+            "中正",
+            "萬華",
+            "大安",
+            "文山"
+          ]
+        ]
       },
       "name": "道路施工",
       "source": "工務局",

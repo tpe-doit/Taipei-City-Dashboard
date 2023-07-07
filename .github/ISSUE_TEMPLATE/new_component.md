@@ -1,0 +1,24 @@
+---
+name: New Component
+about: Suggest a new component for Taipei City Dashboard
+title: '[Component]'
+labels: 'Component'
+assignees: igorho2000
+
+---
+
+>Please submit all issues in English.
+
+## Please describe the proposed component
+A clear and concise description of the proposed component
+
+## Datasets to be used
+Links to Taipei Open Data sources.
+
+> Issues without sources from Taipei Open Data may be immediately closed as not actionable.
+
+## Proposed Chart Types and Map Types
+Chart Types and Map Types to attach to the component. If new chart types and map types need to be developed, please also open a feature request and link it here.
+
+## Additional context
+Add any other context here.
