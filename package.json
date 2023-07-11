@@ -1,33 +1,35 @@
 {
-  "name": "Taipei-City-Dashboard-Public",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@vueuse/core": "^10.1.2",
-    "apexcharts": "^3.40.0",
-    "axios": "^1.4.0",
-    "dayjs": "^1.11.7",
-    "mapbox-gl": "^2.14.1",
-    "pinia": "^2.0.35",
-    "uuid": "^9.0.0",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6",
-    "vue3-apexcharts": "^1.4.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "vite": "^4.3.2"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+	"name": "taipei-city-dashboard-open-source",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "eslint src --ext .js,.vue . && vite build",
+		"lint": "eslint --fix --ext .js,.vue .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@vueuse/core": "^10.1.2",
+		"apexcharts": "^3.40.0",
+		"axios": "^1.4.0",
+		"dayjs": "^1.11.7",
+		"mapbox-gl": "^2.14.1",
+		"pinia": "^2.0.35",
+		"uuid": "^9.0.0",
+		"vue": "^3.2.47",
+		"vue-router": "^4.1.6",
+		"vue3-apexcharts": "^1.4.1"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^4.1.0",
+		"eslint-plugin-vue": "^9.15.1",
+		"vite": "^4.3.2"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead",
+		"not ie 11"
+	]
 }

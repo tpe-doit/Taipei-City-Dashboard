@@ -17,20 +17,20 @@ const mapStore = useMapStore()
 const isExpanded = ref(true);
 
 function toggleExpand() {
-    isExpanded.value = isExpanded.value ? false : true;
-    localStorage.setItem('isExpanded', isExpanded.value)
-    if (!isExpanded.value) {
-        mapStore.resizeMap();
-    }
+	isExpanded.value = isExpanded.value ? false : true;
+	localStorage.setItem('isExpanded', isExpanded.value)
+	if (!isExpanded.value) {
+		mapStore.resizeMap();
+	}
 }
 
 onMounted(() => {
-    const storedExpandedState = localStorage.getItem('isExpanded')
-    if (storedExpandedState === "false") {
-        isExpanded.value = false
-    } else {
-        isExpanded.value = true
-    }
+	const storedExpandedState = localStorage.getItem('isExpanded')
+	if (storedExpandedState === "false") {
+		isExpanded.value = false
+	} else {
+		isExpanded.value = true
+	}
 })
 </script>
 

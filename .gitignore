@@ -2,6 +2,7 @@
 /node_modules
 /dist
 /public/mapData
+/.vscode
 
 
 # local env files

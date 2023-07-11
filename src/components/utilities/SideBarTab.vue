@@ -9,17 +9,17 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 const props = defineProps({
-    icon: { type: String },
-    title: { type: String },
-    index: { type: String },
-    expanded: { type: Boolean }
+	icon: { type: String },
+	title: { type: String },
+	index: { type: String },
+	expanded: { type: Boolean }
 })
 
 const tabLink = computed(() => {
-    return `${route.path}?index=${props.index}`
+	return `${route.path}?index=${props.index}`
 })
 const linkActiveOrNot = computed(() => {
-    return route.query.index === props.index ? true : false;
+	return route.query.index === props.index ? true : false;
 })
 </script>
 

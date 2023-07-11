@@ -12,7 +12,7 @@ const authStore = useAuthStore()
 const accountTypes = ['Email用戶', '台北通', '台北on']
 
 function handleClose() {
-    dialogStore.hideAllDialogs()
+	dialogStore.hideAllDialogs()
 }
 </script>
 

@@ -19,26 +19,26 @@ const errorMessage = ref(null)
 const deleteConfirm = ref(false)
 
 function handleSubmit() {
-    if (validateStrInput(newName.value) !== true) {
-        errorMessage.value = validateStrInput(newName.value)
-        return
-    }
-    // changeCurrentDashboardName is currently a dummy function to demonstrate what changing a dashboard's name would look like
-    // Connect a backend to actually implement the function or remove altogether
-    contentStore.changeCurrentDashboardName(newName.value);
-    handleClose()
+	if (validateStrInput(newName.value) !== true) {
+		errorMessage.value = validateStrInput(newName.value)
+		return
+	}
+	// changeCurrentDashboardName is currently a dummy function to demonstrate what changing a dashboard's name would look like
+	// Connect a backend to actually implement the function or remove altogether
+	contentStore.changeCurrentDashboardName(newName.value);
+	handleClose()
 }
 function handleClose() {
-    newName.value = ''
-    errorMessage.value = null
-    deleteConfirm.value = false
-    dialogStore.hideAllDialogs();
+	newName.value = ''
+	errorMessage.value = null
+	deleteConfirm.value = false
+	dialogStore.hideAllDialogs();
 }
 function handleDelete() {
-    // deleteCurrentDashboard is currently a dummy function to demonstrate what deleting a dashboard
-    // Connect a backend to actually implement the function or remove altogether
-    contentStore.deleteCurrentDashboard();
-    handleClose()
+	// deleteCurrentDashboard is currently a dummy function to demonstrate what deleting a dashboard
+	// Connect a backend to actually implement the function or remove altogether
+	contentStore.deleteCurrentDashboard();
+	handleClose()
 }
 </script>
 

@@ -15,28 +15,28 @@ const name = ref(dialogStore.moreInfoContent.name)
 const fileType = ref('JSON')
 
 const parsedJson = computed(() => {
-    let json = {}
-    json.data = dialogStore.moreInfoContent.chart_data
-    if (dialogStore.moreInfoContent.chart_config.categories) {
-        json.categories = dialogStore.moreInfoContent.chart_config.categories
-    }
+	let json = {}
+	json.data = dialogStore.moreInfoContent.chart_data
+	if (dialogStore.moreInfoContent.chart_config.categories) {
+		json.categories = dialogStore.moreInfoContent.chart_config.categories
+	}
 
-    const jsonString = encodeURIComponent(JSON.stringify(json))
-    // const base64Json = btoa(jsonString)
-    return jsonString
+	const jsonString = encodeURIComponent(JSON.stringify(json))
+	// const base64Json = btoa(jsonString)
+	return jsonString
 })
 
 const parsedCsv = computed(() => {
-    const csvString = jsonToCsv(dialogStore.moreInfoContent.chart_data, dialogStore.moreInfoContent.chart_config)
-    return encodeURI(csvString)
+	const csvString = jsonToCsv(dialogStore.moreInfoContent.chart_data, dialogStore.moreInfoContent.chart_config)
+	return encodeURI(csvString)
 })
 
 function handleSubmit() {
-    handleClose();
+	handleClose();
 }
 function handleClose() {
-    name.value = dialogStore.moreInfoContent.name;
-    dialogStore.dialogs.downloadData = false
+	name.value = dialogStore.moreInfoContent.name;
+	dialogStore.dialogs.downloadData = false
 }
 </script>
 

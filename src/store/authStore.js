@@ -12,40 +12,40 @@ import { defineStore } from "pinia";
 import { useDialogStore } from "./dialogStore";
 
 export const useAuthStore = defineStore("auth", {
-  state: () => ({
-    // This is a shortened version of the user object Taipei City Dashboard's backend will return once authenticated
-    user: {
-      email: "tuic-admin@gov.taipei",
-      gid: 1,
-      id: 1,
-      name: "系統管理者Admin🤩",
-      status: 1,
-      type: 0,
-    },
-    tokens: {},
-    errorMessage: "",
-  }),
-  getters: {},
-  actions: {
-    // Call this function to log in
-    handleLogin() {},
+	state: () => ({
+		// This is a shortened version of the user object Taipei City Dashboard's backend will return once authenticated
+		user: {
+			email: "tuic-admin@gov.taipei",
+			gid: 1,
+			id: 1,
+			name: "系統管理者Admin🤩",
+			status: 1,
+			type: 0,
+		},
+		tokens: {},
+		errorMessage: "",
+	}),
+	getters: {},
+	actions: {
+		// Call this function to log in
+		handleLogin() {},
 
-    // Call this function to log out (Currently just shows a 'cannot log out' notification)
-    handleLogout() {
-      const dialogStore = useDialogStore();
-      dialogStore.showNotification("fail", "尚未新增用戶管理功能，無法登出");
-    },
+		// Call this function to log out (Currently just shows a 'cannot log out' notification)
+		handleLogout() {
+			const dialogStore = useDialogStore();
+			dialogStore.showNotification("fail", "尚未新增用戶管理功能，無法登出");
+		},
 
-    // If your authentication system supports refresh tokens, call this function to refresh existing tokens
-    executeRefreshTokens() {},
+		// If your authentication system supports refresh tokens, call this function to refresh existing tokens
+		executeRefreshTokens() {},
 
-    // Call this function to store tokens in the store as well as in localstorage/cookies/etc.
-    setTokens() {},
+		// Call this function to store tokens in the store as well as in localstorage/cookies/etc.
+		setTokens() {},
 
-    // Call this function to store user info in the store
-    setUser() {},
+		// Call this function to store user info in the store
+		setUser() {},
 
-    // Call this function to clear the entire store
-    executeClearStore() {},
-  },
+		// Call this function to clear the entire store
+		executeClearStore() {},
+	},
 });

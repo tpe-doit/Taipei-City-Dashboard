@@ -10,16 +10,16 @@ const mapStore = useMapStore()
 const selectedIndex = ref(null)
 
 function handleDataSelection(index) {
-    if (!props.chart_config.map_filter) {
-        return
-    }
-    if (index !== selectedIndex.value) {
-        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index])
-        selectedIndex.value = index
-    } else {
-        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
-        selectedIndex.value = null
-    }
+	if (!props.chart_config.map_filter) {
+		return
+	}
+	if (index !== selectedIndex.value) {
+		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index])
+		selectedIndex.value = index
+	} else {
+		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+		selectedIndex.value = null
+	}
 }
 </script>
 

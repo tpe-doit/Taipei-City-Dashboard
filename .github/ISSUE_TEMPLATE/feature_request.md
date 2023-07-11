@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for Taipei City Dashboard
 title: '[Enhancement]'
-labels: 'Enhancement'
+labels: 'enhancement'
 assignees: igorho2000
 
 ---

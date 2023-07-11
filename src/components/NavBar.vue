@@ -3,7 +3,7 @@
 <!-- Navigation will be hidden from the navbar in mobile mode and moved to the settingsbar -->
 
 <script setup>
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+const {VITE_APP_TITLE} = import.meta.env
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from '../store/authStore';
@@ -18,8 +18,8 @@ const dialogStore = useDialogStore()
 const { isFullscreen, toggle } = useFullscreen()
 
 const linkQuery = computed(() => {
-    const query = route.query
-    return `?index=${query.index}`
+	const {query} = route
+	return `?index=${query.index}`
 })
 </script>
 

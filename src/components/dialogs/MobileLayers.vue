@@ -14,10 +14,10 @@ const contentStore = useContentStore()
 
 // Filter out components without maps
 const filteredMapLayers = computed(() => {
-    if (!contentStore.currentDashboard.content) {
-        return []
-    }
-    return contentStore.currentDashboard.content.filter((element) => element.map_config)
+	if (!contentStore.currentDashboard.content) {
+		return []
+	}
+	return contentStore.currentDashboard.content.filter((element) => element.map_config)
 })
 </script>
 
