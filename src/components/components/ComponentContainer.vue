@@ -248,6 +248,11 @@ function toggleFavorite() {
 		button {
 			display: flex;
 			align-items: center;
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 0.8;
+			}
 
 			@media (max-width: 760px) {
 				display: none !important;

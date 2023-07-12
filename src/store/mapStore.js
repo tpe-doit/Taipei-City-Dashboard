@@ -72,14 +72,20 @@ export const useMapStore = defineStore("map", {
 				.then((response) => response.json())
 				.then((data) => {
 					this.map
-						.addSource("taipei_town", { type: "geojson", data: data })
+						.addSource("taipei_town", {
+							type: "geojson",
+							data: data,
+						})
 						.addLayer(TaipeiTown);
 				});
 			fetch(`/mapData/taipei_village.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
 					this.map
-						.addSource("taipei_village", { type: "geojson", data: data })
+						.addSource("taipei_village", {
+							type: "geojson",
+							data: data,
+						})
 						.addLayer(TaipeiVillage);
 				});
 			this.addSymbolSources();
@@ -108,10 +114,14 @@ export const useMapStore = defineStore("map", {
 			map_config.forEach((element) => {
 				let mapLayerId = `${element.index}-${element.type}`;
 				// 1-1. If the layer exists, simply turn on the visibility and add it to the visible layers list
-				if (this.currentLayers.find((element) => element === mapLayerId)) {
+				if (
+					this.currentLayers.find((element) => element === mapLayerId)
+				) {
 					this.turnOnMapLayerVisibility(mapLayerId);
 					if (
-						!this.currentVisibleLayers.find((element) => element === mapLayerId)
+						!this.currentVisibleLayers.find(
+							(element) => element === mapLayerId
+						)
 					) {
 						this.currentVisibleLayers.push(mapLayerId);
 					}
@@ -131,7 +141,7 @@ export const useMapStore = defineStore("map", {
 				.then((rs) => {
 					this.addMapLayerSource(map_config, rs.data);
 				})
-				.catch((e) => console.log(e));
+				.catch((e) => console.error(e));
 		},
 		// 3. Add the layer data as a source in mapbox
 		addMapLayerSource(map_config, data) {
@@ -148,20 +158,28 @@ export const useMapStore = defineStore("map", {
 			let extra_layout_configs = {};
 			if (map_config.icon) {
 				extra_paint_configs = {
-					...maplayerCommonPaint[`${map_config.type}-${map_config.icon}`],
+					...maplayerCommonPaint[
+						`${map_config.type}-${map_config.icon}`
+					],
 				};
 				extra_layout_configs = {
-					...maplayerCommonLayout[`${map_config.type}-${map_config.icon}`],
+					...maplayerCommonLayout[
+						`${map_config.type}-${map_config.icon}`
+					],
 				};
 			}
 			if (map_config.size) {
 				extra_paint_configs = {
 					...extra_paint_configs,
-					...maplayerCommonPaint[`${map_config.type}-${map_config.size}`],
+					...maplayerCommonPaint[
+						`${map_config.type}-${map_config.size}`
+					],
 				};
 				extra_layout_configs = {
 					...extra_layout_configs,
-					...maplayerCommonLayout[`${map_config.type}-${map_config.size}`],
+					...maplayerCommonLayout[
+						`${map_config.type}-${map_config.size}`
+					],
 				};
 			}
 			this.map.addLayer({
@@ -195,7 +213,11 @@ export const useMapStore = defineStore("map", {
 				let mapLayerId = `${element.index}-${element.type}`;
 				if (this.map.getLayer(mapLayerId)) {
 					this.map.setFilter(mapLayerId, null);
-					this.map.setLayoutProperty(mapLayerId, "visibility", "none");
+					this.map.setLayoutProperty(
+						mapLayerId,
+						"visibility",
+						"none"
+					);
 				}
 				this.currentVisibleLayers = this.currentVisibleLayers.filter(
 					(element) => element !== mapLayerId
@@ -208,9 +230,12 @@ export const useMapStore = defineStore("map", {
 		// Adds a popup when the user clicks on a item. The event will be passed in.
 		addPopup(event) {
 			// Gets the info that is contained in the coordinates that the user clicked on (only visible layers)
-			const clickFeatureDatas = this.map.queryRenderedFeatures(event.point, {
-				layers: this.currentVisibleLayers,
-			});
+			const clickFeatureDatas = this.map.queryRenderedFeatures(
+				event.point,
+				{
+					layers: this.currentVisibleLayers,
+				}
+			);
 			// Return if there is no info in the click
 			if (!clickFeatureDatas || clickFeatureDatas.length === 0) {
 				return;
@@ -222,7 +247,8 @@ export const useMapStore = defineStore("map", {
 
 			for (let i = 0; i < clickFeatureDatas.length; i++) {
 				if (mapConfigs.length === 3) break;
-				if (previousParsedLayer === clickFeatureDatas[i].layer.id) continue;
+				if (previousParsedLayer === clickFeatureDatas[i].layer.id)
+					continue;
 				previousParsedLayer = clickFeatureDatas[i].layer.id;
 				mapConfigs.push(this.mapConfigs[clickFeatureDatas[i].layer.id]);
 				parsedPopupContent.push(clickFeatureDatas[i]);

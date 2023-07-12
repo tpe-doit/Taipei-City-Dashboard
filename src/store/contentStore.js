@@ -77,7 +77,7 @@ export const useContentStore = defineStore("content", {
 					this.setComponents();
 				})
 				.catch((e) => {
-					console.log(e);
+					console.error(e);
 				});
 		},
 		// 3. Call and API to get all components info
@@ -91,7 +91,7 @@ export const useContentStore = defineStore("content", {
 					// Step 5.
 					this.setCurrentDashboardContent();
 				})
-				.catch((e) => console.log(e));
+				.catch((e) => console.error(e));
 		},
 		// 4. Adds components that are map layers into a separate store to be used in mapview
 		setMapLayers() {
@@ -135,19 +135,21 @@ export const useContentStore = defineStore("content", {
 				axios
 					.get(`/chartData/${component.id}.json`)
 					.then((rs) => {
-						this.currentDashboard.content[index].chart_data = rs.data.data;
+						this.currentDashboard.content[index].chart_data =
+							rs.data.data;
 					})
 					.catch((e) => {
-						console.log(e);
+						console.error(e);
 					});
 				if (this.currentDashboard.content[index].history_data) {
 					axios
 						.get(`/historyData/${component.id}.json`)
 						.then((rs) => {
-							this.currentDashboard.content[index].history_data = rs.data.data;
+							this.currentDashboard.content[index].history_data =
+								rs.data.data;
 						})
 						.catch((e) => {
-							console.log(e);
+							console.error(e);
 						});
 				}
 			});
@@ -275,7 +277,9 @@ export const useContentStore = defineStore("content", {
 		unfavoriteComponent(component_id) {
 			const dialogStore = useDialogStore();
 
-			this.favorites = this.favorites.filter((item) => +item !== component_id);
+			this.favorites = this.favorites.filter(
+				(item) => +item !== component_id
+			);
 			this.dashboards.forEach((item) => {
 				if (item.index === "favorites") {
 					item.components = item.components.filter(
