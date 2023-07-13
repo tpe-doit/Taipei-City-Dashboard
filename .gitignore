@@ -8,7 +8,7 @@
 # local env files
 .env.production
 .env.local
-.env.*.local
+.env
 
 # Log files
 npm-debug.log*
