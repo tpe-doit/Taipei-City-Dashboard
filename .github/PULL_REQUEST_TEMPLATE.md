@@ -6,11 +6,24 @@ Any change needs to be discussed before proceeding. Failure to do so may result 
 
 **Issue:** Enter the issue(s) this pull request resolves.
 
-## Type
-- [ ] Bug Fix
-- [ ] New Feature (Application)
-- [ ] New Feature (Chart / Map Type)
-- [ ] New Component
+A clear and concise description of this pull request
+
+## Type (Fill in "x" to check)
+
+-   [ ] Bug Fix
+-   [ ] New Feature (Application)
+-   [ ] New Feature (Chart / Map Type)
+-   [ ] New Component
 
 ## Check list
+
 Please make sure that all items are checked before submitting this request.
+
+-   [ ] Code linter has been run and issues have all been resolved
+-   [ ] The code has been thoroughly tested and no visible bugs have been introduced
+-   [ ] The pull request will completely resolve the issue(s) mentioned
+-   [ ] The pull request only resolves the issue(s) mentioned and nothing more
+
+## Additional context
+
+Add any other context here.

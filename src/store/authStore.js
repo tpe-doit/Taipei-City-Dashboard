@@ -24,6 +24,7 @@ export const useAuthStore = defineStore("auth", {
 		},
 		tokens: {},
 		errorMessage: "",
+		isMobileDevice: false,
 	}),
 	getters: {},
 	actions: {
@@ -33,7 +34,10 @@ export const useAuthStore = defineStore("auth", {
 		// Call this function to log out (Currently just shows a 'cannot log out' notification)
 		handleLogout() {
 			const dialogStore = useDialogStore();
-			dialogStore.showNotification("fail", "尚未新增用戶管理功能，無法登出");
+			dialogStore.showNotification(
+				"fail",
+				"尚未新增用戶管理功能，無法登出"
+			);
 		},
 
 		// If your authentication system supports refresh tokens, call this function to refresh existing tokens
@@ -47,5 +51,10 @@ export const useAuthStore = defineStore("auth", {
 
 		// Call this function to clear the entire store
 		executeClearStore() {},
+		checkIfMobile() {
+			if (navigator.maxTouchPoints > 2) {
+				this.isMobileDevice = true;
+			}
+		},
 	},
 });

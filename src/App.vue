@@ -16,6 +16,7 @@ const dialogStore = useDialogStore();
 
 onBeforeMount(() => {
 	authStore.setUser();
+	authStore.checkIfMobile();
 });
 onMounted(() => {
 	const showInitialWarning = localStorage.getItem('initialWarning');
@@ -29,7 +30,7 @@ onMounted(() => {
 	<div class="app-container">
 		<NotificationBar />
 		<NavBar />
-		<div class="app-content">
+		<div :class="{ 'app-content': true, 'app-mobile': authStore.isMobileDevice }">
 			<SideBar />
 			<div class="app-content-main">
 				<SettingsBar />
@@ -53,15 +54,15 @@ onMounted(() => {
 		height: calc(100vh - 60px);
 		display: flex;
 
-		@media (max-width: 760px) {
-			height: calc(100vh - 120px);
-		}
-
 		&-main {
 			width: 100%;
 			display: flex;
 			flex-direction: column;
 		}
+	}
+
+	&-mobile {
+		height: calc(100vh - 120px);
 	}
 }
 </style>
