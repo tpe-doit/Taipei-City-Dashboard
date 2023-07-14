@@ -12,14 +12,14 @@ const checked = ref(false)
 
 // Communicates with the mapStore to open and close map layers on mobile
 function handleToggle() {
-    if (!props.content.map_config) {
-        return
-    }
-    if (checked.value) {
-        mapStore.addToMapLayerList(props.content.map_config)
-    } else {
-        mapStore.turnOffMapLayerVisibility(props.content.map_config)
-    }
+	if (!props.content.map_config) {
+		return
+	}
+	if (checked.value) {
+		mapStore.addToMapLayerList(props.content.map_config)
+	} else {
+		mapStore.turnOffMapLayerVisibility(props.content.map_config)
+	}
 }
 </script>
 

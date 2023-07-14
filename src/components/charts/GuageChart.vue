@@ -10,85 +10,85 @@ const mapStore = useMapStore()
 // Guage charts in apexcharts uses a slightly different data format from other chart types
 // As such, the following parsing function are required
 const parseSeries = computed(() => {
-    let output = {}
-    let parsedSeries = []
-    let parsedTooltip = []
-    for (let i = 0; i < props.series[0].data.length; i++) {
-        let total = props.series[0].data[i] + props.series[1].data[i]
-        parsedSeries.push(Math.round(props.series[0].data[i] / total * 100))
-        parsedTooltip.push(`${props.series[0].data[i]} / ${total}`)
-    }
-    output.series = parsedSeries
-    output.tooltipText = parsedTooltip
-    return output
+	let output = {}
+	let parsedSeries = []
+	let parsedTooltip = []
+	for (let i = 0; i < props.series[0].data.length; i++) {
+		let total = props.series[0].data[i] + props.series[1].data[i]
+		parsedSeries.push(Math.round(props.series[0].data[i] / total * 100))
+		parsedTooltip.push(`${props.series[0].data[i]} / ${total}`)
+	}
+	output.series = parsedSeries
+	output.tooltipText = parsedTooltip
+	return output
 })
 
 // chartOptions needs to be in the bottom since it uses computed data
 const chartOptions = ref({
-    chart: {
-        toolbar: {
-            show: false,
-        },
-    },
-    colors: props.chart_config.color,
-    labels: props.chart_config.categories ? props.chart_config.categories : [],
-    legend: {
-        offsetY: -10,
-        onItemClick: {
-            toggleDataSeries: false
-        },
-        position: 'bottom',
-        show: parseSeries.value.series.length > 1 ? true : false,
-    },
-    plotOptions: {
-        radialBar: {
-            dataLabels: {
-                name: {
-                    color: '#888787',
-                    fontSize: '0.8rem',
-                },
-                total: {
-                    color: '#888787',
-                    fontSize: '0.8rem',
-                    label: '平均',
-                    show: true,
-                },
-                value: {
-                    color: '#888787',
-                    fontSize: '16px',
-                    offsetY: 5,
-                },
-            },
-            track: {
-                background: "#777"
-            },
-        }
-    },
-    tooltip: {
-        custom: function ({ seriesIndex, w }) {
-            // The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
-            return '<div class="chart-tooltip">' +
+	chart: {
+		toolbar: {
+			show: false,
+		},
+	},
+	colors: props.chart_config.color,
+	labels: props.chart_config.categories ? props.chart_config.categories : [],
+	legend: {
+		offsetY: -10,
+		onItemClick: {
+			toggleDataSeries: false
+		},
+		position: 'bottom',
+		show: parseSeries.value.series.length > 1 ? true : false,
+	},
+	plotOptions: {
+		radialBar: {
+			dataLabels: {
+				name: {
+					color: '#888787',
+					fontSize: '0.8rem',
+				},
+				total: {
+					color: '#888787',
+					fontSize: '0.8rem',
+					label: '平均',
+					show: true,
+				},
+				value: {
+					color: '#888787',
+					fontSize: '16px',
+					offsetY: 5,
+				},
+			},
+			track: {
+				background: "#777"
+			},
+		}
+	},
+	tooltip: {
+		custom: function ({ seriesIndex, w }) {
+			// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
+			return '<div class="chart-tooltip">' +
                 '<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
                 '<span>' + `${parseSeries.value.tooltipText[seriesIndex]}` + '</span>' +
                 '</div>'
-        },
-        enabled: true,
-    },
+		},
+		enabled: true,
+	},
 })
 
 const selectedIndex = ref(null)
 
 function handleDataSelection(e, chartContext, config) {
-    if (!props.chart_config.map_filter) {
-        return
-    }
-    if (config.seriesIndex !== selectedIndex.value) {
-        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.seriesIndex])
-        selectedIndex.value = config.seriesIndex
-    } else {
-        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
-        selectedIndex.value = null
-    }
+	if (!props.chart_config.map_filter) {
+		return
+	}
+	if (config.seriesIndex !== selectedIndex.value) {
+		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.seriesIndex])
+		selectedIndex.value = config.seriesIndex
+	} else {
+		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+		selectedIndex.value = null
+	}
 }
 </script>
 

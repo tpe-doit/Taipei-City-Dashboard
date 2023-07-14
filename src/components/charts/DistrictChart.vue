@@ -14,46 +14,46 @@ const selectedIndex = ref(null)
 
 // Parse District Data
 const districtData = computed(() => {
-    let output = {}
-    let highest = 0
-    let sum = 0
-    props.series[0].data.forEach((item) => {
-        output[item.x] = item.y
-        if (item.y > highest) {
-            highest = item.y
-        }
-        sum += item.y
-    })
-    output.highest = highest
-    output.sum = sum
-    return output
+	let output = {}
+	let highest = 0
+	let sum = 0
+	props.series[0].data.forEach((item) => {
+		output[item.x] = item.y
+		if (item.y > highest) {
+			highest = item.y
+		}
+		sum += item.y
+	})
+	output.highest = highest
+	output.sum = sum
+	return output
 })
 const tooltipPosition = computed(() => {
-    return { 'left': `${mousePosition.value.x - 10}px`, 'top': `${mousePosition.value.y - 54}px` }
+	return { 'left': `${mousePosition.value.x - 10}px`, 'top': `${mousePosition.value.y - 54}px` }
 })
 
 function toggleActive(e) {
-    targetDistrict.value = e.target.dataset.name
+	targetDistrict.value = e.target.dataset.name
 }
 function toggleActiveToNull() {
-    targetDistrict.value = null
+	targetDistrict.value = null
 }
 function updateMouseLocation(e) {
-    mousePosition.value.x = e.pageX;
-    mousePosition.value.y = e.pageY
+	mousePosition.value.x = e.pageX;
+	mousePosition.value.y = e.pageY
 }
 
 function handleDataSelection(index) {
-    if (!props.chart_config.map_filter) {
-        return
-    }
-    if (index !== selectedIndex.value) {
-        mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index])
-        selectedIndex.value = index
-    } else {
-        mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
-        selectedIndex.value = null
-    }
+	if (!props.chart_config.map_filter) {
+		return
+	}
+	if (index !== selectedIndex.value) {
+		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index])
+		selectedIndex.value = index
+	} else {
+		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
+		selectedIndex.value = null
+	}
 }
 </script>
 

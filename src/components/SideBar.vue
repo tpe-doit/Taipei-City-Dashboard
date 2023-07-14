@@ -5,115 +5,124 @@ import { onMounted, ref } from 'vue';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
 import { useMapStore } from '../store/mapStore';
+import { useAuthStore } from '../store/authStore';
 
 import AddDashboard from './dialogs/AddDashboard.vue';
 import SideBarTab from './utilities/SideBarTab.vue';
 
-const contentStore = useContentStore()
-const dialogStore = useDialogStore()
-const mapStore = useMapStore()
+const contentStore = useContentStore();
+const dialogStore = useDialogStore();
+const mapStore = useMapStore();
+const authStore = useAuthStore();
 
 // The expanded state is also stored in localstorage to retain the setting after refresh
 const isExpanded = ref(true);
 
 function toggleExpand() {
-    isExpanded.value = isExpanded.value ? false : true;
-    localStorage.setItem('isExpanded', isExpanded.value)
-    if (!isExpanded.value) {
-        mapStore.resizeMap();
-    }
+	isExpanded.value = isExpanded.value ? false : true;
+	localStorage.setItem('isExpanded', isExpanded.value);
+	if (!isExpanded.value) {
+		mapStore.resizeMap();
+	}
 }
 
 onMounted(() => {
-    const storedExpandedState = localStorage.getItem('isExpanded')
-    if (storedExpandedState === "false") {
-        isExpanded.value = false
-    } else {
-        isExpanded.value = true
-    }
-})
+	const storedExpandedState = localStorage.getItem('isExpanded');
+	if (storedExpandedState === "false") {
+		isExpanded.value = false;
+	} else {
+		isExpanded.value = true;
+	}
+});
 </script>
 
 <template>
-    <div :class="{ sidebar: true, 'sidebar-collapse': !isExpanded, 'hide-if-mobile': true }">
-        <h2>{{ isExpanded ? `我的最愛` : `最愛` }}</h2>
-        <SideBarTab icon="favorite" title="收藏組件" :expanded="isExpanded" index="favorites" />
-        <div class="sidebar-sub-add">
-            <h2>{{ isExpanded ? `儀表板列表` : `列表` }}</h2>
-            <button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
-            <AddDashboard />
-        </div>
-        <SideBarTab
-            v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers' && item.index !== 'favorites')"
-            :icon="item.icon" :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
-        <h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>
-        <SideBarTab icon="public" title="圖資資訊" :expanded="isExpanded" index="map-layers" />
-        <button class="sidebar-collapse-button" @click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :
-            "keyboard_double_arrow_right"
-        }}</span></button>
-    </div>
+	<div :class="{ sidebar: true, 'sidebar-collapse': !isExpanded, 'hide-if-mobile': true }">
+		<h2>{{ isExpanded ? `我的最愛` : `最愛` }}</h2>
+		<SideBarTab icon="favorite" title="收藏組件" :expanded="isExpanded" index="favorites" />
+		<div class="sidebar-sub-add">
+			<h2>{{ isExpanded ? `儀表板列表` : `列表` }}</h2>
+			<button v-if="isExpanded" @click="dialogStore.showDialog('addDashboard')">新增</button>
+			<AddDashboard />
+		</div>
+		<SideBarTab
+			v-for="item in contentStore.dashboards.filter((item) => item.index !== 'map-layers' && item.index !== 'favorites')"
+			:icon="item.icon" :title="item.name" :index="item.index" :key="item.index" :expanded="isExpanded" />
+		<h2>{{ isExpanded ? `基本地圖圖層` : `圖層` }}</h2>
+		<SideBarTab icon="public" title="圖資資訊" :expanded="isExpanded" index="map-layers" />
+		<button :class="{ 'sidebar-collapse-button': true, 'sidebar-collapse-mobile': authStore.isMobileDevice }"
+			@click="toggleExpand"><span>{{ isExpanded ? "keyboard_double_arrow_left" :
+				"keyboard_double_arrow_right"
+			}}</span></button>
+	</div>
 </template>
 
 <style scoped lang="scss">
 .sidebar {
-    width: 170px;
-    min-width: 170px;
-    height: calc(100vh - 80px);
-    max-height: calc(100vh - 80px);
-    position: relative;
-    padding: 0 10px 0 var(--font-m);
-    margin-top: 20px;
-    border-right: 1px solid var(--color-border);
-    transition: min-width 0.2s ease-out;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    user-select: none;
+	width: 170px;
+	min-width: 170px;
+	height: calc(100vh - 80px);
+	max-height: calc(100vh - 80px);
+	position: relative;
+	padding: 0 10px 0 var(--font-m);
+	margin-top: 20px;
+	border-right: 1px solid var(--color-border);
+	transition: min-width 0.2s ease-out;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	user-select: none;
 
-    h2 {
-        color: var(--color-complement-text);
-        font-weight: 400;
-    }
+	h2 {
+		color: var(--color-complement-text);
+		font-weight: 400;
+	}
 
-    &-sub {
-        margin-bottom: var(--font-s);
+	&-sub {
+		margin-bottom: var(--font-s);
 
-        &-add {
-            width: 100%;
-            display: flex;
+		&-add {
+			width: 100%;
+			display: flex;
 
-            button {
-                margin-left: 0.5rem;
-                color: var(--color-highlight);
-            }
-        }
-    }
+			button {
+				margin-left: 0.5rem;
+				color: var(--color-highlight);
+			}
+		}
+	}
 
-    &-collapse {
-        width: 45px;
-        min-width: 45px;
+	&-collapse {
+		width: 45px;
+		min-width: 45px;
 
-        h2 {
-            margin-left: 5px;
-        }
+		h2 {
+			margin-left: 5px;
+		}
 
-        &-button {
-            height: fit-content;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background-color 0.2s;
+		&-button {
+			height: fit-content;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			padding: 5px;
+			border-radius: 5px;
+			transition: background-color 0.2s;
 
-            &:hover {
-                background-color: var(--color-component-background);
-            }
+			&:hover {
+				background-color: var(--color-component-background);
+			}
 
-            span {
-                font-family: var(--font-icon);
-                font-size: var(--font-l);
-            }
-        }
-    }
+			span {
+				font-family: var(--font-icon);
+				font-size: var(--font-l);
+			}
+
+
+		}
+
+		&-mobile {
+			bottom: 60px;
+		}
+	}
 }
 </style>

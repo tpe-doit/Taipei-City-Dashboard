@@ -13,14 +13,14 @@ const dialogStore = useDialogStore();
 const dontShowAgain = ref(false)
 
 function handleSubmit() {
-    if (dontShowAgain.value) {
-        localStorage.setItem('initialWarning', 'shown')
-    }
-    handleClose()
+	if (dontShowAgain.value) {
+		localStorage.setItem('initialWarning', 'shown')
+	}
+	handleClose()
 }
 function handleClose() {
-    dontShowAgain.value = false
-    dialogStore.hideAllDialogs();
+	dontShowAgain.value = false
+	dialogStore.hideAllDialogs();
 }
 </script>
 
