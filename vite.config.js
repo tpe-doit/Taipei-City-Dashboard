@@ -20,4 +20,8 @@ export default defineConfig({
 		},
 		chunkSizeWarningLimit: 1600,
 	},
+	test: {
+		globals: true,
+		environment: "happy-dom",
+	},
 });

@@ -7,6 +7,7 @@
 		"dev": "vite",
 		"build": "eslint src --ext .js,.vue . && vite build",
 		"lint": "eslint --fix --ext .js,.vue .",
+		"test": "vitest --dom",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -14,6 +15,7 @@
 		"apexcharts": "^3.40.0",
 		"axios": "^1.4.0",
 		"dayjs": "^1.11.7",
+		"happy-dom": "^6.0.4",
 		"mapbox-gl": "^2.14.1",
 		"pinia": "^2.0.35",
 		"uuid": "^9.0.0",
@@ -22,10 +24,13 @@
 		"vue3-apexcharts": "^1.4.1"
 	},
 	"devDependencies": {
+		"@pinia/testing": "^0.1.2",
 		"@vitejs/plugin-vue": "^4.1.0",
+		"@vue/test-utils": "^2.4.0",
 		"eslint-plugin-vue": "^9.15.1",
 		"sass": "^1.63.6",
-		"vite": "^4.3.2"
+		"vite": "^4.3.2",
+		"vitest": "^0.33.0"
 	},
 	"browserslist": [
 		"> 1%",
