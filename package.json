@@ -7,7 +7,8 @@
 		"dev": "vite",
 		"build": "eslint src --ext .js,.vue . && vite build",
 		"lint": "eslint --fix --ext .js,.vue .",
-		"test": "vitest --dom",
+		"test": "vitest run --dom",
+		"deploy": "eslint src --ext .js,.vue . && vite build && firebase deploy",
 		"preview": "vite preview"
 	},
 	"dependencies": {

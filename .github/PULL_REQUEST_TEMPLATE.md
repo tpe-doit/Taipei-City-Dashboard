@@ -24,6 +24,20 @@ Please make sure that all items are checked before submitting this request.
 -   [ ] The pull request will completely resolve the issue(s) mentioned
 -   [ ] The pull request only resolves the issue(s) mentioned and nothing more
 
+## Attribution
+
+Thanks for your hard work. If you will like to be attributed in all components that directly benefitted from your contribution, please check the box below.
+
+-   [ ] I would like to be attributed
+
+If this is your first time contributing, please fill in your (organization's) name, a profile image, and an optional link to your GitHub account or website.
+
+**Name:**
+
+**Profile Image (Drag and drop):**
+
+**Link:**
+
 ## Additional context
 
 Add any other context here.
