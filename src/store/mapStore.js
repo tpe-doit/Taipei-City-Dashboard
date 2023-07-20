@@ -101,10 +101,13 @@ export const useMapStore = defineStore("map", {
 				"bike_red",
 			];
 			images.forEach((element) => {
-				this.map.loadImage(`/images/${element}.png`, (error, image) => {
-					if (error) throw error;
-					this.map.addImage(element, image);
-				});
+				this.map.loadImage(
+					`/images/map/${element}.png`,
+					(error, image) => {
+						if (error) throw error;
+						this.map.addImage(element, image);
+					}
+				);
 			});
 		},
 

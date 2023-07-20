@@ -2,6 +2,7 @@
 
 <script setup>
 import { useDialogStore } from '../../store/dialogStore';
+import { useContentStore } from '../../store/contentStore';
 
 import DialogContainer from './DialogContainer.vue';
 import ComponentContainer from '../components/ComponentContainer.vue';
@@ -9,6 +10,7 @@ import HistoryChart from '../utilities/HistoryChart.vue';
 import DownloadData from './DownloadData.vue';
 
 const dialogStore = useDialogStore();
+const contentStore = useContentStore();
 </script>
 
 <template>
@@ -16,20 +18,39 @@ const dialogStore = useDialogStore();
 		<div class="moreinfo">
 			<ComponentContainer :content="dialogStore.moreInfoContent" :not-more-info="false" />
 			<div class="moreinfo-info">
-				<h3>組件說明</h3>
-				<p>{{ dialogStore.moreInfoContent.long_desc }}</p>
-				<h3>範例情境</h3>
-				<p>{{ dialogStore.moreInfoContent.use_case }}</p>
-				<div v-if="dialogStore.moreInfoContent.links">
-					<h3>相關連結</h3>
-					<a>連結</a>
-				</div>
-				<div v-if="dialogStore.moreInfoContent.history_data">
-					<h3>歷史軸</h3>
-					<h4>*點擊並拉動以檢視細部區間資料</h4>
-					<HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
-						:series="dialogStore.moreInfoContent.history_data"
-						:history_data_color="dialogStore.moreInfoContent.history_data_color" />
+				<div class="moreinfo-info-data">
+					<h3>組件說明</h3>
+					<p>{{ dialogStore.moreInfoContent.long_desc }}</p>
+					<h3>範例情境</h3>
+					<p>{{ dialogStore.moreInfoContent.use_case }}</p>
+					<div v-if="dialogStore.moreInfoContent.history_data">
+						<h3>歷史軸</h3>
+						<h4>*點擊並拉動以檢視細部區間資料</h4>
+						<HistoryChart :chart_config="dialogStore.moreInfoContent.chart_config"
+							:series="dialogStore.moreInfoContent.history_data"
+							:history_data_color="dialogStore.moreInfoContent.history_data_color" />
+					</div>
+					<div v-if="dialogStore.moreInfoContent.contributors">
+						<h3>協作者</h3>
+						<div class="moreinfo-info-contributors">
+							<div v-for="contributor in dialogStore.moreInfoContent.contributors" :key="contributor">
+								<a :href="contentStore.contributors[contributor].link" target="_blank" rel="noreferrer"><img
+										:src="`/images/contributors/${contributor}.png`"
+										:alt="`協作者-${contentStore.contributors[contributor].name}`">
+									<p>{{ contentStore.contributors[contributor].name }}</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div v-if="dialogStore.moreInfoContent.links">
+						<h3>原始資料</h3>
+						<div class="moreinfo-info-links">
+							<a v-for="(link, index) in dialogStore.moreInfoContent.links" :href="link" :key="link"
+								target="_blank" rel="noreferrer">{{
+									link.includes("data.taipei") ? `資料集-${index + 1} (data.taipei)` : `資料集-${index + 1}(其他)`
+								}}</a>
+						</div>
+					</div>
 				</div>
 				<div class="moreinfo-info-control">
 					<button
@@ -46,6 +67,7 @@ const dialogStore = useDialogStore();
 <style scoped lang="scss">
 .moreinfo {
 	height: fit-content;
+
 	width: 400px;
 	display: grid;
 
@@ -86,6 +108,52 @@ const dialogStore = useDialogStore();
 		@media (min-width: 820px) {
 			border-left: solid 1px var(--color-border);
 			border-top: none;
+		}
+
+		&-data {
+			max-height: calc(100% - 2.5rem);
+			overflow-y: scroll;
+		}
+
+		&-contributors {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			row-gap: 4px;
+			margin: 4px 0 var(--font-s);
+
+			a {
+				display: flex;
+				align-items: center;
+
+				p {
+					margin: 0;
+					transition: color 0.2s;
+				}
+
+				img {
+					height: var(--font-xl);
+					margin-right: 4px;
+				}
+
+				&:hover p {
+					color: var(--color-highlight)
+				}
+			}
+		}
+
+		&-links {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+
+			a {
+				font-size: var(--font-s);
+				color: var(--color-complement-text);
+				transition: color 0.2s;
+
+				&:hover {
+					color: var(--color-highlight);
+				}
+			}
 		}
 
 		&-control {

@@ -28,6 +28,8 @@ export const useContentStore = defineStore("content", {
 			name: null,
 			content: [],
 		},
+		// Stores all contributors data. Reference the structure in /public/dashboards/all_contributors.json
+		contributors: {},
 	}),
 	getters: {},
 	actions: {
@@ -41,17 +43,21 @@ export const useContentStore = defineStore("content", {
 				return;
 			}
 			this.currentDashboard.index = index;
-			// 1-2. If there is no dashboards info, call the setDashboards method (2.)
+			// 1-2. If there is no contributor info, call the setContributors method (7.)
+			if (Object.keys(this.contributors).length === 0) {
+				this.setContributors();
+			}
+			// 1-3. If there is no dashboards info, call the setDashboards method (2.)
 			if (this.dashboards.length === 0) {
 				this.setDashboards();
 				return;
 			}
-			// 1-3. If there is dashboard info but no index is defined, call the setDashboards method (2.)
+			// 1-4. If there is dashboard info but no index is defined, call the setDashboards method (2.)
 			if (!index) {
 				this.setDashboards();
 				return;
 			}
-			// 1-4. If all info is present, skip steps 2, 3, 4 and call the setCurrentDashboardContent method (5.)
+			// 1-5. If all info is present, skip steps 2, 3, 4, 7 and call the setCurrentDashboardContent method (5.)
 			this.setCurrentDashboardContent();
 		},
 		// 2. Call an API to get all dashboard info and reroute the user to the first dashboard in the list
@@ -154,6 +160,15 @@ export const useContentStore = defineStore("content", {
 				}
 			});
 		},
+		// 7. Call an API to get contributor data (result consists of id, name, link)
+		setContributors() {
+			axios
+				.get("/dashboards/all_contributors.json")
+				.then((rs) => {
+					this.contributors = rs.data.data;
+				})
+				.catch((e) => console.error(e));
+		},
 
 		/* Dummy Functions to demonstrate the logic of some functions that require a backend */
 		// Connect a backend to actually implement the following functions or remove altogether
@@ -199,6 +214,11 @@ export const useContentStore = defineStore("content", {
 		// Call this function to delete the current active dashboard.
 		deleteCurrentDashboard() {
 			const dialogStore = useDialogStore();
+
+			if (this.dashboards.length <= 3) {
+				dialogStore.showNotification("fail", `應至少保有一個儀表板`);
+				return;
+			}
 
 			this.dashboards = this.dashboards.filter(
 				(item) => item.index !== this.currentDashboard.index
