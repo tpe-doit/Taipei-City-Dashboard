@@ -4,7 +4,7 @@
 <!-- Adding new components and settings is disabled in the map layer dashboard and the mobile version -->
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useContentStore } from '../store/contentStore';
 import { useDialogStore } from '../store/dialogStore';
@@ -21,6 +21,14 @@ const dialogStore = useDialogStore();
 // The following are controls for the mobile version to toggle between dashboard and mapview
 const isDashboard = ref(false);
 
+watch(route, (newRoute) => {
+	if (newRoute.path === '/dashboard') {
+		isDashboard.value = false;
+	} else {
+		isDashboard.value = true;
+	}
+});
+
 function handleToggle() {
 	if (isDashboard.value) {
 		router.replace({ name: 'mapview', query: { index: route.query.index } });
@@ -28,12 +36,6 @@ function handleToggle() {
 		router.replace({ name: 'dashboard', query: { index: route.query.index } });
 	}
 }
-
-onMounted(() => {
-	setTimeout(() => {
-		isDashboard.value = route.path === '/dashboard' ? false : true;
-	}, 100);
-});
 </script>
 
 <template>
@@ -84,6 +86,7 @@ onMounted(() => {
 	&-title {
 		display: flex;
 		align-items: center;
+		overflow: hidden;
 
 		span {
 			font-family: var(--font-icon);
@@ -94,6 +97,7 @@ onMounted(() => {
 			margin: 0 var(--font-s);
 			font-weight: 400;
 			font-size: var(--font-m);
+			white-space: nowrap;
 		}
 
 		&-navigation {
@@ -146,8 +150,10 @@ onMounted(() => {
 	}
 
 	&-navigation {
+		min-width: 90px;
 		display: flex;
 		align-items: center;
+		margin-left: var(--font-m);
 
 		p {
 			color: var(--color-complement-text)

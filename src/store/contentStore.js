@@ -174,19 +174,19 @@ export const useContentStore = defineStore("content", {
 		// Connect a backend to actually implement the following functions or remove altogether
 
 		// Call this function to create a new dashboard. Pass in the new dashboard name and icon.
-		createNewDashboard(name, icon) {
+		createNewDashboard(name, index, icon) {
 			const dialogStore = useDialogStore();
 
 			this.dashboards.push({
 				name: name,
-				index: name,
+				index: index,
 				components: [],
 				icon: icon,
 			});
 
 			router.replace({
 				query: {
-					index: name,
+					index: index,
 				},
 			});
 

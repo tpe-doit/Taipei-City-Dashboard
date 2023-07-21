@@ -6,31 +6,47 @@ import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
 
 import DialogContainer from './DialogContainer.vue';
-import { validateStrInput } from '../../assets/utilityFunctions/validate';
+import { validateStrInput, validateEngInput } from '../../assets/utilityFunctions/validate';
 
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 
 // Stores the inputted dashboard name
 const name = ref('');
+// Stores the inputted index
+const index = ref('');
 // Stores the inputted icon
 const icon = ref('');
 const icons = ['shopping_cart', 'info', 'language', 'event', 'paid', 'account_balance', 'work', 'gavel', 'build_circle', 'circle_notifications', 'accessible', 'health_and_safety', 'science', 'coronavirus', 'luggage', 'flash_on', 'call', 'place', 'park', 'directions_car', 'lunch_dining', 'traffic', 'attractions', 'star', 'help', 'warning', 'lightbulb', 'notifications_active'];
-const errorMessage = ref(null);
+const errorMessage = ref({
+	name: null,
+	index: null,
+});
 
 function handleSubmit() {
-	if (validateStrInput(name.value) !== true) {
-		errorMessage.value = validateStrInput(name.value);
+	errorMessage.value.name = validateStrInput(name.value) === true ? null : validateStrInput(name.value);
+	errorMessage.value.index = validateEngInput(index.value) === true ? null : validateEngInput(index.value);
+	if (errorMessage.value.name || errorMessage.value.index) return;
+
+	const dashboardIndexes = contentStore.dashboards.map(el => el.index);
+	if (dashboardIndexes.includes(index.value)) {
+		errorMessage.value.index = "Index不可以與其他儀表板重複";
 		return;
 	}
+
 	// createNewDashboard is currently a dummy function to demonstrate what creating a new dashboard may look like
 	// Connect a backend to actually implement the function or remove altogether
-	contentStore.createNewDashboard(name.value, icon.value);
+	contentStore.createNewDashboard(name.value, index.value, icon.value);
 	handleClose();
 }
 function handleClose() {
 	name.value = '';
-	errorMessage.value = null;
+	index.value = '';
+	icon.value = '';
+	errorMessage.value = {
+		name: null,
+		index: null,
+	};
 	dialogStore.hideAllDialogs();
 }
 </script>
@@ -40,13 +56,20 @@ function handleClose() {
 		<div class="adddashboard">
 			<h2>新增自訂儀表板</h2>
 			<div class="adddashboard-input">
-				<p v-if="errorMessage">{{ errorMessage }}</p>
+				<p v-if="errorMessage.name">{{ errorMessage.name }}</p>
 				<h3>
-					請輸入名稱
+					請輸入名稱*
 				</h3>
 				<input type="text" v-model="name" />
 			</div>
-			<h3>請選擇圖示</h3>
+			<div class="adddashboard-input">
+				<p v-if="errorMessage.index">{{ errorMessage.index }}</p>
+				<h3>
+					請輸入Index (僅英文)*
+				</h3>
+				<input type="text" v-model="index" />
+			</div>
+			<h3>請選擇圖示*</h3>
 			<div class="adddashboard-icon">
 				<div v-for="item in icons" :key="item">
 					<input type="radio" v-model="icon" :id="item" :value="item" />
@@ -55,7 +78,7 @@ function handleClose() {
 			</div>
 			<div class="adddashboard-control">
 				<button class="adddashboard-control-cancel" @click="handleClose">取消</button>
-				<button v-if="name && icon" class="adddashboard-control-confirm" @click="handleSubmit">確定</button>
+				<button v-if="name && index && icon" class="adddashboard-control-confirm" @click="handleSubmit">確定</button>
 			</div>
 		</div>
 	</DialogContainer>

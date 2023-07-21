@@ -1313,7 +1313,7 @@
 				"unit": "輛",
 				"categories": ["Youbike在站車輛"]
 			},
-			"source": "Youbike",
+			"source": "交通局/Youbike",
 			"name": "Youbike使用情況",
 			"time_from": "2023-05-31T00:00:00+08:00",
 			"time_to": null,
@@ -1378,7 +1378,7 @@
 				"unit": "輛",
 				"categories": ["Youbike在站車輛"]
 			},
-			"source": "Youbike",
+			"source": "交通局/Youbike",
 			"name": "Youbike使用情況(Alt)",
 			"time_from": "2023-05-31T00:00:00+08:00",
 			"time_to": null,
@@ -1454,7 +1454,7 @@
 				]
 			},
 			"name": "派工案件",
-			"source": "派工系統",
+			"source": "1999派工系統",
 			"time_from": "2023-05-25T00:00:00+08:00",
 			"time_to": "2023-06-01T00:00:00+08:00",
 			"update_freq": 1,
@@ -1523,7 +1523,7 @@
 			},
 			"name": "捷運人流趨勢",
 			"history_data": true,
-			"source": "捷運工程局",
+			"source": "捷運局",
 			"time_from": "2023-05-26T23:29:00+08:00",
 			"time_to": null,
 			"update_freq": 30,
@@ -1626,7 +1626,7 @@
 				"unit": "人次"
 			},
 			"name": "捷運人流趨勢(3D)",
-			"source": "捷運工程局",
+			"source": "捷運局",
 			"time_from": "2023-05-26T23:29:00+08:00",
 			"time_to": null,
 			"update_freq": 30,
@@ -1689,7 +1689,7 @@
 				"unit": null
 			},
 			"name": "板南線擁擠程度",
-			"source": "臺北捷運公司",
+			"source": "捷運局",
 			"time_from": "2023-05-31T00:00:00+08:00",
 			"time_to": null,
 			"update_freq": 3,
@@ -2695,7 +2695,7 @@
 				"unit": null
 			},
 			"name": "淡水線擁擠程度",
-			"source": "臺北捷運公司",
+			"source": "捷運局",
 			"time_from": "2023-05-31T00:00:00+08:00",
 			"time_to": null,
 			"update_freq": 3,
@@ -2914,7 +2914,7 @@
 				"unit": "件"
 			},
 			"name": "公安聯合稽查",
-			"source": "台北市政府",
+			"source": "消防局/都發局",
 			"time_from": "2023-01-01T00:00:00+08:00",
 			"time_to": "2023-06-01T00:00:00+08:00",
 			"update_freq": null,
