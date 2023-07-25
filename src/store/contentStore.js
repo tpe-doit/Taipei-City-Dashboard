@@ -30,6 +30,10 @@ export const useContentStore = defineStore("content", {
 		},
 		// Stores all contributors data. Reference the structure in /public/dashboards/all_contributors.json
 		contributors: {},
+		// Stores whether dashboards are loading
+		loading: false,
+		// Stores whether an error occurred
+		error: false,
 	}),
 	getters: {},
 	actions: {
@@ -37,6 +41,7 @@ export const useContentStore = defineStore("content", {
 
 		// 1. Check the current path and execute actions based on the current path
 		setRouteParams(mode, index) {
+			this.error = false;
 			this.currentDashboard.mode = mode;
 			// 1-1. Don't do anything if the path is the same
 			if (this.currentDashboard.index === index) {
@@ -62,6 +67,7 @@ export const useContentStore = defineStore("content", {
 		},
 		// 2. Call an API to get all dashboard info and reroute the user to the first dashboard in the list
 		setDashboards() {
+			this.loading = true;
 			axios
 				.get("/dashboards/all_dashboards.json")
 				.then((rs) => {
@@ -83,6 +89,8 @@ export const useContentStore = defineStore("content", {
 					this.setComponents();
 				})
 				.catch((e) => {
+					this.loading = false;
+					this.error = true;
 					console.error(e);
 				});
 		},
@@ -96,6 +104,7 @@ export const useContentStore = defineStore("content", {
 					this.setMapLayers();
 					// Step 5.
 					this.setCurrentDashboardContent();
+					this.loading = false;
 				})
 				.catch((e) => console.error(e));
 		},

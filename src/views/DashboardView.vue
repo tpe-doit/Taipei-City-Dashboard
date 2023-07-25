@@ -25,10 +25,23 @@ const dialogStore = useDialogStore();
 		<MoreInfo />
 		<ReportIssue />
 	</div>
+	<!-- if dashboard is still loading -->
+	<div v-else-if="contentStore.loading" class="dashboard dashboard-nodashboard">
+		<div class="dashboard-nodashboard-content">
+			<div></div>
+		</div>
+	</div>
+	<!-- if dashboard failed to load -->
+	<div v-else-if="contentStore.error" class="dashboard dashboard-nodashboard">
+		<div class="dashboard-nodashboard-content">
+			<span>sentiment_very_dissatisfied</span>
+			<h2>發生錯誤，無法載入儀表板</h2>
+		</div>
+	</div>
 	<!-- other dashboards that don't have components -->
 	<div v-else class="dashboard dashboard-nodashboard">
 		<div class="dashboard-nodashboard-content">
-			<span>sentiment_very_dissatisfied</span>
+			<span>addchart</span>
 			<h2>尚未加入組件</h2>
 			<button @click="dialogStore.showDialog('addComponent')"
 				v-if="contentStore.currentDashboard.index !== 'favorites'">加入您的第一個組件</button>
@@ -82,7 +95,22 @@ const dialogStore = useDialogStore();
 			button {
 				color: var(--color-highlight)
 			}
+
+			div {
+				width: 2rem;
+				height: 2rem;
+				border-radius: 50%;
+				border: solid 4px var(--color-border);
+				border-top: solid 4px var(--color-highlight);
+				animation: spin 0.7s ease-in-out infinite;
+			}
 		}
+	}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
 	}
 }
 </style>

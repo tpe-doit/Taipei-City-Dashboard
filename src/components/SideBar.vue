@@ -121,7 +121,7 @@ onMounted(() => {
 		}
 
 		&-mobile {
-			bottom: 60px;
+			bottom: 80px;
 		}
 	}
 }

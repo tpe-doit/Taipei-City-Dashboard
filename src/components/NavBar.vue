@@ -26,7 +26,9 @@ const linkQuery = computed(() => {
 <template>
 	<div class="navbar">
 		<div class="navbar-logo">
-			<img src="../assets/images/TUIC.svg" alt="tuic logo" />
+			<div class="navbar-logo-image">
+				<img src="../assets/images/TUIC.svg" alt="tuic logo" />
+			</div>
 			<div>
 				<h1>{{ VITE_APP_TITLE }}</h1>
 				<h2>Taipei City Dashboard Open Source</h2>
@@ -79,11 +81,17 @@ const linkQuery = computed(() => {
 			font-weight: 400;
 		}
 
-		img {
-			height: 45px;
+		&-image {
+			width: 22.94px;
 			margin: 0 var(--font-m);
-			filter: invert(1);
+
+			img {
+				height: 45px;
+				filter: invert(1);
+			}
 		}
+
+
 	}
 
 	&-tabs {

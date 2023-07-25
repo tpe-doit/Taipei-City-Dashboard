@@ -732,7 +732,7 @@
 			"index": "work_live",
 			"map_config": [
 				{
-					"index": "tp_fet_work_live",
+					"index": "tp_fet_work_live_new",
 					"paint": {
 						"fill-extrusion-color": [
 							"interpolate",
@@ -783,7 +783,7 @@
 				}
 			],
 			"source": "遠傳電信",
-			"time_from": "2020-06-16T00:00:00+08:00",
+			"time_from": "2023-03-22T00:00:00+08:00",
 			"time_to": null,
 			"update_freq": null,
 			"update_freq_unit": null,

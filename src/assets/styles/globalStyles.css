@@ -27,7 +27,7 @@
 
 @font-face {
 	font-family: material-icons;
-	src: url("../fonts/MaterialIconsRound-Regular.otf") format("opentype");
+	src: url("/fonts/MaterialIconsRound-Regular.otf") format("opentype");
 }
 
 h1 {
