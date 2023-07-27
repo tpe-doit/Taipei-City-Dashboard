@@ -4,8 +4,8 @@
 import { ref, computed } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 
-const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config'])
-const mapStore = useMapStore()
+const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config']);
+const mapStore = useMapStore();
 
 const chartOptions = ref({
 	chart: {
@@ -42,9 +42,9 @@ const chartOptions = ref({
 		// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
 		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
 			return '<div class="chart-tooltip">' +
-                '<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
-                '<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
-                '</div>'
+				'<h6>' + w.globals.seriesNames[seriesIndex] + '</h6>' +
+				'<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
+				'</div>';
 		},
 	},
 	xaxis: {
@@ -60,31 +60,31 @@ const chartOptions = ref({
 		},
 		type: 'category',
 	},
-})
+});
 
 const chartHeight = computed(() => {
-	return `${45 + props.series[0].data.length * 30}`
-})
+	return `${45 + props.series[0].data.length * 30}`;
+});
 
-const selectedIndex = ref(null)
+const selectedIndex = ref(null);
 
 function handleDataSelection(e, chartContext, config) {
 	if (!props.chart_config.map_filter) {
-		return
+		return;
 	}
-	if (config.seriesIndex !== selectedIndex.value) {
-		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.seriesIndex])
-		selectedIndex.value = config.seriesIndex
+	if (config.dataPointIndex !== selectedIndex.value) {
+		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][config.dataPointIndex]);
+		selectedIndex.value = config.dataPointIndex;
 	} else {
-		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`)
-		selectedIndex.value = null
+		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`);
+		selectedIndex.value = null;
 	}
 }
 </script>
 
 <template>
-    <div v-if="activeChart === 'BarPercentChart'">
-        <apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"
-            @dataPointSelection="handleDataSelection"></apexchart>
-    </div>
+	<div v-if="activeChart === 'BarPercentChart'">
+		<apexchart width="100%" :height="chartHeight" type="bar" :options="chartOptions" :series="series"
+			@dataPointSelection="handleDataSelection"></apexchart>
+	</div>
 </template>

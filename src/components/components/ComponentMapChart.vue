@@ -64,11 +64,13 @@ function changeActiveChart(chartName) {
 				</div>
 				<h4 v-if="checked">{{ `${content.source} | ${dataTime}` }}</h4>
 			</div>
-			<!-- The class "toggleswitch" could be edited in /assets/styles/toggleswitch.css -->
-			<label class="toggleswitch">
-				<input type="checkbox" @change="handleToggle" v-model="checked">
-				<span class="toggleswitch-slider"></span>
-			</label>
+			<div class="componentmapchart-header-toggle">
+				<!-- The class "toggleswitch" could be edited in /assets/styles/toggleswitch.css -->
+				<label class="toggleswitch">
+					<input type="checkbox" @change="handleToggle" v-model="checked">
+					<span class="toggleswitch-slider"></span>
+				</label>
+			</div>
 		</div>
 		<div class="componentmapchart-control" v-if="props.content.chart_config.types.length > 1 && checked">
 			<button v-for="item in props.content.chart_config.types" @click="changeActiveChart(item)"
@@ -103,6 +105,7 @@ function changeActiveChart(chartName) {
 	&-header {
 		display: flex;
 		justify-content: space-between;
+		align-items: baseline;
 
 		h3 {
 			font-size: var(--font-m);
@@ -127,6 +130,12 @@ function changeActiveChart(chartName) {
 				user-select: none;
 				pointer-events: none;
 			}
+		}
+
+		&-toggle {
+			min-height: 1rem;
+			min-width: 2rem;
+			margin-top: 4px;
 		}
 	}
 

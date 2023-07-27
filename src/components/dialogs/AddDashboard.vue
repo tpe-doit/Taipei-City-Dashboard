@@ -17,7 +17,10 @@ const name = ref('');
 const index = ref('');
 // Stores the inputted icon
 const icon = ref('');
-const icons = ['shopping_cart', 'info', 'language', 'event', 'paid', 'account_balance', 'work', 'gavel', 'build_circle', 'circle_notifications', 'accessible', 'health_and_safety', 'science', 'coronavirus', 'luggage', 'flash_on', 'call', 'place', 'park', 'directions_car', 'lunch_dining', 'traffic', 'attractions', 'star', 'help', 'warning', 'lightbulb', 'notifications_active'];
+const icons = ['shopping_cart', 'info', 'language', 'event', 'paid', 'account_balance', 'work', 'gavel', 'build_circle', 'circle_notifications', 'accessible',
+	'health_and_safety', 'science', 'coronavirus', 'luggage', 'flash_on', 'call', 'place', 'park', 'directions_car', 'lunch_dining', 'traffic', 'attractions',
+	'star', 'help', 'warning', 'lightbulb', 'notifications_active', 'fingerprint', 'pets', 'rocket_launch', 'sensors', 'commute', 'theaters', 'balance',
+	'sports_handball', 'flood', 'hotel', 'temple_buddhist', 'grass'];
 const errorMessage = ref({
 	name: null,
 	index: null,
@@ -65,7 +68,7 @@ function handleClose() {
 			<div class="adddashboard-input">
 				<p v-if="errorMessage.index">{{ errorMessage.index }}</p>
 				<h3>
-					請輸入Index (僅英文)*
+					請輸入獨特Index (僅英文)*
 				</h3>
 				<input type="text" v-model="index" />
 			</div>

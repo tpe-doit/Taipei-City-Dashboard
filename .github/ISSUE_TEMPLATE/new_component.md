@@ -1,6 +1,6 @@
 ---
-name: New Component
-about: Suggest a new component for Taipei City Dashboard
+name: New Component(s)
+about: Suggest new component(s) for Taipei City Dashboard
 title: "[Component]"
 labels: "component"
 assignees: igorho2000
@@ -8,7 +8,9 @@ assignees: igorho2000
 
 > Please submit all issues in English.
 
-## Please describe the proposed component
+> If submitting more than 1 component at once, please number them when filling out the template.
+
+## Please describe the proposed component(s)
 
 A clear and concise description of the proposed component
 

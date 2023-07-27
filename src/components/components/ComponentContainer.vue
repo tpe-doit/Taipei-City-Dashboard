@@ -239,6 +239,7 @@ function toggleFavorite() {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		overflow: visible;
 
 		div {
 			display: flex;

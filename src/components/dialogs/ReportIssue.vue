@@ -40,7 +40,7 @@ function handleClose() {
 	<DialogContainer dialog="reportIssue" @on-close="handleClose">
 		<div class="reportissue">
 			<h2>回報問題</h2>
-			<h3>問題種類 (必填)</h3>
+			<h3>問題種類*</h3>
 			<div v-for="item in issueTypes" :key="item">
 				<input class="reportissue-radio" type="radio" v-model="allInputs.type" :value="item" :id="item" />
 				<label :for="item">
@@ -48,11 +48,11 @@ function handleClose() {
 					{{ item }}
 				</label>
 			</div>
-			<h3>問題描述 (必填)</h3>
+			<h3>問題描述*</h3>
 			<textarea v-model="allInputs.description"></textarea>
-			<h3>姓名 (非必填)</h3>
+			<h3>姓名</h3>
 			<input class="reportissue-input" type="text" v-model="allInputs.name" />
-			<h3>任何聯絡方式 (非必填)</h3>
+			<h3>任何聯絡方式</h3>
 			<input class="reportissue-input" type="text" v-model="allInputs.contact" />
 			<div class="reportissue-control">
 				<button class="reportissue-control-cancel" @click="handleClose">取消</button>
@@ -84,6 +84,14 @@ function handleClose() {
 				background-color: var(--color-highlight);
 			}
 		}
+
+		&:hover+label {
+			color: var(--color-highlight);
+
+			div {
+				border-color: var(--color-highlight);
+			}
+		}
 	}
 
 	label {
@@ -102,7 +110,7 @@ function handleClose() {
 			padding: calc(var(--font-s) / 4);
 			border-radius: 50%;
 			border: 1px solid var(--color-border);
-			transition: background-color 0.2s;
+			transition: background-color 0.2s, border-color 0.2s;
 		}
 	}
 

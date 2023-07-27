@@ -57,6 +57,7 @@ const line = ref(props.series[0].name);
 	p {
 		color: black;
 		font-size: 0.6rem;
+		line-height: 0.6rem;
 		pointer-events: none;
 		user-select: none;
 	}
@@ -66,8 +67,8 @@ const line = ref(props.series[0].name);
 		grid-template-columns: 5rem 20px 1fr 1fr;
 
 		&-tag {
-			width: 1rem;
-			height: 1.4rem;
+			min-width: 1rem;
+			min-height: 1.4rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;

@@ -48,6 +48,7 @@ const numToColor = {
 		border-radius: 2px;
 		color: black;
 		font-size: 0.8rem;
+		line-height: 1rem;
 		text-align: center;
 		pointer-events: none;
 		user-select: none;

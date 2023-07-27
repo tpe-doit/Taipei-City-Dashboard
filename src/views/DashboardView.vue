@@ -43,7 +43,7 @@ const dialogStore = useDialogStore();
 		<div class="dashboard-nodashboard-content">
 			<span>addchart</span>
 			<h2>尚未加入組件</h2>
-			<button @click="dialogStore.showDialog('addComponent')"
+			<button @click="dialogStore.showDialog('addComponent')" class="hide-if-mobile"
 				v-if="contentStore.currentDashboard.index !== 'favorites'">加入您的第一個組件</button>
 			<p v-else>點擊其他儀表板組件之愛心以新增至收藏組件</p>
 		</div>

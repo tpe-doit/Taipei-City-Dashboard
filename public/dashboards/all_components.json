@@ -1878,7 +1878,8 @@
 						]
 					},
 					"property": [
-						{ "key": "vil", "name": "里界" },
+						{ "key": "dist", "name": "區名" },
+						{ "key": "vil", "name": "里名" },
 						{ "key": "cnt_low_income", "name": "低收入人口數" },
 						{
 							"key": "cnt_low_middle_income",
@@ -1899,7 +1900,7 @@
 			],
 			"chart_config": {
 				"color": ["#2e999b", "#80e3d4", "#1f9b85", "#a5ece0"],
-				"types": ["ColumnChart", "RadarChart", "BarPercentChart"],
+				"types": ["DistrictChart", "ColumnChart", "BarPercentChart"],
 				"unit": "人",
 				"categories": [
 					"北投區",
@@ -1914,6 +1915,23 @@
 					"萬華區",
 					"大安區",
 					"文山區"
+				],
+				"map_filter": [
+					"dist",
+					[
+						"北投區",
+						"士林區",
+						"內湖區",
+						"南港區",
+						"松山區",
+						"信義區",
+						"中山區",
+						"大同區",
+						"中正區",
+						"萬華區",
+						"大安區",
+						"文山區"
+					]
 				]
 			},
 			"name": "社福人口",

@@ -315,11 +315,21 @@ function clearFilters() {
 
 		label {
 			margin-left: 0.5rem;
+			color: var(--color-complement-text);
 			font-size: var(--font-m);
+			transition: color 0.2s;
 		}
 
 		input {
 			display: none;
+
+			&:checked+label {
+				color: white
+			}
+
+			&:hover+label {
+				color: var(--color-highlight)
+			}
 		}
 	}
 

@@ -62,11 +62,13 @@ function handleToggle() {
 		</div>
 		<div class="settingsbar-navigation show-if-mobile">
 			<p>圖表</p>
-			<!-- The class "toggleswitch is slightly modified below, further changes could be made in /assets/styles/toggleswitch.css" -->
-			<label class="toggleswitch">
-				<input type="checkbox" @change="handleToggle" v-model="isDashboard">
-				<span class="toggleswitch-slider"></span>
-			</label>
+			<div>
+				<!-- The class "toggleswitch is slightly modified below, further changes could be made in /assets/styles/toggleswitch.css" -->
+				<label class="toggleswitch">
+					<input type="checkbox" @change="handleToggle" v-model="isDashboard">
+					<span class="toggleswitch-slider"></span>
+				</label>
+			</div>
 			<p>地圖</p>
 		</div>
 	</div>
