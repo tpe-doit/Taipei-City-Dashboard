@@ -18,6 +18,7 @@ const contentStore = useContentStore();
 // The following six states store the filters / parameters inputted by the user
 const searchName = ref('');
 const searchIndex = ref('');
+const searchId = ref('');
 const filterSource = ref([]);
 const filterType = ref([]);
 const filterFrequency = ref([]);
@@ -53,6 +54,9 @@ const outputList = computed(() => {
 	}
 	if (searchIndex.value) {
 		output = output.filter((item) => item.index.toString().includes(searchIndex.value));
+	}
+	if (searchId.value) {
+		output = output.filter((item) => item.id.toString().includes(searchId.value));
 	}
 	if (filterSource.value.length > 0) {
 		output = output.filter((item) => filterSource.value.findIndex((el) => item.source.includes(el)) > -1);
@@ -125,12 +129,16 @@ function clearFilters() {
 				<div class="addcomponent-header-search">
 					<div>
 						<div>
-							<input type="text" placeholder="以組件名稱搜尋" v-model="searchName" />
+							<input type="text" placeholder="以名稱搜尋" v-model="searchName" />
 							<span v-if="searchName" @click="() => { searchName = '' }">cancel</span>
 						</div>
 						<div>
-							<input type="text" placeholder="以組件Index搜尋" v-model="searchIndex" />
+							<input type="text" placeholder="以Index搜尋" v-model="searchIndex" />
 							<span v-if="searchIndex" @click="() => { searchIndex = '' }">cancel</span>
+						</div>
+						<div>
+							<input type="text" placeholder="以Id搜尋" v-model="searchId" />
+							<span v-if="searchId" @click="() => { searchId = '' }">cancel</span>
 						</div>
 					</div>
 					<div>
@@ -177,7 +185,7 @@ function clearFilters() {
 						<input type="checkbox" :id="item.name" :value="item.id" v-model="componentsSelected" />
 						<label :for="item.name" class="addcomponent-list-item">
 							<div>
-								我是縮圖
+								<img :src="`/images/thumbnails/${item.chart_config.types[0]}.svg`" />
 							</div>
 							<div>
 								<div>
@@ -245,7 +253,7 @@ function clearFilters() {
 					}
 
 					input {
-						width: 200px;
+						width: 150px;
 						margin-right: 0.5rem;
 					}
 
@@ -370,7 +378,7 @@ function clearFilters() {
 				align-items: center;
 				justify-content: center;
 				border-radius: 5px;
-				background-color: gray;
+				background-color: var(--color-complement-text);
 				pointer-events: none;
 			}
 

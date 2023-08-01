@@ -1694,7 +1694,7 @@
 		},
 		"61": {
 			"id": 61,
-			"index": "youbike_availability",
+			"index": "youbike_availability_alt",
 			"map_config": [
 				{
 					"index": "traffic_youbike",
@@ -1933,7 +1933,7 @@
 			],
 			"chart_config": {
 				"color": ["#2e999b", "#80e3d4"],
-				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"types": ["TimelineStackedChart", "TimelineSeparateChart"],
 				"unit": "人次"
 			},
 			"name": "捷運人流趨勢",
@@ -1954,7 +1954,7 @@
 		},
 		"74": {
 			"id": 74,
-			"index": "metro_passengers",
+			"index": "metro_passengers_3d",
 			"map_config": [
 				{
 					"color": "#555",
@@ -3415,7 +3415,7 @@
 		},
 		"117": {
 			"id": 117,
-			"index": "public_parking_lots",
+			"index": "public_parking_lots_alt",
 			"map_config": [
 				{
 					"index": "parking_realtime_new",
@@ -3515,7 +3515,7 @@
 		},
 		"118": {
 			"id": 118,
-			"index": "public_parking_lots",
+			"index": "public_parking_lots_3d",
 			"map_config": [
 				{
 					"index": "parking_realtime_3d2",

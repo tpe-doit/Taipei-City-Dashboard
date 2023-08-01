@@ -9,6 +9,7 @@ https://docs.mapbox.com/mapbox-gl-js/guides/
 */
 import { createApp, defineComponent, nextTick, ref } from "vue";
 import { defineStore } from "pinia";
+import { useAuthStore } from "./authStore";
 import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
@@ -18,6 +19,7 @@ import {
 	MapObjectConfig,
 	TaipeiTown,
 	TaipeiVillage,
+	TaipeiBuilding,
 	maplayerCommonPaint,
 	maplayerCommonLayout,
 } from "../assets/configs/mapbox/mapConfig.js";
@@ -66,8 +68,10 @@ export const useMapStore = defineStore("map", {
 					this.addPopup(event);
 				});
 		},
-		// 2. Adds two basic layers to the map (Taipei District and Taipei Village labels)
+		// 2. Adds three basic layers to the map (Taipei District, Taipei Village labels, and Taipei 3D Buildings)
+		// Due to performance concerns, Taipei 3D Buildings won't be added in the mobile version
 		initializeBasicLayers() {
+			const authStore = useAuthStore();
 			fetch(`/mapData/taipei_town.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
@@ -88,6 +92,15 @@ export const useMapStore = defineStore("map", {
 						})
 						.addLayer(TaipeiVillage);
 				});
+			if (!authStore.isMobileDevice) {
+				this.map
+					.addSource("taipei_building_3d_source", {
+						type: "vector",
+						url: import.meta.env.VITE_MAPBOXTILE,
+					})
+					.addLayer(TaipeiBuilding);
+			}
+
 			this.addSymbolSources();
 		},
 		// 3. Adds symbols that will be used by some map layers
