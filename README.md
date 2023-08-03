@@ -14,15 +14,16 @@ We have since completed the initial layouts and basic functionalities of Taipei 
 
 [Chinese Version]()
 
-Demo | [License](https://github.com/tpe-doit/Taipei-City-Dashboard-FE/blob/main/LICENSE) | [Code of Conduct](https://github.com/tpe-doit/Taipei-City-Dashboard-FE/blob/main/.github/CODE_OF_CONDUCT.md) | Contribution Guide
+[Demo]() | [License](https://github.com/tpe-doit/Taipei-City-Dashboard-FE/blob/main/LICENSE) | [Code of Conduct](https://github.com/tpe-doit/Taipei-City-Dashboard-FE/blob/main/.github/CODE_OF_CONDUCT.md) | [Contribution Guide]()
 
 ## Documentation
 
-Check out the documentation for Taipei City Dashboard here.
+Check out the documentation for Taipei City Dashboard [here]().
 
 ## Contributors
 
 Many thanks to the contributors of this project!
+
 <a href="https://github.com/tpe-doit/Taipei-City-Dashboard-FE/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=tpe-doit/Taipei-City-Dashboard-FE" />
 </a>
