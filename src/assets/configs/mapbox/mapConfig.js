@@ -88,7 +88,6 @@ export const TaipeiBuilding = {
 			1044.14,
 			1044.14,
 		],
-		"fill-extrusion-base": ["to-number", ["get", "1_ent_heig"]],
 		"fill-extrusion-opacity": 0.8,
 		"fill-extrusion-color": [
 			"interpolate",
