@@ -1,4 +1,4 @@
-# Taipei City Dashboard Open Source FE
+# <img src='src/assets/images/TUIC.svg' height='28'>   Taipei City Dashboard Open Source FE
 
 Taipei City Dashboard is a data visualization platform developed by [Taipei Urban Intelligence Center (TUIC)](https://tuic.gov.taipei/en).
 
