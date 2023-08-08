@@ -83,6 +83,7 @@ const linkQuery = computed(() => {
 
 		&-image {
 			width: 22.94px;
+			height: 45px;
 			margin: 0 var(--font-m);
 
 			img {
