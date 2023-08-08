@@ -21,6 +21,7 @@ const contentStore = useContentStore();
 				<div class="moreinfo-info-data">
 					<h3>組件說明</h3>
 					<p>{{ dialogStore.moreInfoContent.long_desc }}</p>
+					<p>{{ `ID: ${dialogStore.moreInfoContent.id}｜Index: ${dialogStore.moreInfoContent.index}` }}</p>
 					<h3>範例情境</h3>
 					<p>{{ dialogStore.moreInfoContent.use_case }}</p>
 					<div v-if="dialogStore.moreInfoContent.history_data">
