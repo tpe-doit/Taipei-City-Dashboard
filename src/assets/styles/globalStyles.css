@@ -28,6 +28,7 @@
 @font-face {
 	font-family: material-icons;
 	src: url("/fonts/MaterialIconsRound-Regular.otf") format("opentype");
+	font-display: swap;
 }
 
 h1 {

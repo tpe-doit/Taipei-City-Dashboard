@@ -11,26 +11,22 @@ const allInputs = ref({
 	type: "組件基本資訊有誤",
 	description: "",
 	name: "",
-	contact: "",
 });
 const issueTypes = ["組件基本資訊有誤", "組件資料有誤或未更新", "系統問題", "其他建議"];
 
 function handleSubmit() {
-	let openedWindow;
-	openedWindow = window.open(`https://docs.google.com/forms/d/e/1FAIpQLScgY1xXYuGTb1daf3rFg0yyH-x1A6CSCuwF2P1GBENzx7XPug/formResponse?usp=pp_url&entry.2090216374=${dialogStore.issue.id}&entry.1790274053=${dialogStore.issue.name}&entry.1025623950=${allInputs.value.type}&entry.11266555=${allInputs.value.description}&entry.1057102353=${allInputs.value.name}&entry.502116166=${allInputs.value.contact}&submit=Submit`);
-	setTimeout(() => {
-		openedWindow.close();
-		dialogStore.showNotification('success', '感謝您的回報，我們將儘速處理');
-		handleClose();
-	}, 200);
-
+	const currentDate = new Date().toJSON().slice(0, 10).replaceAll("-", "");
+	const secondaryLabel = allInputs.value.type === "其他建議" ? "enhancement" : "bug";
+	const issueTitle = `[from-demo] ${currentDate} ${allInputs.value.type} - ${dialogStore.issue.id} | ${dialogStore.issue.name}`;
+	const issueBody = allInputs.value.description.replaceAll('\n', '%0D%0A') + '%0D%0A%0D%0A' + 'Issue Opener: ' + allInputs.value.name;
+	window.open(`https://github.com/tpe-doit/Taipei-City-Dashboard-FE/issues/new?assignees=igorho2000&labels=from-demo,${secondaryLabel}&title=${issueTitle}&body=${issueBody}`);
+	handleClose();
 }
 function handleClose() {
 	allInputs.value = {
 		type: "組件基本資訊有誤",
 		description: "",
 		name: "",
-		contact: "",
 	};
 	dialogStore.dialogs.reportIssue = false;
 }
@@ -48,15 +44,15 @@ function handleClose() {
 					{{ item }}
 				</label>
 			</div>
-			<h3>問題描述*</h3>
+			<h3>問題簡述*</h3>
 			<textarea v-model="allInputs.description"></textarea>
-			<h3>姓名</h3>
+			<h3>姓名*</h3>
 			<input class="reportissue-input" type="text" v-model="allInputs.name" />
-			<h3>任何聯絡方式</h3>
-			<input class="reportissue-input" type="text" v-model="allInputs.contact" />
 			<div class="reportissue-control">
 				<button class="reportissue-control-cancel" @click="handleClose">取消</button>
-				<button v-if="allInputs.description" class="reportissue-control-confirm" @click="handleSubmit">送出</button>
+				<button v-if="allInputs.description && allInputs.name" class="reportissue-control-confirm"
+					@click="handleSubmit">開立 GitHub
+					Issue</button>
 			</div>
 		</div>
 	</DialogContainer>
@@ -115,7 +111,7 @@ function handleClose() {
 	}
 
 	textarea {
-		height: 100px;
+		height: 125px;
 		padding: 4px 6px;
 		border: solid 1px var(--color-border);
 		border-radius: 5px;
