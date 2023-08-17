@@ -4,6 +4,8 @@
 import { ref } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 
+const { BASE_URL } = import.meta.env;
+
 const mapStore = useMapStore();
 
 const props = defineProps(['content']);
@@ -27,7 +29,7 @@ function handleToggle() {
 	<div class="mobilelayertab">
 		<input :id="content.index" type="checkbox" v-model="checked" @change="handleToggle" />
 		<label :for="content.index" :class="{ checked: checked }">
-			<img :src="`/images/thumbnails/${content.chart_config.types[0]}.svg`" />
+			<img :src="`${BASE_URL}/images/thumbnails/${content.chart_config.types[0]}.svg`" />
 		</label>
 		<p>{{ content.name.length > 6 ? `${content.name.slice(0, 5)}...` : content.name }}</p>
 	</div>

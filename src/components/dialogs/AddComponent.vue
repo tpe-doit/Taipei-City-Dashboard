@@ -12,6 +12,8 @@ import DialogContainer from './DialogContainer.vue';
 import ComponentTag from '../utilities/ComponentTag.vue';
 import CustomCheckBox from '../utilities/CustomCheckBox.vue';
 
+const { BASE_URL } = import.meta.env;
+
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 
@@ -185,7 +187,7 @@ function clearFilters() {
 						<input type="checkbox" :id="item.name" :value="item.id" v-model="componentsSelected" />
 						<label :for="item.name" class="addcomponent-list-item">
 							<div>
-								<img :src="`/images/thumbnails/${item.chart_config.types[0]}.svg`" />
+								<img :src="`${BASE_URL}/images/thumbnails/${item.chart_config.types[0]}.svg`" />
 							</div>
 							<div>
 								<div>

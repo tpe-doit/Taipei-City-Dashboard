@@ -13,7 +13,7 @@
 	--font-l: 1.25rem;
 	--font-m: 1rem;
 	--font-s: 0.75rem;
-	--font-icon: "material-icons";
+	--font-icon: "Material Icons Round";
 }
 
 * {
@@ -23,12 +23,6 @@
 	font-family: "微軟正黑體", "Microsoft JhengHei", "Droid Sans", "Open Sans",
 		"Helvetica";
 	overflow: hidden;
-}
-
-@font-face {
-	font-family: material-icons;
-	src: url("/fonts/MaterialIconsRound-Regular.otf") format("opentype");
-	font-display: swap;
 }
 
 h1 {

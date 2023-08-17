@@ -39,7 +39,7 @@ const linkQuery = computed(() => {
 			<router-link :to="`/mapview${linkQuery}`">地圖交叉比對</router-link>
 		</div>
 		<div class="navbar-user">
-			<a href="https://dashboard-docs-7ffd9.web.app/" target="_blank" rel="noreferrer"><button
+			<a href="https://tuic.gov.taipei/documentation/front-end" target="_blank" rel="noreferrer"><button
 					class="hide-if-mobile"><span>school</span></button></a>
 			<button class="hide-if-mobile" @click="toggle"><span>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen'
 			}}</span></button>

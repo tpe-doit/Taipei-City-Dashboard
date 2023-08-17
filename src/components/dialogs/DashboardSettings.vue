@@ -59,7 +59,7 @@ function handleDelete() {
 			</div>
 			<div class="dashboardsettings-control">
 				<button class="dashboardsettings-control-cancel" @click="handleClose">取消</button>
-				<button class="dashboardsettings-control-confirm" @click="handleSubmit">確定更改</button>
+				<button v-if="newName" class="dashboardsettings-control-confirm" @click="handleSubmit">確定更改</button>
 				<button v-if="deleteConfirm" class="dashboardsettings-control-delete" @click="handleDelete">刪除儀表板</button>
 			</div>
 		</div>
