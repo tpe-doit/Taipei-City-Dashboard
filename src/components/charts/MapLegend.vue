@@ -4,6 +4,8 @@
 import { ref } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 
+const { BASE_URL } = import.meta.env;
+
 const props = defineProps(['chart_config', 'series', 'map_config']);
 const mapStore = useMapStore();
 
@@ -32,7 +34,7 @@ function handleDataSelection(index) {
 				<div v-if="item.type !== 'symbol'"
 					:style="{ backgroundColor: `${item.color}`, height: item.type === 'line' ? '0.4rem' : '1rem', borderRadius: item.type === 'circle' ? '50%' : '2px' }">
 				</div>
-				<img v-else :src="`/images/map/${item.icon}.png`" />
+				<img v-else :src="`${BASE_URL}/images/map/${item.icon}.png`" />
 				<!-- If there is a value attached, show the value -->
 				<div v-if="item.value">
 					<h5>{{ item.name }}</h5>

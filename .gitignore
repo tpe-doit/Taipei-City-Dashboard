@@ -29,3 +29,5 @@ node_modules
 .firebaserc
 firebase.json
 *.cache
+
+*.tar.gz

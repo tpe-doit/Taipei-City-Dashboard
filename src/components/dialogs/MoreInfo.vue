@@ -9,6 +9,8 @@ import ComponentContainer from '../components/ComponentContainer.vue';
 import HistoryChart from '../utilities/HistoryChart.vue';
 import DownloadData from './DownloadData.vue';
 
+const { BASE_URL } = import.meta.env;
+
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 </script>
@@ -36,7 +38,7 @@ const contentStore = useContentStore();
 						<div class="moreinfo-info-contributors">
 							<div v-for="contributor in dialogStore.moreInfoContent.contributors" :key="contributor">
 								<a :href="contentStore.contributors[contributor].link" target="_blank" rel="noreferrer"><img
-										:src="`/images/contributors/${contributor}.png`"
+										:src="`${BASE_URL}/images/contributors/${contributor}.png`"
 										:alt="`協作者-${contentStore.contributors[contributor].name}`">
 									<p>{{ contentStore.contributors[contributor].name }}</p>
 								</a>

@@ -9,6 +9,7 @@ import router from "../router/index";
 import { defineStore } from "pinia";
 import { useDialogStore } from "./dialogStore";
 import axios from "axios";
+const { BASE_URL } = import.meta.env;
 
 export const useContentStore = defineStore("content", {
 	state: () => ({
@@ -69,7 +70,7 @@ export const useContentStore = defineStore("content", {
 		setDashboards() {
 			this.loading = true;
 			axios
-				.get("/dashboards/all_dashboards.json")
+				.get(`${BASE_URL}/dashboards/all_dashboards.json`)
 				.then((rs) => {
 					this.dashboards = rs.data.data;
 					if (!this.currentDashboard.index) {
@@ -97,7 +98,7 @@ export const useContentStore = defineStore("content", {
 		// 3. Call and API to get all components info
 		setComponents() {
 			axios
-				.get("/dashboards/all_components.json")
+				.get(`${BASE_URL}/dashboards/all_components.json`)
 				.then((rs) => {
 					this.components = rs.data.data;
 					// Step 4.
@@ -148,7 +149,7 @@ export const useContentStore = defineStore("content", {
 		setCurrentDashboardChartData() {
 			this.currentDashboard.content.forEach((component, index) => {
 				axios
-					.get(`/chartData/${component.id}.json`)
+					.get(`${BASE_URL}/chartData/${component.id}.json`)
 					.then((rs) => {
 						this.currentDashboard.content[index].chart_data =
 							rs.data.data;
@@ -158,7 +159,7 @@ export const useContentStore = defineStore("content", {
 					});
 				if (this.currentDashboard.content[index].history_data) {
 					axios
-						.get(`/historyData/${component.id}.json`)
+						.get(`${BASE_URL}/historyData/${component.id}.json`)
 						.then((rs) => {
 							this.currentDashboard.content[index].history_data =
 								rs.data.data;
@@ -172,7 +173,7 @@ export const useContentStore = defineStore("content", {
 		// 7. Call an API to get contributor data (result consists of id, name, link)
 		setContributors() {
 			axios
-				.get("/dashboards/all_contributors.json")
+				.get(`${BASE_URL}/dashboards/all_contributors.json`)
 				.then((rs) => {
 					this.contributors = rs.data.data;
 				})
