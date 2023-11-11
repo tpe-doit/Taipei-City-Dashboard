@@ -72,6 +72,14 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "CHlLL",
+			"index": "CHiLL",
+			"components": [
+				"148"
+			],
+			"icon": "public"
 		}
 	]
 }
