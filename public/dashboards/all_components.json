@@ -4129,6 +4129,62 @@
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
 			"contributors": ["tuic"]
+		},
+		"148": {
+			"id": 148,
+			"index": "public_toilet_number",
+			"map_config": [
+				{
+					"index": "public_toilet_number",
+					"property": [
+						{
+							"key": "dist",
+							"name": "行政區"
+						}
+					],
+					"type": "circle",
+					"size": null,
+					"icon": null,
+					"title": "各行政區的公廁數量"
+				}
+			],
+			"chart_config": {
+				"color": ["#2e999b"],
+				"types": ["DistrictChart", "ColumnChart"],
+				"unit": "所",
+				"map_filter": [
+					"dist",
+					[
+						"北投區",
+						"士林區",
+						"內湖區",
+						"南港區",
+						"松山區",
+						"信義區",
+						"中山區",
+						"大同區",
+						"中正區",
+						"萬華區",
+						"大安區",
+						"文山區"
+					]
+				]
+			},
+			"history_data": false,
+			"source": "環保局",
+			"time_from": "2023-11-08T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"name": "各行政區的公廁數量",
+			"short_desc": "顯示全市各行政區的廁所數量和分布位置",
+			"long_desc": "顯示全市各行政區的廁所數量分布，資料來源為台北市環保局開放資料，不定期更新。",
+			"use_case": "台北市廁所的數量與分布位置資料，將幫助我們掌握各行政區的廁所數量差異，並進一步比較其與其他指標的相關性。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=ca205b54-a06f-4d84-894c-d6ab5079ce79"
+			],
+			"tags": [],
+			"contributors": ["CHlLL"]
 		}
 	}
 }
