@@ -4185,6 +4185,55 @@
 			],
 			"tags": [],
 			"contributors": ["CHlLL"]
+		},
+		"149": {
+			"id": 149,
+			"index": "public_wc",
+			"map_config": [
+				{
+					"index": "public_wc",
+					"property": [
+						{
+							"key": "id",
+							"name": "編號"
+						},
+						{
+							"key": "name",
+							"name": "廁所名稱"
+						},
+						{
+							"key": "location",
+							"name": "位置"
+						},
+						{
+							"key": "lvl",
+							"name":"廁所評分"
+						}
+					],
+					"type": "symbol",
+					"icon": "public_toilet",
+					"title": "公廁分佈"
+				}
+			],
+			"name": "公廁分佈",
+			"chart_config": {
+				"types": ["MapLegend"]
+			},
+			"chart_data": [
+				{
+					"type": "symbol",
+					"color": null,
+					"name": "公廁分佈",
+					"value": null,
+					"icon": "public_toilet"
+				}
+			],
+			"source": "環保局",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"contributors": ["CHlLL"]
 		}
 	}
 }

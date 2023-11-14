@@ -74,10 +74,11 @@
 			"icon": "public"
 		},
 		{
-			"name": "CHlLL",
-			"index": "CHiLL",
+			"name": "人有三急",
+			"index": "toilet",
 			"components": [
-				"148"
+				"148",
+				"149"
 			],
 			"icon": "public"
 		}
