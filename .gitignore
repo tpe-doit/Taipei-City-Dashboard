@@ -32,3 +32,5 @@ firebase.json
 
 dist.tar.gz
 *.sh
+
+/mapData

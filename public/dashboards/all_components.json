@@ -48,7 +48,7 @@
 			"update_freq": 1,
 			"update_freq_unit": "month",
 			"short_desc": "顯示近兩年每月的刑案統計資訊",
-			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"long_desc": "8-1操!!!",
 			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
 			"links": [
 				"https://data.taipei/dataset/detail?id=dc7e246a-a88e-42f8-8cd6-9739209af774"
@@ -4076,6 +4076,63 @@
 				"https://tuic.gov.taipei/youbike",
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
+			"contributors": ["tuic"]
+		},
+		"999": {
+			"id": 999,
+			"index": "tp_flood",
+			"map_config": [
+				{
+					"index": "tp_flood",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							["get", "category"],
+							"極低",
+							"#FFFFCC",
+							"低",
+							"#e7d198",
+							"中低",
+							"#d1a26c",
+							"中",
+							"#b9734a",
+							"高",
+							"#800026",
+							"#800026"
+						],
+						"fill-opacity": 0.8
+					},
+					"property": [
+						{
+							"key": "category",
+							"name": "總體需求"
+						}
+					],
+					"title": "潛在需求"
+				}
+			],
+			"chart_config": {
+				"types": ["TreemapChart", "BarChart"],
+				"color": [
+					"#FFFFCC",
+					"#e7d198",
+					"#d1a26c",
+					"#b9734a",
+					"#9f4333",
+					"#800026"
+				],
+				"unit": "個網格",
+				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
+			},
+			"name": "淹水",
+			"source": "資訊局",
+			"time_from": "2023-07-28T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "展示YouBike未設站區域的潛在需求，詳細預測方法可參考開源成果Github。資料來源為臺北大數據中心研究，更新頻率不定期。",
+			"use_case": "本組件可讓您掌握目前未設站地區，以及該地區可能有多少需求。這有助於規劃YouBike的擴展，並規劃適當的資源以滿足日益增長的需求。",
+			"tags": [],
 			"contributors": ["tuic"]
 		}
 	}
