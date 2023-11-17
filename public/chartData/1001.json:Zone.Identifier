@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=vscode-file://vscode-app/c:/Users/user/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html
+HostUrl=file://wsl.localhost/Ubuntu-20.04/home/pony/Taipei-City-Dashboard-FE/public/chartData/1001.json
