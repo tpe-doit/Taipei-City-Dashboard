@@ -4159,16 +4159,16 @@
 						}
 					],
 					"size": "big",
-					"title": "Youbike擁擠率",
+					"title": "Youbike 擁擠率",
 					"type": "circle"
 				}
 			],
-			"name": "YouBike擁擠率",
+			"name": "YouBike 擁擠率",
 			"source": "臺北大數據中心",
 			"time_from": "2023-07-01T00:00:00+08:00",
 			"time_to": "2023-07-31T00:00:00+08:00",
 			"short_desc": "",
-			"long_desc": "見車率定義為為某站點在06:00~23:59期間，站上至少有1台車的時間比例。90%以上為高見車率；60%~90%為中見車率；60%以下為低見車率。資料來源為臺北大數據中心研究，更新頻率不定期。",
+			"long_desc": "見車率定義為為某站點在 06:00~23:59 期間，站上至少有 1 台車的時間比例。90% 以上為高見車率； 60%~90% 為中見車率； 60% 以下為低見車率。資料來源為臺北大數據中心研究，更新頻率不定期。",
 			"use_case": "透過本組件您可以了解全市的缺車概況，在地圖模式您可以輕鬆的找到缺車嚴重的站點位置及分布情形。",
 			"links": [
 				"https://tuic.gov.taipei/youbike",
@@ -4299,6 +4299,26 @@
 			"tags": [],
 			"contributors": ["tuic"]
 		},
+		"1004": {
+			"id": 1004,
+			"index": "dev-1004",
+			"chart_config": {
+				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"unit": "%"
+			},
+			"name": "臺北市收入性別比差異",
+			"source": "台北大數據中心",
+			"time_from": "2009-01-01T00:00:00+08:00",
+			"time_to": "2022-12-31T00:00:00+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "Dev",
+			"long_desc": "Dev",
+			"use_case": "Dev",
+			"links": null,
+			"tags": [],
+			"contributors": ["54"]
+		},
 		"1010": {
 			"id": 1010,
 			"index": "business_district_map",
@@ -4309,6 +4329,48 @@
 				"map_filter": ["標籤", ["玩在商圈", "吃在商圈", "買在商圈"]]
 			},
 			"map_config": [
+				{
+					"index": "dev_bd_circle",
+					"type": "line",
+					"paint": {
+						"line-color": [
+							"match",
+							["get", "標籤"],
+							"玩在商圈",
+							"#FC9F0B",
+							"吃在商圈",
+							"#DAC117",
+							"買在商圈",
+							"#FDD79B",
+							"#FFFFFF"
+						],
+						"line-width": 1.5,
+						"line-opacity": 0.6
+					},
+					"property": [
+						{
+							"key": "商圈",
+							"name": "名稱"
+						},
+						{
+							"key": "商圈類型",
+							"name": "類型"
+						},
+						{
+							"key": "坐落位置",
+							"name": "位置"
+						},
+						{
+							"key": "鄰近捷運",
+							"name": "鄰近捷運"
+						},
+						{
+							"key": "說明",
+							"name": "說明"
+						}
+					],
+					"title": "商圈"
+				},
 				{
 					"index": "dev_bd_circle",
 					"type": "fill",
@@ -4324,7 +4386,7 @@
 							"#FDD79B",
 							"#FFFFFF"
 						],
-						"fill-opacity": 0.3
+						"fill-opacity": 0.05
 					},
 					"property": [
 						{
@@ -4359,8 +4421,33 @@
 			"update_freq_unit": null,
 			"short_desc": "一起去台北市的各種商圈逛逛吧！",
 			"long_desc": "一起去台北市的各種商圈逛逛吧！",
-			"use_case": "一起去台北市的各種商圈逛逛吧！",
-			"links": null,
+			"use_case": "與朋友們一起進行動態活動，可以考慮去臺北各地多元的商圈。在此之前，先在儀表板確認人數確保活動順利進行。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=52da1174-0d77-434b-88c3-e77b008e8624"
+			],
+			"tags": [],
+			"contributors": ["54"]
+		},
+		"2000": {
+			"id": 2000,
+			"index": "library_seats",
+			"chart_config": {
+				"types": ["BarChart", "DonutChart"],
+				"color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
+				"unit": "座位"
+			},
+			"name": "圖書館座位數",
+			"source": "教育局圖書館@臺北市資料大平臺",
+			"time_from": "2023-11-18T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 1,
+			"update_freq_unit": "minute",
+			"short_desc": "顯示臺北市立圖書館各館之自修區、電腦區等座位",
+			"long_desc": "顯示臺北市立圖書館總館、廣慈分館、西湖分館及稻香分館之自修區、電腦區等座位",
+			"use_case": "與朋友們一起進行靜態活動，可以考慮去圖書館。在此之前，先在儀表板確認人數確保活動順利進行。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=83f98c41-a8be-4a64-94ad-1aebb516c367"
+			],
 			"tags": [],
 			"contributors": ["54"]
 		}
