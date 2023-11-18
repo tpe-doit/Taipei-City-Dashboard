@@ -4187,6 +4187,39 @@
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
 			"contributors": ["wenxin"]
+		},
+		"200": {
+			"id": 200,
+			"index": "BurnAge",
+			"chart_config": {
+				"color": ["#0072E3", "#F00078"],
+				"types": ["BarPercentChart"],
+				"unit": "個",
+				"categories": [
+					"未滿20歲",
+					"20~24歲",
+					"25~29歲",
+					"30~34歲",
+					"35~39歲",
+					"40~44歲",
+					"45歲以上"
+				]
+			},
+			"history_data": false,
+			"source": "交通局",
+			"time_from": "2023-05-11T08:00:00+08:00",
+			"time_to": null,
+			"update_freq": 10,
+			"update_freq_unit": "minute",
+			"name": "各年齡出生率",
+			"short_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況",
+			"long_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況，資料來源為台北市交通局公開資料，每10分鐘更新。",
+			"use_case": "了解公共停車場汽車、機車及充電站的使用情況，有助於掌握當前全市公共停車設施的使用情況，以便提供更優化的交通規劃。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=d5c0656b-5250-4179-a491-c94daa56ef2c"
+			],
+			"tags": [],
+			"contributors": ["sHinN"]
 		}
 	}
 }
