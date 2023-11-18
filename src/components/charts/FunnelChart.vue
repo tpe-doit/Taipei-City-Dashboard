@@ -12,72 +12,45 @@ const mapStore = useMapStore();
 
 const chartOptions = ref({
 	chart: {
-		offsetY: 15,
-		stacked: true,
-		toolbar: {
-			show: false,
+		type: "bar",
+		height: 350,
+	},
+	plotOptions: {
+		bar: {
+			borderRadius: 0,
+			horizontal: true,
+			barHeight: "80%",
+			isFunnel: true,
 		},
 	},
-	colors: props.chart_config.color,
 	dataLabels: {
-		offsetX: 20,
-		textAnchor: "start",
+		enabled: true,
+		formatter: function (val, opt) {
+			return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+		},
+		dropShadow: {
+			enabled: true,
+		},
 	},
-	grid: {
-		show: false,
+	title: {
+		text: "Recruitment Funnel",
+		align: "center",
+	},
+	xaxis: {
+		categories: [
+			"Sourced",
+			"Screened",
+			"Assessed",
+			"HR Interview",
+			"Technical",
+			"Verify",
+			"Offered",
+			"Hired",
+		],
 	},
 	legend: {
 		show: false,
 	},
-	plotOptions: {
-		bar: {
-			borderRadius: 5,
-			//distributed: true,
-			horizontal: true,
-			barHeight: "90%",
-			isFunnel: true,
-		},
-	},
-	stroke: {
-		colors: ["#282a2c"],
-		show: true,
-	},
-	// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
-	tooltip: {
-		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-			return (
-				'<div class="chart-tooltip">' +
-				"<h6>" +
-				w.globals.labels[dataPointIndex] +
-				"</h6>" +
-				"<span>" +
-				series[seriesIndex][dataPointIndex] +
-				` ${props.chart_config.unit}` +
-				"</span>" +
-				"</div>"
-			);
-		},
-		followCursor: true,
-	},
-	xaxis: {
-		axisBorder: {
-			show: false,
-		},
-		axisTicks: {
-			show: false,
-		},
-		labels: {
-			show: false,
-		},
-		type: "category",
-	},
-	//yaxis: {
-	labels: {
-		formatter: function (value) {
-			return value.length > 7 ? value.slice(0, 6) + "..." : value;
-		},
-	},
-	//},
 });
 
 const chartHeight = 350;
@@ -112,7 +85,6 @@ function handleDataSelection(e, chartContext, config) {
 			type="bar"
 			:options="chartOptions"
 			:series="series"
-			@dataPointSelection="handleDataSelection"
 		></apexchart>
 	</div>
 </template>
