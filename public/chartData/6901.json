@@ -1,0 +1,88 @@
+{
+	"data": [
+	  {
+		"from": "住商部門",
+		"to": "政府環境負擔",
+		"weight": 148.5,
+		"real_weight": 849.51,
+		"negative": false
+	  },
+	  {
+		"from": "運輸部門",
+		"to": "政府環境負擔",
+		"weight": 58.12,
+		"real_weight": 234.41,
+		"negative": false
+	  },
+	  {
+		"from": "廢棄物部門",
+		"to": "政府環境負擔",
+		"weight": 28.17,
+		"real_weight": 30.6,
+		"negative": false
+	  },
+	  {
+		"from": "工業部門",
+		"to": "政府環境負擔",
+		"weight": 27.22,
+		"real_weight": 24.12,
+		"negative": false
+	  },
+	  {
+		"from": "農業部門",
+		"to": "生態資源管理",
+		"weight": 23.7,
+		"real_weight": 0.15,
+		"negative": false
+	  },
+	  {
+		"from": "森林部門",
+		"to": "生態資源管理",
+		"weight": 20.14,
+		"real_weight": -24.03,
+		"negative": true
+	  },
+	  {
+		"from": "政府環境負擔",
+		"to": "總碳排",
+		"weight": 148.5,
+		"real_weight": 849.51,
+		"negative": false
+	  },
+	  {
+		"from": "政府環境負擔",
+		"to": "總碳排",
+		"weight": 58.12,
+		"real_weight": 234.41,
+		"negative": false
+	  },
+	  {
+		"from": "政府環境負擔",
+		"to": "總碳排",
+		"weight": 28.17,
+		"real_weight": 30.6,
+		"negative": false
+	  },
+	  {
+		"from": "政府環境負擔",
+		"to": "總碳排",
+		"weight": 27.22,
+		"real_weight": 24.12,
+		"negative": false
+	  },
+	  {
+		"from": "生態資源管理",
+		"to": "總碳排",
+		"weight": 23.7,
+		"real_weight": 0.15,
+		"negative": false
+	  },
+	  {
+		"from": "生態資源管理",
+		"to": "總碳排",
+		"weight": 20.14,
+		"real_weight": -24.03,
+		"negative": true
+	  }
+	]
+  }
