@@ -10,6 +10,7 @@ const props = defineProps([
 	"map_config",
 ]);
 
+const threshold = props.chart_config.threshold || 1.2;
 const svgWidth = 413;
 const svgHeight = 550;
 const topLeft = [25.20411, 121.456583];
@@ -23,70 +24,54 @@ const tooltipPosition = computed(() => {
 		top: `${mousePosition.value.y - 54}px`,
 	};
 });
+const targetEvent = ref(null);
 
-const businessDistrictData = computed(() => {
+const eventData = computed(() => {
 	/**
 	 * @type {Array<{ name: string, expected: number, actual: number, longitude: number, latitude: number }>}
 	 */
 	const data = props.series.map((x) => {
-		const [longitude, latitude] = convertToSVGCoordinates(
-			x.data[2],
-			x.data[3]
-		);
+		const pos = geoToXY(x.data[2], x.data[3]);
 		return {
 			name: x.name,
 			expected: x.data[0],
 			actual: x.data[1],
-			y: longitude,
-			x: latitude,
+			y: pos[1],
+			x: pos[0],
 		};
 	});
 
 	return data;
 });
 
-function convertToSVGCoordinates(lon, lat) {
+function geoToXY(lat, lon) {
 	// Calculate the scale factors for longitude and latitude
-	const lonRange = bottomRight[0] - topLeft[0];
-	const latRange = topLeft[1] - bottomRight[1];
+	const latRange = topLeft[0] - bottomRight[0];
+	const lonRange = bottomRight[1] - topLeft[1];
 	const scaleX = svgWidth / lonRange;
 	const scaleY = svgHeight / latRange;
 
 	// Convert the longitude and latitude to SVG x and y coordinates
-	const x = (lon - topLeft[0]) * scaleX;
-	// In SVG, the y-coordinate increases downwards
-	const y = (topLeft[1] - lat) * scaleY;
+	const x = (lon - topLeft[1]) * scaleX;
+	const y = 550 - (lat - bottomRight[0]) * scaleY;
 
 	return [x, y];
 }
 
 function toggleActive(e) {
-	targetDistrict.value = e.target.dataset.name;
+	targetEvent.value = e.target.dataset.name;
 }
 function toggleActiveToNull() {
-	targetDistrict.value = null;
+	targetEvent.value = null;
 }
 function updateMouseLocation(e) {
 	mousePosition.value.x = e.pageX;
 	mousePosition.value.y = e.pageY;
 }
-
-function handleDataSelection(index) {
-	if (!props.chart_config.map_filter) {
-		return;
-	}
-	if (index !== selectedIndex.value) {
-		mapStore.addLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`, props.chart_config.map_filter[0], props.chart_config.map_filter[1][index]);
-		selectedIndex.value = index;
-	} else {
-		mapStore.clearLayerFilter(`${props.map_config[0].index}-${props.map_config[0].type}`);
-		selectedIndex.value = null;
-	}
-}
 </script>
 
 <template>
-	<div v-if="activeChart === 'BusinessDistrictChart'" class="districtchart">
+	<div v-if="activeChart === 'EventDistrictChart'" class="districtchart">
 		<div class="districtchart-title"></div>
 		<div class="districtchart-chart">
 			<svg viewBox="0 0 413 550" xmlns="http://www.w3.org/2000/svg">
@@ -191,18 +176,39 @@ function handleDataSelection(index) {
 				<g>
 					<!-- draw dots -->
 					<circle
-						v-for="(bd, index) in businessDistrictData"
+						v-for="(evt, index) in eventData"
 						:key="index"
-						:cx="bd.x"
-						:cy="bd.y"
-						:r="5"
+						:cx="evt.x"
+						:cy="evt.y"
+						:r="10"
 						fill="red"
-						@mouseover="handleMouseOver(district)"
-						@mouseout="handleMouseOut(district)"
-						@click="handleClick(district)"
+						:opacity="evt.actual / evt.expected > threshold ? 1 : 0"
+						:data-name="index"
+						@mouseenter="toggleActive"
+						@mousemove="updateMouseLocation"
+						@mouseleave="toggleActiveToNull"
 					/>
 				</g>
 			</svg>
+			<Teleport to="body">
+				<!-- The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css -->
+				<div
+					v-if="targetEvent !== null"
+					class="districtchart-chart-info chart-tooltip"
+					:style="tooltipPosition"
+				>
+					<h6>{{ eventData[targetEvent].name }}</h6>
+					<span
+						>{{ eventData[targetEvent].actual }} ({{
+							Math.round(
+								(eventData[targetEvent].actual /
+									eventData[targetEvent].expected) *
+									1000
+							) / 10
+						}}%)</span
+					>
+				</div>
+			</Teleport>
 		</div>
 	</div>
 </template>

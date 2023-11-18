@@ -4080,37 +4080,20 @@
 		},
 		"1000": {
 			"id": 1000,
-			"index": "dev",
+			"index": "unexpected-event",
 			"chart_config": {
-				"types": ["BusinessDistrictChart"],
-				"unit": "棵",
-				"map_filter": [
-					"dist",
-					[
-						"北投區",
-						"士林區",
-						"內湖區",
-						"南港區",
-						"松山區",
-						"信義區",
-						"中山區",
-						"大同區",
-						"中正區",
-						"萬華區",
-						"大安區",
-						"文山區"
-					]
-				]
+				"types": ["EventDistrictChart"],
+				"threshold": 1.5
 			},
-			"name": "Dev",
-			"source": "Dev",
-			"time_from": "2023-06-02T00:00:00+08:00",
+			"name": "非預期人流事件",
+			"source": "多來源",
+			"time_from": "2023-11-19T00:00:00+08:00",
 			"time_to": null,
 			"update_freq": null,
 			"update_freq_unit": null,
-			"short_desc": "Dev",
-			"long_desc": "Dev",
-			"use_case": "Dev",
+			"short_desc": "非預期人流事件",
+			"long_desc": "非預期人流事件",
+			"use_case": "當發生非預期人流事件時，可以透過本組件快速了解事件發生的區域，以及該區域的人流較常態變化情形。",
 			"links": null,
 			"tags": [],
 			"contributors": ["54"]
