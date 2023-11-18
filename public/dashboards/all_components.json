@@ -4184,6 +4184,8 @@
 			"use_case": "透過這個組件可以用來快速判斷哪個地區和星期幾是空氣污染最嚴重，顏色篩選也可以讓使用者迅速分離出特定空氣狀況的地區，地圖滑桿也能讓使用者滑動以地圖觀察各地空氣指數的變化。",
 			"links": [
 				"https://www.tldep.gov.taipei/Public/DownLoad/AqiDay.aspx"
+			]
+		},
 		"69": {
 			"id": 69,
 			"index": "green_energy",
