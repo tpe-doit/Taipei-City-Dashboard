@@ -4,6 +4,11 @@
 			"id": "tuic",
 			"name": "臺北大數據中心",
 			"link": "https://tuic.gov.taipei/zh"
+		},
+		"54": {
+			"id": "54",
+			"name": "Team 54",
+			"link": "https://example.com/"
 		}
 	}
 }
