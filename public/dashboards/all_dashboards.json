@@ -72,6 +72,14 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "任性城市",
+			"index": "hard_city",
+			"components": [
+				"6901"
+			],
+			"icon": "public"
 		}
 	]
 }
