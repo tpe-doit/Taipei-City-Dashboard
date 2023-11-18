@@ -1,3 +1,5 @@
+all: convert-encoding merge-solar-energy convert2geo copy-2-mapdata
+
 convert-encoding:
 	python big5_to_utf8.py
 
