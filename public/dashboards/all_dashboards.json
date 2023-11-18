@@ -72,6 +72,12 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "韌性城市",
+			"index": "livable-taipei",
+			"components": ["148"],
+			"icon": "real_estate_agent"
 		}
 	]
 }
