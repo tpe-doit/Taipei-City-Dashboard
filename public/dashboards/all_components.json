@@ -4253,7 +4253,7 @@
 			"index": "BurnAge",
 			"chart_config": {
 				"color": ["#0072E3", "#F00078"],
-				"types": ["BarPercentChart"],
+				"types": ["BarPercentChart", "RadarChart"],
 				"unit": "個",
 				"categories": [
 					"未滿20歲",
@@ -4263,7 +4263,16 @@
 					"35~39歲",
 					"40~44歲",
 					"45歲以上"
-				]
+				],
+				"stroke": {
+					"width": 2
+				},
+				"useAbs": true,
+				"plotOptions": {
+					"bar": {
+						"distributed": false
+					}
+				}
 			},
 			"history_data": false,
 			"source": "交通局",
@@ -4272,14 +4281,15 @@
 			"update_freq": 10,
 			"update_freq_unit": "minute",
 			"name": "各年齡出生率",
-			"short_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況",
-			"long_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況，資料來源為台北市交通局公開資料，每10分鐘更新。",
-			"use_case": "了解公共停車場汽車、機車及充電站的使用情況，有助於掌握當前全市公共停車設施的使用情況，以便提供更優化的交通規劃。",
-			"links": [
-				"https://data.taipei/dataset/detail?id=d5c0656b-5250-4179-a491-c94daa56ef2c"
-			],
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
 			"tags": [],
-			"contributors": ["sHinN"]
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"contributors": ["shinn", "brian"]
 		},
 		"149": {
 			"id": 149,
@@ -4318,6 +4328,73 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+		"301": {
+			"id": 301,
+			"index": "test 301",
+			"chart_config": {
+				"types": ["FunnelChart"],
+				"align": "center",
+				"unit": "人次",
+				"color": ["#33BB55"],
+				"categories": [
+					"100年",
+					"101年",
+					"102年",
+					"103年",
+					"104年",
+					"105年",
+					"106年",
+					"107年",
+					"108年"
+				]
+			},
+			"map_config": [
+				{
+					"index": "test 301",
+					"paint": {
+						"fill-color": [
+							"case",
+							["==", ["get", "class"], "山區"],
+							"#40A461",
+							["==", ["get", "class"], "山區且土地限制"],
+							"#7FBF7B",
+							["==", ["get", "class"], "特殊條件限制"],
+							"#ACCFFF",
+							["==", ["get", "class"], "鄰近已設站"],
+							"#BEBEBE",
+							["==", ["get", "class"], "土地限制"],
+							"#BFDAB8",
+							["==", ["get", "class"], "未設站"],
+							"#3D56FF",
+							"#8E8E8E"
+						],
+						"fill-opacity": 0.5,
+						"fill-outline-color": "#555555"
+					},
+					"property": [
+						{
+							"key": "class",
+							"name": "類型"
+						}
+					],
+					"title": "Youbike設站狀態",
+					"type": "fill"
+				}
+			],
+			"name": "40歲以上產婦",
+			"source": "資訊局",
+			"time_from": "2023-09-28T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "全市由250公尺見方的網格組成，依據是否已設站、鄰近是否有站點及土地使用等條件，將各網格分為7大類，資料來源為大數據中心研究，更新頻率不定期。",
+			"use_case": "本組件可讓您快速查看各區域的YouBike設站情況。這有助於您了解哪些區域已提供YouBike服務；哪些因為土地或地形限制無法設站；和哪些地區目前未設站但具有設站潛能。",
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
 		},
 		"150": {
 			"id": 150,
@@ -4364,6 +4441,32 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+
+		"230": {
+			"id": 230,
+			"index": "dead_rate",
+			"history_data": false,
+			"map_config": null,
+			"chart_config": {
+				"color": ["#FD5696", "#00A9E0"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "人次"
+			},
+			"name": "新生兒死亡率",
+			"source": "台北大數據中心",
+			"time_from": "1971-01-01T23:59:59+08:00",
+			"time_to": "2021-12-31T23:59:59+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示近兩年每月的刑案統計資訊",
+			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2e6dd7df-aaca-49d2-92c4-435fca1894fd"
+			],
+			"tags": [],
+			"contributors": ["shinn"]
 		},
 		"300": {
 			"id": 300,
