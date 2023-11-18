@@ -4088,28 +4088,21 @@
 					"paint": {
 						"fill-extrusion-color": [
 							"match",
-							["get", "category"],
-							"極低",
+							["get", "FID"],
+							"2",
 							"#FFFFCC",
-							"低",
-							"#e7d198",
-							"中低",
-							"#d1a26c",
-							"中",
-							"#b9734a",
-							"高",
-							"#800026",
+							"3",
 							"#800026"
 						],
 						"fill-extrusion-opacity": 0.8
 					},
 					"property": [
 						{
-							"key": "category",
-							"name": "總體需求"
+							"key": "FID",
+							"name": "淹水高度"
 						}
 					],
-					"title": "潛在需求"
+					"title": "淹水高度"
 				}
 			],
 			"chart_config": {
