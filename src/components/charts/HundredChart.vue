@@ -1,25 +1,18 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023 -->
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
-import MetroCarDensity from "../utilities/MetroCarDensity.vue";
-import { lineInfo } from "../../assets/configs/apexcharts/taipeiMetroLines";
 import { computed } from "vue";
-import { isHTMLTag } from "@vue/shared";
 
 const props = defineProps(["chart_config", "activeChart", "series"]);
 const count = ref(1);
 const parsedSeries = computed(() => {
-	console.log({ count });
 	const number = props.series[count.value].data * 100;
-	console.log({ number });
-
 	return fill1In2d(number);
 });
 
 function fill1In2d(n) {
-	console.log(n);
 	// Create a 10x10 2D array in JavaScript
 	const twoDArray = [];
 
@@ -42,23 +35,15 @@ function fill1In2d(n) {
 	return twoDArray;
 }
 
-function calculateCount(n) {
-	console.log(n);
-	count.value + n;
-	console.log(count.value);
-}
-
 function increaseCount() {
 	count.value++;
 }
-function decreaseCount(n) {
+function decreaseCount() {
 	count.value--;
 }
 function showOrHideButton(isShow) {
 	return isShow ? "show" : "hide";
 }
-
-console.log({ parsedSeries });
 </script>
 
 <style scoped lang="scss">

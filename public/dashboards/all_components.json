@@ -4188,7 +4188,7 @@
 			],
 			"contributors": ["wenxin"]
 		},
-		"300": {
+		"400": {
 			"id": 300,
 			"index": "test_hundred_chart",
 			"map_config": [
@@ -4248,6 +4248,221 @@
 			],
 			"contributors": ["wenxin"]
 		},
+		"200": {
+			"id": 200,
+			"index": "BurnAge",
+			"chart_config": {
+				"color": ["#0072E3", "#F00078"],
+				"types": ["BarPercentChart"],
+				"unit": "個",
+				"categories": [
+					"未滿20歲",
+					"20~24歲",
+					"25~29歲",
+					"30~34歲",
+					"35~39歲",
+					"40~44歲",
+					"45歲以上"
+				]
+			},
+			"history_data": false,
+			"source": "交通局",
+			"time_from": "2023-05-11T08:00:00+08:00",
+			"time_to": null,
+			"update_freq": 10,
+			"update_freq_unit": "minute",
+			"name": "各年齡出生率",
+			"short_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況",
+			"long_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況，資料來源為台北市交通局公開資料，每10分鐘更新。",
+			"use_case": "了解公共停車場汽車、機車及充電站的使用情況，有助於掌握當前全市公共停車設施的使用情況，以便提供更優化的交通規劃。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=d5c0656b-5250-4179-a491-c94daa56ef2c"
+			],
+			"tags": [],
+			"contributors": ["sHinN"]
+		},
+		"149": {
+			"id": 149,
+			"index": "kids_center_usage",
+			"history_data": true,
+			"chart_config": {
+				"color": ["#9c7a3e", "#7febd0", "#8ce8ff"],
+				"types": ["ColumnChart"],
+				"unit": "人次",
+				"categories": [
+					"1月",
+					"2月",
+					"3月",
+					"4月",
+					"5月",
+					"6月",
+					"7月",
+					"8月",
+					"9月",
+					"10月",
+					"11月",
+					"12月"
+				]
+			},
+			"name": "親子館服務使用量",
+			"source": "社會局",
+			"time_from": "2015-01-01T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=3b5e6458-bef8-4ab2-92dd-a619edbe676e"
+			],
+			"tags": [],
+			"contributors": ["brian"]
+		},
+		"150": {
+			"id": 150,
+			"index": "kids_center_location",
+			"map_config": [
+				{
+					"index": "kids_center_location",
+					"paint": {
+						"circle-color": "#A25FAD"
+					},
+					"property": [
+						{
+							"key": "name",
+							"name": "機構名稱"
+						},
+						{
+							"key": "addr",
+							"name": "地址"
+						},
+						{
+							"key": "phone",
+							"name": "電話"
+						}
+					],
+					"type": "circle",
+					"size": "big",
+					"title": "親子館分布"
+				}
+			],
+			"chart_config": {
+				"types": ["MapLegend"]
+			},
+			"name": "親子館分布",
+			"source": "社會局",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=fd4779d0-827d-4ab3-8f65-2a356abad6d9"
+			],
+			"tags": [],
+			"contributors": ["brian"]
+		},
+		"300": {
+			"id": 300,
+			"index": "public_nursery",
+			"map_config": [
+				{
+					"index": "public_nursery",
+					"paint": {
+						"circle-color": [
+							"match",
+							["get", "type"],
+							"私立托嬰",
+							"#fff495",
+							"公辦民營家園",
+							"#ddb11f",
+							"公辦民營托嬰",
+							"#e3863a",
+							"私立托嬰機關附設",
+							"#c2651c",
+							"#a65818"
+						]
+					},
+					"property": [
+						{
+							"key": "type",
+							"name": "機構類型"
+						},
+						{
+							"key": "name",
+							"name": "機構名稱"
+						},
+						{
+							"key": "address",
+							"name": "地址"
+						},
+						{
+							"key": "capacity",
+							"name": "核定收托人數"
+						},
+						{
+							"key": "rating",
+							"name": "評鑑結果"
+						},
+						{
+							"key": "gov_supported",
+							"name": "是否準公共化"
+						},
+						{
+							"key": "register_cost",
+							"name": "註冊費"
+						},
+						{
+							"key": "monthly_cost",
+							"name": "月費"
+						},
+						{
+							"key": "avg_monthly_cost",
+							"name": "平均月費"
+						}
+					],
+					"type": "circle",
+					"size": "big",
+					"title": "本市立案托嬰中心"
+				}
+			],
+			"chart_config": {
+				"color": [
+					"#fff495",
+					"#ddb11f",
+					"#e3863a",
+					"#c2651c",
+					"#a65818"
+				],
+				"types": ["DonutChart", "BarChart"],
+				"unit": "間",
+				"map_filter": [
+					"type",
+					[
+						"私立托嬰",
+						"公辦民營家園",
+						"公辦民營托嬰",
+						"私立托嬰機關附設"
+					]
+				]
+			},
+			"name": "本市立案托嬰中心",
+			"source": "社會局",
+			"time_from": "2023-06-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 1,
+			"update_freq_unit": "day",
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzU4L3JlbGZpbGUvMTc5NTAvMzE3MTEzOS8wMjVmY2EwMS02ZTdhLTQ4NmYtODUyNS0xOTk2ZWE1ZjhiOWEucGRm&n=MC0yMTEyMTDnq4vmoYjlkI3lhooxMTA4LnBkZg%3d%3d&icon=..pdf"
+			],
+			"tags": [],
+			"contributors": ["nick"]
 		}
 	}
 }
