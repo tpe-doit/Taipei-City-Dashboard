@@ -4189,6 +4189,48 @@
 			"map_config": [
 				{
 					"index": "dev_bd_circle",
+					"type": "line",
+					"paint": {
+						"line-color": [
+							"match",
+							["get", "標籤"],
+							"玩在商圈",
+							"#FC9F0B",
+							"吃在商圈",
+							"#DAC117",
+							"買在商圈",
+							"#FDD79B",
+							"#FFFFFF"
+						],
+						"line-width": 1.5,
+						"line-opacity": 0.6
+					},
+					"property": [
+						{
+							"key": "商圈",
+							"name": "名稱"
+						},
+						{
+							"key": "商圈類型",
+							"name": "類型"
+						},
+						{
+							"key": "坐落位置",
+							"name": "位置"
+						},
+						{
+							"key": "鄰近捷運",
+							"name": "鄰近捷運"
+						},
+						{
+							"key": "說明",
+							"name": "說明"
+						}
+					],
+					"title": "商圈"
+				},
+				{
+					"index": "dev_bd_circle",
 					"type": "fill",
 					"paint": {
 						"fill-color": [
@@ -4202,7 +4244,7 @@
 							"#FDD79B",
 							"#FFFFFF"
 						],
-						"fill-opacity": 0.3
+						"fill-opacity": 0.05
 					},
 					"property": [
 						{
