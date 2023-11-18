@@ -4128,6 +4128,73 @@
 			"use_case": "本組件可讓您掌握目前未設站地區，以及該地區可能有多少需求。這有助於規劃YouBike的擴展，並規劃適當的資源以滿足日益增長的需求。",
 			"tags": [],
 			"contributors": ["tuic"]
+		},
+		"500": {
+			"id": 500,
+			"index": "pav",
+			"map_config": [
+			 {
+			  "index": "pavement",
+			  "paint": {
+			   "fill-color": [
+				"match",
+				["get", "type"],
+				"學校",
+				"#90EE90",
+				"停車場",
+				"#D2EE90",
+				"公園",
+				"#4caf50",
+				"人行道",
+				"#CAF245",
+				"PAC鋪面",
+				"#9dc710",
+				"green"
+			   ]
+			  },
+			  "property": [
+			   {
+				"key": "name",
+				"name": "名稱"
+			   },
+			   {
+				"key": "type",
+				"name": "類型"
+			   }
+			  ],
+			  "type": "fill",
+			  "title": "透水鋪面"
+			 }
+			],
+			"chart_config": {
+			 "color": [
+			  "#D2EE90",
+			  "#90EE90",
+			  "#4caf50",
+			  "#CAF245",
+			  "#9dc710"
+			 ],
+			 "types": ["TreemapChart", "BarChart"],
+			 "unit": "km²",
+			 "map_filter": [
+			  "type",
+			  ["學校", "停車場", "公園", "人行道", "PAC鋪面"]
+			 ]
+			},
+			"name": "透水鋪面",
+			"source": "工務局",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示全市各透水鋪面類別的面積和分布位置",
+			"long_desc": "顯示全市各透水鋪面類別的面積和分布位置，資料來源為台北市工務局開放資料，不定期更新。",
+			"use_case": "圖表所顯示的透水鋪面類別的面積與分佈位置，能夠幫助我們更深入了解不同透水鋪面類型的分佈情況。",
+			"links": [
+			 "https://data.taipei/dataset/detail?id=4717811f-c20f-4deb-8013-981f1844d6fe"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
 		}
 	}
 }
