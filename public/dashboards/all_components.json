@@ -5125,6 +5125,17 @@
 			"contributors": [
 				"112A"
 			]
+		},
+		"502": {
+			"id": 502,
+			"index": "history-rain",
+			"chart_config": [
+				{
+					"type": "box-line"
+				}
+			],
+			"map_config": null,
+			"name": "氣溫溫度"
 		}
 	}
 }
