@@ -1,7 +1,8 @@
 .DS_Store
 /node_modules
 /dist
-/public/mapData
+/public/mapData/*.geojson
+!/public/mapData/dev_bd_circle.geojson
 
 # local env files
 .env.production
