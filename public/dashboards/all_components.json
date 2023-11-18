@@ -4207,9 +4207,9 @@
 						"fill-color": [
 							"match",
 							["get", "temperature"],
-							// ...
+							""
 						],
-						"fill-opacity": 0.8,
+						"fill-opacity": 0.8
 					},
 					"property": [
 						{
