@@ -32,7 +32,7 @@ const chartOptions = ref({
 	},
 	markers: {
 		hover: {
-			size: 4,
+			size: 5,
 		},
 		size: 3,
 		strokeWidth: 0,
@@ -99,13 +99,11 @@ function handleDataSelection(e, chartContext, config) {
 	}
 
 	const dataPointIndex = e.target.getAttribute('i');
+	const seriesname = e.target.parentElement.getAttribute('seriesname');
 	const layer_id = `${props.map_config[0].index}-${props.map_config[0].type}`;
 	if (dataPointIndex !== selectedIndex.value) {
 		selectedIndex.value = dataPointIndex;
-		const prop = props.chart_config.map_filter[1][dataPointIndex];
-		if(prop==null)
-			return;
-		mapStore.setPaintProperty(layer_id, props.map_config[0], 'color', '#505050', [props.chart_config.map_filter[0], prop], true);
+		mapStore.setPaintProperty(layer_id, props.map_config[0], 'color', '#303030', [props.map_config[0].filterKey, seriesname], true);
 	}
 }
 </script>

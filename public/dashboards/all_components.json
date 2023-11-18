@@ -4109,28 +4109,16 @@
 					],
 					"type": "fill-extrusion",
 					"colorKey": "fill-extrusion-color",
+					"filterKey": "name",
 					"title": "資源回收量"
 				}
 			],
 			"chart_config": {
 				"types": ["TimelineSeparateChartCustom"],
 				"color": [
-					"#00ffa2",
-					"#00fff7",
-					"#00b2ff",
-					"#0088ff",
-					"#0008ff",
-					"#4d00ff",
-					"#a200ff",
-					"#ff00b2",
-					"#ff0008",
-					"#ffa200",
-					"#fff700",
-					"#b2ff00"
+					"#00ffa2","#00fff7","#00ccff","#0088ff","#0008ff","#4d00ff","#a200ff","#ff00b2","#ff0008","#ffa200","#fff700","#b2ff00"
 				],
 				"map_filter": [
-					"name",
-					["北投區", "松山區", "中山區", "南港區", "士林區", "內湖區", "信義區", "中正區", "萬華區", "大安區", "文山區", "大同區"]
 				],
 				"unit": "公噸",
 				"tooltipTimeFormat": "YYYY-MM"
