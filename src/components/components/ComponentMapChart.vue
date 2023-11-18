@@ -87,7 +87,7 @@ function changeActiveChart(chartName) {
 			maplayer: isMapLayer && checked,
 		}"
 	>
-		<div class="componentmapchart-header">
+		<div class="componentmapchart-header" @click.self="()=>{checked = !checked;handleToggle();}">
 			<div>
 				<div>
 					<h3>{{ content.name }}</h3>
