@@ -4187,6 +4187,44 @@
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
 			"contributors": ["wenxin"]
+		},
+		"149": {
+			"id": 149,
+			"index": "kids_center_usage",
+			"history_data": true,
+			"chart_config": {
+				"color": ["#9c7a3e", "#7febd0", "#8ce8ff"],
+				"types": ["ColumnChart"],
+				"unit": "人次",
+				"categories": [
+					"1月",
+					"2月",
+					"3月",
+					"4月",
+					"5月",
+					"6月",
+					"7月",
+					"8月",
+					"9月",
+					"10月",
+					"11月",
+					"12月"
+				]
+			},
+			"name": "親子館服務使用量",
+			"source": "社會局",
+			"time_from": "2015-01-01T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=3b5e6458-bef8-4ab2-92dd-a619edbe676e"
+			],
+			"tags": [],
+			"contributors": ["brian"]
 		}
 	}
 }
