@@ -4084,7 +4084,7 @@
 			"map_config": [
 				{
 					"index": "tp_flood",
-					"type": "fill",
+					"type": "fill-extrusion",
 					"paint": {
 						"fill-color": [
 							"match",
