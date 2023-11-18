@@ -43,13 +43,13 @@ const pinia = createPinia();
 app.use(pinia);
 app.use(VueApexCharts);
 
-app.component("DistrictChart", DistrictChart);
+app.component("DistrictChart", DistrictChart); // ?
 app.component("DonutChart", DonutChart);
 app.component("BarChart", BarChart);
-app.component("TreemapChart", TreemapChart);
-app.component("ColumnChart", ColumnChart);
-app.component("BarPercentChart", BarPercentChart);
-app.component("GuageChart", GuageChart);
+app.component("TreemapChart", TreemapChart);  // ?
+app.component("ColumnChart", ColumnChart); // ?
+app.component("BarPercentChart", BarPercentChart); // ?
+app.component("GuageChart", GuageChart); // ?
 app.component("RadarChart", RadarChart);
 app.component("TimelineSeparateChart", TimelineSeparateChart);
 app.component("TimelineStackedChart", TimelineStackedChart);
