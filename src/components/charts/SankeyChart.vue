@@ -7,65 +7,14 @@ import { useMapStore } from '../../store/mapStore';
 const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config']);
 const mapStore = useMapStore();
 
+// color config : https://coolors.co/palette/f0ead2-dde5b6-adc178-a98467-6c584c
+// https://coolors.co/palette/463f3a-8a817c-bcb8b1-f4f3ee-e0afa0
 const chartOptions = ref({
 	chart: {
 		offsetY: 15,
 		stacked: true,
 		toolbar: {
 			show: false
-		},
-	},
-	colors: props.chart_config.color,
-	dataLabels: {
-		offsetX: 20,
-		textAnchor: 'start',
-	},
-	grid: {
-		show: false,
-	},
-	legend: {
-		show: false,
-	},
-	plotOptions: {
-		bar: {
-
-			borderRadius: 2,
-			distributed: true,
-			horizontal: true,
-		}
-	},
-	stroke: {
-		colors: ['#282a2c'],
-		show: true,
-		width: 0,
-	},
-	// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
-	tooltip: {
-		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-			return '<div class="chart-tooltip">' +
-				'<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
-				'<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
-				'</div>';
-		},
-		followCursor: true,
-	},
-	xaxis: {
-		axisBorder: {
-			show: false,
-		},
-		axisTicks: {
-			show: false,
-		},
-		labels: {
-			show: false,
-		},
-		type: 'category',
-	},
-	yaxis: {
-		labels: {
-			formatter: function (value) {
-				return value.length > 7 ? value.slice(0, 6) + "..." : value;
-			},
 		},
 	},
 });
@@ -77,19 +26,22 @@ const dialogCardComponent = defineComponent({
 	props: {
 		title: {
 			type: String,
-			default: '',
+			required: true,
 		},
 		subtitle: {
 			type: String,
-			default: '',
+			required: true,
 		},
+		unit:{
+			type: String,
+			default: props.chart_config.unit,
+		}
 	},
 	template: `
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">{{ title }}</h5>
-				<h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
-				<slot></slot>
+				<h6 class="card-subtitle mb-2 text-muted">{{ title }}</h6>
+				<h5 class="card-title center">{{ subtitle }}{{ unit }}</h5>
 			</div>
 		</div>
 	`,
@@ -476,27 +428,6 @@ function createSankey(data){
 
 			// draw rect & text later
 			
-			// let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-			// rect.setAttribute("x", x);
-			// rect.setAttribute("y", lastY);
-			// rect.setAttribute("width", width);
-			// rect.setAttribute("height", height);
-			// rect.setAttribute("fill", "red");
-			// svg.appendChild(rect);
-
-			// add text to rect
-			// let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-			// text.setAttribute("x", x);
-			// text.setAttribute("y", lastY);
-			// text.setAttribute("fill", "white");
-			// text.setAttribute("font-size", "10px");
-			// text.setAttribute("font-family", "sans-serif");
-			// text.setAttribute("text-anchor", "middle");
-			// text.setAttribute("alignment-baseline", "middle");
-			// text.setAttribute("transform", `translate(${width / 2},${height / 2})`);
-			// text.textContent = node;
-			// svg.appendChild(text);
-			
 
 			svgObjectsDict[node] = {
 				x: x,
@@ -560,9 +491,14 @@ function createSankey(data){
 
 		// svg.appendChild(svgPathElement);
 
+		let fillColor = props.chart_config.edge_color;
+		if (data[i].negative) {
+			fillColor = props.chart_config.negative_edge_color;
+		}
+
 		finalPathList.push({
 			d: pathData,
-			fill: "gray",
+			fill: fillColor,
 			real_weight: data[i].real_weight,
 			onmouseenter: (e) => {
 				toolTipState.value.state = true;
@@ -575,6 +511,19 @@ function createSankey(data){
 				console.log("e.target.getBoundingClientRect()", e.target.getBoundingClientRect());	
 				mousePosition.value.x = e.target.getBoundingClientRect().x;
 				mousePosition.value.y = e.target.getBoundingClientRect().y;
+
+				// set dialog data
+				targetDialog.value.title = `${from} -> ${to}`;
+				targetDialog.value.real_weight = data[i].real_weight;
+				targetDialog.value.negative = data[i].negative;
+
+				// change hover color
+				// let fillColor = props.chart_config.edge_hover_color;
+				// if (data[i].negative) {
+				// 	fillColor = props.chart_config.negative_edge_hover_color;
+				// }
+				e.target.setAttribute("fill", fillColor);
+				e.target.setAttribute("fill-opacity", "0.9");
 
 
 				tooltip.title = "testTitle";
@@ -598,7 +547,13 @@ function createSankey(data){
 				console.log("toolTipState", toolTipState.value.state);
 				console.log("e", e);
 
-
+				// change hover color back
+				// let fillColor = props.chart_config.edge_color;
+				// if (data[i].negative) {
+				// 	fillColor = props.chart_config.negative_edge_color;
+				// }
+				e.target.setAttribute("fill", fillColor);
+				e.target.setAttribute("fill-opacity", "0.3");
 			},
 			onmousemove: (e) => {
 				// console.log("onmousemove");
@@ -636,39 +591,21 @@ function createSankey(data){
 		let rate = svgObjectsDict[key].rate;
 
 
-		// let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-		// rect.setAttribute("x", x);
-		// rect.setAttribute("y", y);
-		// rect.setAttribute("width", width);
-		// rect.setAttribute("height", height);
-		// rect.setAttribute("fill", "red");
-		// svg.appendChild(rect);
 		finalRectList.push({
 			x: x,
 			y: y,
 			width: width,
 			height: height,
-			fill: "red",
+			fill: props.chart_config.layer_colors[svgObjectsDict[key].layer],
 		});
 
 		// add text to rect
-		// let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-		// text.setAttribute("x", x);
-		// text.setAttribute("y", y);
-		// text.setAttribute("fill", "white");
-		// text.setAttribute("font-size", "10px");
-		// text.setAttribute("font-family", "sans-serif");
-		// text.setAttribute("text-anchor", "middle");
-		// text.setAttribute("alignment-baseline", "middle");
-		// text.setAttribute("transform", `translate(${width / 2},${height / 2})`);
-		// text.textContent = key;
-		// svg.appendChild(text);
 
 		finalTextList.push({
 			x: x,
 			y: y,
 			fill: "white",
-			fontSize: "10px",
+			fontSize: "12px",
 			fontFamily: "sans-serif",
 			textAnchor: "middle",
 			text: key,
@@ -689,8 +626,12 @@ function createSankey(data){
 		return toolTipState.value.state;
 	});
 
-	const targetDialog = ref(null);
-	const DialogColor = ref(props.chart_config.color[0]);
+	const targetDialog = ref({
+		title: '',
+		real_weight: '',
+		negative: false,
+	});
+	// const DialogColor = ref(props.chart_config.color[0]);
 	const mousePosition = ref({ x: null, y: null });
 	const selectedIndex = ref(null);
 
@@ -725,7 +666,7 @@ function createSankey(data){
 		return output;
 	});
 	const tooltipPosition = computed(() => {
-		return { 'left': `${mousePosition.value.x - 250}px`, 'top': `${mousePosition.value.y - 200}px` };
+		return { 'left': `${mousePosition.value.x - 54}px`, 'top': `${mousePosition.value.y - 54}px` };
 		// return { 'left': `${mousePosition.value.x}px`, 'top': `${mousePosition.value.y}px` };
 	});
 
@@ -769,25 +710,9 @@ function createSankey(data){
 				<h1>測試 aaa</h1>
 			</div>
 
-			<dialogCardComponent v-if="showTooltip" :title="tooltip.title" :subtitle="tooltip.subtitle" :style="tooltipPosition">
-				<h1>1111111111111111111</h1>
-				<div v-for="item in tooltip.items" :key="item.name">
-					<div class="d-flex justify-content-between">
-						<span>{{ item.name }}</span>
-						<span>{{ item.value }}</span>
-					</div>
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" :style="{ width: item.rate }"
-							:aria-valuenow="item.rate" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
+			<dialogCardComponent v-if="showTooltip" :title="targetDialog.title" :subtitle="targetDialog.real_weight" :style="tooltipPosition">
 			</dialogCardComponent>
-			<!-- <Teleport to="body">
-				<div v-if="showTooltip" class="Dialogchart-chart-info chart-tooltip" :style="tooltipPosition">
-					<h6>{{ targetDialog }}</h6>
-					<span>{{ dialogData[targetDialog] }} {{ chart_config.unit }}</span>
-				</div>
-			</Teleport> -->
+
 		</div>
 	</div>
 </template>
@@ -802,11 +727,13 @@ function createSankey(data){
 /* dialog card style */
 
 .card {
-	position: absolute;
+	position: fixed;
 	border: none;
-	border-radius: 0;
-	background-color: #282a2c;
+	border-radius: 10px;
+	background-color: #485159;
 	color: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	z-index: 99999;
 }
 
 .card-body {
@@ -819,6 +746,7 @@ function createSankey(data){
 
 .card-subtitle {
 	font-size: 0.8rem;
+	color: #dadde3;
 }
 
 

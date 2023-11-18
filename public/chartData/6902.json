@@ -1,0 +1,21 @@
+{
+	"data": [
+		    { "from": "Canada", "to": "France", "weight": 2230000, "real_weight": 2230000 },
+		    { "from": "Canada", "to": "Germany", "weight": 1990000,"real_weight": 1990000 },
+		    { "from": "Canada", "to": "Italy", "weight": 1180000,"real_weight": 1180000 },
+		    { "from": "Canada", "to": "Spain", "weight": 990000,"real_weight": 990000 },
+		    { "from": "USA", "to": "China", "weight": 1250000, "real_weight": 1250000  },
+		    { "from": "USA", "to": "France", "weight": 950000, "real_weight": 950000 },
+		    { "from": "USA", "to": "Germany", "weight": 2020000, "real_weight": 2020000 },
+		    { "from": "USA", "to": "Spain", "weight": 1110000, "real_weight": 1110000 },
+		    { "from": "France", "to": "China", "weight": 1100000, "real_weight": 1100000 },
+		    { "from": "France", "to": "Japan", "weight": 1050000, "real_weight": 1050000 },
+		    { "from": "France", "to": "India", "weight": 1030000, "real_weight": 1030000 },
+		    { "from": "Germany", "to": "China", "weight": 2150000, "real_weight": 2150000 },
+		    { "from": "Germany", "to": "Japan", "weight": 660000, "real_weight": 660000 },
+		    { "from": "Germany", "to": "India", "weight": 1200000, "real_weight": 1200000 },
+		    { "from": "Italy", "to": "China", "weight": 1180000, "real_weight": 1180000 },
+		    { "from": "Spain", "to": "China", "weight": 1120000, "real_weight": 1120000 },
+		    { "from": "Spain", "to": "Japan", "weight": 980000, "real_weight": 980000 }
+		]
+  }
