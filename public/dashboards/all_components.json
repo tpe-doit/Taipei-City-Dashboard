@@ -4187,6 +4187,39 @@
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
 			"contributors": ["wenxin"]
+		},
+		"200": {
+			"id": 200,
+			"index": "BorningAge",
+
+			"chart_config": {
+				"color": ["#0072E3", "#FF359A"],
+				"types": ["BarPercentChart"],
+				"unit": "個",
+				"categories": [
+					"未滿20歲",
+					"20~24歲",
+					"25~29歲",
+					"30~34歲",
+					"35~39歲",
+					"40~44歲",
+					"45~49歲",
+					"45歲以上"
+				]
+			},
+			"name": "test",
+			"source": "資訊局",
+			"time_from": "2023-07-28T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "展示YouBike未設站區的潛在用車需求，這些資訊基於大數據中心研究提供，詳細預測方法可參考開源成果Github，更新頻率不定期。",
+			"use_case": "YouBike未設站區潛在需求將協助您了解未來可能需要增設YouBike站點的地區。這有助於規劃YouBike的擴展和改進，以滿足日益增長的需求。",
+			"tags": [],
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"contributors": ["wenxin"]
 		}
 	}
 }

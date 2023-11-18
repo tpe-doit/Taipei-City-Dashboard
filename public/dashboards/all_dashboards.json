@@ -72,6 +72,12 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "祝你好孕",
+			"index": "baby",
+			"components": ["200"],
+			"icon": "bug_report"
 		}
 	]
 }
