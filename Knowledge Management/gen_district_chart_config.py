@@ -80,7 +80,6 @@ example_data = {
     ]
 }
 
-
 def calculate_center(points):
     sum_x = sum(point[0] for point in points)
     sum_y = sum(point[1] for point in points)
