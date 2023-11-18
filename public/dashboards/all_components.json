@@ -4235,7 +4235,7 @@
 				"unit": "個網格",
 				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
 			},
-			"name": "測試hundred chart",
+			"name": "如果台北市有一百個人",
 			"source": "資訊局",
 			"time_from": "2023-07-28T00:00:00+08:00",
 			"time_to": null,
