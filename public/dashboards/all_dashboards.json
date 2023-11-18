@@ -54,6 +54,7 @@
 			"components": ["108", "22", "79", "60", "107"],
 			"icon": "favorite"
 		},
+		
 		{
 			"name": "圖資資訊",
 			"index": "map-layers",
@@ -74,10 +75,11 @@
 			"icon": "public"
 		},
 		{
-			"name": "Owen",
-			"index": "OOOwen",
+			"name": "CHlLL",
+			"index": "CHlLL",
 			"components": [
-				"203"
+				"203",
+        "69"
 			],
 			"icon": "public"
 		}
