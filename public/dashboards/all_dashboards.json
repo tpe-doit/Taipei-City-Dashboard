@@ -45,7 +45,7 @@
 		{
 			"name": "測試組件",
 			"index": "testing",
-			"components": ["148", "149", "301"],
+			"components": ["148", "149", "301", "400"],
 			"icon": "bug_report"
 		},
 		{
@@ -76,8 +76,7 @@
 		{
 			"name": "祝你好孕",
 			"index": "burn",
-			"components": ["149", "150", "200", "230", "300"],
-
+			"components": ["149", "150", "200", "300", "400", "230"],
 			"icon": "public"
 		}
 	]

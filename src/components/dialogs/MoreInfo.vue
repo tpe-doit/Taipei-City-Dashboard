@@ -27,6 +27,12 @@ function getLinkTag(link, index) {
 }
 </script>
 
+<style scoped lang="scss">
+.image {
+	border-radius: 50%;
+}
+</style>
+
 <template>
 	<DialogContainer
 		:dialog="`moreInfo`"
@@ -77,6 +83,7 @@ function getLinkTag(link, index) {
 									target="_blank"
 									rel="noreferrer"
 									><img
+										class="image"
 										:src="`${BASE_URL}/images/contributors/${contributor}.png`"
 										:alt="`協作者-${contentStore.contributors[contributor].name}`"
 									/>
