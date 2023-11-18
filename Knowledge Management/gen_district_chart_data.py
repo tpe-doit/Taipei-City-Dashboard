@@ -1,5 +1,6 @@
 from get_district import is_point_in_district, is_point_inside_polygon
 import json
+from typing import List
 
 districts = [
     "北投區",
@@ -62,7 +63,7 @@ def gen_district_data_from_geojson(file_path):
     record = {}
     with open(file_path) as f:
         geojson = json.load(f)
-        for feature in geojson["features"]:
+        for index, feature in enumerate(geojson["features"]):
             # name is the category of the BarPercentChart
             name = feature["properties"]["map_type"]
             if name not in record:
@@ -70,16 +71,17 @@ def gen_district_data_from_geojson(file_path):
                 record[name]["name"] = name
                 record[name]["data"] = [0] * len(districts)
 
-                for i, district in enumerate(districts):
+            for i, district in enumerate(districts):
+                try:
                     for cord in feature["geometry"]["coordinates"]:
-                        print(cord)
                         area = cord[0]
+                        if not isinstance(area[0], List):
+                            area = cord
                         c_y, c_x = calculate_center(area)
                         if is_point_inside_polygon(c_x, c_y, district):
-                            record[name]["data"][i] += float(
-                                feature["properties"]["面積"]
-                            )
-
+                            record[name]["data"][i] += int(feature["properties"]["面積"])
+                except:
+                    continue
     for k, v in record.items():
         ret_data.append(v)
     return ret_data
@@ -91,4 +93,4 @@ ret = {}
 ret["data"] = gen_district_data_from_geojson(geojson_path)
 
 with open("./public/chartData/new_file.json", "w+") as f:
-    json.dump(ret, f)
+    json.dump(ret, f, ensure_ascii=False)
