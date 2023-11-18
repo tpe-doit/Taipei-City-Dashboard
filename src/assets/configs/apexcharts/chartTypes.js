@@ -7,6 +7,7 @@ export const chartTypes = {
 	DistrictChart: "行政區圖",
 	MetroChart: "捷運行駛圖",
 	TimelineSeparateChart: "折線圖(比較)",
+	TimelineSeparateChartCustom: "折線圖(比較)",
 	TimelineStackedChart: "折線圖(堆疊)",
 	GuageChart: "量表圖",
 	RadarChart: "雷達圖",

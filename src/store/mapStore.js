@@ -578,6 +578,49 @@ export const useMapStore = defineStore("map", {
 			}
 			this.map.setFilter(layer_id, null);
 		},
+		setPaintProperty(layer_id, map_config, key, value, filter, inverse) {
+			const dialogStore = useDialogStore();
+			if (!this.map || dialogStore.dialogs.moreInfo) {
+				return;
+			}
+			if (map_config && map_config.type === "arc") {
+				// this.map.removeLayer(layer_id);
+				// let toBeFiltered = {
+				// 	...this.map.getSource(`${layer_id}-source`)._data,
+				// };
+				// toBeFiltered.features = toBeFiltered.features.filter(
+				// 	(el) => el.properties[property] === key
+				// );
+				// map_config.layerId = layer_id;
+				// this.AddArcMapLayer(map_config, toBeFiltered);
+				return;
+			}
+			if (map_config && key === 'color' && map_config.colorKey)
+				key = map_config.colorKey;
+			this.map.setPaintProperty(layer_id, key, ['match', ['get', filter[0]], filter[1], 
+				inverse?map_config.paint[key]:value, inverse?value:map_config.paint[key]]);
+		},
+		restorePaintProperty(layer_id, map_config, key) {
+			const dialogStore = useDialogStore();
+			if (!this.map || dialogStore.dialogs.moreInfo) {
+				return;
+			}
+			if (map_config && map_config.type === "arc") {
+				// this.map.removeLayer(layer_id);
+				// let toBeFiltered = {
+				// 	...this.map.getSource(`${layer_id}-source`)._data,
+				// };
+				// toBeFiltered.features = toBeFiltered.features.filter(
+				// 	(el) => el.properties[property] === key
+				// );
+				// map_config.layerId = layer_id;
+				// this.AddArcMapLayer(map_config, toBeFiltered);
+				return;
+			}
+			if (map_config && key === 'color' && map_config.colorKey)
+				key = map_config.colorKey;
+			this.map.setPaintProperty(layer_id, key, map_config.paint[key]);
+		},
 
 		/* Clearing the map */
 
