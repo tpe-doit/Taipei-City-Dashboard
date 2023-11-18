@@ -3,7 +3,7 @@
 		{
 			"name": "Dev",
 			"index": "dev",
-			"components": ["1000", "1001", "1010", "2000"],
+			"components": ["1000", "1001", "1004", "1010", "2000"],
 			"icon": "favorite"
 		},
 		{
