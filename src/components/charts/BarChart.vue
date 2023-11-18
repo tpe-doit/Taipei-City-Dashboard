@@ -1,7 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023 -->
 
 <script setup>
-import { ref, computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 
 const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config']);
@@ -19,6 +19,10 @@ const chartOptions = ref({
 	dataLabels: {
 		offsetX: 20,
 		textAnchor: 'start',
+		formatter: function (val) {
+			const value = props.chart_config.useAbs ? Math.abs(val) : val;
+			return value;
+		},
 	},
 	grid: {
 		show: false,
@@ -30,21 +34,22 @@ const chartOptions = ref({
 		bar: {
 
 			borderRadius: 2,
-			distributed: true,
+			distributed: props.chart_config?.plotOptions?.bar?.distributed === undefined ? true : props.chart_config.plotOptions.bar.distributed,
 			horizontal: true,
 		}
 	},
 	stroke: {
 		colors: ['#282a2c'],
 		show: true,
-		width: 0,
+		width: props.chart_config.stroke?.width ? props.chart_config.stroke.width : 0,
 	},
 	// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
 	tooltip: {
 		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+			const value = props.chart_config.useAbs ? Math.abs(series[seriesIndex][dataPointIndex]) : series[seriesIndex][dataPointIndex];
 			return '<div class="chart-tooltip">' +
 				'<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
-				'<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
+				'<span>' + value + ` ${props.chart_config.unit}` + '</span>' +
 				'</div>';
 		},
 		followCursor: true,
