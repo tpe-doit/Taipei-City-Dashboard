@@ -29,12 +29,16 @@ import ColumnChart from "./components/charts/ColumnChart.vue";
 import BarPercentChart from "./components/charts/BarPercentChart.vue";
 import GuageChart from "./components/charts/GuageChart.vue";
 import RadarChart from "./components/charts/RadarChart.vue";
+import TimelineSeparateChartCustom from "./components/charts/TimelineSeparateChartCustom.vue";
 import TimelineSeparateChart from "./components/charts/TimelineSeparateChart.vue";
 import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
 import MapLegend from "./components/charts/MapLegend.vue";
 import MetroChart from "./components/charts/MetroChart.vue";
 import HeatmapChart from "./components/charts/HeatmapChart.vue";
 import SankeyChart from "./components/charts/SankeyChart.vue";
+
+import AQI_Chart from "./components/charts/AQI_Chart.vue"
+import MapSlideBar from "./components/charts/MapSlideBar.vue";
 
 const app = createApp(App);
 
@@ -53,10 +57,12 @@ app.component("BarPercentChart", BarPercentChart);
 app.component("GuageChart", GuageChart);
 app.component("RadarChart", RadarChart);
 app.component("TimelineSeparateChart", TimelineSeparateChart);
+app.component("TimelineSeparateChartCustom", TimelineSeparateChartCustom);
 app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
 app.component("MetroChart", MetroChart);
 app.component("HeatmapChart", HeatmapChart);
 app.component("SankeyChart", SankeyChart);
-
+app.component("AQI_Chart", AQI_Chart);
+app.component("MapSlideBar", MapSlideBar);
 app.mount("#app");

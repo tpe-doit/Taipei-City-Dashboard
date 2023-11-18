@@ -358,4 +358,31 @@ export const maplayerCommonLayout = {
 			60,
 		],
 	},
+	"symbol-aqi": {
+		"icon-image": [
+			"case",
+			[">=", ["to-number", ["get", "AQI"]], 301],
+			"NAQI5",
+			[">=", ["to-number", ["get", "AQI"]], 201],
+			"NAQI4",
+			[">=", ["to-number", ["get", "AQI"]], 151],
+			"NAQI3",
+			[">=", ["to-number", ["get", "AQI"]], 101],
+			"NAQI2",
+			[">=", ["to-number", ["get", "AQI"]], 51],
+			"NAQI1",
+			"NAQI0",
+		],
+		"icon-size": [
+			"interpolate",
+			["linear"],
+			["zoom"],
+			11.99,
+			0.3,
+			14,
+			0.4,
+			22,
+			0.9
+		],
+	},
 };
