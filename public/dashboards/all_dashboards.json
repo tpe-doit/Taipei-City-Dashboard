@@ -75,10 +75,13 @@
 			"icon": "public"
 		},
 		{
-			"name": "erichung",
-			"index": "erichung",
-			"components": ["69"],
-			"icon": "fingerprint"
+			"name": "CHlLL",
+			"index": "CHlLL",
+			"components": [
+				"203",
+        "69"
+			],
+			"icon": "public"
 		}
 	]
 }
