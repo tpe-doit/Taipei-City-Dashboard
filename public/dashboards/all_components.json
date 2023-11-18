@@ -4253,7 +4253,7 @@
 			"index": "BurnAge",
 			"chart_config": {
 				"color": ["#0072E3", "#F00078"],
-				"types": ["BarPercentChart", "RadarChart"],
+				"types": ["BarChart"],
 				"unit": "個",
 				"categories": [
 					"未滿20歲",
