@@ -3,9 +3,25 @@ from shapely.geometry import Point, Polygon
 import json
 import os
 import warnings
+from gen_district_chart_data import calculate_center
+from typing import List
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
+districts = [
+    "北投區",
+    "士林區",
+    "內湖區",
+    "南港區",
+    "松山區",
+    "信義區",
+    "中山區",
+    "大同區",
+    "中正區",
+    "萬華區",
+    "大安區",
+    "文山區",
+]
 
 taipei_districts = {}
 dir = "./Knowledge Management/towns/台北市"
@@ -49,3 +65,24 @@ def is_point_inside_polygon(x, y, district):
 
 # # Example usage
 # print(is_point_in_district(25.1942, 121.578, "士林區"))
+
+new = None
+with open("./public/mapData/tp_flood.geojson", "r") as f:
+    prev = json.load(f)
+    new = prev.copy()
+    for i, obj in enumerate(prev["features"]):
+        for district in districts:
+            try:
+                area = obj["geometry"]["coordinates"][0]
+                print(area)
+                # area is a list of list of points
+                if len(area[0]) != 2 or not isinstance(area[0], List):
+                    area = obj["geometry"]["coordinates"][0][0]
+                c_y, c_x = calculate_center(area)
+                if is_point_inside_polygon(c_x, c_y, district):
+                    new["features"][i]["properties"]["dist"] = district
+                    break
+            except:
+                continue
+with open("./public/mapData/tp_flood.geojson", "w+") as f:
+    json.dump(new, f, ensure_ascii=False)

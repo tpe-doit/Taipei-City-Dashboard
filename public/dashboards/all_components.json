@@ -2532,7 +2532,7 @@
 			"index": "hospitals",
 			"map_config": [
 				{
-					"index": "medical_institution",
+					"index": "hospitals",
 					"paint": {
 						"circle-color": [
 							"match",
@@ -4137,10 +4137,10 @@
 		},
 		"500": {
 			"id": 500,
-			"index": "all_pav",
+			"index": "all_pav_dist",
 			"map_config": [
 				{
-					"index": "all_pav",
+					"index": "all_pav_dist",
 					"paint": {
 						"fill-color": [
 							"match",
@@ -4169,32 +4169,25 @@
 				}
 			],
 			"chart_config": {
-				"color": [
-					"#4169E1",
-					"#39FF14",
-					"#FF69B4",
-					"#FF0000",
-					"#FFFF00"
-				],
-				"categories": [
-					"北投區",
-					"士林區",
-					"內湖區",
-					"南港區",
-					"松山區",
-					"信義區",
-					"中山區",
-					"大同區",
-					"中正區",
-					"萬華區",
-					"大安區",
-					"文山區"
-				],
-				"types": ["BarPercentChart", "ColumnChart"],
+				"types": ["DistrictChart", "ColumnChart"],
+				"color": ["#39FF14"],
 				"unit": "km²",
 				"map_filter": [
-					"map_type",
-					["學校", "停車場", "公園", "人行道", "PAC鋪面"]
+					"dist",
+					[
+						"北投區",
+						"士林區",
+						"內湖區",
+						"南港區",
+						"松山區",
+						"信義區",
+						"中山區",
+						"大同區",
+						"中正區",
+						"萬華區",
+						"大安區",
+						"文山區"
+					]
 				]
 			},
 			"name": "透水鋪面",
