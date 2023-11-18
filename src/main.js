@@ -35,7 +35,8 @@ import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
 import MapLegend from "./components/charts/MapLegend.vue";
 import MetroChart from "./components/charts/MetroChart.vue";
 import HeatmapChart from "./components/charts/HeatmapChart.vue";
-
+import AQI_Chart from "./components/charts/AQI_Chart.vue"
+import MapSlideBar from "./components/charts/MapSlideBar.vue";
 const app = createApp(App);
 
 // Add Core Packages: Vue-Router, Pinia, Apexcharts
@@ -58,5 +59,6 @@ app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
 app.component("MetroChart", MetroChart);
 app.component("HeatmapChart", HeatmapChart);
-
+app.component("AQI_Chart", AQI_Chart);
+app.component("MapSlideBar", MapSlideBar);
 app.mount("#app");
