@@ -4220,7 +4220,7 @@
 				"https://tuic.gov.taipei/youbike",
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
-			"contributors": ["shinn","brian"]
+			"contributors": ["shinn", "brian"]
 		},
 		"149": {
 			"id": 149,
@@ -4259,6 +4259,77 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+		"150": {
+			"id": 150,
+			"index": "kids_center_location",
+			"map_config": [
+				{
+					"index": "kids_center_location",
+					"paint": {
+						"circle-color": "#A25FAD"
+					},
+					"property": [
+						{
+							"key": "name",
+							"name": "機構名稱"
+						},
+						{
+							"key": "addr",
+							"name": "地址"
+						},
+						{
+							"key": "phone",
+							"name": "電話"
+						}
+					],
+					"type": "circle",
+					"size": "big",
+					"title": "親子館分布"
+				}
+			],
+			"chart_config": {
+				"types": ["MapLegend"]
+			},
+			"name": "親子館分布",
+			"source": "社會局",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=fd4779d0-827d-4ab3-8f65-2a356abad6d9"
+			],
+			"tags": [],
+			"contributors": ["brian"]
+		},
+		"230": {
+			"id": 230,
+			"index": "dead_rate",
+			"history_data": false,
+			"map_config": null,
+			"chart_config": {
+				"color": ["#FD5696", "#00A9E0"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "人次"
+			},
+			"name": "新生兒死亡率",
+			"source": "台北大數據中心",
+			"time_from": "1971-01-01T23:59:59+08:00",
+			"time_to": "2021-12-31T23:59:59+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示近兩年每月的刑案統計資訊",
+			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2e6dd7df-aaca-49d2-92c4-435fca1894fd"
+			],
+			"tags": [],
+			"contributors": ["shinn"]
 		}
 	}
 }
