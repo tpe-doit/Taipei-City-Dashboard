@@ -4084,18 +4084,18 @@
 			"map_config": [
 				{
 					"index": "tp_flood",
-					"type": "fill-extrusion",
+					"type": "fill",
 					"paint": {
-						"fill-extrusion-color": [
+						"fill-color": [
 							"match",
 							["get", "FID"],
 							"2",
-							"#FFFFCC",
+							"#C3E0E5",
 							"3",
-							"#800026",
-							"#F9F9F9"
+							"#41729F",
+							"#0000FF"
 						],
-						"fill-extrusion-opacity": 0.8
+						"fill-opacity": 0.8
 					},
 					"property": [
 						{
