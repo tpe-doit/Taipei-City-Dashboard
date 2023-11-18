@@ -4123,7 +4123,7 @@
 				"types": ["BarChart", "DonutChart"],
 				"color": ["#003F00", "#23AF23", "#C8FFC8"],
 				"unit": "站",
-				"map_filter": ["category", ["高", "中", "低"]]
+				"map_filter": ["category", ["低", "中", "高"]]
 			},
 			"map_config": [
 				{
@@ -4133,11 +4133,11 @@
 						"circle-opacity": [
 							"match",
 							["get", "category"],
-							"高",
+							"低",
 							0.2,
 							"中",
 							0.4,
-							"低",
+							"高",
 							1,
 							0
 						],
