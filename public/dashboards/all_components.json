@@ -4192,6 +4192,8 @@
 			"id": 200,
 			"index": "BurnAge",
 			"chart_config": {
+				"types": ["BarChart"],
+				"unit": "人",
 				"color": ["#0072E3", "#F00078"],
 				"types": ["BarPercentChart", "RadarChart"],
 				"unit": "個",
@@ -4204,6 +4206,15 @@
 					"40~44歲",
 					"45歲以上"
 				]
+				"stroke": {
+					"width": 2
+				},
+				"useAbs": true,
+				"plotOptions": {
+					"bar": {
+						"distributed": false
+					}
+				}
 			},
 			"history_data": false,
 			"source": "交通局",
@@ -4212,14 +4223,15 @@
 			"update_freq": 10,
 			"update_freq_unit": "minute",
 			"name": "各年齡出生率",
-			"short_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況",
-			"long_desc": "顯示當前全市公共停車場汽車、機車、充電站的使用情況，資料來源為台北市交通局公開資料，每10分鐘更新。",
-			"use_case": "了解公共停車場汽車、機車及充電站的使用情況，有助於掌握當前全市公共停車設施的使用情況，以便提供更優化的交通規劃。",
-			"links": [
-				"https://data.taipei/dataset/detail?id=d5c0656b-5250-4179-a491-c94daa56ef2c"
-			],
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
 			"tags": [],
-			"contributors": ["sHinN"]
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"contributors": ["shinn", "brian"]
 		},
 		"149": {
 			"id": 149,
@@ -4371,6 +4383,32 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+
+		"230": {
+			"id": 230,
+			"index": "dead_rate",
+			"history_data": false,
+			"map_config": null,
+			"chart_config": {
+				"color": ["#FD5696", "#00A9E0"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "人次"
+			},
+			"name": "新生兒死亡率",
+			"source": "台北大數據中心",
+			"time_from": "1971-01-01T23:59:59+08:00",
+			"time_to": "2021-12-31T23:59:59+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示近兩年每月的刑案統計資訊",
+			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2e6dd7df-aaca-49d2-92c4-435fca1894fd"
+			],
+			"tags": [],
+			"contributors": ["shinn"]
 		},
 		"300": {
 			"id": 300,
