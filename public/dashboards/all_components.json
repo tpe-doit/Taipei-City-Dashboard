@@ -4279,7 +4279,28 @@
 			"update_freq_unit": null,
 			"short_desc": "一起去台北市的各種商圈逛逛吧！",
 			"long_desc": "一起去台北市的各種商圈逛逛吧！",
-			"use_case": "一起去台北市的各種商圈逛逛吧！",
+			"use_case": "與朋友們一起進行動態活動，可以考慮去臺北各地多元的商圈。在此之前，先在儀表板確認人數確保活動順利進行。",
+			"links": null,
+			"tags": [],
+			"contributors": ["54"]
+		},
+		"2000": {
+			"id": 2000,
+			"index": "library_seats",
+			"chart_config": {
+				"types": ["BarChart", "DonutChart"],
+				"color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
+				"unit": "座位"
+			},
+			"name": "圖書館座位數",
+			"source": "教育局圖書館@臺北市資料大平臺",
+			"time_from": "2023-11-18T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 1,
+			"update_freq_unit": "minute",
+			"short_desc": "顯示臺北市立圖書館各館之自修區、電腦區等座位",
+			"long_desc": "顯示臺北市立圖書館總館、廣慈分館、西湖分館及稻香分館之自修區、電腦區等座位",
+			"use_case": "與朋友們一起進行靜態活動，可以考慮去圖書館。在此之前，先在儀表板確認人數確保活動順利進行。",
 			"links": null,
 			"tags": [],
 			"contributors": ["54"]
