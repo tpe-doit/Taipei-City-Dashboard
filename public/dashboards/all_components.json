@@ -4114,6 +4114,68 @@
 			"links": null,
 			"tags": [],
 			"contributors": ["54"]
+		},
+		"1001": {
+			"id": 1001,
+			"index": "youbike_crowded",
+			"history_data": true,
+			"chart_config": {
+				"types": ["BarChart", "DonutChart"],
+				"color": ["#003F00", "#23AF23", "#C8FFC8"],
+				"unit": "站",
+				"map_filter": ["category", ["高", "中", "低"]]
+			},
+			"map_config": [
+				{
+					"index": "youbike_crowded",
+					"paint": {
+						"circle-color": "#23AF23",
+						"circle-opacity": [
+							"match",
+							["get", "category"],
+							"高",
+							0.2,
+							"中",
+							0.4,
+							"低",
+							1,
+							0
+						],
+						"circle-radius": 10,
+						"circle-blur": 0.5
+					},
+					"property": [
+						{
+							"key": "stop_name",
+							"name": "站點名稱"
+						},
+						{
+							"key": "dist",
+							"name": "行政區"
+						},
+						{
+							"key": "available_rent_prob_median",
+							"name": "擁擠率"
+						}
+					],
+					"size": "big",
+					"title": "Youbike擁擠率",
+					"type": "circle"
+				}
+			],
+			"name": "YouBike擁擠率",
+			"source": "臺北大數據中心",
+			"time_from": "2023-07-01T00:00:00+08:00",
+			"time_to": "2023-07-31T00:00:00+08:00",
+			"short_desc": "",
+			"long_desc": "見車率定義為為某站點在06:00~23:59期間，站上至少有1台車的時間比例。90%以上為高見車率；60%~90%為中見車率；60%以下為低見車率。資料來源為臺北大數據中心研究，更新頻率不定期。",
+			"use_case": "透過本組件您可以了解全市的缺車概況，在地圖模式您可以輕鬆的找到缺車嚴重的站點位置及分布情形。",
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
 		}
 	}
 }
