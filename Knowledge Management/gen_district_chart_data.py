@@ -17,67 +17,23 @@ districts = [
 ]
 
 example_chart_config: {
-    "color": ["#9c7a3e", "#b7e28e", "#7febd0", "#8ce8ff"],
+    "color": ["#C3E0E5", "#41729F"],
     "types": ["BarPercentChart", "ColumnChart"],
     "unit": "UNIT",
-    "categories": districts,
-}
-
-example_data = {
-    "data": [
-        {
-            "name": ">40年",
-            "data": [
-                15742,
-                20453,
-                6060,
-                6410,
-                10855,
-                12653,
-                15154,
-                12984,
-                11563,
-                17647,
-                20243,
-                12710,
-            ],
-        },
-        {
-            "name": "20-40年",
-            "data": [
-                6312,
-                7805,
-                12366,
-                2857,
-                4194,
-                6702,
-                6043,
-                2500,
-                3174,
-                3731,
-                7165,
-                8214,
-            ],
-        },
-        {
-            "name": "5-20年",
-            "data": [
-                1963,
-                2335,
-                3357,
-                1351,
-                684,
-                1022,
-                1947,
-                1025,
-                1171,
-                716,
-                1469,
-                2039,
-            ],
-        },
-        {"name": "<5年", "data": [48, 91, 71, 12, 6, 5, 49, 25, 33, 14, 38, 73]},
-    ]
+    "categories": [
+        "北投區",
+        "士林區",
+        "內湖區",
+        "南港區",
+        "松山區",
+        "信義區",
+        "中山區",
+        "大同區",
+        "中正區",
+        "萬華區",
+        "大安區",
+        "文山區",
+    ],
 }
 
 
@@ -103,22 +59,34 @@ def multiPolygon_data(coordinates):
 
 def gen_district_data_from_geojson(file_path):
     ret_data = []
+    record = {}
     with open(file_path) as f:
         geojson = json.load(f)
         for feature in geojson["features"]:
             # name is the category of the BarPercentChart
-            d = {}
-            name = feature["properties"]["Name"]
-            d["name"] = name
-            if feature["geometry"]["type"] == "MultiPolygon":
-                d["data"] = multiPolygon_data(feature["geometry"]["coordinates"])
-            else:
-                print("Not Implemented")
-            ret_data.append(d)
+            name = feature["properties"]["map_type"]
+            if name not in record:
+                record[name] = {}
+                record[name]["name"] = name
+                record[name]["data"] = [0] * len(districts)
+
+                for i, district in enumerate(districts):
+                    for cord in feature["geometry"]["coordinates"]:
+                        print(cord)
+                        area = cord[0]
+                        c_y, c_x = calculate_center(area)
+                        if is_point_inside_polygon(c_x, c_y, district):
+                            record[name]["data"][i] += float(
+                                feature["properties"]["面積"]
+                            )
+
+    for k, v in record.items():
+        ret_data.append(v)
     return ret_data
 
 
-geojson_path = "./public/mapData/tp_flood.geojson"
+geojson_path = "./public/mapData/all_pav.geojson"
+
 ret = {}
 ret["data"] = gen_district_data_from_geojson(geojson_path)
 

@@ -4107,17 +4107,23 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TreemapChart", "BarChart"],
-				"color": [
-					"#FFFFCC",
-					"#e7d198",
-					"#d1a26c",
-					"#b9734a",
-					"#9f4333",
-					"#800026"
-				],
-				"unit": "個網格",
-				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
+				"color": ["#C3E0E5", "#41729F"],
+				"types": ["BarPercentChart", "ColumnChart"],
+				"unit": "強度",
+				"categories": [
+					"北投區",
+					"士林區",
+					"內湖區",
+					"南港區",
+					"松山區",
+					"信義區",
+					"中山區",
+					"大同區",
+					"中正區",
+					"萬華區",
+					"大安區",
+					"文山區"
+				]
 			},
 			"name": "淹水",
 			"source": "資訊局",
@@ -4164,11 +4170,11 @@
 			],
 			"chart_config": {
 				"color": [
-					"#D2EE90",
-					"#90EE90",
-					"#4caf50",
-					"#CAF245",
-					"#9dc710"
+					"#FF0000",
+					"#39FF14",
+					"#4169E1",
+					"#FF69B4",
+					"#FFFF00"
 				],
 				"types": ["TreemapChart", "BarChart"],
 				"unit": "km²",
