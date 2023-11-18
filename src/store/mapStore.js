@@ -31,6 +31,11 @@ import MapPopup from "../components/map/MapPopup.vue";
 
 const { BASE_URL } = import.meta.env;
 
+function calculateColorFromDensity(density) {
+	const hue = Math.min(density * 120, 120); // Scale hue from green (low) to red (high)
+	return `hsl(${hue}, 100%, 50%)`;
+}
+
 export const useMapStore = defineStore("map", {
 	state: () => ({
 		// Array of layer IDs that are in the map
@@ -184,7 +189,11 @@ export const useMapStore = defineStore("map", {
 			});
 			if (map_config.type === "arc") {
 				this.AddArcMapLayer(map_config, data);
-			} else {
+			}
+			else if (map_config.type === "kde") {
+				this.AddKDEMapLayer(map_config, data);
+			}
+			else {
 				this.addMapLayer(map_config);
 			}
 		},
@@ -196,12 +205,12 @@ export const useMapStore = defineStore("map", {
 			if (map_config.icon) {
 				extra_paint_configs = {
 					...maplayerCommonPaint[
-						`${map_config.type}-${map_config.icon}`
+					`${map_config.type}-${map_config.icon}`
 					],
 				};
 				extra_layout_configs = {
 					...maplayerCommonLayout[
-						`${map_config.type}-${map_config.icon}`
+					`${map_config.type}-${map_config.icon}`
 					],
 				};
 			}
@@ -209,13 +218,13 @@ export const useMapStore = defineStore("map", {
 				extra_paint_configs = {
 					...extra_paint_configs,
 					...maplayerCommonPaint[
-						`${map_config.type}-${map_config.size}`
+					`${map_config.type}-${map_config.size}`
 					],
 				};
 				extra_layout_configs = {
 					...extra_layout_configs,
 					...maplayerCommonLayout[
-						`${map_config.type}-${map_config.size}`
+					`${map_config.type}-${map_config.size}`
 					],
 				};
 			}
@@ -240,6 +249,64 @@ export const useMapStore = defineStore("map", {
 			this.loadingLayers = this.loadingLayers.filter(
 				(el) => el !== map_config.layerId
 			);
+		},
+		// require "density" present in property
+		// the function use the coordinate info in Point type object in Feature and density to calculate the KDE value
+		AddKDEMapLayer(map_config, data) {
+			const scaleFactor = 0.1; // Scale factor to adjust visual representation
+			const authStore = useAuthStore();
+			const lines = [...JSON.parse(JSON.stringify(data.features))];
+
+			let data_points = []
+
+			for (let i = 0; i < lines.length; i++) {
+				let point = {}
+				if (!lines[i].geometry) continue;
+				point.lng = lines[i].geometry.coordinates[0]
+				point.lat = lines[i].geometry.coordinates[1]
+				point.density = lines[i].properties.density ? lines[i].properties.density : 0;
+				data_points.push(point)
+			}
+
+			console.log(data_points)
+
+			this.loadingLayers.push("rendering");
+
+			const delay = authStore.isMobileDevice ? 2000 : 500;
+
+			// Using a timeout to ensure map is ready before adding layers
+			setTimeout(() => {
+				// Create a source for the KDE data
+				this.map.addSource('kde', {
+					type: 'geojson',
+					data: {
+						type: 'FeatureCollection',
+						features: data_points.map(point => ({
+							type: 'Feature',
+							properties: { density: point.density },
+							geometry: {
+								type: 'Point',
+								coordinates: [point.lng, point.lat]
+							}
+						}))
+					}
+				});
+
+				// Add the heatmap layer using the KDE data source
+				this.map.addLayer({
+					id: map_config.layerId,
+					type: 'heatmap',
+					source: 'kde',
+					renderingMode: "3d",
+				});
+				console.log('kde-heatmap added')
+				this.currentLayers.push(map_config.layerId);
+				this.mapConfigs[map_config.layerId] = map_config;
+				this.currentVisibleLayers.push(map_config.layerId);
+				this.loadingLayers = this.loadingLayers.filter(
+					(el) => el !== map_config.layerId
+				);
+			}, delay);
 		},
 		// 4-2. Add Map Layer for Arc Maps
 		AddArcMapLayer(map_config, data) {	
@@ -309,7 +376,7 @@ export const useMapStore = defineStore("map", {
 									: 2,
 								opacity:
 									paintSettings["arc-opacity"] ||
-									paintSettings["arc-opacity"] === 0
+										paintSettings["arc-opacity"] === 0
 										? paintSettings["arc-opacity"]
 										: 0.5,
 							};
@@ -471,6 +538,18 @@ export const useMapStore = defineStore("map", {
 				this.AddArcMapLayer(map_config, toBeFiltered);
 				return;
 			}
+			else if (map_config && map_config.type === "kde") {
+				this.map.removeLayer(layer_id);
+				let toBeFiltered = {
+					...this.map.getSource(`${layer_id}-source`)._data,
+				};
+				toBeFiltered.features = toBeFiltered.features.filter(
+					(el) => el.properties[property] === key
+				);
+				map_config.layerId = layer_id;
+				this.AddKDEMapLayer(map_config, toBeFiltered);
+				return;
+			}
 			this.map.setFilter(layer_id, ["==", ["get", property], key]);
 		},
 		// Remove any filters on a map layer
@@ -486,6 +565,15 @@ export const useMapStore = defineStore("map", {
 				};
 				map_config.layerId = layer_id;
 				this.AddArcMapLayer(map_config, toRestore);
+				return;
+			}
+			else if (map_config && map_config.type === "kde") {
+				this.map.removeLayer(layer_id);
+				let toRestore = {
+					...this.map.getSource(`${layer_id}-source`)._data,
+				};
+				map_config.layerId = layer_id;
+				this.AddKDEMapLayer(map_config, toRestore);
 				return;
 			}
 			this.map.setFilter(layer_id, null);
