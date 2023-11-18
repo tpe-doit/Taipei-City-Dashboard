@@ -4079,7 +4079,7 @@
 			"contributors": ["tuic"]
 		},
 		"6901": {
-			"id": 6901,
+			"id": 6902,
 			"index": "carban_track",
 			"name": "碳排放追蹤",
 			"chart_config": {
