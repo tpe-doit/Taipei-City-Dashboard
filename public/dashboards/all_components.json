@@ -4572,7 +4572,7 @@
 			"chart_config": {
 				"types": ["FunnelChart"],
 				"align": "center",
-				"unit": "人",
+				"unit": "%",
 				"color": ["#33BB55"],
 				"categories": [
 					"台北市人數",

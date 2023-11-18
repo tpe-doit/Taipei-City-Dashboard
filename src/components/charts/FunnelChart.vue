@@ -24,7 +24,12 @@ const chartOptions = ref({
 	dataLabels: {
 		enabled: true,
 		formatter: function (val, opt) {
-			return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+			return (
+				opt.w.globals.labels[opt.dataPointIndex] +
+				":  " +
+				val +
+				props.chart_config.unit
+			);
 		},
 		dropShadow: {
 			enabled: true,
