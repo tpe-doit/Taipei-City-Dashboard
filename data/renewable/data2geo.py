@@ -18,6 +18,9 @@ def create_feature(record):
     else:
         geometry = None
 
+    if pd.notnull(record['裝置容量-瓩']):
+        record['density'] = record['裝置容量-瓩']
+
     # Use the rest of the record as properties, and remove the coordinates
     properties = record.copy()
     properties.pop('經度座標', None)
