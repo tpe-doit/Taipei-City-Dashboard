@@ -4107,10 +4107,17 @@
 				}
 			],
 			"chart_config": {
-				"types": ["BarChart"],
-				"color": ["#C3E0E5", "#41729F"],
-				"unit": "m",
-				"map_filter": ["F_depth", ["0.30 m ~ 1.0 m", "1.0 m ~ 2.0 m"]]
+				"types": ["TreemapChart", "BarChart"],
+				"color": [
+					"#FFFFCC",
+					"#e7d198",
+					"#d1a26c",
+					"#b9734a",
+					"#9f4333",
+					"#800026"
+				],
+				"unit": "個網格",
+				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
 			},
 			"name": "淹水",
 			"source": "資訊局",
@@ -4124,34 +4131,30 @@
 		},
 		"500": {
 			"id": 500,
-			"index": "pav",
+			"index": "all_pav",
 			"map_config": [
 				{
-					"index": "pavement",
+					"index": "all_pav",
 					"paint": {
 						"fill-color": [
 							"match",
-							["get", "type"],
+							["get", "map_type"],
 							"學校",
-							"#90EE90",
+							"#FF0000",
 							"停車場",
-							"#D2EE90",
+							"#39FF14",
 							"公園",
-							"#4caf50",
+							"#4169E1",
 							"人行道",
-							"#CAF245",
+							"#FF69B4",
 							"PAC鋪面",
-							"#9dc710",
+							"#FFFF00",
 							"green"
 						]
 					},
 					"property": [
 						{
-							"key": "name",
-							"name": "名稱"
-						},
-						{
-							"key": "type",
+							"key": "名稱",
 							"name": "類型"
 						}
 					],
