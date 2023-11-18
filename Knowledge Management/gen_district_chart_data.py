@@ -102,21 +102,25 @@ def multiPolygon_data(coordinates):
 
 
 def gen_district_data_from_geojson(file_path):
-    ret_data = {}
+    ret_data = []
     with open(file_path) as f:
         geojson = json.load(f)
         for feature in geojson["features"]:
             # name is the category of the BarPercentChart
+            d = {}
             name = feature["properties"]["Name"]
-            ret_data["name"] = name
+            d["name"] = name
             if feature["geometry"]["type"] == "MultiPolygon":
-                ret_data["data"] = multiPolygon_data(feature["geometry"]["coordinates"])
+                d["data"] = multiPolygon_data(feature["geometry"]["coordinates"])
             else:
                 print("Not Implemented")
+            ret_data.append(d)
     return ret_data
 
 
 geojson_path = "./public/mapData/tp_flood.geojson"
-ret = gen_district_data_from_geojson(geojson_path)
+ret = {}
+ret["data"] = gen_district_data_from_geojson(geojson_path)
+
 with open("./public/chartData/new_file.json", "w+") as f:
     json.dump(ret, f)
