@@ -4189,7 +4189,7 @@
 			"contributors": ["wenxin"]
 		},
 		"400": {
-			"id": 300,
+			"id": 400,
 			"index": "test_hundred_chart",
 			"map_config": [
 				{
