@@ -4133,34 +4133,38 @@
 			"id": 500,
 			"index": "all_pav",
 			"map_config": [
+			 {
+			  "index": "pavement",
+			  "paint": {
+				"fill-color": [
+					"match",
+					["get", "type"],
+					"學校",
+					"#90EE90",
+					"停車場",
+					"#D2EE90",
+					"公園",
+					"#4caf50",
+					"人行道",
+					"#CAF245",
+					"PAC鋪面",
+					"#9dc710",
+					"green"
+				]
+			  },
+			  "property": [
 				{
-					"index": "all_pav",
-					"paint": {
-						"fill-color": [
-							"match",
-							["get", "map_type"],
-							"學校",
-							"#FF0000",
-							"停車場",
-							"#39FF14",
-							"公園",
-							"#4169E1",
-							"人行道",
-							"#FF69B4",
-							"PAC鋪面",
-							"#FFFF00",
-							"green"
-						]
-					},
-					"property": [
-						{
-							"key": "名稱",
-							"name": "類型"
-						}
-					],
-					"type": "fill",
-					"title": "透水鋪面"
+					"key": "name",
+					"name": "名稱"
+				},
+				{
+					"key": "type",
+					"name": "類型"
 				}
+			  ],
+			  "type": "fill",
+			  "title": "透水鋪面"
+			 }
 			],
 			"chart_config": {
 				"color": [
@@ -4191,6 +4195,66 @@
 			],
 			"tags": [],
 			"contributors": ["tuic"]
+		},
+		"501": {
+			"id": 501,
+			"index": "tpe-temp",
+			"map_config": [
+				{
+					"index": "taipei_temperature",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							["get", "temperature"],
+							// ...
+						],
+						"fill-opacity": 0.8,
+					},
+					"property": [
+						{
+							"key": "temperature",
+							"name": "溫度"
+						}
+					],
+					"title": "臺北氣溫熱點圖"
+				}
+			],
+			"chart_config": {
+				"types": ["DistrictChart", "BarChart"],
+				"unit": "度",
+				"map_filter": [
+					"location",
+					[
+						"北投",
+						"士林",
+						"內湖",
+						"南港",
+						"松山",
+						"信義",
+						"中山",
+						"大同",
+						"中正",
+						"萬華",
+						"大安",
+						"文山"
+					]
+				]
+			},
+			"name": "氣溫溫度",
+			"source": "112A",
+			"time_from": "2023-06-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 10,
+			"update_freq_unit": "minute",
+			"short_desc": "顯示當前全市氣溫統計",
+			"long_desc": "顯示當前全市氣溫統計，資料來源為112A，每10分鐘更新。",
+			"use_case": "顯示當前全市氣溫統計，資料來源為112A，若要得知更具體的施工位置資訊，可透過地圖模式查詢。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=c208dabd-2da0-4e6d-8dbd-a004b9782b0a"
+			],
+			"tags": [],
+			"contributors": ["112A"]
 		}
 	}
 }

@@ -21,6 +21,7 @@ function handleSubmitNewLocation() {
 
 onMounted(() => {
 	mapStore.initializeMapBox();
+	console.log('hi 我初始化好囉！', mapStore.map.getBounds())
 });
 </script>
 
