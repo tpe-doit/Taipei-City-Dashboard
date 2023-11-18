@@ -4177,6 +4177,128 @@
 			"tags": [],
 			"contributors": ["54"]
 		},
+		"1002": {
+			"id": 1002,
+			"index": "metro_passengers",
+			"map_config": [
+				{
+					"index": "traffic_metro_line",
+					"paint": {
+						"line-color": [
+							"match",
+							["get", "mrtid"],
+							["BL"],
+							"#0070bd",
+							["O"],
+							"#f8b61c",
+							["G"],
+							"#008659",
+							["R"],
+							"#e3002c",
+							["BR"],
+							"#c48c31",
+							["Y"],
+							"#ffdb00",
+							"#505050"
+						]
+					},
+					"property": [
+						{
+							"key": "mrtsys",
+							"name": "系統"
+						},
+						{
+							"key": "mrtid",
+							"name": "代號"
+						},
+						{
+							"key": "mrtcode",
+							"name": "路線"
+						}
+					],
+					"type": "line",
+					"size": null,
+					"icon": null,
+					"title": "捷運路線"
+				},
+				{
+					"index": "traffic_metro_station_new",
+					"type": "symbol",
+					"size": null,
+					"icon": "metro"
+				},
+				{
+					"index": "traffic_metro_station_new",
+					"paint": {
+						"circle-color": "#4444CC",
+						"circle-opacity": [
+							"min",
+							[
+								"max",
+								[
+									"/",
+									["-", ["get", "leave"], ["get", "enter"]],
+									[
+										"/",
+										[
+											"+",
+											["get", "leave"],
+											["get", "enter"]
+										],
+										2
+									]
+								],
+								0.1
+							],
+							0.9
+						],
+						"circle-radius": 30,
+						"circle-blur": 0
+					},
+					"property": [
+						{
+							"key": "stationid",
+							"name": "ID"
+						},
+						{
+							"key": "stationname2",
+							"name": "站名"
+						},
+						{
+							"key": "enter",
+							"name": "進站人數"
+						},
+						{
+							"key": "leave",
+							"name": "出站人數"
+						}
+					],
+					"size": "big",
+					"title": "捷運擁擠率",
+					"type": "circle"
+				}
+			],
+			"chart_config": {
+				"color": ["#5e539b", "#5053d4"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "人次"
+			},
+			"name": "捷運擁擠率",
+			"history_data": true,
+			"source": "捷運局",
+			"time_from": "2023-05-26T23:29:00+08:00",
+			"time_to": null,
+			"update_freq": 30,
+			"update_freq_unit": "minute",
+			"short_desc": "顯示過去一段時間內全市捷運進出站人流變化",
+			"long_desc": "顯示過去一段時間內全市捷運進出站人流變化，資料來源為台北市捷運工程局內部資料，每30分鐘更新。",
+			"use_case": "掌握過去一段時間內台北市捷運進出站人流變化，包括高峰與低峰時段，有助於更好地管理交通流量與安排車輛運行。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=63f31c7e-7fc3-418b-bd82-b95158755b4d"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
+		},
 		"1010": {
 			"id": 1010,
 			"index": "business_district_map",
