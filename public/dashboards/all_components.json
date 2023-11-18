@@ -4918,9 +4918,41 @@
 							"name": "行政區"
 						}
 					],
-					"type": "symbol",
+					"type": "heatmap",
 					"icon": "triangle_green",
 					"title": "太陽能設施分佈"
+				},
+				{
+					"index": "solar_energy_contour",
+					"property": [
+						{
+							"key": "height",
+							"name": "發電量"
+						}
+					],
+					"paint": {
+						"fill-extrusion-opacity": 0.9,
+						"fill-extrusion-color": [
+							"get",
+							"color"
+						],
+						"fill-extrusion-height": [
+							"interpolate",
+							[
+								"linear"
+							],
+							[
+								"get",
+								"height"
+							],
+							0,
+							1,
+							100,
+							3000
+						]
+					},
+					"type": "fill-extrusion",
+					"title": "太陽能設施Heatmap"
 				}
 			],
 			"name": "太陽能設施分佈(點圖與行政區總和)",
