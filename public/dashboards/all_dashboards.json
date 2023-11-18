@@ -72,6 +72,12 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "祝你好孕",
+			"index": "burn",
+			"components": ["149", "150", "200"],
+			"icon": "public"
 		}
 	]
 }
