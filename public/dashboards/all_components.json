@@ -4187,6 +4187,67 @@
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
 			"contributors": ["wenxin"]
+		},
+		"300": {
+			"id": 300,
+			"index": "test_hundred_chart",
+			"map_config": [
+				{
+					"index": "test_hundred_chart",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							["get", "category"],
+							"極低",
+							"#FFFFCC",
+							"低",
+							"#e7d198",
+							"中低",
+							"#d1a26c",
+							"中",
+							"#b9734a",
+							"高",
+							"#800026",
+							"#800026"
+						],
+						"fill-opacity": 0.8
+					},
+					"property": [
+						{
+							"key": "category",
+							"name": "總體需求"
+						}
+					],
+					"title": "潛在需求"
+				}
+			],
+			"chart_config": {
+				"types": ["HundredChart"],
+				"color": [
+					"#FFFFCC",
+					"#e7d198",
+					"#d1a26c",
+					"#b9734a",
+					"#9f4333",
+					"#800026"
+				],
+				"unit": "個網格",
+				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
+			},
+			"name": "測試hundred chart",
+			"source": "資訊局",
+			"time_from": "2023-07-28T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "展示YouBike未設站區的潛在用車需求，這些資訊基於大數據中心研究提供，詳細預測方法可參考開源成果Github，更新頻率不定期。",
+			"use_case": "YouBike未設站區潛在需求將協助您了解未來可能需要增設YouBike站點的地區。這有助於規劃YouBike的擴展和改進，以滿足日益增長的需求。",
+			"tags": [],
+			"links": [
+				"https://dosw.gov.taipei/News_Content.aspx?n=E2018C5392F991DF&s=4AA5B916B574E7BA"
+			],
+			"contributors": ["wenxin"]
+		},
 		}
 	}
 }
