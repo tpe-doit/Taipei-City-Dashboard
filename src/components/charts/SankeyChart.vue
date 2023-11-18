@@ -71,10 +71,6 @@ const svgPathComponent = defineComponent({
 			type: Function,
 			default: () => { },
 		},
-		onmousemove:{
-			type: Function,
-			default: () => { },
-		},
 		changeOpacity:{
 			type: Function,
 			default: function(opacity){
@@ -88,7 +84,6 @@ const svgPathComponent = defineComponent({
 			:fill="fill"
 			:onmouseenter="onmouseenter"
 			:onmouseleave="onmouseleave"
-			:onmousemove="onmousemove"
 			:fill-opacity="fillOpacity"
 		/>
 	`,
@@ -116,7 +111,15 @@ const svgTextComponent = defineComponent({
 		transform:{
 			type: String,
 			default: '',
-		}
+		},
+		onmouseenter: {
+			type: Function,
+			default: () => { console.log("onmouseenter"); },
+		},
+		onmouseleave: {
+			type: Function,
+			default: () => { },
+		},
 	},
 	template: `
 		<text
@@ -128,6 +131,8 @@ const svgTextComponent = defineComponent({
 			:text-anchor="textAnchor"
 			:alignment-baseline="middle"
 			:transform="transform"
+			:onmouseenter="onmouseenter"
+			:onmouseleave="onmouseleave"
 		>
 			{{ text }}
 		</text>
@@ -165,11 +170,7 @@ const svgRectComponent = defineComponent({
 		onmouseleave: {
 			type: Function,
 			default: () => { },
-		},
-		onmousemove:{
-			type: Function,
-			default: () => { },
-		},
+		}
 	},
 	template: `
 		<rect
@@ -180,7 +181,6 @@ const svgRectComponent = defineComponent({
 			:fill="fill"
 			:onmouseenter="onmouseenter"
 			:onmouseleave="onmouseleave"
-			:onmousemove="onmousemove"
 		/>
 	`,
 });
@@ -506,16 +506,7 @@ function createSankey(data){
 		let bottomLeft = [x1, svgObjectsDict[from].y + svgObjectsDict[from].used_to_height + from_height];
 
 		let pathData = generateSVGPath(topRight, topLeft, bottomLeft, bottomRight);
-		// const svgPathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
-		// svgPathElement.setAttribute("d", pathData);
-		// svgPathElement.setAttribute("fill", "gray");
-		// if (data[i].negative) {
-		// 	svgPathElement.setAttribute("fill", "red");
-		// }
-
-		// svgPathElement.setAttribute("fill-opacity", "0.2");
-
-		// svg.appendChild(svgPathElement);
+		
 
 		let fillColor = props.chart_config.edge_color;
 		if (data[i].negative) {
@@ -542,32 +533,11 @@ function createSankey(data){
 
 				// set dialog data
 				targetDialog.value.title = `${from} -> ${to}`;
-				targetDialog.value.real_weight = data[i].real_weight;
+				targetDialog.value.real_weight = data[i].real_weight.toFixed(2);
 				targetDialog.value.negative = data[i].negative;
 
-				// change hover color
-				// let fillColor = props.chart_config.edge_hover_color;
-				// if (data[i].negative) {
-				// 	fillColor = props.chart_config.negative_edge_hover_color;
-				// }
 				e.target.setAttribute("fill", fillColor);
 				e.target.setAttribute("fill-opacity", "0.9");
-
-
-				tooltip.title = "testTitle";
-				tooltip.subtitle = data[i].real_weight + " " + props.chart_config.unit;
-				tooltip.items = [
-					{
-						name: "負向",
-						value: data[i].negative + " " + props.chart_config.unit,
-						rate: data[i].negative / data[i].real_weight * 100 + "%",
-					},
-					{
-						name: "正向",
-						value: data[i].positive + " " + props.chart_config.unit,
-						rate: data[i].positive / data[i].real_weight * 100 + "%",
-					},
-				];
 			},
 			onmouseleave: (e) => {
 				toolTipState.value.state = false;
@@ -575,17 +545,8 @@ function createSankey(data){
 				console.log("toolTipState", toolTipState.value.state);
 				console.log("e", e);
 
-				// change hover color back
-				// let fillColor = props.chart_config.edge_color;
-				// if (data[i].negative) {
-				// 	fillColor = props.chart_config.negative_edge_color;
-				// }
 				e.target.setAttribute("fill", fillColor);
 				e.target.setAttribute("fill-opacity", "0.3");
-			},
-			onmousemove: (e) => {
-				// console.log("onmousemove");
-				// console.log("e", e);
 			}
 		});
 
@@ -654,15 +615,41 @@ function createSankey(data){
 				// update tooltip data
 				console.log( "backSum" , backSum );
 				targetDialog.value.title = key;
-				targetDialog.value.real_weight = backSum;
+				targetDialog.value.real_weight = backSum.toFixed(2);
 
 				// get element by ref
 				for(let from of backTraceList.value){
 					let refKey = `${from}_${key}`;
 					
-					pathRefList.value[refKey].changeOpacity(0.9);
+					// pathRefList.value[refKey].changeOpacity(0.9);
+					for(let pathRef of pathRefList.value[refKey]){
+						pathRef.changeOpacity(0.9);
+					}
+
+					pathRefList.value[refKey] = [];
 				}
 
+				// change rect color
+				let originalColor = e.target.getAttribute("fill");
+				// hex color to HSL
+				let originalColorHSL = originalColor.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+					, (m, r, g, b) => '#' + r + r + g + g + b + b)
+					.substring(1).match(/.{2}/g)
+					.map(x => parseInt(x, 16))
+				// make it lighter
+				originalColorHSL[0] += 20;
+
+				// HSL to hex color
+				originalColor = '#' + originalColorHSL.map(x => {
+					x = Math.round(x);
+					const hex = x.toString(16);
+					return hex.length === 1 ? '0' + hex : hex;
+				}).join('');
+
+				// console.log( "originalColor" , originalColor );
+				
+				let color = originalColor.replace(")", ", 0.5)");
+				e.target.setAttribute("fill", color);
 
 			},
 			onmouseleave: (e) => {
@@ -679,14 +666,17 @@ function createSankey(data){
 					console.log( "pathRefList.value" , pathRefList.value );
 					console.log( "pathRefList.value[refKey]" , pathRefList.value[refKey] );
 					
-					pathRefList.value[refKey].changeOpacity(0.3);
+					// pathRefList.value[refKey].changeOpacity(0.3);
+					for(let pathRef of pathRefList.value[refKey]){
+						pathRef.changeOpacity(0.3);
+					}
+					pathRefList.value[refKey] = [];
 				}
 
+				// change rect color
+				e.target.setAttribute("fill", props.chart_config.layer_colors[svgObjectsDict[key].layer]);
+
 			},
-			onmousemove: (e) => {
-				// console.log("onmousemove");
-				// console.log("e", e);
-			}
 		});
 
 		// add text to rect
@@ -785,15 +775,23 @@ function createSankey(data){
 
 			<svg id="sankey" width="100%" :height="chartHeight" xmlns="http://www.w3.org/2000/svg">
 
-				<svgPathComponent :ref="el => { pathRefList[`${path.from}_${path.to}`] = el }" v-for="path in svgPathList" :d="path.d" :fill="path.fill" :stroke="path.stroke"
-					:stroke-width="path.strokeWidth" :onmouseenter="path.onmouseenter" :onmouseleave="path.onmouseleave"
-					:onmousemove="path.onmousemove" />
+				<svgPathComponent :ref="
+					el => { 
+						if(!pathRefList[`${path.from}_${path.to}`]){
+							pathRefList[`${path.from}_${path.to}`]=[];
+						}
+						pathRefList[`${path.from}_${path.to}`].push(el);
+						console.log( 'push new' );
+					}"
+					v-for="path in svgPathList" :d="path.d" :fill="path.fill" :stroke="path.stroke"
+					:stroke-width="path.strokeWidth" :onmouseenter="path.onmouseenter" :onmouseleave="path.onmouseleave"/>
 				<svgRectComponent v-for="rect in svgRectList" :x="rect.x" :y="rect.y" :width="rect.width"
 					:onmouseenter="rect.onmouseenter" :onmouseleave="rect.onmouseleave"
 					:height="rect.height" :fill="rect.fill" />
 				<svgTextComponent v-for="text in svgTextList" :x="text.x" :y="text.y" :fill="text.fill"
 					:font-size="text.fontSize" :font-family="text.fontFamily" :text-anchor="text.textAnchor"
-					:alignment-baseline="text.alignmentBaseline" :transform="text.transform" :text="text.text" />
+					:alignment-baseline="text.alignmentBaseline" :transform="text.transform" :text="text.text" 
+					 />
 				
 				
 			</svg>
