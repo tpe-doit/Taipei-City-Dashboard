@@ -4188,9 +4188,10 @@
 			},
 			"map_config": [
 				{
-					"index": "dev_bd",
+					"index": "dev_bd_circle",
+					"type": "fill",
 					"paint": {
-						"circle-color": [
+						"fill-color": [
 							"match",
 							["get", "標籤"],
 							"玩在商圈",
@@ -4200,7 +4201,8 @@
 							"買在商圈",
 							"#FDD79B",
 							"#FFFFFF"
-						]
+						],
+						"fill-opacity": 0.3
 					},
 					"property": [
 						{
@@ -4224,8 +4226,6 @@
 							"name": "說明"
 						}
 					],
-					"type": "circle",
-					"size": "big",
 					"title": "商圈"
 				}
 			],
