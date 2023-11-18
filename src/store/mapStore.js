@@ -183,7 +183,11 @@ export const useMapStore = defineStore("map", {
 			});
 			if (map_config.type === "arc") {
 				this.AddArcMapLayer(map_config, data);
-			} else {
+			}
+			else if (map_config.type === "kde") {
+				this.AddKDEMapLayer(map_config, data);
+			}
+			else {
 				this.addMapLayer(map_config);
 			}
 		},
@@ -251,58 +255,50 @@ export const useMapStore = defineStore("map", {
 
 			for (let i = 0; i < lines.length; i++) {
 				let point = {}
+				if (!lines[i].geometry) continue;
 				point.lng = lines[i].geometry.coordinates[0]
 				point.lat = lines[i].geometry.coordinates[1]
 				point.density = lines[i].properties.density ? lines[i].properties.density : 0;
 				data_points.push(point)
 			}
 
-			this.loadingLayers.push("rendering");
+			console.log(data_points)
 
-			const tb = (window.tb = new Threebox(
-				this.map,
-				this.map.getCanvas().getContext("webgl"), //get the context from the map canvas
-				{ defaultLights: true }
-			));
+			this.loadingLayers.push("rendering");
 
 			const delay = authStore.isMobileDevice ? 2000 : 500;
 
+			// Using a timeout to ensure map is ready before adding layers
 			setTimeout(() => {
-				this.map.addLayer({
-					id: map_config.layerId,
-					type: "custom",
-					renderingMode: "3d",
-					onAdd: function (map, mbxContext) {
-						data_points.forEach(dataPoint => {
-							// Create a 3D object with height proportional to the KDE density
-							const height = dataPoint.density * scaleFactor; // scaleFactor to adjust visual representation
-							const baseRadius = 1; // Define the base radius for the 3D object
-							const color = new THREE.Color(`hsl(${Math.min(dataPoint.density * 120, 120)}, 100%, 50%)`); // Color scaled by density
-
-							// Create a geometry for the 3D bar
-							const geometry = new THREE.CylinderGeometry(baseRadius, baseRadius, height, 32);
-							const material = new THREE.MeshStandardMaterial({ color: color });
-							const mesh = new THREE.Mesh(geometry, material);
-
-							// Position the mesh according to the data point's geographical coordinates
-							const position = tb.projectToWorld([dataPoint.lng, dataPoint.lat]);
-							mesh.position.set(position.x, position.y, position.z + height / 2);
-							mesh.scale.set(1, 1, 1); // Scale can be adjusted as needed
-
-							// Add the mesh to Threebox
-							tb.add(mesh);
-						});
-					},
-					render: function (gl, matrix) {
-						tb.update(); // Update Threebox scene
-					},
+				// Create a source for the KDE data
+				this.map.addSource('kde', {
+					type: 'geojson',
+					data: {
+						type: 'FeatureCollection',
+						features: data_points.map(point => ({
+							type: 'Feature',
+							properties: { density: point.density },
+							geometry: {
+								type: 'Point',
+								coordinates: [point.lng, point.lat]
+							}
+						}))
+					}
 				});
 
+				// Add the heatmap layer using the KDE data source
+				this.map.addLayer({
+					id: map_config.layerId,
+					type: 'heatmap',
+					source: 'kde',
+					renderingMode: "3d",
+				});
+				console.log('kde-heatmap added')
 				this.currentLayers.push(map_config.layerId);
 				this.mapConfigs[map_config.layerId] = map_config;
 				this.currentVisibleLayers.push(map_config.layerId);
 				this.loadingLayers = this.loadingLayers.filter(
-					(el) => el !== "rendering"
+					(el) => el !== map_config.layerId
 				);
 			}, delay);
 		},
@@ -563,6 +559,15 @@ export const useMapStore = defineStore("map", {
 				};
 				map_config.layerId = layer_id;
 				this.AddArcMapLayer(map_config, toRestore);
+				return;
+			}
+			else if (map_config && map_config.type === "kde") {
+				this.map.removeLayer(layer_id);
+				let toRestore = {
+					...this.map.getSource(`${layer_id}-source`)._data,
+				};
+				map_config.layerId = layer_id;
+				this.AddKDEMapLayer(map_config, toRestore);
 				return;
 			}
 			this.map.setFilter(layer_id, null);
