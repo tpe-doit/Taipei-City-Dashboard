@@ -4193,7 +4193,7 @@
 			"index": "BurnAge",
 			"chart_config": {
 				"color": ["#0072E3", "#F00078"],
-				"types": ["BarPercentChart"],
+				"types": ["BarPercentChart", "RadarChart"],
 				"unit": "個",
 				"categories": [
 					"未滿20歲",
@@ -4258,6 +4258,73 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+		"301": {
+			"id": 301,
+			"index": "test 301",
+			"chart_config": {
+				"types": ["FunnelChart"],
+				"align": "center",
+				"unit": "人次",
+				"color": ["#33BB55"],
+				"categories": [
+					"100年",
+					"101年",
+					"102年",
+					"103年",
+					"104年",
+					"105年",
+					"106年",
+					"107年",
+					"108年"
+				]
+			},
+			"map_config": [
+				{
+					"index": "test 301",
+					"paint": {
+						"fill-color": [
+							"case",
+							["==", ["get", "class"], "山區"],
+							"#40A461",
+							["==", ["get", "class"], "山區且土地限制"],
+							"#7FBF7B",
+							["==", ["get", "class"], "特殊條件限制"],
+							"#ACCFFF",
+							["==", ["get", "class"], "鄰近已設站"],
+							"#BEBEBE",
+							["==", ["get", "class"], "土地限制"],
+							"#BFDAB8",
+							["==", ["get", "class"], "未設站"],
+							"#3D56FF",
+							"#8E8E8E"
+						],
+						"fill-opacity": 0.5,
+						"fill-outline-color": "#555555"
+					},
+					"property": [
+						{
+							"key": "class",
+							"name": "類型"
+						}
+					],
+					"title": "Youbike設站狀態",
+					"type": "fill"
+				}
+			],
+			"name": "40歲以上產婦",
+			"source": "資訊局",
+			"time_from": "2023-09-28T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "全市由250公尺見方的網格組成，依據是否已設站、鄰近是否有站點及土地使用等條件，將各網格分為7大類，資料來源為大數據中心研究，更新頻率不定期。",
+			"use_case": "本組件可讓您快速查看各區域的YouBike設站情況。這有助於您了解哪些區域已提供YouBike服務；哪些因為土地或地形限制無法設站；和哪些地區目前未設站但具有設站潛能。",
+			"links": [
+				"https://tuic.gov.taipei/youbike",
+				"https://github.com/tpe-doit/YouBike-Optimization"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
 		}
 	}
 }
