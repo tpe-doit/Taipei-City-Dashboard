@@ -89,7 +89,8 @@ gdf_more = gpd.GeoDataFrame({
     'geometry': [Polygon(coords) for coords in contour_paths_more],
     # 'value': [value for coords, value in contour_data],
     'height': [value for coords, value in contour_data],
-    'color': colors
+    'color': colors,
+    "type": "熱點圖"
 })
 
 # Convert to new GeoJSON

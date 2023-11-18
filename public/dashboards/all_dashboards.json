@@ -134,6 +134,7 @@
 			"index": "solar_energy",
 			"components": [
 				"8000",
+				"8001",
 				"8003"
 			],
 			"icon": "public"
