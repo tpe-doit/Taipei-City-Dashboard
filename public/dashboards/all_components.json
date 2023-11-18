@@ -4192,8 +4192,6 @@
 			"id": 200,
 			"index": "BurnAge",
 			"chart_config": {
-				"types": ["BarChart"],
-				"unit": "人",
 				"color": ["#0072E3", "#F00078"],
 				"types": ["BarPercentChart", "RadarChart"],
 				"unit": "個",
@@ -4205,7 +4203,7 @@
 					"35~39歲",
 					"40~44歲",
 					"45歲以上"
-				]
+				],
 				"stroke": {
 					"width": 2
 				},
