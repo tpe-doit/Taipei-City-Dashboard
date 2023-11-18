@@ -4099,25 +4099,18 @@
 					},
 					"property": [
 						{
-							"key": "FID",
+							"key": "F_depth",
 							"name": "淹水高度"
 						}
 					],
-					"title": "淹水高度"
+					"title": "淹水資訊"
 				}
 			],
 			"chart_config": {
-				"types": ["TreemapChart", "BarChart"],
-				"color": [
-					"#FFFFCC",
-					"#e7d198",
-					"#d1a26c",
-					"#b9734a",
-					"#9f4333",
-					"#800026"
-				],
-				"unit": "個網格",
-				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
+				"types": ["BarChart"],
+				"color": ["#C3E0E5", "#41729F"],
+				"unit": "m",
+				"map_filter": ["F_depth", ["0.30 m ~ 1.0 m", "1.0 m ~ 2.0 m"]]
 			},
 			"name": "淹水",
 			"source": "資訊局",
@@ -4133,53 +4126,53 @@
 			"id": 500,
 			"index": "pav",
 			"map_config": [
-			 {
-			  "index": "pavement",
-			  "paint": {
-			   "fill-color": [
-				"match",
-				["get", "type"],
-				"學校",
-				"#90EE90",
-				"停車場",
-				"#D2EE90",
-				"公園",
-				"#4caf50",
-				"人行道",
-				"#CAF245",
-				"PAC鋪面",
-				"#9dc710",
-				"green"
-			   ]
-			  },
-			  "property": [
-			   {
-				"key": "name",
-				"name": "名稱"
-			   },
-			   {
-				"key": "type",
-				"name": "類型"
-			   }
-			  ],
-			  "type": "fill",
-			  "title": "透水鋪面"
-			 }
+				{
+					"index": "pavement",
+					"paint": {
+						"fill-color": [
+							"match",
+							["get", "type"],
+							"學校",
+							"#90EE90",
+							"停車場",
+							"#D2EE90",
+							"公園",
+							"#4caf50",
+							"人行道",
+							"#CAF245",
+							"PAC鋪面",
+							"#9dc710",
+							"green"
+						]
+					},
+					"property": [
+						{
+							"key": "name",
+							"name": "名稱"
+						},
+						{
+							"key": "type",
+							"name": "類型"
+						}
+					],
+					"type": "fill",
+					"title": "透水鋪面"
+				}
 			],
 			"chart_config": {
-			 "color": [
-			  "#D2EE90",
-			  "#90EE90",
-			  "#4caf50",
-			  "#CAF245",
-			  "#9dc710"
-			 ],
-			 "types": ["TreemapChart", "BarChart"],
-			 "unit": "km²",
-			 "map_filter": [
-			  "type",
-			  ["學校", "停車場", "公園", "人行道", "PAC鋪面"]
-			 ]
+				"color": [
+					"#D2EE90",
+					"#90EE90",
+					"#4caf50",
+					"#CAF245",
+					"#9dc710"
+				],
+				"types": ["TreemapChart", "BarChart"],
+				"unit": "km²",
+				"map_filter": [
+					"type",
+					["學校", "停車場", "公園", "人行道", "PAC鋪面"]
+				]
 			},
 			"name": "透水鋪面",
 			"source": "工務局",
@@ -4191,7 +4184,7 @@
 			"long_desc": "顯示全市各透水鋪面類別的面積和分布位置，資料來源為台北市工務局開放資料，不定期更新。",
 			"use_case": "圖表所顯示的透水鋪面類別的面積與分佈位置，能夠幫助我們更深入了解不同透水鋪面類型的分佈情況。",
 			"links": [
-			 "https://data.taipei/dataset/detail?id=4717811f-c20f-4deb-8013-981f1844d6fe"
+				"https://data.taipei/dataset/detail?id=4717811f-c20f-4deb-8013-981f1844d6fe"
 			],
 			"tags": [],
 			"contributors": ["tuic"]

@@ -29,4 +29,4 @@ def is_point_in_district(x, y, district):
 
 
 # # Example usage
-print(is_point_in_district(25.1942, 121.578, "士林區"))
+# print(is_point_in_district(25.1942, 121.578, "士林區"))

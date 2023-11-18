@@ -52,6 +52,12 @@
 			"icon": "handshake"
 		},
 		{
+			"name": "我們都是112A",
+			"index": "Hack",
+			"components": ["500", "999"],
+			"icon": "handshake"
+		},
+		{
 			"name": "測試組件",
 			"index": "testing",
 			"components": ["117", "118", "61", "74"],
@@ -78,8 +84,7 @@
 				"9",
 				"16",
 				"30",
-				"106",
-				"999"
+				"106"
 			],
 			"icon": "public"
 		}
