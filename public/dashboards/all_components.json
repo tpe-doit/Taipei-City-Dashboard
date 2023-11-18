@@ -4086,7 +4086,7 @@
 					"index": "tp_flood",
 					"type": "fill-extrusion",
 					"paint": {
-						"fill-color": [
+						"fill-extrusion-color": [
 							"match",
 							["get", "category"],
 							"極低",
@@ -4101,7 +4101,7 @@
 							"#800026",
 							"#800026"
 						],
-						"fill-opacity": 0.8
+						"fill-extrusion-opacity": 0.8
 					},
 					"property": [
 						{
