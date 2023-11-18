@@ -49,6 +49,11 @@ const dialogCardComponent = defineComponent({
 
 const svgPathComponent = defineComponent({
 	name: 'svgPathComponent',
+	data() {
+		return {
+			fillOpacity: 0.3,
+		};
+	},
 	props: {
 		d: {
 			type: String,
@@ -70,6 +75,12 @@ const svgPathComponent = defineComponent({
 			type: Function,
 			default: () => { },
 		},
+		changeOpacity:{
+			type: Function,
+			default: function(opacity){
+				this.fillOpacity = opacity;
+			}
+		},
 	},
 	template: `
 		<path
@@ -78,7 +89,7 @@ const svgPathComponent = defineComponent({
 			:onmouseenter="onmouseenter"
 			:onmouseleave="onmouseleave"
 			:onmousemove="onmousemove"
-			fill-opacity="0.3"
+			:fill-opacity="fillOpacity"
 		/>
 	`,
 });
@@ -147,6 +158,18 @@ const svgRectComponent = defineComponent({
 			type: String,
 			default: 'none',
 		},
+		onmouseenter: {
+			type: Function,
+			default: () => { console.log("onmouseenter"); },
+		},
+		onmouseleave: {
+			type: Function,
+			default: () => { },
+		},
+		onmousemove:{
+			type: Function,
+			default: () => { },
+		},
 	},
 	template: `
 		<rect
@@ -155,6 +178,9 @@ const svgRectComponent = defineComponent({
 			:width="width"
 			:height="height"
 			:fill="fill"
+			:onmouseenter="onmouseenter"
+			:onmouseleave="onmouseleave"
+			:onmousemove="onmousemove"
 		/>
 	`,
 });
@@ -500,6 +526,8 @@ function createSankey(data){
 			d: pathData,
 			fill: fillColor,
 			real_weight: data[i].real_weight,
+			from: from,
+			to: to,
 			onmouseenter: (e) => {
 				toolTipState.value.state = true;
 				console.log("onmouseenter");
@@ -558,10 +586,6 @@ function createSankey(data){
 			onmousemove: (e) => {
 				// console.log("onmousemove");
 				// console.log("e", e);
-
-				// mousePosition.value.x = e.pageX;
-				// mousePosition.value.y = e.pageY;
-				
 			}
 		});
 
@@ -597,6 +621,72 @@ function createSankey(data){
 			width: width,
 			height: height,
 			fill: props.chart_config.layer_colors[svgObjectsDict[key].layer],
+			onmouseenter: (e) => {
+				console.log( "hover" );
+
+				// back trace to find all edges
+				backTraceList.value = [];
+				let frontSum = 0;
+				let backSum = 0;
+				for (let i = 0; i < data.length; i++) {
+					if (data[i].to == key) {
+						backTraceList.value.push(data[i].from);
+						
+						backSum += data[i].real_weight;
+
+						console.log("data[i]" , data[i] );
+					}
+					else if (data[i].from == key) {
+						frontSum += data[i].real_weight;
+					}
+				}
+
+				// if backSum == 0 , backSum = frontSum
+				if(backSum == 0){
+					backSum = frontSum;
+				}
+
+
+				// show tooltip
+				toolTipState.value.state = true;
+				mousePosition.value.x = e.target.getBoundingClientRect().x;
+				mousePosition.value.y = e.target.getBoundingClientRect().y;
+				// update tooltip data
+				console.log( "backSum" , backSum );
+				targetDialog.value.title = key;
+				targetDialog.value.real_weight = backSum;
+
+				// get element by ref
+				for(let from of backTraceList.value){
+					let refKey = `${from}_${key}`;
+					
+					pathRefList.value[refKey].changeOpacity(0.9);
+				}
+
+
+			},
+			onmouseleave: (e) => {
+				console.log("onmouseleave");
+				toolTipState.value.state = false;
+
+
+				console.log("toolTipState", toolTipState.value.state);
+
+				for(let from of backTraceList.value){
+					console.log( "from" , from );
+					let refKey = `${from}_${key}`;
+					console.log( "refKey" , refKey );
+					console.log( "pathRefList.value" , pathRefList.value );
+					console.log( "pathRefList.value[refKey]" , pathRefList.value[refKey] );
+					
+					pathRefList.value[refKey].changeOpacity(0.3);
+				}
+
+			},
+			onmousemove: (e) => {
+				// console.log("onmousemove");
+				// console.log("e", e);
+			}
 		});
 
 		// add text to rect
@@ -634,6 +724,9 @@ function createSankey(data){
 	// const DialogColor = ref(props.chart_config.color[0]);
 	const mousePosition = ref({ x: null, y: null });
 	const selectedIndex = ref(null);
+
+	const backTraceList = ref([]);
+	const pathRefList = ref({}); // https://stackoverflow.com/questions/61155893/how-to-access-dynamic-ref-tagged-html-elements-in-vue-js-3
 
 	// Parse Dialog Data (to support 2D or 3D data)
 	const DialogData = computed(() => {
@@ -692,10 +785,11 @@ function createSankey(data){
 
 			<svg id="sankey" width="100%" :height="chartHeight" xmlns="http://www.w3.org/2000/svg">
 
-				<svgPathComponent v-for="path in svgPathList" :d="path.d" :fill="path.fill" :stroke="path.stroke"
+				<svgPathComponent :ref="el => { pathRefList[`${path.from}_${path.to}`] = el }" v-for="path in svgPathList" :d="path.d" :fill="path.fill" :stroke="path.stroke"
 					:stroke-width="path.strokeWidth" :onmouseenter="path.onmouseenter" :onmouseleave="path.onmouseleave"
 					:onmousemove="path.onmousemove" />
 				<svgRectComponent v-for="rect in svgRectList" :x="rect.x" :y="rect.y" :width="rect.width"
+					:onmouseenter="rect.onmouseenter" :onmouseleave="rect.onmouseleave"
 					:height="rect.height" :fill="rect.fill" />
 				<svgTextComponent v-for="text in svgTextList" :x="text.x" :y="text.y" :fill="text.fill"
 					:font-size="text.fontSize" :font-family="text.fontFamily" :text-anchor="text.textAnchor"
@@ -729,7 +823,7 @@ function createSankey(data){
 .card {
 	position: fixed;
 	border: none;
-	border-radius: 10px;
+	border-radius: 7px;
 	background-color: #485159;
 	color: white;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
