@@ -4506,6 +4506,81 @@
 			],
 			"tags": [],
 			"contributors": ["nick"]
+		},
+		"365": {
+			"id": 365,
+			"index": "sick",
+			"map_config": [
+				{
+					"index": "sick",
+					"paint": {
+						"fill-color": [
+							"match",
+							["get", "壅塞程度"],
+							"壅塞",
+							"#EC4037",
+							"車多",
+							"#ff8c1a",
+							"順暢",
+							"#4dd97a",
+							"#ccc"
+						]
+					},
+					"property": [
+						{
+							"key": "snippet",
+							"name": "路段代號"
+						},
+						{
+							"key": "壅塞程度",
+							"name": "壅塞程度"
+						},
+						{
+							"key": "description",
+							"name": "描述"
+						},
+						{
+							"key": "update_at",
+							"name": "更新時間"
+						}
+					],
+					"type": "fill",
+					"title": "嬰兒主要死亡原因"
+				}
+			],
+			"history_data": true,
+			"history_data_color": ["#EC4037", "#BBB"],
+			"chart_config": {
+				"color": [
+					"#112233",
+					"#123456",
+					"#234567",
+					"#345678",
+					"#456789",
+					"#56789a",
+					"#6789ab",
+					"#789abc",
+					"#89abcd",
+					"#9abcde",
+					"#abcdef"
+				],
+				"types": ["DonutChart", "BarChart"],
+				"unit": "%"
+			},
+			"name": "嬰兒主要死亡原因",
+			"source": "交通局",
+			"time_from": "2023-06-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 10,
+			"update_freq_unit": "minute",
+			"short_desc": "顯示當前全市道路暢通情況",
+			"long_desc": "顯示當前全市道路暢通情況，以主要幹道車速偵測辨別壅塞程度，資料來源為台北市交通局公開資料，每10分鐘更新。",
+			"use_case": "整體道路暢通情況反映了交通繁忙程度，可以透過與過去平均對比判斷當下交通是否出現異常情況。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=e57afe7f-3c9e-4f31-9208-eed859a92600"
+			],
+			"tags": [],
+			"contributors": ["tuic"]
 		}
 	}
 }
