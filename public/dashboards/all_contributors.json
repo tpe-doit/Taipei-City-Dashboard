@@ -8,6 +8,11 @@
 		"wenxin": {
 			"id": "wenxin",
 			"name": "Wenxin"
+		},
+		"brian": {
+			"id": "brian",
+			"name": "海獺",
+			"link": "https://brianchou452.github.io/"
 		}
 	}
 }
