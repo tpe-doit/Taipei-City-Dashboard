@@ -4085,40 +4085,18 @@
 				{
 					"index": "green_energy",
 					"paint": {
-						"circle-color": [
-							"match",
-							["get", "type"],
-							"building",
-							"#33C552",
-							"#33C552"
-						],
-						"circle-opacity": [
-							"interpolate",
-							["linear"],
-							["get", "height"],
-							0,
-							0.75,
-							10,
-							1
-						],
+						"circle-color": "#33C552",
+						"circle-opacity": 1,
 						"circle-radius": [
 							"interpolate",
 							["linear"],
-							["zoom"],
-							10.99,
+							["to-number", ["get", "device_capacity"]],
 							0,
-							14,
 							2,
-							16,
-							[
-								"interpolate",
-								["linear"],
-								["get", "diameter"],
-								0,
-								2,
-								2,
-								4
-							]
+							50,
+							5,
+							50000,
+							150
 						]
 					},
 					"property": [
@@ -4127,24 +4105,16 @@
 							"name": "行政區"
 						},
 						{
-							"key": "type",
-							"name": "類型"
+							"key": "build_name",
+							"name": "名稱"
 						},
 						{
-							"key": "region_ps",
-							"name": "層區"
+							"key": "address",
+							"name": "地址"
 						},
 						{
-							"key": "height",
-							"name": "高度"
-						},
-						{
-							"key": "diameter",
-							"name": "直徑"
-						},
-						{
-							"key": "survey_date",
-							"name": "紀錄時間"
+							"key": "device_capacity",
+							"name": "裝置容量-瓩"
 						}
 					],
 					"type": "circle",
