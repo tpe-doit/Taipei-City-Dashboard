@@ -54,6 +54,7 @@
 			"components": ["108", "22", "79", "60", "107"],
 			"icon": "favorite"
 		},
+		
 		{
 			"name": "圖資資訊",
 			"index": "map-layers",
@@ -72,6 +73,12 @@
 				"106"
 			],
 			"icon": "public"
+		},
+		{
+			"name": "erichung",
+			"index": "erichung",
+			"components": ["69"],
+			"icon": "fingerprint"
 		}
 	]
 }
