@@ -91,8 +91,7 @@ function showOrHideButton(isShow) {
 <template>
 	<div v-if="activeChart === 'HundredChart'" class="hundredchart">
 		<div>
-			每 {{ props.series[count - 1].data * 100 }}
-			{{ props.series[count - 1].unit
+			每 100 {{ props.series[count - 1].unit
 			}}{{ props.series[count - 1].name }} 就有
 			{{ series[count].data * 100 }} {{ props.series[count].unit
 			}}{{ props.series[count].name }}
