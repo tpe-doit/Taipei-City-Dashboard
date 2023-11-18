@@ -4193,16 +4193,17 @@
 			"index": "BurnAge",
 			"chart_config": {
 				"types": ["BarChart"],
-				"unit": "個",
-				"color": [
-					"#7FBF7B",
-					"#8E8E8E",
-					"#40A461",
-					"#BEBEBE",
-					"#3D56FF",
-					"#BFDAB8",
-					"#ACCFFF"
-				]
+				"unit": "人",
+				"color": ["#0072E3", "#F00078"],
+				"stroke": {
+					"width": 2
+				},
+				"useAbs": true,
+				"plotOptions": {
+					"bar": {
+						"distributed": false
+					}
+				}
 			},
 			"history_data": false,
 			"source": "交通局",
@@ -4212,14 +4213,14 @@
 			"update_freq_unit": "minute",
 			"name": "各年齡出生率",
 			"short_desc": "",
-			"long_desc": "展示YouBike未設站區的潛在用車需求，這些資訊基於大數據中心研究提供，詳細預測方法可參考開源成果Github，更新頻率不定期。",
-			"use_case": "YouBike未設站區潛在需求將協助您了解未來可能需要增設YouBike站點的地區。這有助於規劃YouBike的擴展和改進，以滿足日益增長的需求。",
+			"long_desc": "",
+			"use_case": "",
 			"tags": [],
 			"links": [
 				"https://tuic.gov.taipei/youbike",
 				"https://github.com/tpe-doit/YouBike-Optimization"
 			],
-			"contributors": ["sHinN"]
+			"contributors": ["shinn","brian"]
 		},
 		"149": {
 			"id": 149,
