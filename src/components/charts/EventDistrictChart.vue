@@ -10,40 +10,56 @@ const props = defineProps([
 	"map_config",
 ]);
 
-const threshold = props.chart_config.threshold || 1.2;
+const threshold = ref(props.chart_config.threshold || 1.2);
+const color = ref(props.chart_config.color || "red");
+const backgroundColor = ref(props.chart_config.backgroundColor || "#bbb");
+const backgroundOpacity = ref(props.chart_config.backgroundOpacity ?? 0.3);
+const unit = ref(props.chart_config.unit || "人");
+
 const svgWidth = 413;
 const svgHeight = 550;
 const topLeft = [25.20411, 121.456583];
 const bottomRight = [24.960156, 121.66669];
-const backgroundColor = ref("#bbb");
-const backgroundOpacity = ref(0.3);
+/**
+ * @type {import("vue").Ref<{ x: `${number}px`, y: `${number}px` }>}
+ */
 const mousePosition = ref({ x: null, y: null });
 const tooltipPosition = computed(() => {
 	return {
 		left: `${mousePosition.value.x - 10}px`,
-		top: `${mousePosition.value.y - 54}px`,
+		top: `${mousePosition.value.y - 84}px`,
 	};
 });
-const targetEvent = ref(null);
+/**
+ * @type {import("vue").Ref<string>}
+ */
+const targetEventIndex = ref(null);
 
 const eventData = computed(() => {
 	/**
 	 * @type {Array<{ name: string, expected: number, actual: number, longitude: number, latitude: number }>}
 	 */
-	const data = props.series.map((x) => {
-		const pos = geoToXY(x.data[2], x.data[3]);
-		return {
-			name: x.name,
-			expected: x.data[0],
-			actual: x.data[1],
-			y: pos[1],
-			x: pos[0],
-		};
-	});
+	const data = props.series
+		.map((x) => {
+			const pos = geoToXY(x.data[2], x.data[3]);
+			return {
+				name: x.name,
+				expected: x.data[0],
+				actual: x.data[1],
+				x: pos[0],
+				y: pos[1],
+			};
+		})
+		.filter((evt) => evt.actual / evt.expected > threshold.value);
 
 	return data;
 });
 
+/**
+ * @param lat {number}
+ * @param lon {number}
+ * @returns {[x: number, y: number]}
+ */
 function geoToXY(lat, lon) {
 	// Calculate the scale factors for longitude and latitude
 	const latRange = topLeft[0] - bottomRight[0];
@@ -58,12 +74,18 @@ function geoToXY(lat, lon) {
 	return [x, y];
 }
 
+/**
+ * @param e {MouseEvent}
+ */
 function toggleActive(e) {
-	targetEvent.value = e.target.dataset.name;
+	targetEventIndex.value = e.target.dataset.idx;
 }
 function toggleActiveToNull() {
-	targetEvent.value = null;
+	targetEventIndex.value = null;
 }
+/**
+ * @param e {MouseEvent}
+ */
 function updateMouseLocation(e) {
 	mousePosition.value.x = e.pageX;
 	mousePosition.value.y = e.pageY;
@@ -174,16 +196,14 @@ function updateMouseLocation(e) {
 					/>
 				</g>
 				<g>
-					<!-- draw dots -->
 					<circle
 						v-for="(evt, index) in eventData"
 						:key="index"
 						:cx="evt.x"
 						:cy="evt.y"
 						:r="10"
-						fill="red"
-						:opacity="evt.actual / evt.expected > threshold ? 1 : 0"
-						:data-name="index"
+						:fill="color"
+						:data-idx="index"
 						@mouseenter="toggleActive"
 						@mousemove="updateMouseLocation"
 						@mouseleave="toggleActiveToNull"
@@ -193,16 +213,18 @@ function updateMouseLocation(e) {
 			<Teleport to="body">
 				<!-- The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css -->
 				<div
-					v-if="targetEvent !== null"
+					v-if="targetEventIndex !== null"
 					class="districtchart-chart-info chart-tooltip"
 					:style="tooltipPosition"
 				>
-					<h6>{{ eventData[targetEvent].name }}</h6>
+					<h6>{{ eventData[targetEventIndex].name }}</h6>
 					<span
-						>{{ eventData[targetEvent].actual }} ({{
+						>預期 {{ eventData[targetEventIndex].expected }}
+						{{ unit }}<br />現有
+						{{ eventData[targetEventIndex].actual }} {{ unit }} ({{
 							Math.round(
-								(eventData[targetEvent].actual /
-									eventData[targetEvent].expected) *
+								(eventData[targetEventIndex].actual /
+									eventData[targetEventIndex].expected) *
 									1000
 							) / 10
 						}}%)</span
