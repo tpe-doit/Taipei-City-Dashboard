@@ -4106,7 +4106,7 @@
 				"types": ["BarChart", "DonutChart"],
 				"color": ["#003F00", "#23AF23", "#D8FFD8"],
 				"unit": "站",
-				"map_filter": ["category", ["高", "中", "低"]]
+				"map_filter": ["category", ["低", "中", "高"]]
 			},
 			"map_config": [
 				{
@@ -4215,28 +4215,12 @@
 					"paint": {
 						"circle-color": "#4444CC",
 						"circle-opacity": [
-							"min",
-							[
-								"max",
-								[
-									"/",
-									["-", ["get", "leave"], ["get", "enter"]],
-									[
-										"/",
-										[
-											"+",
-											["get", "leave"],
-											["get", "enter"]
-										],
-										2
-									]
-								],
-								0.1
-							],
-							0.9
+							"/",
+							["+", ["get", "leave"], ["get", "enter"]],
+							10000
 						],
 						"circle-radius": 30,
-						"circle-blur": 0
+						"circle-blur": 0.5
 					},
 					"property": [
 						{
