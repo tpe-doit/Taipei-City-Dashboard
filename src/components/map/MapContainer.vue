@@ -121,13 +121,13 @@ watch(showDragBar, (newValue, oldValue) => {
 	position: absolute;
 	z-index: 1;
 	top: 0;
-	left: 0;
-	background-color: #ffffff;
+	left: 5px;
+	background-color: transparent;
 	color: black;
 }
 
 #drag-bar-desc {
-	color: black;
+	color: white;
 	text-align: center;
 }
 
