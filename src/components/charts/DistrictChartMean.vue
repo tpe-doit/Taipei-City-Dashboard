@@ -354,7 +354,7 @@ function handleDataSelection(index) {
 		justify-content: center;
 		position: absolute;
 		left: 0;
-		top: 0;
+		top: 70%;
 		margin: 0.5rem 0 -0.5rem;
 
 		h5 {

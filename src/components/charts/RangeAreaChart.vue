@@ -68,17 +68,26 @@ const chartOptions = ref({
 		labels: {
 			show: false,
 			style: {
-				colors: ["#000000"],
+				colors: ["#282a2c"],
 			},
 		},
 		type: "category",
 	},
+	// markers: {
+	// 	hover: {
+	// 		sizeOffset: 5,
+	// 	},
+	// },
 	// yaxis: {
 	// 	labels: {
 	// 		formatter: function (value) {
 	// 			return value.length > 7 ? value.slice(0, 6) + "..." : value;
 	// 		},
 	// 	},
+	// 	style: {
+	// 		colors: ["#000000"],
+	// 	},
+	// 	type: "category",
 	// },
 });
 

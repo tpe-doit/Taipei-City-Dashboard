@@ -114,7 +114,7 @@ const chartOptions = ref({
 		customLegendItems: ["低", "中", "高"],
 		markers: {
 			size: 0,
-			fillColors: ["#31BD00", "#FF9110", "#BD0000"],
+			fillColors: ["#31BD00", "#FF9110", "#E93838"],
 		},
 		formatter: function (seriesName) {
 			return (
