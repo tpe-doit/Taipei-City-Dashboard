@@ -1,7 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023 -->
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useMapStore } from '../../store/mapStore';
 import { useDialogStore } from '../../store/dialogStore';
 import { useContentStore } from '../../store/contentStore';
@@ -13,6 +13,7 @@ const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 
 const newSavedLocation = ref('');
+const intensity = ref(-1);
 
 function handleSubmitNewLocation() {
 	mapStore.addNewSavedLocation(newSavedLocation.value);
@@ -21,35 +22,91 @@ function handleSubmitNewLocation() {
 
 onMounted(() => {
 	mapStore.initializeMapBox();
+	// console.log('hi 我初始化好囉！', mapStore.map.getBounds())
 });
+
+const showDragBar = ref(false);
+
+watch(() => mapStore.currentVisibleLayers.length, (newValue, oldValue) => {
+	showDragBar.value = showDragBar.value || mapStore.currentVisibleLayers.includes('tp_flood-fill') || mapStore.currentVisibleLayers.includes('tp_flood_2-fill') || mapStore.currentVisibleLayers.includes('tp_flood_3-fill') || mapStore.currentVisibleLayers.includes('tp_flood_4-fill')
+	intensity.value = 0
+})
+
+watch(intensity, (newValue, oldValue) => {
+	if(showDragBar) {
+		const mapper = {
+			0: "tp_flood-fill",
+			1: "tp_flood_2-fill",
+			2: "tp_flood_3-fill",
+			3: "tp_flood_4-fill",
+		}
+		// console.log(newValue, oldValue, intensity)
+		newValue = Number(newValue)
+		for(const i of [0,1,2,3]) {
+			const config = mapStore.mapConfigs[mapper[i]]
+			const turn_on = newValue === i
+			if(turn_on) {
+				const mapLayerId = `${config.index}-${config.type}`;
+				mapStore.turnOnMapLayerVisibility(mapLayerId)
+			} else {
+				mapStore.turnOffMapLayerVisibility([config])
+			}
+		}
+	}
+})
+
+
 </script>
 
 <template>
-	<div class="mapcontainer">
-		<div id="mapboxBox">
-			<div class="mapcontainer-loading" v-if="mapStore.loadingLayers.length > 0">
-				<div></div>
-			</div>
-			<button class="mapcontainer-layers show-if-mobile"
-				@click="dialogStore.showDialog('mobileLayers')"><span>layers</span></button>
-			<!-- The key prop informs vue that the component should be updated when switching dashboards -->
-			<MobileLayers :key="contentStore.currentDashboard.index" />
+	<div class="drag-bar-container">
+		<div class="drag-bar" v-if="showDragBar">
+			<input id="slider" type="range" min="0" max="3" step="1" v-model="intensity">
+			<div id="drag-bar-desc">降雨強度</div>
 		</div>
-		<div class="mapcontainer-controls hide-if-mobile">
-			<button @click="mapStore.easeToLocation([[121.536609, 25.044808], 12.5, 0, 0])">返回預設</button>
-			<div v-for="(item, index) in mapStore.savedLocations" :key="`${item[4]}-${index}`">
-				<button @click="mapStore.easeToLocation(item)">{{ item[4] }}
-				</button>
-				<div class="mapcontainer-controls-delete" @click="mapStore.removeSavedLocation(index)"><span>delete</span>
+		<div class="mapcontainer">
+			<div id="mapboxBox">
+				<div class="mapcontainer-loading" v-if="mapStore.loadingLayers.length > 0">
+					<div></div>
 				</div>
+				<button class="mapcontainer-layers show-if-mobile"
+					@click="dialogStore.showDialog('mobileLayers')"><span>layers</span></button>
+				<!-- The key prop informs vue that the component should be updated when switching dashboards -->
+				<MobileLayers :key="contentStore.currentDashboard.index" />
 			</div>
-			<input v-if="mapStore.savedLocations.length < 10" type="text" placeholder="新增後按Enter" v-model="newSavedLocation"
-				maxlength="6" @focusout="newSavedLocation = ''" @keypress.enter="handleSubmitNewLocation" />
+			<div class="mapcontainer-controls hide-if-mobile">
+				<button @click="mapStore.easeToLocation([[121.536609, 25.044808], 12.5, 0, 0])">返回預設</button>
+				<div v-for="(item, index) in mapStore.savedLocations" :key="`${item[4]}-${index}`">
+					<button @click="mapStore.easeToLocation(item)">{{ item[4] }}
+					</button>
+					<div class="mapcontainer-controls-delete" @click="mapStore.removeSavedLocation(index)"><span>delete</span>
+					</div>
+				</div>
+				<input v-if="mapStore.savedLocations.length < 10" type="text" placeholder="新增後按Enter" v-model="newSavedLocation"
+					maxlength="6" @focusout="newSavedLocation = ''" @keypress.enter="handleSubmitNewLocation" />
+			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
+.drag-bar-container {
+	position: relative;
+	display: flex;
+}
+.drag-bar {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #ffffff;
+	color: black;
+}
+#drag-bar-desc {
+	color: black;
+	text-align: center;
+}
+
 .mapcontainer {
 	position: relative;
 	width: 100%;
