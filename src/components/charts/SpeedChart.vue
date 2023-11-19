@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 
 const props = defineProps(["chart_config", "activeChart", "series"]);
 
-const thisMonth = ref("01");
+const thisMonth = ref("06");
 const thisYear = ref("2023");
 // const q1 = ref(null);
 // const q3 = ref(null);
