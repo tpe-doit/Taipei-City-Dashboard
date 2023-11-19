@@ -20,18 +20,18 @@ const chartOptions = ref({
 	},
 	colors: props.chart_config.color,
 	dataLabels: {
+		enabled: false,
 		offsetX: 20,
 		textAnchor: "start",
-		enabled: false,
 		style: {
-			colors: ["#397AB7"],
+			colors: ["#000000"],
 		},
+	},
+	fill: {
+		colors: ["#397AB7"],
 	},
 	grid: {
 		show: false,
-	},
-	fill: {
-		colors: ["#5384B1"],
 	},
 	legend: {
 		show: false,
@@ -67,27 +67,20 @@ const chartOptions = ref({
 		},
 		labels: {
 			show: false,
+		},
+		type: "category",
+		labels: {
 			style: {
 				colors: ["#282a2c"],
 			},
 		},
-		type: "category",
 	},
-	// markers: {
-	// 	hover: {
-	// 		sizeOffset: 5,
-	// 	},
-	// },
 	// yaxis: {
 	// 	labels: {
 	// 		formatter: function (value) {
 	// 			return value.length > 7 ? value.slice(0, 6) + "..." : value;
 	// 		},
 	// 	},
-	// 	style: {
-	// 		colors: ["#000000"],
-	// 	},
-	// 	type: "category",
 	// },
 });
 
