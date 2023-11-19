@@ -39,7 +39,6 @@ taipei_districts["test"] = [(0, 0), (2, 0), (2, 2), (0, 2)]
 def is_point_in_district(x, y, district):
     district_polygon = Polygon(taipei_districts[district])
     district_gdf = gpd.GeoDataFrame([1], geometry=[district_polygon])
-    print(district_gdf)
     point = Point(x, y)
     return district_gdf.contains(point).bool()
 
