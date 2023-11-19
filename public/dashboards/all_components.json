@@ -4286,7 +4286,7 @@
 			"id": 1004,
 			"index": "dev-1004",
 			"chart_config": {
-				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"types": ["TimelineSeparateChart"],
 				"unit": "%"
 			},
 			"name": "臺北市收入性別比差異",
@@ -4306,7 +4306,7 @@
 			"id": 1005,
 			"index": "dev-1005",
 			"chart_config": {
-				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"types": ["TimelineSeparateChart"],
 				"unit": "%"
 			},
 			"name": "臺北市性別所得差異",
