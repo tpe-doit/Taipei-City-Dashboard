@@ -34,6 +34,7 @@ import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
 import MapLegend from "./components/charts/MapLegend.vue";
 import MetroChart from "./components/charts/MetroChart.vue";
 import HeatmapChart from "./components/charts/HeatmapChart.vue";
+import SpeedChart from "./components/charts/SpeedChart.vue";
 
 const app = createApp(App);
 
@@ -46,7 +47,7 @@ app.use(VueApexCharts);
 app.component("DistrictChart", DistrictChart); // ?
 app.component("DonutChart", DonutChart);
 app.component("BarChart", BarChart);
-app.component("TreemapChart", TreemapChart);  // ?
+app.component("TreemapChart", TreemapChart); // ?
 app.component("ColumnChart", ColumnChart); // ?
 app.component("BarPercentChart", BarPercentChart); // ?
 app.component("GuageChart", GuageChart); // ?
@@ -56,5 +57,6 @@ app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
 app.component("MetroChart", MetroChart);
 app.component("HeatmapChart", HeatmapChart);
+app.component("SpeedChart", SpeedChart);
 
 app.mount("#app");
