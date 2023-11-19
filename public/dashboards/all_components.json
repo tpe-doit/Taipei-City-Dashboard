@@ -4270,10 +4270,30 @@
 			"id": 1004,
 			"index": "dev-1004",
 			"chart_config": {
-				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"types": ["TimelineSeparateChart"],
 				"unit": "%"
 			},
 			"name": "臺北市收入性別比差異",
+			"source": "台北大數據中心",
+			"time_from": "2009-01-01T00:00:00+08:00",
+			"time_to": "2022-12-31T00:00:00+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "Dev",
+			"long_desc": "Dev",
+			"use_case": "Dev",
+			"links": null,
+			"tags": [],
+			"contributors": ["54"]
+		},
+		"1005": {
+			"id": 1005,
+			"index": "dev-1005",
+			"chart_config": {
+				"types": ["TimelineSeparateChart"],
+				"unit": "%"
+			},
+			"name": "臺北市性別所得差異",
 			"source": "台北大數據中心",
 			"time_from": "2009-01-01T00:00:00+08:00",
 			"time_to": "2022-12-31T00:00:00+08:00",
@@ -4399,13 +4419,15 @@
 			"id": 2000,
 			"index": "library_seats",
 			"chart_config": {
-				"types": ["BarChart", "DonutChart"],
+				"types": ["GuageChart"],
 				"color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
-				"unit": "座位"
+				"unit": "座位",
+				"categories": ["總館", "稻香分館", "廣慈分館", "西湖分館"]
 			},
+			"history_data": true,
 			"name": "圖書館座位數",
 			"source": "教育局圖書館@臺北市資料大平臺",
-			"time_from": "2023-11-18T00:00:00+08:00",
+			"time_from": "2023-11-19T00:10:00+08:00",
 			"time_to": null,
 			"update_freq": 1,
 			"update_freq_unit": "minute",
