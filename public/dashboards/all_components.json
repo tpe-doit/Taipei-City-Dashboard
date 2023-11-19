@@ -4435,9 +4435,10 @@
 			"id": 2000,
 			"index": "library_seats",
 			"chart_config": {
-				"types": ["BarChart", "DonutChart"],
+				"types": ["GuageChart"],
 				"color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
-				"unit": "座位"
+				"unit": "座位",
+				"categories": ["總館", "稻香分館", "廣慈分館", "西湖分館"]
 			},
 			"history_data": true,
 			"name": "圖書館座位數",
