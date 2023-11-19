@@ -4103,10 +4103,10 @@
 			"index": "youbike_crowded",
 			"history_data": true,
 			"chart_config": {
-				"types": ["BarChart", "DonutChart"],
-				"color": ["#003F00", "#23AF23", "#D8FFD8"],
+				"types": ["RangeChart"],
+				"color": ["#23AF23", "#FFC300", "#E3002C"],
 				"unit": "站",
-				"map_filter": ["category", ["低", "中", "高"]]
+				"map_filter": []
 			},
 			"map_config": [
 				{
