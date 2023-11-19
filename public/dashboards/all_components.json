@@ -5039,43 +5039,6 @@
 		"499": {
 			"id": 499,
 			"index": "pav",
-			"map_config": [
-				{
-					"index": "pavement",
-					"paint": {
-						"fill-color": [
-							"match",
-							[
-								"get",
-								"type"
-							],
-							"學校",
-							"#90EE90",
-							"停車場",
-							"#D2EE90",
-							"公園",
-							"#4caf50",
-							"人行道",
-							"#CAF245",
-							"PAC鋪面",
-							"#9dc710",
-							"green"
-						]
-					},
-					"property": [
-						{
-							"key": "name",
-							"name": "名稱"
-						},
-						{
-							"key": "type",
-							"name": "類型"
-						}
-					],
-					"type": "fill",
-					"title": "透水鋪面類型"
-				}
-			],
 			"chart_config": {
 				"color": [
 					"#D2EE90",
