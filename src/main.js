@@ -58,5 +58,7 @@ app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
 app.component("MetroChart", MetroChart);
 app.component("HeatmapChart", HeatmapChart);
+app.component("RangeAreaChart", RangeAreaChart);
+app.component("SpeedChart", SpeedChart);
 
 app.mount("#app");
