@@ -5058,7 +5058,7 @@
 							"人行道",
 							"#CAF245",
 							"PAC鋪面",
-							"#FFFF00",
+							"#0047AB",
 							"green"
 						]
 					},
@@ -5193,29 +5193,74 @@
 				"112A"
 			]
 		},
-		"502": {
-			"id": 502,
-			"index": "history-rain",
+		"622": {
+			"id": 622,
+			"index": "district_history_rain",
+			"map_config": [
+				{
+					"index": "district_history_rain",
+					"paint": {
+						"fill-color": [
+							"match",
+							[
+								"get",
+								"district"
+							],
+							"北投區",
+							"#4B9CD3",
+							"士林區",
+							"#52A2D8",
+							"內湖區",
+							"#59A9DD",
+							"南港區",
+							"#60B0E2",
+							"松山區",
+							"#67B7E7",
+							"信義區",
+							"#6EBEEC",
+							"中山區",
+							"#75C5F1",
+							"大同區",
+							"#7CCCF6",
+							"中正區",
+							"#8AD9FF",
+							"萬華區",
+							"#8AD9FF",
+							"大安區",
+							"#91E0FF",
+							"文山區",
+							"#98E7FF",
+							"#9FEEFF"
+						]
+					},
+					"property": [
+						{
+							"key": "rain",
+							"name": "雨量"
+						}
+					],
+					"type": "fill",
+					"title": "六月總雨量"
+				}
+			],
 			"chart_config": {
 				"types": [
 					"RangeAreaChart"
 				],
 				"unit": "cm"
 			},
-			"map_config": null,
+			"history_data": true,
+			"source": "水利處",
+			"time_from": "2021-07-01T00:00:00+08:00",
+			"time_to": "2023-06-01T00:00:00+08:00",
+			"update_freq": 1,
+			"update_freq_unit": "month",
 			"name": "歷史一年月總降雨量",
-			"source": "112A",
-			"time_to": null,
-			"update_freq": null,
-			"update_freq_unit": null,
-			"short_desc": "歷史月降雨量，我們這裡只顯示過去一年的月總雨量",
+			"short_desc": "生活安全及品質",
+			"long_desc": "提供臺北市政府工務局水利工程處設置雨量站之歷史總降雨量，雨量單位為毫米。",
 			"use_case": "用來比較歷年各月的落雨情況",
 			"links": [
 				"https://data.taipei/dataset/detail?id=2de42464-c956-4442-8771-12e8a0ec7742"
-			],
-			"tags": [],
-			"contributors": [
-				"112A"
 			]
 		}
 	}
