@@ -127,6 +127,12 @@ export const useMapStore = defineStore("map", {
 				"bike_green",
 				"bike_orange",
 				"bike_red",
+				"NAQI0",
+				"NAQI1",
+				"NAQI2",
+				"NAQI3",
+				"NAQI4",
+				"NAQI5",
 			];
 			images.forEach((element) => {
 				this.map.loadImage(
@@ -303,7 +309,7 @@ export const useMapStore = defineStore("map", {
 			}, delay);
 		},
 		// 4-2. Add Map Layer for Arc Maps
-		AddArcMapLayer(map_config, data) {
+		AddArcMapLayer(map_config, data) {	
 			const authStore = useAuthStore();
 			const lines = [...JSON.parse(JSON.stringify(data.features))];
 			const arcInterval = 20;

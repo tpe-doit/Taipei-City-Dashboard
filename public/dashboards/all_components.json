@@ -4885,9 +4885,6 @@
 			"links": [
 				"https://tuic.gov.taipei/youbike",
 				"https://github.com/tpe-doit/YouBike-Optimization"
-			],
-			"contributors": [
-				"tuic"
 			]
 		},
 		"8000": {
@@ -5100,6 +5097,212 @@
 				],
 				"unit": "瓦"
 			}
+		},
+		"203": {
+			"id": 203,
+			"index": "weekly-aqi",
+			"chart_config": {
+				"types": [
+					"AQI_Chart",
+					"MapSlideBar"
+				],
+				"year": "2023",
+				"categories": [
+					"11/11",
+					"11/12",
+					"11/13",
+					"11/14",
+					"11/15",
+					"11/16",
+					"11/17"
+				],
+				"color": [
+					"#b9b929",
+					"#87a11a",
+					"#87a11a",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#568811",
+					"#236e0c",
+					"#236e0c",
+					"#236e0c",
+					"#236e0c",
+					"#236e0c",
+					"#236e0c",
+					"#236e0c",
+					"#666666"
+				],
+				"unit": "",
+				"map_filter": [
+					"日期",
+					[
+						"2023/11/11",
+						"2023/11/12",
+						"2023/11/13",
+						"2023/11/14",
+						"2023/11/15",
+						"2023/11/16",
+						"2023/11/17"
+					]
+				]
+			},
+			"map_config": [
+				{
+					"paint": {},
+					"property": [
+						{
+							"key": "測站",
+							"name": "測站"
+						},
+						{
+							"key": "日期",
+							"name": "日期"
+						},
+						{
+							"key": "AQI",
+							"name": "AQI"
+						},
+						{
+							"key": "O3",
+							"name": "O3(ppb)"
+						},
+						{
+							"key": "PM2.5_AVG",
+							"name": "PM2.5平均濃度(μg/m3)  "
+						},
+						{
+							"key": "PM10_AVG",
+							"name": "PM10平均濃度(μg/m3)  "
+						},
+						{
+							"key": "SO2",
+							"name": "二氧化硫濃度(ppb)    "
+						},
+						{
+							"key": "NO2",
+							"name": "二氧化氮濃度(ppb)    "
+						}
+					],
+					"index": "weekly-aqi",
+					"icon": "aqi",
+					"type": "symbol",
+					"title": "週間群像"
+				}
+			],
+			"name": "AQI空氣品質指標",
+			"source": "臺北市環境品質資訊網",
+			"time_from": "2023-11-11T00:00:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "資料來源為臺北市環境品質資訊網，更新頻率為不定期。",
+			"use_case": "透過這個組件可以用來快速判斷哪個地區和星期幾是空氣污染最嚴重，顏色篩選也可以讓使用者迅速分離出特定空氣狀況的地區，地圖滑桿也能讓使用者滑動以地圖觀察各地空氣指數的變化。",
+			"links": [
+				"https://www.tldep.gov.taipei/Public/DownLoad/AqiDay.aspx"
+			]
+		},
+		"69": {
+			"id": 69,
+			"index": "green_energy",
+			"map_config": [
+				{
+					"index": "green_energy",
+					"paint": {
+						"circle-color": "#33C552",
+						"circle-opacity": 1,
+						"circle-radius": [
+							"interpolate",
+							[
+								"linear"
+							],
+							[
+								"to-number",
+								[
+									"get",
+									"device_capacity"
+								]
+							],
+							0,
+							2,
+							50,
+							5,
+							50000,
+							150
+						]
+					},
+					"property": [
+						{
+							"key": "dist",
+							"name": "行政區"
+						},
+						{
+							"key": "build_name",
+							"name": "名稱"
+						},
+						{
+							"key": "address",
+							"name": "地址"
+						},
+						{
+							"key": "device_capacity",
+							"name": "裝置容量-瓩"
+						}
+					],
+					"type": "circle",
+					"size": null,
+					"icon": null,
+					"title": "太陽能"
+				}
+			],
+			"chart_config": {
+				"color": [
+					"#33C552"
+				],
+				"types": [
+					"DistrictChart",
+					"ColumnChart"
+				],
+				"unit": "處",
+				"map_filter": [
+					"dist",
+					[
+						"北投區",
+						"士林區",
+						"內湖區",
+						"南港區",
+						"松山區",
+						"信義區",
+						"中山區",
+						"大同區",
+						"中正區",
+						"萬華區",
+						"大安區",
+						"文山區"
+					]
+				]
+			},
+			"history_data": false,
+			"source": "產業局",
+			"time_from": "2022-08-15T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"name": "太陽能",
+			"short_desc": "顯示全市各行政區的太陽能版架設數量和分布位置",
+			"long_desc": "顯示全市各行政區的太陽能版架設數量和分布位置，資料來源為台北市產業局開放資料，不定期更新。",
+			"use_case": "台北市太陽能版架設數量與分布位置資料，將幫助我們掌握再生能源機關的疏密情況，並進一步比較其與其他指標的相關性。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=26e04fb7-ea13-44d1-8a2e-8598cca6fd9c"
+			],
+			"tags": [],
+			"contributors": [
+				"tuic"
+			]
 		}
 	}
 }

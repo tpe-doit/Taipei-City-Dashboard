@@ -24,7 +24,7 @@
 		</div>
 		<div class="mappopup-content">
 			<div v-for="item in mapConfigs[activeTab].property" :key="item.key">
-				<h3>{{ item.name }}</h3>
+				<h3 style="width: 50%;">{{ item.name }}</h3>
 				<p>{{ popupContent[activeTab].properties[item.key] }}</p>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 	}
 
 	&-content {
-		width: fit-content;
+		width: 90%;
 
 		div {
 			display: flex;

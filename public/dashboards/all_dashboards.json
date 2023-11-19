@@ -110,6 +110,7 @@
 			],
 			"icon": "favorite"
 		},
+		
 		{
 			"name": "圖資資訊",
 			"index": "map-layers",
@@ -130,10 +131,12 @@
 			"icon": "public"
 		},
 		{
-			"name": "peter",
-			"index": "solar_energy",
+			"name": "CHlLL",
+			"index": "CHlLL",
 			"components": [
-				"8000",
+				"203",
+        "69",
+      	"8000",
 				"8001",
 				"8003"
 			],

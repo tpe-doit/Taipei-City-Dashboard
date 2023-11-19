@@ -11,4 +11,6 @@ export const chartTypes = {
 	GuageChart: "量表圖",
 	RadarChart: "雷達圖",
 	HeatmapChart: "熱力圖",
+	AQI_Chart: "空氣品質監測圖",
+	MapSlideBar: "地圖滑桿",
 };
