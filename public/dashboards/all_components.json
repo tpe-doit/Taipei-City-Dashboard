@@ -2944,7 +2944,7 @@
 			"index": "hospitals",
 			"map_config": [
 				{
-					"index": "medical_institution",
+					"index": "hospitals",
 					"paint": {
 						"circle-color": [
 							"match",
@@ -4960,10 +4960,10 @@
 		},
 		"500": {
 			"id": 500,
-			"index": "all_pav",
+			"index": "all_pav_dist",
 			"map_config": [
 				{
-					"index": "all_pav",
+					"index": "all_pav_dist",
 					"paint": {
 						"fill-color": [
 							"match",
@@ -4999,40 +4999,29 @@
 				}
 			],
 			"chart_config": {
-				"color": [
-					"#4169E1",
-					"#39FF14",
-					"#FF69B4",
-					"#FF0000",
-					"#FFFF00"
-				],
-				"categories": [
-					"北投區",
-					"士林區",
-					"內湖區",
-					"南港區",
-					"松山區",
-					"信義區",
-					"中山區",
-					"大同區",
-					"中正區",
-					"萬華區",
-					"大安區",
-					"文山區"
-				],
 				"types": [
-					"TreemapChart",
-					"BarChart"
+					"DistrictChart",
+					"ColumnChart"
+				],
+				"color": [
+					"#39FF14"
 				],
 				"unit": "km²",
 				"map_filter": [
-					"type",
+					"dist",
 					[
-						"學校",
-						"停車場",
-						"公園",
-						"人行道",
-						"PAC鋪面"
+						"北投區",
+						"士林區",
+						"內湖區",
+						"南港區",
+						"松山區",
+						"信義區",
+						"中山區",
+						"大同區",
+						"中正區",
+						"萬華區",
+						"大安區",
+						"文山區"
 					]
 				]
 			},
@@ -5129,13 +5118,27 @@
 		"502": {
 			"id": 502,
 			"index": "history-rain",
-			"chart_config": [
-				{
-					"type": "box-line"
-				}
-			],
+			"chart_config": {
+				"types": [
+					"RangeAreaChart"
+				],
+				"unit": "cm"
+			},
 			"map_config": null,
-			"name": "氣溫溫度"
+			"name": "歷史一年月總降雨量",
+			"source": "112A",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "歷史月降雨量，我們這裡只顯示過去一年的月總雨量",
+			"use_case": "用來比較歷年各月的落雨情況",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2de42464-c956-4442-8771-12e8a0ec7742"
+			],
+			"tags": [],
+			"contributors": [
+				"112A"
+			]
 		}
 	}
 }
