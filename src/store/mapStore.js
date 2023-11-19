@@ -353,6 +353,7 @@ export const useMapStore = defineStore("map", {
 		// 6. Turn off the visibility of an exisiting map layer but don't remove it completely
 		turnOffMapLayerVisibility(map_config) {
 			map_config.forEach((element) => {
+				if(!element) return
 				let mapLayerId = `${element.index}-${element.type}`;
 				this.loadingLayers = this.loadingLayers.filter(
 					(el) => el !== mapLayerId
