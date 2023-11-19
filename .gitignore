@@ -34,3 +34,4 @@ dist.tar.gz
 *.sh
 
 yarn.lock
+bun.lockb

@@ -5303,6 +5303,104 @@
 			"contributors": [
 				"tuic"
 			]
+		},
+		"700": {
+			"id": 700,
+			"index": "recycle_amount",
+			"map_config": [
+				{
+					"index": "recycle_amount",
+					"paint": {
+						"fill-extrusion-color": ["get", "color"],
+						"fill-extrusion-opacity": 0.8,
+						"fill-extrusion-height": [
+							"interpolate",
+							["linear"],
+							["get", "height"],
+							0,
+							1000,
+							1,
+							3000
+						]
+					},
+					"property": [
+						{
+							"key": "name",
+							"name": "城鎮名稱"
+						},
+						{
+							"key": "value",
+							"name": "年回收量"
+						}
+					],
+					"type": "fill-extrusion",
+					"colorKey": "fill-extrusion-color",
+					"filterKey": "name",
+					"title": "資源回收量"
+				}
+			],
+			"chart_config": {
+				"types": ["TimelineSeparateChartCustom"],
+				"color": [
+					"#00ffa2","#00fff7","#00ccff","#0088ff","#0008ff","#4d00ff","#a200ff","#ff00b2","#ff0008","#ffa200","#fff700","#b2ff00"
+				],
+				"map_filter": [
+				],
+				"unit": "公噸",
+				"tooltipTimeFormat": "YYYY-MM"
+			},
+			"history_data": true,
+			"name": "資源回收量",
+			"source": "環保局",
+			"time_from": "2023-10-12T18:06:00+08:00",
+			"time_to": null,
+			"short_desc": "",
+			"long_desc": "臺北市各區清潔隊資源回收量之列表",
+			"use_case": "",
+			"tags": [],
+			"links": [
+				"https://data.taipei/dataset/detail?id=34f4f00b-5386-43ab-bcc7-b0ae7ee3e305",
+				"https://www.dep.gov.taipei/News_Content.aspx?n=43BE1B67F44849A1&sms=5B35A1D9CE8F132C&s=E0F652F6826DB61E"
+			],
+			"contributors": []
+		},
+		"6901": {
+			"id": 6902,
+			"index": "carban_track",
+			"name": "碳排放追蹤",
+			"chart_config": {
+				
+				"layer_colors" :[
+					"#a98467",
+					"#6c584c",
+					"#463f3a"
+				],
+				"layer_hover_colors" :[
+					"#e0afa0",
+					"#b7a9a2",
+					"#a98467"
+				],
+				"edge_color" : "#8a817c",
+				"edge_hover_color" : "#e0afa0",
+				"negative_edge_color" : "#adc178",
+				"negative_edge_hover_color" : "#dde5b6",
+				"node_text_color" : "#fff",
+				"types": ["SankeyChart"],
+				"unit": "公噸"
+			},
+			"source": "環境保護局",
+			"time_from": "2023-11-08T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "臺北市碳排放追蹤",
+			"long_desc": "顯示全市各類碳排放來源與去向，以桑基圖呈現。資料來源為臺北市環保局開放資料，不定期更新。",
+			"use_case": "透過本組件，您可以了解臺北市碳排放的來源與去向，以及各類排放量的變化趨勢，有助於制定相應的環保政策。",
+			"links": [
+				"https://data.gov.tw/dataset/134253"
+			],
+			"tags": [],
+			"contributors": ["CHlLL"]
 		}
 	}
 }
