@@ -5292,7 +5292,7 @@
 			"time_to": "2023-06-01T00:00:00+08:00",
 			"update_freq": 1,
 			"update_freq_unit": "month",
-			"name": "歷史一年月總降雨量",
+			"name": "歷史月總降雨量",
 			"short_desc": "生活安全及品質",
 			"long_desc": "提供臺北市政府工務局水利工程處設置雨量站之歷史總降雨量，雨量單位為毫米。",
 			"use_case": "用來比較歷年各月的落雨情況",
@@ -5331,7 +5331,7 @@
 			"update_freq_unit": null,
 			"short_desc": "推估本月降雨量的嚴重性",
 			"long_desc": "推估本月降雨量的嚴重性，不定期更新。",
-			"use_case": "等下打",
+			"use_case": "當本月的降雨量超過一定程度時，我們將會在這邊進行風險告警，請大家注意",
 			"links": [
 				"https://data.taipei/dataset/detail?id=2de42464-c956-4442-8771-12e8a0ec7742"
 			],
@@ -5361,6 +5361,10 @@
 						{
 							"key": "面積",
 							"name": "危樓面積"
+						},
+						{
+							"key": "地址",
+							"name": "地址"
 						}
 					],
 					"type": "circle",
