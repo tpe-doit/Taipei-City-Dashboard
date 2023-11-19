@@ -3,6 +3,7 @@
 /dist
 /public/mapData/*.geojson
 !/public/mapData/dev_bd_circle.geojson
+!/public/mapData/youbike_crowded.geojson
 
 # local env files
 .env.production
