@@ -4,6 +4,11 @@
 			"id": "tuic",
 			"name": "臺北大數據中心",
 			"link": "https://tuic.gov.taipei/zh"
+		},
+		"CHlLL": {
+			"id": "CHlLL",
+			"name": "CHlLL團隊",
+			"link": "https://github.com/Taipei-Codefest-CHlLL/Taipei-City-Dashboard-FE"
 		}
 	}
 }

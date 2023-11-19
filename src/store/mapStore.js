@@ -521,13 +521,13 @@ export const useMapStore = defineStore("map", {
 
 		/* Map Filtering */
 		// Add a filter based on a property on a map layer
-		addLayerFilter(layer_id, property, key, map_config) {
+		addLayerFilter(layer_id, property, key, map_config,dontremove) {
 			const dialogStore = useDialogStore();
 			if (!this.map || dialogStore.dialogs.moreInfo) {
 				return;
 			}
 			if (map_config && map_config.type === "arc") {
-				this.map.removeLayer(layer_id);
+				console.log('wkjvbwk');
 				let toBeFiltered = {
 					...this.map.getSource(`${layer_id}-source`)._data,
 				};
@@ -539,18 +539,24 @@ export const useMapStore = defineStore("map", {
 				return;
 			}
 			else if (map_config && map_config.type === "kde") {
-				this.map.removeLayer(layer_id);
+				console.log('wkjv434444bwk');
 				let toBeFiltered = {
 					...this.map.getSource(`${layer_id}-source`)._data,
 				};
 				toBeFiltered.features = toBeFiltered.features.filter(
-					(el) => el.properties[property] === key
+					(el) => console.log(el)
 				);
 				map_config.layerId = layer_id;
 				this.AddKDEMapLayer(map_config, toBeFiltered);
 				return;
 			}
-			this.map.setFilter(layer_id, ["==", ["get", property], key]);
+			if(dontremove!=null){
+				this.map.setFilter(layer_id, ["<=", ["to-number",["get", property]], ["to-number",key]]);
+				console.log(property,layer_id,key)
+			}else{
+				this.map.setFilter(layer_id, ["==", ["get", property], key]);
+			}
+
 		},
 		// Remove any filters on a map layer
 		clearLayerFilter(layer_id, map_config) {

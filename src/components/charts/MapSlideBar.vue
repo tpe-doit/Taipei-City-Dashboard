@@ -3,15 +3,13 @@
 <script setup>
 import { onMounted, ref , computed } from "vue";
 import { useMapStore } from "../../store/mapStore";
-import { useContentStore } from "../../store/contentStore";
 
 const { BASE_URL } = import.meta.env;
 
-const props = defineProps(["chart_config", "series", "map_config","activeChart"]);
+const props = defineProps(["chart_config", "map_config","activeChart"]);
 const mapStore = useMapStore();
-const contentStore = useContentStore();
 
-const selectedIndex = ref(null);
+const selectedIndex = ref(0);
 const sliderValue = ref(0);
 const maxval = computed(() => {
 	return props.chart_config.map_filter[1].length - 1;
@@ -20,7 +18,18 @@ function handleDataSelection(index) {
 	if (!props.chart_config.map_filter) {
 		return;
 	}
-	if (index !== selectedIndex.value) {
+	if(props.chart_config.stack!=null){
+		if (index !== selectedIndex.value) {
+			mapStore.addLayerFilter(
+				`${props.map_config[0].index}-${props.map_config[0].type}`,
+				props.chart_config.map_filter[0],
+				props.chart_config.map_filter[1][index],
+				null,true
+			);
+			selectedIndex.value = index;
+	} 
+	}else{
+		if (index !== selectedIndex.value) {
 		mapStore.addLayerFilter(
 			`${props.map_config[0].index}-${props.map_config[0].type}`,
 			props.chart_config.map_filter[0],
@@ -33,9 +42,10 @@ function handleDataSelection(index) {
 		);
 		selectedIndex.value = null;
 	}
+	}
 }
 
-
+onMounted(()=>console.log("wwowowo",props.chart_config.map_filter))
 </script>
 
 <template>
