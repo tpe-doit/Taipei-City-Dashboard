@@ -4893,68 +4893,7 @@
 		"8000": {
 			"id": 8000,
 			"index": "solar_energy_points",
-			"map_config": [
-				{
-					"index": "solar_energy",
-					"property": [
-						{
-							"key": "類別",
-							"name": "類別"
-						},
-						{
-							"key": "名稱",
-							"name": "名稱"
-						},
-						{
-							"key": "地址",
-							"name": "地址"
-						},
-						{
-							"key": "裝置容量-瓩",
-							"name": "裝置容量-瓩"
-						},
-						{
-							"key": "行政區",
-							"name": "行政區"
-						}
-					],
-					"type": "heatmap",
-					"icon": "triangle_green",
-					"title": "太陽能設施分佈"
-				},
-				{
-					"index": "solar_energy_contour",
-					"property": [
-						{
-							"key": "height",
-							"name": "發電量"
-						}
-					],
-					"paint": {
-						"fill-extrusion-opacity": 0.9,
-						"fill-extrusion-color": [
-							"get",
-							"color"
-						],
-						"fill-extrusion-height": [
-							"interpolate",
-							[
-								"linear"
-							],
-							[
-								"get",
-								"height"
-							],
-							0,
-							1,
-							100,
-							3000
-						]
-					},
-					"type": "fill-extrusion",
-					"title": "太陽能設施Heatmap"
-				}
-			],
+			"map_config": [],
 			"name": "太陽能設施分佈(點圖與行政區總和)",
 			"chart_config": {
 				"color": [
@@ -5006,35 +4945,126 @@
 		},
 		"8001": {
 			"id": 8001,
-			"index": "solar_energy",
-			"name": "太陽能設施分佈(行政區發電總和 only on chart)",
+			"index": "solar_energy_points",
+			"map_config": [
+				{
+					"index": "solar_energy",
+					"property": [
+						{
+							"key": "type",
+							"name": "類型"
+						},
+						{
+							"key": "height",
+							"name": "發電量"
+						},
+						{
+							"key": "類別",
+							"name": "類別"
+						},
+						{
+							"key": "名稱",
+							"name": "名稱"
+						},
+						{
+							"key": "地址",
+							"name": "地址"
+						},
+						{
+							"key": "裝置容量-瓩",
+							"name": "裝置容量-瓩"
+						},
+						{
+							"key": "行政區",
+							"name": "行政區"
+						}
+					],
+					"paint": {
+						"fill-extrusion-opacity": 0.9,
+						"fill-extrusion-color": [
+							"get",
+							"color"
+						],
+						"fill-extrusion-height": [
+							"match",
+							[
+								"get",
+								"type"
+							],
+							"柱狀圖",
+							[
+								"interpolate",
+								[
+									"linear"
+								],
+								[
+									"get",
+									"height"
+								],
+								0,
+								3000,
+								200,
+								5000
+							],
+							[
+								"interpolate",
+								[
+									"linear"
+								],
+								[
+									"get",
+									"height"
+								],
+								0,
+								1,
+								100,
+								3000
+							]
+						]
+					},
+					"type": "fill-extrusion",
+					"title": "太陽能設施分佈"
+				}
+			],
+			"name": "太陽能設施分佈",
 			"chart_config": {
-				"color": [
-					"#2e999b"
-				],
 				"types": [
-					"DistrictChart",
-					"ColumnChart"
+					"MapLegend"
 				],
-				"unit": "所",
 				"map_filter": [
-					"行政區",
+					"type",
 					[
-						"北投區",
-						"士林區",
-						"內湖區",
-						"南港區",
-						"松山區",
-						"信義區",
-						"中山區",
-						"大同區",
-						"中正區",
-						"萬華區",
-						"大安區",
-						"文山區"
+						"柱狀圖",
+						"熱點圖"
 					]
 				]
-			}
+			},
+			"chart_data": [
+				{
+					"type": "fill-extrusion",
+					"color": "#a0b8e8",
+					"name": "發電柱狀圖"
+				},
+				{
+					"type": "fill-extrusion",
+					"color": "#b7ff98",
+					"name": "發電熱點圖"
+				}
+			],
+			"history_data": false,
+			"source": "環保局",
+			"time_from": "2023-11-08T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示全市各行政區的太陽能設施數量和分布位置",
+			"long_desc": "顯示全市各行政區的太陽能設施數量分布，資料來源為台北市環保局開放資料，不定期更新。",
+			"use_case": "台北市太陽能設施的數量與分布位置資料，將幫助我們掌握各行政區的設施數量差異，並進一步比較其與其他指標的相關性。",
+			"links": [],
+			"tags": [],
+			"contributors": [
+				"CHlLL"
+			]
 		},
 		"8002": {
 			"id": 8001,
