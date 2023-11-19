@@ -4919,6 +4919,84 @@
 						}
 					],
 					"title": "淹水資訊"
+				},
+				{
+					"index": "tp_flood_2",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							[
+								"get",
+								"FID"
+							],
+							"2",
+							"#C3E0E5",
+							"3",
+							"#41729F",
+							"#0000FF"
+						],
+						"fill-opacity": 0.8
+					},
+					"property": [
+						{
+							"key": "F_depth",
+							"name": "淹水高度"
+						}
+					],
+					"title": "淹水資訊"
+				},
+				{
+					"index": "tp_flood_3",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							[
+								"get",
+								"FID"
+							],
+							"2",
+							"#C3E0E5",
+							"3",
+							"#41729F",
+							"#0000FF"
+						],
+						"fill-opacity": 0.8
+					},
+					"property": [
+						{
+							"key": "F_depth",
+							"name": "淹水高度"
+						}
+					],
+					"title": "淹水資訊"
+				},
+				{
+					"index": "tp_flood_4",
+					"type": "fill",
+					"paint": {
+						"fill-color": [
+							"match",
+							[
+								"get",
+								"FID"
+							],
+							"2",
+							"#C3E0E5",
+							"3",
+							"#41729F",
+							"#0000FF"
+						],
+						"fill-opacity": 0.8
+					},
+					"property": [
+						{
+							"key": "F_depth",
+							"name": "淹水高度"
+						}
+					],
+					"title": "淹水資訊"
 				}
 			],
 			"chart_config": {
