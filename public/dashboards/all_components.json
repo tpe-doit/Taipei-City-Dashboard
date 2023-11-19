@@ -5024,13 +5024,94 @@
 					"文山區"
 				]
 			},
-			"name": "淹水",
-			"source": "資訊局",
-			"time_from": "2023-07-28T00:00:00+08:00",
+			"name": "降雨淹水模擬圖",
+			"source": "工務局水利處",
+			"time_from": "2023-06-08T00:00:00+08:00",
 			"time_to": null,
-			"short_desc": "顯示全市各區模擬淹水量",
-			"long_desc": "展示YouBike未設站區域的潛在需求，詳細預測方法可參考開源成果Github。資料來源為臺北大數據中心研究，更新頻率不定期。",
-			"use_case": "本組件可讓您掌握目前未設站地區，以及該地區可能有多少需求。這有助於規劃YouBike的擴展，並規劃適當的資源以滿足日益增長的需求。",
+			"short_desc": "顯示全市各區降雨模擬淹水量",
+			"long_desc": "展示本市短延時強降雨條件下（78.8mm/h、100mm/h、130mm/h）之可能積水範圍、可能積水深度。資料來源為工務局水利處，更新頻率每五年。",
+			"use_case": "本組件可展示本市短延時強降雨條件下（78.8mm/h、100mm/h、130mm/h）之可能積水範圍、可能積水深度，以做防洪規劃。",
+			"tags": [],
+			"contributors": [
+				"tuic"
+			]
+		},
+		"499": {
+			"id": 499,
+			"index": "pav",
+			"map_config": [
+				{
+					"index": "pavement",
+					"paint": {
+						"fill-color": [
+							"match",
+							[
+								"get",
+								"type"
+							],
+							"學校",
+							"#90EE90",
+							"停車場",
+							"#D2EE90",
+							"公園",
+							"#4caf50",
+							"人行道",
+							"#CAF245",
+							"PAC鋪面",
+							"#9dc710",
+							"green"
+						]
+					},
+					"property": [
+						{
+							"key": "name",
+							"name": "名稱"
+						},
+						{
+							"key": "type",
+							"name": "類型"
+						}
+					],
+					"type": "fill",
+					"title": "透水鋪面類型"
+				}
+			],
+			"chart_config": {
+				"color": [
+					"#D2EE90",
+					"#90EE90",
+					"#4caf50",
+					"#CAF245",
+					"#9dc710"
+				],
+				"types": [
+					"TreemapChart",
+					"BarChart"
+				],
+				"unit": "km²",
+				"map_filter": [
+					"type",
+					[
+						"學校",
+						"停車場",
+						"公園",
+						"人行道",
+						"PAC鋪面"
+					]
+				]
+			},
+			"name": "透水鋪面類別",
+			"source": "工務局",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示全市各透水鋪面類別的面積和分布位置",
+			"long_desc": "顯示全市各透水鋪面類別的面積和分布位置，資料來源為台北市工務局開放資料，不定期更新。",
+			"use_case": "圖表所顯示的透水鋪面類別的面積與分佈位置，能夠幫助我們更深入了解不同透水鋪面類型的分佈情況。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=4717811f-c20f-4deb-8013-981f1844d6fe"
+			],
 			"tags": [],
 			"contributors": [
 				"tuic"
@@ -5109,9 +5190,9 @@
 			"time_to": null,
 			"update_freq": null,
 			"update_freq_unit": null,
-			"short_desc": "顯示全市各透水鋪面類別的面積和分布位置",
-			"long_desc": "顯示全市各透水鋪面類別的面積和分布位置，資料來源為台北市工務局開放資料，不定期更新。",
-			"use_case": "圖表所顯示的透水鋪面類別的面積與分佈位置，能夠幫助我們更深入了解不同透水鋪面類型的分佈情況。",
+			"short_desc": "顯示全市透水鋪面的面積分布位置",
+			"long_desc": "顯示全市透水鋪面的面積和分布位置，資料來源為台北市工務局開放資料，不定期更新。",
+			"use_case": "圖表所顯示的透水鋪面的面積與分佈位置，能夠幫助我們更深入了解不同透水鋪面類型的分佈情況。",
 			"links": [
 				"https://data.taipei/dataset/detail?id=4717811f-c20f-4deb-8013-981f1844d6fe"
 			],
@@ -5157,9 +5238,20 @@
 			],
 			"chart_config": {
 				"types": [
+					"DistrictChartMean",
 					"BarChart"
 				],
-				"unit": "d",
+				"color": [
+					"#F65658",
+					"#F49F36",
+					"#F5C860",
+					"#9AC17C",
+					"#4CB495",
+					"#569C9A",
+					"#60819C",
+					"#2F8AB1"
+				],
+				"unit": "度",
 				"map_filter": [
 					"x",
 					[
