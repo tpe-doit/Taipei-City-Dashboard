@@ -22,6 +22,7 @@ import VueApexCharts from "vue3-apexcharts";
 
 // Import Global Components
 import DistrictChart from "./components/charts/DistrictChart.vue";
+import DistrictChartMean from "./components/charts/DistrictChartMean.vue";
 import DonutChart from "./components/charts/DonutChart.vue";
 import BarChart from "./components/charts/BarChart.vue";
 import TreemapChart from "./components/charts/TreemapChart.vue";
@@ -34,6 +35,8 @@ import TimelineStackedChart from "./components/charts/TimelineStackedChart.vue";
 import MapLegend from "./components/charts/MapLegend.vue";
 import MetroChart from "./components/charts/MetroChart.vue";
 import HeatmapChart from "./components/charts/HeatmapChart.vue";
+import RangeAreaChart from "./components/charts/RangeAreaChart.vue";
+import SpeedChart from "./components/charts/SpeedChart.vue";
 
 const app = createApp(App);
 
@@ -43,18 +46,21 @@ const pinia = createPinia();
 app.use(pinia);
 app.use(VueApexCharts);
 
-app.component("DistrictChart", DistrictChart);
+app.component("DistrictChart", DistrictChart); // ?
+app.component("DistrictChartMean", DistrictChartMean); // ?
 app.component("DonutChart", DonutChart);
 app.component("BarChart", BarChart);
-app.component("TreemapChart", TreemapChart);
-app.component("ColumnChart", ColumnChart);
-app.component("BarPercentChart", BarPercentChart);
-app.component("GuageChart", GuageChart);
+app.component("TreemapChart", TreemapChart); // ?
+app.component("ColumnChart", ColumnChart); // ?
+app.component("BarPercentChart", BarPercentChart); // ?
+app.component("GuageChart", GuageChart); // ?
 app.component("RadarChart", RadarChart);
 app.component("TimelineSeparateChart", TimelineSeparateChart);
 app.component("TimelineStackedChart", TimelineStackedChart);
 app.component("MapLegend", MapLegend);
 app.component("MetroChart", MetroChart);
 app.component("HeatmapChart", HeatmapChart);
+app.component("RangeAreaChart", RangeAreaChart);
+app.component("SpeedChart", SpeedChart);
 
 app.mount("#app");

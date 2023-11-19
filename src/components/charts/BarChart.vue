@@ -28,7 +28,6 @@ const chartOptions = ref({
 	},
 	plotOptions: {
 		bar: {
-
 			borderRadius: 2,
 			distributed: true,
 			horizontal: true,
