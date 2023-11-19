@@ -250,6 +250,7 @@ export const useMapStore = defineStore("map", {
 					);
 				}
 			} else {
+				console.log('push!', map_config.layerId)
 				this.currentVisibleLayers.push(map_config.layerId);
 			}
 		},

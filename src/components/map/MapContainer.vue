@@ -13,7 +13,7 @@ const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 
 const newSavedLocation = ref('');
-const intensity = ref(-1);
+const intensity = ref(0);
 
 function handleSubmitNewLocation() {
 	mapStore.addNewSavedLocation(newSavedLocation.value);
@@ -22,14 +22,26 @@ function handleSubmitNewLocation() {
 
 onMounted(() => {
 	mapStore.initializeMapBox();
-	// console.log('hi 我初始化好囉！', mapStore.map.getBounds())
 });
 
 const showDragBar = ref(false);
 
 watch(() => mapStore.currentVisibleLayers.length, (newValue, oldValue) => {
-	showDragBar.value = showDragBar.value || mapStore.currentVisibleLayers.includes('tp_flood-fill') || mapStore.currentVisibleLayers.includes('tp_flood_2-fill') || mapStore.currentVisibleLayers.includes('tp_flood_3-fill') || mapStore.currentVisibleLayers.includes('tp_flood_4-fill')
-	intensity.value = 0
+	console.log(mapStore.currentVisibleLayers)
+	showDragBar.value = mapStore.currentVisibleLayers.includes('tp_flood-fill') || mapStore.currentVisibleLayers.includes('tp_flood_2-fill') || mapStore.currentVisibleLayers.includes('tp_flood_3-fill') || mapStore.currentVisibleLayers.includes('tp_flood_4-fill')
+	if(!showDragBar.value) {
+		// intensity.value = 3
+		const mapper = {
+			0: "tp_flood-fill",
+			1: "tp_flood_2-fill",
+			2: "tp_flood_3-fill",
+			3: "tp_flood_4-fill",
+		}
+		for(const i of [0,1,2,3]) {
+			const config = mapStore.mapConfigs[mapper[i]]
+			mapStore.turnOffMapLayerVisibility([config])
+		}
+	}
 })
 
 watch(intensity, (newValue, oldValue) => {
@@ -48,6 +60,7 @@ watch(intensity, (newValue, oldValue) => {
 			if(turn_on) {
 				const mapLayerId = `${config.index}-${config.type}`;
 				mapStore.turnOnMapLayerVisibility(mapLayerId)
+				mapStore.currentVisibleLayers.push(mapLayerId)
 			} else {
 				mapStore.turnOffMapLayerVisibility([config])
 			}
@@ -55,16 +68,23 @@ watch(intensity, (newValue, oldValue) => {
 	}
 })
 
+watch(showDragBar, (newValue, oldValue) => {
+	if(newValue) {
+		intensity.value = 0
+	}
+})
+
 
 </script>
 
 <template>
-	<div class="drag-bar-container">
-		<div class="drag-bar" v-if="showDragBar">
-			<input id="slider" type="range" min="0" max="3" step="1" v-model="intensity">
-			<div id="drag-bar-desc">降雨強度</div>
-		</div>
+	<!-- <div class="drag-bar-container"> -->
+		
 		<div class="mapcontainer">
+			<div class="drag-bar" v-if="showDragBar">
+				<input id="slider" type="range" min="0" max="3" step="1" v-model="intensity">
+				<div id="drag-bar-desc">降雨強度</div>
+			</div>
 			<div id="mapboxBox">
 				<div class="mapcontainer-loading" v-if="mapStore.loadingLayers.length > 0">
 					<div></div>
@@ -86,14 +106,17 @@ watch(intensity, (newValue, oldValue) => {
 					maxlength="6" @focusout="newSavedLocation = ''" @keypress.enter="handleSubmitNewLocation" />
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </template>
 
 <style scoped lang="scss">
-.drag-bar-container {
-	position: relative;
-	display: flex;
-}
+// .drag-bar-container {
+// 	position: relative;
+// 	border: red solid 3px;
+// 	width: 60%;
+// 	padding: 0 10px;
+// 	display: flex;
+// }
 .drag-bar {
 	position: absolute;
 	z-index: 1;
@@ -102,6 +125,7 @@ watch(intensity, (newValue, oldValue) => {
 	background-color: #ffffff;
 	color: black;
 }
+
 #drag-bar-desc {
 	color: black;
 	text-align: center;
