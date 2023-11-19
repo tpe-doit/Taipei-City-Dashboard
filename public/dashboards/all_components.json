@@ -5256,36 +5256,18 @@
 					"index": "district_history_rain",
 					"paint": {
 						"fill-color": [
-							"match",
+							"interpolate",
+							[
+								"linear"
+							],
 							[
 								"get",
-								"district"
+								"rain"
 							],
-							"北投區",
-							"#4B9CD3",
-							"士林區",
-							"#52A2D8",
-							"內湖區",
-							"#59A9DD",
-							"南港區",
-							"#60B0E2",
-							"松山區",
-							"#67B7E7",
-							"信義區",
-							"#6EBEEC",
-							"中山區",
-							"#75C5F1",
-							"大同區",
-							"#7CCCF6",
-							"中正區",
-							"#8AD9FF",
-							"萬華區",
-							"#8AD9FF",
-							"大安區",
-							"#91E0FF",
-							"文山區",
-							"#98E7FF",
-							"#9FEEFF"
+							393.5,
+							"#808080",
+							2164,
+							"#00008B"
 						]
 					},
 					"property": [
@@ -5356,6 +5338,52 @@
 			"tags": [],
 			"contributors": [
 				"tuic"
+			]
+		},
+		"666": {
+			"id": 666,
+			"index": "dangerous_building",
+			"map_config": [
+				{
+					"index": "dangerous_building",
+					"paint": {
+						"circle-color": [
+							"get",
+							"color"
+						],
+						"circle-radius": [
+							"get",
+							"radius"
+						],
+						"circle-opacity": 0.7
+					},
+					"property": [
+						{
+							"key": "面積",
+							"name": "危樓面積"
+						}
+					],
+					"type": "circle",
+					"title": "各地點危樓面積總量"
+				}
+			],
+			"chart_config": {
+				"types": [
+					"DistrictChart",
+					"ColumnChart"
+				],
+				"color": [
+					"#39FF14"
+				],
+				"unit": "km²"
+			},
+			"source": "台北市建築管理工程處",
+			"name": "危樓面積示意圖",
+			"use_case": "可以用於顯示需拆除的危樓資訊，促進綠色城市推動",
+			"short_desc": "生活安全及品質",
+			"long_desc": "台北市危樓資訊，可以用於檢視該地區危樓面積",
+			"links": [
+				"https://dba.gov.taipei/"
 			]
 		}
 	}
