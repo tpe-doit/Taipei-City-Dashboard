@@ -5261,6 +5261,46 @@
 			"use_case": "用來比較歷年各月的落雨情況",
 			"links": [
 				"https://data.taipei/dataset/detail?id=2de42464-c956-4442-8771-12e8a0ec7742"
+			],
+			"contributors": [
+				"tuic"
+			]
+		},
+		"503": {
+			"id": 502,
+			"index": "rain_alert",
+			"map_config": null,
+			"chart_config": {
+				"types": [
+					"SpeedChart"
+				],
+				"unit": "mm",
+				"alert_color": {
+					"Low": "#31BD00",
+					"Medium": "#FF9110",
+					"High": "#BD0000"
+				},
+				"alert_range": {
+					"Low": "0%~50%",
+					"Medium": "50%~80%",
+					"High": "80%~100%"
+				}
+			},
+			"name": "雨量警戒",
+			"source": "112A",
+			"time_from": null,
+			"time_to": null,
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "推估本月降雨量的嚴重性",
+			"long_desc": "推估本月降雨量的嚴重性，不定期更新。",
+			"use_case": "等下打",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2de42464-c956-4442-8771-12e8a0ec7742"
+			],
+			"tags": [],
+			"contributors": [
+				"tuic"
 			]
 		}
 	}
