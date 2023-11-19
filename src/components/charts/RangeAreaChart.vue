@@ -1,8 +1,13 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useMapStore } from '../../store/mapStore';
+import { ref, computed } from "vue";
+import { useMapStore } from "../../store/mapStore";
 
-const props = defineProps(['chart_config', 'activeChart', 'series', 'map_config']);
+const props = defineProps([
+	"chart_config",
+	"activeChart",
+	"series",
+	"map_config",
+]);
 const mapStore = useMapStore();
 
 const chartOptions = ref({
@@ -11,31 +16,45 @@ const chartOptions = ref({
 		stacked: false,
 		toolbar: {
 			show: false,
-		}
+		},
 	},
 	colors: props.chart_config.color,
 	dataLabels: {
 		offsetX: 20,
-		textAnchor: 'start',
+		textAnchor: "start",
+		enabled: false,
+		style: {
+			colors: ["#397AB7"],
+		},
 	},
 	grid: {
 		show: false,
+	},
+	fill: {
+		colors: ["#5384B1"],
 	},
 	legend: {
 		show: false,
 	},
 	plotOptions: {},
 	stroke: {
-		colors: ['#282a2c'],
+		colors: ["#282a2c"],
 		show: true,
 		width: 0,
 	},
 	tooltip: {
 		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-			return '<div class="chart-tooltip">' +
-				'<h6>' + w.globals.labels[dataPointIndex] + '</h6>' +
-				'<span>' + series[seriesIndex][dataPointIndex] + ` ${props.chart_config.unit}` + '</span>' +
-				'</div>';
+			return (
+				'<div class="chart-tooltip">' +
+				"<h6>" +
+				w.globals.labels[dataPointIndex] +
+				"</h6>" +
+				"<span>" +
+				series[seriesIndex][dataPointIndex] +
+				` ${props.chart_config.unit}` +
+				"</span>" +
+				"</div>"
+			);
 		},
 		followCursor: true,
 	},
@@ -48,13 +67,11 @@ const chartOptions = ref({
 		},
 		labels: {
 			show: false,
-		},
-		type: 'category',
-		labels: {
 			style: {
-				colors: ["#000000"]
-			}
-		}
+				colors: ["#000000"],
+			},
+		},
+		type: "category",
 	},
 	// yaxis: {
 	// 	labels: {
@@ -63,10 +80,10 @@ const chartOptions = ref({
 	// 		},
 	// 	},
 	// },
-})
+});
 
 const processedSeries = computed(() => {
-	const series = props.series[0].data
+	const series = props.series[0].data;
 
 	// console.log('係瑞斯', series)
 	// series[0]['town'] = "你好！"
@@ -77,13 +94,13 @@ const processedSeries = computed(() => {
 	// "y坐標": 2784567.876,
 	// "年月": 200007,
 	// "total": 0.0
-	
-	const date_to_rain = {}
-	for(const serie of series) {
-		if(!date_to_rain[serie['年月']]) {
-			date_to_rain[serie['年月']] = []
+
+	const date_to_rain = {};
+	for (const serie of series) {
+		if (!date_to_rain[serie["年月"]]) {
+			date_to_rain[serie["年月"]] = [];
 		}
-		date_to_rain[serie['年月']].push(serie['total'])
+		date_to_rain[serie["年月"]].push(serie["total"]);
 	}
 
 	const calculateQuartiles = (data) => {
@@ -91,7 +108,9 @@ const processedSeries = computed(() => {
 		const medianIndex = Math.floor(sortedData.length / 2);
 
 		const lowerHalf = sortedData.slice(0, medianIndex);
-		const upperHalf = sortedData.slice(medianIndex + (sortedData.length % 2 === 0 ? 0 : 1));
+		const upperHalf = sortedData.slice(
+			medianIndex + (sortedData.length % 2 === 0 ? 0 : 1)
+		);
 
 		const lowerQuartile = calculateMedian(lowerHalf);
 		const median = calculateMedian(sortedData);
@@ -102,7 +121,7 @@ const processedSeries = computed(() => {
 			median,
 			upperQuartile,
 		};
-	}
+	};
 
 	const calculateMedian = (sortedData) => {
 		const length = sortedData.length;
@@ -111,24 +130,37 @@ const processedSeries = computed(() => {
 		} else {
 			return sortedData[Math.floor(length / 2)];
 		}
-	}
+	};
 
-	const date_to_stat = []
-	for(const key in date_to_rain) {
+	const date_to_stat = [];
+	for (const key in date_to_rain) {
 		// const (f, s, t) = calculateQuartiles(date_to_rain[key])
-		date_to_stat.push({'x': Number(key), 'y': [Math.min(...date_to_rain[key]) / 100, Math.max(...date_to_rain[key]) / 100]})
+		date_to_stat.push({
+			x: Number(key),
+			y: [
+				Math.min(...date_to_rain[key]) / 100,
+				Math.max(...date_to_rain[key]) / 100,
+			],
+		});
 	}
 
-	return [{
-		"name": "",
-		"data": date_to_stat.slice(-12)
-	}]
-})
+	return [
+		{
+			name: "",
+			data: date_to_stat.slice(-12),
+		},
+	];
+});
 </script>
 
 <template>
 	<div v-if="activeChart === 'RangeAreaChart'">
-		<apexchart width="100%" type="rangeArea" :options="chartOptions" :series="processedSeries">
+		<apexchart
+			width="100%"
+			type="rangeArea"
+			:options="chartOptions"
+			:series="processedSeries"
+		>
 		</apexchart>
 	</div>
 </template>
