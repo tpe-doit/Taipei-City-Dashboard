@@ -4302,6 +4302,26 @@
 			"tags": [],
 			"contributors": ["54"]
 		},
+		"1005": {
+			"id": 1005,
+			"index": "dev-1005",
+			"chart_config": {
+				"types": ["TimelineSeparateChart", "TimelineStackedChart"],
+				"unit": "%"
+			},
+			"name": "臺北市性別所得差異",
+			"source": "台北大數據中心",
+			"time_from": "2009-01-01T00:00:00+08:00",
+			"time_to": "2022-12-31T00:00:00+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "Dev",
+			"long_desc": "Dev",
+			"use_case": "Dev",
+			"links": null,
+			"tags": [],
+			"contributors": ["54"]
+		},
 		"1010": {
 			"id": 1010,
 			"index": "business_district_map",
