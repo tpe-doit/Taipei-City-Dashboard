@@ -4419,9 +4419,10 @@
 				"color": ["#fc9f0b", "#dac117", "#FDD79B", "#CA7F09"],
 				"unit": "座位"
 			},
+			"history_data": true,
 			"name": "圖書館座位數",
 			"source": "教育局圖書館@臺北市資料大平臺",
-			"time_from": "2023-11-18T00:00:00+08:00",
+			"time_from": "2023-11-19T00:10:00+08:00",
 			"time_to": null,
 			"update_freq": 1,
 			"update_freq_unit": "minute",
