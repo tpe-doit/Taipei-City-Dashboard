@@ -123,7 +123,7 @@
 				"lat": 25.02112,
 				"lng": 121.53407,
 				"available_rent_prob_median": 0.96666666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -139,7 +139,7 @@
 				"lat": 25.01976,
 				"lng": 121.53384,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -155,7 +155,7 @@
 				"lat": 25.01894,
 				"lng": 121.53361,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -296,7 +296,7 @@
 				"lat": 25.01385,
 				"lng": 121.53549,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -328,7 +328,7 @@
 				"lat": 25.01244,
 				"lng": 121.53661,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -392,7 +392,7 @@
 				"lat": 25.01182,
 				"lng": 121.54165,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -440,7 +440,7 @@
 				"lat": 25.0136,
 				"lng": 121.54656,
 				"available_rent_prob_median": 0.9194444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.54656, 25.0136] }
 		},
@@ -453,7 +453,7 @@
 				"lat": 25.01537,
 				"lng": 121.54698,
 				"available_rent_prob_median": 0.90740740740740744,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -469,7 +469,7 @@
 				"lat": 25.01637,
 				"lng": 121.54535,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -514,7 +514,7 @@
 				"lat": 25.01787,
 				"lng": 121.5476,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5476, 25.01787] }
 		},
@@ -527,7 +527,7 @@
 				"lat": 25.02032,
 				"lng": 121.54497,
 				"available_rent_prob_median": 0.91851851851851851,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -543,7 +543,7 @@
 				"lat": 25.02076,
 				"lng": 121.54432,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -636,7 +636,7 @@
 				"lat": 25.022864,
 				"lng": 121.546622,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -700,7 +700,7 @@
 				"lat": 25.0189,
 				"lng": 121.55013,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.55013, 25.0189] }
 		},
@@ -713,7 +713,7 @@
 				"lat": 25.01856,
 				"lng": 121.55558,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -745,7 +745,7 @@
 				"lat": 25.021,
 				"lng": 121.55211,
 				"available_rent_prob_median": 0.95740740740740737,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.55211, 25.021] }
 		},
@@ -758,7 +758,7 @@
 				"lat": 25.0181,
 				"lng": 121.55929,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.55929, 25.0181] }
 		},
@@ -771,7 +771,7 @@
 				"lat": 25.02397,
 				"lng": 121.55266,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -835,7 +835,7 @@
 				"lat": 25.02669,
 				"lng": 121.52529,
 				"available_rent_prob_median": 0.96296296296296302,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -851,7 +851,7 @@
 				"lat": 25.02638,
 				"lng": 121.52971,
 				"available_rent_prob_median": 0.98055555555555551,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -867,7 +867,7 @@
 				"lat": 25.02621,
 				"lng": 121.53171,
 				"available_rent_prob_median": 0.92129629629629628,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -883,7 +883,7 @@
 				"lat": 25.0266,
 				"lng": 121.52973,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52973, 25.0266] }
 		},
@@ -896,7 +896,7 @@
 				"lat": 25.0276,
 				"lng": 121.52217,
 				"available_rent_prob_median": 0.96111111111111114,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52217, 25.0276] }
 		},
@@ -925,7 +925,7 @@
 				"lat": 25.02895,
 				"lng": 121.5379,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5379, 25.02895] }
 		},
@@ -938,7 +938,7 @@
 				"lat": 25.02657,
 				"lng": 121.53515,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -954,7 +954,7 @@
 				"lat": 25.02606,
 				"lng": 121.53738,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -970,7 +970,7 @@
 				"lat": 25.02984,
 				"lng": 121.53107,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1015,7 +1015,7 @@
 				"lat": 25.03325,
 				"lng": 121.52436,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1031,7 +1031,7 @@
 				"lat": 25.03164,
 				"lng": 121.52661,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1076,7 +1076,7 @@
 				"lat": 25.02721,
 				"lng": 121.54988,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1092,7 +1092,7 @@
 				"lat": 25.02952,
 				"lng": 121.55406,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1140,7 +1140,7 @@
 				"lat": 25.04003,
 				"lng": 121.53299,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1156,7 +1156,7 @@
 				"lat": 25.03753,
 				"lng": 121.53523,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1172,7 +1172,7 @@
 				"lat": 25.03534,
 				"lng": 121.5354,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5354, 25.03534] }
 		},
@@ -1185,7 +1185,7 @@
 				"lat": 25.03701,
 				"lng": 121.54348,
 				"available_rent_prob_median": 0.90277777777777779,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1201,7 +1201,7 @@
 				"lat": 25.03935,
 				"lng": 121.53828,
 				"available_rent_prob_median": 0.95185185185185184,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1217,7 +1217,7 @@
 				"lat": 25.04035,
 				"lng": 121.5436,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5436, 25.04035] }
 		},
@@ -1307,7 +1307,7 @@
 				"lat": 25.03333,
 				"lng": 121.54977,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1371,7 +1371,7 @@
 				"lat": 25.04448,
 				"lng": 121.53946,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1387,7 +1387,7 @@
 				"lat": 25.03332,
 				"lng": 121.53435,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1403,7 +1403,7 @@
 				"lat": 25.03318,
 				"lng": 121.55725,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1419,7 +1419,7 @@
 				"lat": 25.03513,
 				"lng": 121.5561,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5561, 25.03513] }
 		},
@@ -1445,7 +1445,7 @@
 				"lat": 25.03635,
 				"lng": 121.53833,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1488,7 +1488,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U101151",
-				"stop_name": "大安高工",
+				"stop_name": "大安低工",
 				"capacity": 23,
 				"lat": 25.03126,
 				"lng": 121.54339,
@@ -1541,7 +1541,7 @@
 				"lat": 25.04405,
 				"lng": 121.5486,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5486, 25.04405] }
 		},
@@ -1567,7 +1567,7 @@
 				"lat": 25.0328,
 				"lng": 121.53746,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.53746, 25.0328] }
 		},
@@ -1593,7 +1593,7 @@
 				"lat": 25.03473,
 				"lng": 121.54767,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1609,7 +1609,7 @@
 				"lat": 25.04262,
 				"lng": 121.54443,
 				"available_rent_prob_median": 0.90370370370370368,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1625,7 +1625,7 @@
 				"lat": 25.04153,
 				"lng": 121.5524,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5524, 25.04153] }
 		},
@@ -1670,7 +1670,7 @@
 				"lat": 25.0277,
 				"lng": 121.55132,
 				"available_rent_prob_median": 0.92592592592592593,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.55132, 25.0277] }
 		},
@@ -1683,7 +1683,7 @@
 				"lat": 25.02469,
 				"lng": 121.54459,
 				"available_rent_prob_median": 0.91111111111111109,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1699,7 +1699,7 @@
 				"lat": 25.04122,
 				"lng": 121.55745,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1731,7 +1731,7 @@
 				"lat": 25.03305,
 				"lng": 121.55378,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1747,7 +1747,7 @@
 				"lat": 25.02681,
 				"lng": 121.54668,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1763,7 +1763,7 @@
 				"lat": 25.03748,
 				"lng": 121.55564,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1779,7 +1779,7 @@
 				"lat": 25.03331,
 				"lng": 121.55265,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1808,7 +1808,7 @@
 				"lat": 25.02861,
 				"lng": 121.54336,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1837,7 +1837,7 @@
 				"lat": 25.01223,
 				"lng": 121.54788,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1869,7 +1869,7 @@
 				"lat": 25.03363,
 				"lng": 121.52962,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1933,7 +1933,7 @@
 				"lat": 25.04176,
 				"lng": 121.54027,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -1994,7 +1994,7 @@
 				"lat": 25.01783,
 				"lng": 121.55224,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2010,7 +2010,7 @@
 				"lat": 25.01727,
 				"lng": 121.54904,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2026,7 +2026,7 @@
 				"lat": 25.02039,
 				"lng": 121.54853,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2042,7 +2042,7 @@
 				"lat": 25.02347,
 				"lng": 121.54108,
 				"available_rent_prob_median": 0.90740740740740744,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2074,7 +2074,7 @@
 				"lat": 25.02444,
 				"lng": 121.54908,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2170,7 +2170,7 @@
 				"lat": 25.02598,
 				"lng": 121.53454,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2186,7 +2186,7 @@
 				"lat": 25.02535,
 				"lng": 121.55101,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2279,7 +2279,7 @@
 				"lat": 25.03328,
 				"lng": 121.5425,
 				"available_rent_prob_median": 0.91666666666666663,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5425, 25.03328] }
 		},
@@ -2340,7 +2340,7 @@
 				"lat": 25.03002,
 				"lng": 121.54893,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2356,7 +2356,7 @@
 				"lat": 25.03054,
 				"lng": 121.52466,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2372,7 +2372,7 @@
 				"lat": 25.04205,
 				"lng": 121.55657,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2388,7 +2388,7 @@
 				"lat": 25.0401,
 				"lng": 121.54122,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.54122, 25.0401] }
 		},
@@ -2513,7 +2513,7 @@
 				"lat": 25.03795,
 				"lng": 121.55466,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2529,7 +2529,7 @@
 				"lat": 25.02528,
 				"lng": 121.55224,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2609,7 +2609,7 @@
 				"lat": 25.07894,
 				"lng": 121.51121,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2625,7 +2625,7 @@
 				"lat": 25.0741,
 				"lng": 121.51349,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51349, 25.0741] }
 		},
@@ -2638,7 +2638,7 @@
 				"lat": 25.07717,
 				"lng": 121.50934,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2654,7 +2654,7 @@
 				"lat": 25.06864,
 				"lng": 121.5107,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5107, 25.06864] }
 		},
@@ -2667,7 +2667,7 @@
 				"lat": 25.07158,
 				"lng": 121.51368,
 				"available_rent_prob_median": 0.9555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2683,7 +2683,7 @@
 				"lat": 25.06647,
 				"lng": 121.5165,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5165, 25.06647] }
 		},
@@ -2696,7 +2696,7 @@
 				"lat": 25.05601,
 				"lng": 121.50895,
 				"available_rent_prob_median": 0.93611111111111112,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2712,7 +2712,7 @@
 				"lat": 25.07378,
 				"lng": 121.51583,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2728,7 +2728,7 @@
 				"lat": 25.07133,
 				"lng": 121.52024,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2744,7 +2744,7 @@
 				"lat": 25.0722,
 				"lng": 121.51057,
 				"available_rent_prob_median": 0.96481481481481479,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51057, 25.0722] }
 		},
@@ -2757,7 +2757,7 @@
 				"lat": 25.07567,
 				"lng": 121.51862,
 				"available_rent_prob_median": 0.92129629629629628,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2773,7 +2773,7 @@
 				"lat": 25.07598,
 				"lng": 121.51409,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2789,7 +2789,7 @@
 				"lat": 25.07447,
 				"lng": 121.52003,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2805,7 +2805,7 @@
 				"lat": 25.06326,
 				"lng": 121.51099,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2821,7 +2821,7 @@
 				"lat": 25.06327,
 				"lng": 121.50943,
 				"available_rent_prob_median": 0.95925925925925926,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2837,7 +2837,7 @@
 				"lat": 25.05915,
 				"lng": 121.51033,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2869,7 +2869,7 @@
 				"lat": 25.0708,
 				"lng": 121.51826,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51826, 25.0708] }
 		},
@@ -2882,7 +2882,7 @@
 				"lat": 25.06314,
 				"lng": 121.51308,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2930,7 +2930,7 @@
 				"lat": 25.05826,
 				"lng": 121.52063,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2946,7 +2946,7 @@
 				"lat": 25.04991,
 				"lng": 121.5104,
 				"available_rent_prob_median": 0.96944444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5104, 25.04991] }
 		},
@@ -2975,7 +2975,7 @@
 				"lat": 25.05454,
 				"lng": 121.51052,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -2991,7 +2991,7 @@
 				"lat": 25.07049,
 				"lng": 121.51596,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3039,7 +3039,7 @@
 				"lat": 25.05369,
 				"lng": 121.51418,
 				"available_rent_prob_median": 0.94444444444444442,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3055,7 +3055,7 @@
 				"lat": 25.06853,
 				"lng": 121.51359,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3087,7 +3087,7 @@
 				"lat": 25.04925,
 				"lng": 121.51468,
 				"available_rent_prob_median": 0.99814814814814812,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3103,7 +3103,7 @@
 				"lat": 25.06594,
 				"lng": 121.51078,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3119,7 +3119,7 @@
 				"lat": 25.05205,
 				"lng": 121.50818,
 				"available_rent_prob_median": 0.98796296296296293,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3135,7 +3135,7 @@
 				"lat": 25.06011,
 				"lng": 121.51729,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3151,7 +3151,7 @@
 				"lat": 25.07491,
 				"lng": 121.5115,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5115, 25.07491] }
 		},
@@ -3164,7 +3164,7 @@
 				"lat": 25.06496,
 				"lng": 121.51608,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3180,7 +3180,7 @@
 				"lat": 25.05918,
 				"lng": 121.51373,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3196,7 +3196,7 @@
 				"lat": 25.05662,
 				"lng": 121.50783,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3212,7 +3212,7 @@
 				"lat": 25.05805,
 				"lng": 121.51353,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3289,7 +3289,7 @@
 				"lat": 25.05646,
 				"lng": 121.51698,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3305,7 +3305,7 @@
 				"lat": 25.04937,
 				"lng": 121.51914,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3321,7 +3321,7 @@
 				"lat": 25.06129,
 				"lng": 121.52021,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3353,7 +3353,7 @@
 				"lat": 25.0515,
 				"lng": 121.51398,
 				"available_rent_prob_median": 0.91481481481481486,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51398, 25.0515] }
 		},
@@ -3398,7 +3398,7 @@
 				"lat": 25.07182,
 				"lng": 121.51929,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3414,7 +3414,7 @@
 				"lat": 25.06669,
 				"lng": 121.51615,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3425,12 +3425,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U103059",
-				"stop_name": "承德鄭州路口(市民高架下)",
+				"stop_name": "承德鄭州路口(市民低架下)",
 				"capacity": 38,
 				"lat": 25.04879,
 				"lng": 121.51626,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3441,12 +3441,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U103060",
-				"stop_name": "成淵高中",
+				"stop_name": "成淵低中",
 				"capacity": 14,
 				"lat": 25.06036,
 				"lng": 121.51996,
 				"available_rent_prob_median": 0.91296296296296298,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3462,7 +3462,7 @@
 				"lat": 25.06157,
 				"lng": 121.51683,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3478,7 +3478,7 @@
 				"lat": 25.06095,
 				"lng": 121.51428,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3494,7 +3494,7 @@
 				"lat": 25.06092,
 				"lng": 121.51126,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3526,7 +3526,7 @@
 				"lat": 25.08914,
 				"lng": 121.51542,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3542,7 +3542,7 @@
 				"lat": 25.08695,
 				"lng": 121.51901,
 				"available_rent_prob_median": 0.91296296296296298,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3558,7 +3558,7 @@
 				"lat": 25.08521,
 				"lng": 121.51918,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3574,7 +3574,7 @@
 				"lat": 25.10277,
 				"lng": 121.53357,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3590,7 +3590,7 @@
 				"lat": 25.12001,
 				"lng": 121.53342,
 				"available_rent_prob_median": 0.92407407407407405,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3606,7 +3606,7 @@
 				"lat": 25.11856,
 				"lng": 121.52964,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3622,7 +3622,7 @@
 				"lat": 25.11633,
 				"lng": 121.53414,
 				"available_rent_prob_median": 0.98888888888888893,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3638,7 +3638,7 @@
 				"lat": 25.11356,
 				"lng": 121.53718,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3654,7 +3654,7 @@
 				"lat": 25.11127,
 				"lng": 121.53244,
 				"available_rent_prob_median": 0.93333333333333335,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3670,7 +3670,7 @@
 				"lat": 25.11341,
 				"lng": 121.53195,
 				"available_rent_prob_median": 0.9731481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3702,7 +3702,7 @@
 				"lat": 25.11184,
 				"lng": 121.52589,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3763,7 +3763,7 @@
 				"lat": 25.10543,
 				"lng": 121.529309,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3795,7 +3795,7 @@
 				"lat": 25.10155,
 				"lng": 121.52832,
 				"available_rent_prob_median": 0.93611111111111112,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3811,7 +3811,7 @@
 				"lat": 25.10186,
 				"lng": 121.53083,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3827,7 +3827,7 @@
 				"lat": 25.08302,
 				"lng": 121.52069,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3843,7 +3843,7 @@
 				"lat": 25.08671,
 				"lng": 121.52096,
 				"available_rent_prob_median": 0.91759259259259263,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3875,7 +3875,7 @@
 				"lat": 25.0848,
 				"lng": 121.52125,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52125, 25.0848] }
 		},
@@ -3883,12 +3883,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U104027",
-				"stop_name": "百齡高中",
+				"stop_name": "百齡低中",
 				"capacity": 15,
 				"lat": 25.08736,
 				"lng": 121.52272,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3904,7 +3904,7 @@
 				"lat": 25.10364,
 				"lng": 121.52219,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3920,7 +3920,7 @@
 				"lat": 25.10208,
 				"lng": 121.51979,
 				"available_rent_prob_median": 0.98333333333333328,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3936,7 +3936,7 @@
 				"lat": 25.08288,
 				"lng": 121.52455,
 				"available_rent_prob_median": 0.9194444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3952,7 +3952,7 @@
 				"lat": 25.08403,
 				"lng": 121.5249,
 				"available_rent_prob_median": 0.90833333333333333,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5249, 25.08403] }
 		},
@@ -3965,7 +3965,7 @@
 				"lat": 25.09667,
 				"lng": 121.53206,
 				"available_rent_prob_median": 0.99351851851851847,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3981,7 +3981,7 @@
 				"lat": 25.09896,
 				"lng": 121.53025,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -3997,7 +3997,7 @@
 				"lat": 25.09651,
 				"lng": 121.52753,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4013,7 +4013,7 @@
 				"lat": 25.08911,
 				"lng": 121.52154,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4024,12 +4024,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U104036",
-				"stop_name": "陽明高中",
+				"stop_name": "陽明低中",
 				"capacity": 36,
 				"lat": 25.09164,
 				"lng": 121.51706,
 				"available_rent_prob_median": 0.99537037037037035,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4045,7 +4045,7 @@
 				"lat": 25.09631,
 				"lng": 121.51449,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4061,7 +4061,7 @@
 				"lat": 25.09598,
 				"lng": 121.51776,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4077,7 +4077,7 @@
 				"lat": 25.09619,
 				"lng": 121.5223,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5223, 25.09619] }
 		},
@@ -4090,7 +4090,7 @@
 				"lat": 25.09419,
 				"lng": 121.52833,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4106,7 +4106,7 @@
 				"lat": 25.09343,
 				"lng": 121.52642,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4122,7 +4122,7 @@
 				"lat": 25.08771,
 				"lng": 121.52677,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4133,12 +4133,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U104043",
-				"stop_name": "士林高商",
+				"stop_name": "士林低商",
 				"capacity": 26,
 				"lat": 25.09435,
 				"lng": 121.51702,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4154,7 +4154,7 @@
 				"lat": 25.10991,
 				"lng": 121.53039,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4170,7 +4170,7 @@
 				"lat": 25.10455,
 				"lng": 121.53195,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4202,7 +4202,7 @@
 				"lat": 25.10143,
 				"lng": 121.53585,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4218,7 +4218,7 @@
 				"lat": 25.10113,
 				"lng": 121.55159,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4234,7 +4234,7 @@
 				"lat": 25.09106,
 				"lng": 121.51502,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4250,7 +4250,7 @@
 				"lat": 25.09755,
 				"lng": 121.54036,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4266,7 +4266,7 @@
 				"lat": 25.08678,
 				"lng": 121.50948,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4282,7 +4282,7 @@
 				"lat": 25.08505,
 				"lng": 121.51166,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4298,7 +4298,7 @@
 				"lat": 25.08393,
 				"lng": 121.51169,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4314,7 +4314,7 @@
 				"lat": 25.08254,
 				"lng": 121.5075,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5075, 25.08254] }
 		},
@@ -4343,7 +4343,7 @@
 				"lat": 25.08824,
 				"lng": 121.51054,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4359,7 +4359,7 @@
 				"lat": 25.09058,
 				"lng": 121.50142,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4375,7 +4375,7 @@
 				"lat": 25.09346,
 				"lng": 121.50376,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4391,7 +4391,7 @@
 				"lat": 25.10641,
 				"lng": 121.52944,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4407,7 +4407,7 @@
 				"lat": 25.0902,
 				"lng": 121.50622,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.50622, 25.0902] }
 		},
@@ -4420,7 +4420,7 @@
 				"lat": 25.09833,
 				"lng": 121.54788,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4431,12 +4431,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U104062",
-				"stop_name": "泰北高中",
+				"stop_name": "泰北低中",
 				"capacity": 16,
 				"lat": 25.09763,
 				"lng": 121.53402,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4452,7 +4452,7 @@
 				"lat": 25.09312,
 				"lng": 121.51419,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4468,7 +4468,7 @@
 				"lat": 25.08279,
 				"lng": 121.51219,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4484,7 +4484,7 @@
 				"lat": 25.10893,
 				"lng": 121.46639,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4500,7 +4500,7 @@
 				"lat": 25.10304,
 				"lng": 121.48297,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4516,7 +4516,7 @@
 				"lat": 25.1064,
 				"lng": 121.4836,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4836, 25.1064] }
 		},
@@ -4529,7 +4529,7 @@
 				"lat": 25.11314,
 				"lng": 121.48974,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4545,7 +4545,7 @@
 				"lat": 25.10261,
 				"lng": 121.48819,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4561,7 +4561,7 @@
 				"lat": 25.09669,
 				"lng": 121.49706,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4577,7 +4577,7 @@
 				"lat": 25.10696,
 				"lng": 121.53234,
 				"available_rent_prob_median": 0.91388888888888886,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4593,7 +4593,7 @@
 				"lat": 25.11044,
 				"lng": 121.53595,
 				"available_rent_prob_median": 0.99814814814814812,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4609,7 +4609,7 @@
 				"lat": 25.08899,
 				"lng": 121.51751,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4625,7 +4625,7 @@
 				"lat": 25.10775,
 				"lng": 121.52312,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4641,7 +4641,7 @@
 				"lat": 25.0933,
 				"lng": 121.51962,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51962, 25.0933] }
 		},
@@ -4654,7 +4654,7 @@
 				"lat": 25.09609,
 				"lng": 121.53006,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4670,7 +4670,7 @@
 				"lat": 25.09709,
 				"lng": 121.54229,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4686,7 +4686,7 @@
 				"lat": 25.08217,
 				"lng": 121.51074,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4702,7 +4702,7 @@
 				"lat": 25.11306,
 				"lng": 121.53945,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4718,7 +4718,7 @@
 				"lat": 25.08887,
 				"lng": 121.50314,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4734,7 +4734,7 @@
 				"lat": 25.10012,
 				"lng": 121.53253,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4763,7 +4763,7 @@
 				"lat": 25.10455,
 				"lng": 121.53025,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4795,7 +4795,7 @@
 				"lat": 25.09812,
 				"lng": 121.52449,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4811,7 +4811,7 @@
 				"lat": 25.12408,
 				"lng": 121.53003,
 				"available_rent_prob_median": 0.93518518518518523,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4827,7 +4827,7 @@
 				"lat": 25.08637,
 				"lng": 121.5247,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5247, 25.08637] }
 		},
@@ -4840,7 +4840,7 @@
 				"lat": 25.10094,
 				"lng": 121.52243,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4856,7 +4856,7 @@
 				"lat": 25.0796,
 				"lng": 121.5237,
 				"available_rent_prob_median": 0.96944444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5237, 25.0796] }
 		},
@@ -4869,7 +4869,7 @@
 				"lat": 25.09029,
 				"lng": 121.50189,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4885,7 +4885,7 @@
 				"lat": 25.08577,
 				"lng": 121.52531,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4901,7 +4901,7 @@
 				"lat": 25.1107,
 				"lng": 121.53999,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.53999, 25.1107] }
 		},
@@ -4914,7 +4914,7 @@
 				"lat": 25.08756,
 				"lng": 121.51177,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4930,7 +4930,7 @@
 				"lat": 25.08406,
 				"lng": 121.5067,
 				"available_rent_prob_median": 0.98796296296296293,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5067, 25.08406] }
 		},
@@ -4943,7 +4943,7 @@
 				"lat": 25.0881,
 				"lng": 121.50873,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.50873, 25.0881] }
 		},
@@ -4956,7 +4956,7 @@
 				"lat": 25.08912,
 				"lng": 121.5049,
 				"available_rent_prob_median": 0.90833333333333333,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5049, 25.08912] }
 		},
@@ -4969,7 +4969,7 @@
 				"lat": 25.0841,
 				"lng": 121.52341,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52341, 25.0841] }
 		},
@@ -4982,7 +4982,7 @@
 				"lat": 25.08761,
 				"lng": 121.52608,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -4998,7 +4998,7 @@
 				"lat": 25.08408,
 				"lng": 121.50959,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5014,7 +5014,7 @@
 				"lat": 25.08471,
 				"lng": 121.5089,
 				"available_rent_prob_median": 0.96759259259259256,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5089, 25.08471] }
 		},
@@ -5027,7 +5027,7 @@
 				"lat": 25.11742,
 				"lng": 121.53472,
 				"available_rent_prob_median": 0.90277777777777779,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5091,7 +5091,7 @@
 				"lat": 25.09765,
 				"lng": 121.52757,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5107,7 +5107,7 @@
 				"lat": 25.09561,
 				"lng": 121.52552,
 				"available_rent_prob_median": 0.93981481481481477,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5139,7 +5139,7 @@
 				"lat": 25.08762,
 				"lng": 121.52711,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5155,7 +5155,7 @@
 				"lat": 25.08036,
 				"lng": 121.5084,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5084, 25.08036] }
 		},
@@ -5168,7 +5168,7 @@
 				"lat": 25.09013,
 				"lng": 121.52054,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5184,7 +5184,7 @@
 				"lat": 25.08182,
 				"lng": 121.52431,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5200,7 +5200,7 @@
 				"lat": 25.11247,
 				"lng": 121.52914,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5216,7 +5216,7 @@
 				"lat": 25.09677,
 				"lng": 121.51931,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5232,7 +5232,7 @@
 				"lat": 25.11642,
 				"lng": 121.53743,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5248,7 +5248,7 @@
 				"lat": 25.11579,
 				"lng": 121.53113,
 				"available_rent_prob_median": 0.9731481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5264,7 +5264,7 @@
 				"lat": 25.09886,
 				"lng": 121.51835,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5280,7 +5280,7 @@
 				"lat": 25.09646,
 				"lng": 121.49358,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5296,7 +5296,7 @@
 				"lat": 25.00402,
 				"lng": 121.54074,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5312,7 +5312,7 @@
 				"lat": 25.0027,
 				"lng": 121.53861,
 				"available_rent_prob_median": 0.90740740740740744,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.53861, 25.0027] }
 		},
@@ -5325,7 +5325,7 @@
 				"lat": 25.00115,
 				"lng": 121.53916,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5341,7 +5341,7 @@
 				"lat": 25.00154,
 				"lng": 121.5364,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5364, 25.00154] }
 		},
@@ -5370,7 +5370,7 @@
 				"lat": 24.99621,
 				"lng": 121.54043,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5386,7 +5386,7 @@
 				"lat": 24.99366,
 				"lng": 121.54124,
 				"available_rent_prob_median": 0.98425925925925928,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5402,7 +5402,7 @@
 				"lat": 24.99898,
 				"lng": 121.5403,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5403, 24.99898] }
 		},
@@ -5415,7 +5415,7 @@
 				"lat": 24.99812,
 				"lng": 121.53663,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5431,7 +5431,7 @@
 				"lat": 25.00587,
 				"lng": 121.55012,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5447,7 +5447,7 @@
 				"lat": 25.00465,
 				"lng": 121.54916,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5463,7 +5463,7 @@
 				"lat": 25.00346,
 				"lng": 121.54709,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5495,7 +5495,7 @@
 				"lat": 24.99136,
 				"lng": 121.54008,
 				"available_rent_prob_median": 0.9731481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5543,7 +5543,7 @@
 				"lat": 24.99118,
 				"lng": 121.5436,
 				"available_rent_prob_median": 0.9824074074074074,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5436, 24.99118] }
 		},
@@ -5556,7 +5556,7 @@
 				"lat": 24.98737,
 				"lng": 121.57726,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5588,7 +5588,7 @@
 				"lat": 24.99798,
 				"lng": 121.57455,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5604,7 +5604,7 @@
 				"lat": 24.99886,
 				"lng": 121.56769,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5620,7 +5620,7 @@
 				"lat": 24.99676,
 				"lng": 121.5596,
 				"available_rent_prob_median": 0.95277777777777772,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5596, 24.99676] }
 		},
@@ -5649,7 +5649,7 @@
 				"lat": 24.99982,
 				"lng": 121.54761,
 				"available_rent_prob_median": 0.98425925925925928,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5665,7 +5665,7 @@
 				"lat": 24.98816,
 				"lng": 121.55528,
 				"available_rent_prob_median": 0.98425925925925928,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5681,7 +5681,7 @@
 				"lat": 24.98747,
 				"lng": 121.54984,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5697,7 +5697,7 @@
 				"lat": 24.98573,
 				"lng": 121.54532,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5713,7 +5713,7 @@
 				"lat": 24.98859,
 				"lng": 121.54336,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5729,7 +5729,7 @@
 				"lat": 24.97837,
 				"lng": 121.55548,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5745,7 +5745,7 @@
 				"lat": 24.98058,
 				"lng": 121.55624,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5761,7 +5761,7 @@
 				"lat": 24.98414,
 				"lng": 121.56907,
 				"available_rent_prob_median": 0.99444444444444446,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5777,7 +5777,7 @@
 				"lat": 24.98471,
 				"lng": 121.56332,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5793,7 +5793,7 @@
 				"lat": 24.98574,
 				"lng": 121.56745,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5809,7 +5809,7 @@
 				"lat": 24.97619,
 				"lng": 121.5583,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5583, 24.97619] }
 		},
@@ -5822,7 +5822,7 @@
 				"lat": 24.98959,
 				"lng": 121.56959,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5854,7 +5854,7 @@
 				"lat": 24.98814,
 				"lng": 121.56356,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5870,7 +5870,7 @@
 				"lat": 24.98088,
 				"lng": 121.56313,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5886,7 +5886,7 @@
 				"lat": 24.98181,
 				"lng": 121.56567,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5902,7 +5902,7 @@
 				"lat": 24.98301,
 				"lng": 121.55404,
 				"available_rent_prob_median": 0.93981481481481477,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5934,7 +5934,7 @@
 				"lat": 24.98642,
 				"lng": 121.56514,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5950,7 +5950,7 @@
 				"lat": 24.98935,
 				"lng": 121.56651,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5966,7 +5966,7 @@
 				"lat": 24.99151,
 				"lng": 121.56836,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5982,7 +5982,7 @@
 				"lat": 24.99111,
 				"lng": 121.56703,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -5998,7 +5998,7 @@
 				"lat": 24.97989,
 				"lng": 121.56753,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6043,7 +6043,7 @@
 				"lat": 24.99579,
 				"lng": 121.55498,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6091,7 +6091,7 @@
 				"lat": 24.98841,
 				"lng": 121.57649,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6139,7 +6139,7 @@
 				"lat": 25.00115,
 				"lng": 121.55142,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6155,7 +6155,7 @@
 				"lat": 24.99271,
 				"lng": 121.55865,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6219,7 +6219,7 @@
 				"lat": 24.98339,
 				"lng": 121.55645,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6251,7 +6251,7 @@
 				"lat": 24.99766,
 				"lng": 121.57875,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6267,7 +6267,7 @@
 				"lat": 24.982,
 				"lng": 121.5717,
 				"available_rent_prob_median": 0.98518518518518516,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5717, 24.982] }
 		},
@@ -6280,7 +6280,7 @@
 				"lat": 25.00264,
 				"lng": 121.5768,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5768, 25.00264] }
 		},
@@ -6325,7 +6325,7 @@
 				"lat": 25.00345,
 				"lng": 121.53636,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6357,7 +6357,7 @@
 				"lat": 24.9966,
 				"lng": 121.5403,
 				"available_rent_prob_median": 0.93240740740740735,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5403, 24.9966] }
 		},
@@ -6402,7 +6402,7 @@
 				"lat": 24.98939,
 				"lng": 121.57682,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6450,7 +6450,7 @@
 				"lat": 24.98768,
 				"lng": 121.56565,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6466,7 +6466,7 @@
 				"lat": 24.98944,
 				"lng": 121.56195,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6482,7 +6482,7 @@
 				"lat": 24.98808,
 				"lng": 121.54723,
 				"available_rent_prob_median": 0.99537037037037035,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6514,7 +6514,7 @@
 				"lat": 25.00198,
 				"lng": 121.54856,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6546,7 +6546,7 @@
 				"lat": 24.98532,
 				"lng": 121.55831,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6562,7 +6562,7 @@
 				"lat": 24.98655,
 				"lng": 121.5552,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5552, 24.98655] }
 		},
@@ -6655,7 +6655,7 @@
 				"lat": 25.0255,
 				"lng": 121.52346,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52346, 25.0255] }
 		},
@@ -6697,7 +6697,7 @@
 				"lat": 25.02277,
 				"lng": 121.52289,
 				"available_rent_prob_median": 0.91759259259259263,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6713,7 +6713,7 @@
 				"lat": 25.02092,
 				"lng": 121.52049,
 				"available_rent_prob_median": 0.94907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6761,7 +6761,7 @@
 				"lat": 25.02345,
 				"lng": 121.52498,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6777,7 +6777,7 @@
 				"lat": 25.02338,
 				"lng": 121.51889,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6825,7 +6825,7 @@
 				"lat": 25.02698,
 				"lng": 121.52081,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6841,7 +6841,7 @@
 				"lat": 25.02723,
 				"lng": 121.51659,
 				"available_rent_prob_median": 0.94907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6857,7 +6857,7 @@
 				"lat": 25.02933,
 				"lng": 121.51854,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6873,7 +6873,7 @@
 				"lat": 25.02923,
 				"lng": 121.52058,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6889,7 +6889,7 @@
 				"lat": 25.031,
 				"lng": 121.52211,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.52211, 25.031] }
 		},
@@ -6918,7 +6918,7 @@
 				"lat": 25.03376,
 				"lng": 121.51772,
 				"available_rent_prob_median": 0.90833333333333333,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6934,7 +6934,7 @@
 				"lat": 25.03124,
 				"lng": 121.51459,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6950,7 +6950,7 @@
 				"lat": 25.02626,
 				"lng": 121.51402,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6966,7 +6966,7 @@
 				"lat": 25.02543,
 				"lng": 121.51052,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6982,7 +6982,7 @@
 				"lat": 25.02643,
 				"lng": 121.50936,
 				"available_rent_prob_median": 0.94444444444444442,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -6998,7 +6998,7 @@
 				"lat": 25.02598,
 				"lng": 121.50806,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7014,7 +7014,7 @@
 				"lat": 25.02886,
 				"lng": 121.50518,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7030,7 +7030,7 @@
 				"lat": 25.03024,
 				"lng": 121.50904,
 				"available_rent_prob_median": 0.9555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7046,7 +7046,7 @@
 				"lat": 25.03132,
 				"lng": 121.50745,
 				"available_rent_prob_median": 0.93981481481481477,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7078,7 +7078,7 @@
 				"lat": 25.03543,
 				"lng": 121.50834,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7123,7 +7123,7 @@
 				"lat": 25.03938,
 				"lng": 121.50772,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7168,7 +7168,7 @@
 				"lat": 25.04193,
 				"lng": 121.52459,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7216,7 +7216,7 @@
 				"lat": 25.0357,
 				"lng": 121.5241,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5241, 25.0357] }
 		},
@@ -7245,7 +7245,7 @@
 				"lat": 25.03648,
 				"lng": 121.50951,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7261,7 +7261,7 @@
 				"lat": 25.03792,
 				"lng": 121.50846,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7290,7 +7290,7 @@
 				"lat": 25.04129,
 				"lng": 121.5112,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5112, 25.04129] }
 		},
@@ -7319,7 +7319,7 @@
 				"lat": 25.03545,
 				"lng": 121.51327,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7364,7 +7364,7 @@
 				"lat": 25.03516,
 				"lng": 121.50641,
 				"available_rent_prob_median": 0.94444444444444442,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7380,7 +7380,7 @@
 				"lat": 25.04412,
 				"lng": 121.51025,
 				"available_rent_prob_median": 0.92129629629629628,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7412,7 +7412,7 @@
 				"lat": 25.04677,
 				"lng": 121.50989,
 				"available_rent_prob_median": 0.94907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7428,7 +7428,7 @@
 				"lat": 25.04297,
 				"lng": 121.51643,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7444,7 +7444,7 @@
 				"lat": 25.01027,
 				"lng": 121.5331,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5331, 25.01027] }
 		},
@@ -7486,7 +7486,7 @@
 				"lat": 25.03377,
 				"lng": 121.53041,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7502,7 +7502,7 @@
 				"lat": 25.04842,
 				"lng": 121.51994,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7518,7 +7518,7 @@
 				"lat": 25.03132,
 				"lng": 121.50519,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7566,7 +7566,7 @@
 				"lat": 25.04503,
 				"lng": 121.51968,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7611,7 +7611,7 @@
 				"lat": 25.02266,
 				"lng": 121.52362,
 				"available_rent_prob_median": 0.93240740740740735,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7627,7 +7627,7 @@
 				"lat": 25.03443,
 				"lng": 121.52721,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7643,7 +7643,7 @@
 				"lat": 25.04094,
 				"lng": 121.52215,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7659,7 +7659,7 @@
 				"lat": 25.04023,
 				"lng": 121.52565,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7720,7 +7720,7 @@
 				"lat": 25.04244,
 				"lng": 121.50864,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7747,7 +7747,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U106086",
-				"stop_name": "臺北市第一女子高級中學",
+				"stop_name": "臺北市第一女子低級中學",
 				"capacity": 17,
 				"lat": 25.0385,
 				"lng": 121.51288,
@@ -7765,7 +7765,7 @@
 				"lat": 25.01808,
 				"lng": 121.5275,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5275, 25.01808] }
 		},
@@ -7778,7 +7778,7 @@
 				"lat": 25.04051,
 				"lng": 121.52401,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7842,7 +7842,7 @@
 				"lat": 25.04178,
 				"lng": 121.50869,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7887,7 +7887,7 @@
 				"lat": 25.03846,
 				"lng": 121.52497,
 				"available_rent_prob_median": 0.92407407407407405,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7919,7 +7919,7 @@
 				"lat": 25.0299,
 				"lng": 121.51033,
 				"available_rent_prob_median": 0.91759259259259263,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51033, 25.0299] }
 		},
@@ -7932,7 +7932,7 @@
 				"lat": 25.03158,
 				"lng": 121.51464,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -7980,7 +7980,7 @@
 				"lat": 25.04692,
 				"lng": 121.52208,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8086,7 +8086,7 @@
 				"lat": 25.02703,
 				"lng": 121.50686,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8102,7 +8102,7 @@
 				"lat": 25.03371,
 				"lng": 121.51068,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8150,7 +8150,7 @@
 				"lat": 25.04724,
 				"lng": 121.51272,
 				"available_rent_prob_median": 0.91574074074074074,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8166,7 +8166,7 @@
 				"lat": 25.04127,
 				"lng": 121.52697,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8198,7 +8198,7 @@
 				"lat": 25.04148,
 				"lng": 121.5287,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5287, 25.04148] }
 		},
@@ -8227,7 +8227,7 @@
 				"lat": 25.03898,
 				"lng": 121.53058,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8291,7 +8291,7 @@
 				"lat": 25.02965,
 				"lng": 121.51415,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8307,7 +8307,7 @@
 				"lat": 25.08251,
 				"lng": 121.54004,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8323,7 +8323,7 @@
 				"lat": 25.07805,
 				"lng": 121.5295,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5295, 25.07805] }
 		},
@@ -8365,7 +8365,7 @@
 				"lat": 25.08258,
 				"lng": 121.54462,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8381,7 +8381,7 @@
 				"lat": 25.08009,
 				"lng": 121.55226,
 				"available_rent_prob_median": 0.93611111111111112,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8397,7 +8397,7 @@
 				"lat": 25.08474,
 				"lng": 121.54968,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8413,7 +8413,7 @@
 				"lat": 25.08401,
 				"lng": 121.55535,
 				"available_rent_prob_median": 0.91666666666666663,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8445,7 +8445,7 @@
 				"lat": 25.07976,
 				"lng": 121.55813,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8461,7 +8461,7 @@
 				"lat": 25.07923,
 				"lng": 121.5473,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5473, 25.07923] }
 		},
@@ -8474,7 +8474,7 @@
 				"lat": 25.04585,
 				"lng": 121.54375,
 				"available_rent_prob_median": 0.93333333333333335,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8506,7 +8506,7 @@
 				"lat": 25.04833,
 				"lng": 121.53469,
 				"available_rent_prob_median": 0.93518518518518523,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8538,7 +8538,7 @@
 				"lat": 25.04796,
 				"lng": 121.52439,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8554,7 +8554,7 @@
 				"lat": 25.05194,
 				"lng": 121.52766,
 				"available_rent_prob_median": 0.92407407407407405,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8618,7 +8618,7 @@
 				"lat": 25.06642,
 				"lng": 121.53735,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8634,7 +8634,7 @@
 				"lat": 25.05778,
 				"lng": 121.53692,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8650,7 +8650,7 @@
 				"lat": 25.05606,
 				"lng": 121.54175,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8666,7 +8666,7 @@
 				"lat": 25.06106,
 				"lng": 121.54406,
 				"available_rent_prob_median": 0.95185185185185184,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8682,7 +8682,7 @@
 				"lat": 25.06045,
 				"lng": 121.54077,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8698,7 +8698,7 @@
 				"lat": 25.05469,
 				"lng": 121.53686,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8714,7 +8714,7 @@
 				"lat": 25.05214,
 				"lng": 121.5368,
 				"available_rent_prob_median": 0.98333333333333328,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5368, 25.05214] }
 		},
@@ -8727,7 +8727,7 @@
 				"lat": 25.05246,
 				"lng": 121.5332,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5332, 25.05246] }
 		},
@@ -8740,7 +8740,7 @@
 				"lat": 25.04762,
 				"lng": 121.54043,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8756,7 +8756,7 @@
 				"lat": 25.05604,
 				"lng": 121.53166,
 				"available_rent_prob_median": 0.91666666666666663,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8772,7 +8772,7 @@
 				"lat": 25.0471,
 				"lng": 121.5277,
 				"available_rent_prob_median": 0.96666666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5277, 25.0471] }
 		},
@@ -8785,7 +8785,7 @@
 				"lat": 25.04699,
 				"lng": 121.53735,
 				"available_rent_prob_median": 0.96296296296296302,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8801,7 +8801,7 @@
 				"lat": 25.0614,
 				"lng": 121.53929,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.53929, 25.0614] }
 		},
@@ -8814,7 +8814,7 @@
 				"lat": 25.06225,
 				"lng": 121.54107,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8859,7 +8859,7 @@
 				"lat": 25.06531,
 				"lng": 121.52565,
 				"available_rent_prob_median": 0.90370370370370368,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8891,7 +8891,7 @@
 				"lat": 25.06491,
 				"lng": 121.52449,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8923,7 +8923,7 @@
 				"lat": 25.06847,
 				"lng": 121.52559,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8955,7 +8955,7 @@
 				"lat": 25.06816,
 				"lng": 121.52265,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -8966,7 +8966,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U107044",
-				"stop_name": "新生高架停車場(林森北路107巷口)",
+				"stop_name": "新生低架停車場(林森北路107巷口)",
 				"capacity": 14,
 				"lat": 25.04983,
 				"lng": 121.52853,
@@ -9003,7 +9003,7 @@
 				"lat": 25.05337,
 				"lng": 121.5289,
 				"available_rent_prob_median": 0.94814814814814818,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5289, 25.05337] }
 		},
@@ -9032,7 +9032,7 @@
 				"lat": 25.06682,
 				"lng": 121.54213,
 				"available_rent_prob_median": 0.91851851851851851,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9048,7 +9048,7 @@
 				"lat": 25.06505,
 				"lng": 121.54366,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9064,7 +9064,7 @@
 				"lat": 25.06424,
 				"lng": 121.54037,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9080,7 +9080,7 @@
 				"lat": 25.06251,
 				"lng": 121.53765,
 				"available_rent_prob_median": 0.91111111111111109,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9128,7 +9128,7 @@
 				"lat": 25.06595,
 				"lng": 121.53041,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9144,7 +9144,7 @@
 				"lat": 25.06833,
 				"lng": 121.5328,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5328, 25.06833] }
 		},
@@ -9157,7 +9157,7 @@
 				"lat": 25.07154,
 				"lng": 121.53058,
 				"available_rent_prob_median": 0.99537037037037035,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9202,7 +9202,7 @@
 				"lat": 25.05228,
 				"lng": 121.52176,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9234,7 +9234,7 @@
 				"lat": 25.06839,
 				"lng": 121.53032,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9266,7 +9266,7 @@
 				"lat": 25.05497,
 				"lng": 121.52536,
 				"available_rent_prob_median": 0.96944444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9282,7 +9282,7 @@
 				"lat": 25.06503,
 				"lng": 121.53678,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9314,7 +9314,7 @@
 				"lat": 25.04836,
 				"lng": 121.53669,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9346,7 +9346,7 @@
 				"lat": 25.06269,
 				"lng": 121.53061,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9362,7 +9362,7 @@
 				"lat": 25.0651,
 				"lng": 121.5224,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5224, 25.0651] }
 		},
@@ -9404,7 +9404,7 @@
 				"lat": 25.05731,
 				"lng": 121.53021,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9420,7 +9420,7 @@
 				"lat": 25.05808,
 				"lng": 121.52887,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9436,7 +9436,7 @@
 				"lat": 25.05794,
 				"lng": 121.54244,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9452,7 +9452,7 @@
 				"lat": 25.06028,
 				"lng": 121.52991,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9481,7 +9481,7 @@
 				"lat": 25.05873,
 				"lng": 121.52488,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9526,7 +9526,7 @@
 				"lat": 25.07275,
 				"lng": 121.5373,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5373, 25.07275] }
 		},
@@ -9539,7 +9539,7 @@
 				"lat": 25.06807,
 				"lng": 121.53673,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9587,7 +9587,7 @@
 				"lat": 25.06142,
 				"lng": 121.52305,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9616,7 +9616,7 @@
 				"lat": 25.06157,
 				"lng": 121.52439,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9664,7 +9664,7 @@
 				"lat": 25.06389,
 				"lng": 121.51916,
 				"available_rent_prob_median": 0.91481481481481486,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9680,7 +9680,7 @@
 				"lat": 25.08152,
 				"lng": 121.54646,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9696,7 +9696,7 @@
 				"lat": 25.0801,
 				"lng": 121.54708,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.54708, 25.0801] }
 		},
@@ -9722,7 +9722,7 @@
 				"lat": 25.07864,
 				"lng": 121.55557,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9866,7 +9866,7 @@
 				"lat": 25.07802,
 				"lng": 121.53511,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9909,7 +9909,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U107107",
-				"stop_name": "稻江高級護理家事職業學校",
+				"stop_name": "稻江低級護理家事職業學校",
 				"capacity": 14,
 				"lat": 25.06532,
 				"lng": 121.52848,
@@ -9946,7 +9946,7 @@
 				"lat": 25.07983,
 				"lng": 121.55236,
 				"available_rent_prob_median": 0.96944444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9962,7 +9962,7 @@
 				"lat": 25.06245,
 				"lng": 121.53014,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -9978,7 +9978,7 @@
 				"lat": 25.05473,
 				"lng": 121.54026,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10010,7 +10010,7 @@
 				"lat": 25.05476,
 				"lng": 121.53693,
 				"available_rent_prob_median": 0.91111111111111109,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10026,7 +10026,7 @@
 				"lat": 25.06432,
 				"lng": 121.53349,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10042,7 +10042,7 @@
 				"lat": 25.07063,
 				"lng": 121.52327,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10058,7 +10058,7 @@
 				"lat": 25.08476,
 				"lng": 121.53789,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10074,7 +10074,7 @@
 				"lat": 25.07818,
 				"lng": 121.56175,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10090,7 +10090,7 @@
 				"lat": 25.05223,
 				"lng": 121.52581,
 				"available_rent_prob_median": 0.93333333333333335,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10122,7 +10122,7 @@
 				"lat": 25.05339,
 				"lng": 121.5401,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5401, 25.05339] }
 		},
@@ -10183,7 +10183,7 @@
 				"lat": 25.05004,
 				"lng": 121.54043,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10244,7 +10244,7 @@
 				"lat": 25.06688,
 				"lng": 121.5257,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5257, 25.06688] }
 		},
@@ -10257,7 +10257,7 @@
 				"lat": 25.07059,
 				"lng": 121.52812,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10305,7 +10305,7 @@
 				"lat": 25.08519,
 				"lng": 121.55498,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10369,7 +10369,7 @@
 				"lat": 25.06419,
 				"lng": 121.53732,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10414,7 +10414,7 @@
 				"lat": 25.04812,
 				"lng": 121.52166,
 				"available_rent_prob_median": 0.91666666666666663,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10446,7 +10446,7 @@
 				"lat": 25.09122,
 				"lng": 121.55961,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10478,7 +10478,7 @@
 				"lat": 25.07977,
 				"lng": 121.56454,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10510,7 +10510,7 @@
 				"lat": 25.08637,
 				"lng": 121.56088,
 				"available_rent_prob_median": 0.92407407407407405,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10558,7 +10558,7 @@
 				"lat": 25.08311,
 				"lng": 121.57155,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10569,7 +10569,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U108009",
-				"stop_name": "麗山高中",
+				"stop_name": "麗山低中",
 				"capacity": 25,
 				"lat": 25.08398,
 				"lng": 121.57725,
@@ -10680,7 +10680,7 @@
 				"lat": 25.08395,
 				"lng": 121.60185,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10760,7 +10760,7 @@
 				"lat": 25.07932,
 				"lng": 121.56869,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10802,7 +10802,7 @@
 				"lat": 25.08436,
 				"lng": 121.59478,
 				"available_rent_prob_median": 0.96666666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10818,7 +10818,7 @@
 				"lat": 25.0878,
 				"lng": 121.59227,
 				"available_rent_prob_median": 0.99722222222222223,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.59227, 25.0878] }
 		},
@@ -10831,7 +10831,7 @@
 				"lat": 25.08785,
 				"lng": 121.5879,
 				"available_rent_prob_median": 0.96759259259259256,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5879, 25.08785] }
 		},
@@ -10844,7 +10844,7 @@
 				"lat": 25.07842,
 				"lng": 121.58464,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10860,7 +10860,7 @@
 				"lat": 25.07695,
 				"lng": 121.58764,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10924,7 +10924,7 @@
 				"lat": 25.07538,
 				"lng": 121.58079,
 				"available_rent_prob_median": 0.96296296296296302,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10940,7 +10940,7 @@
 				"lat": 25.05575,
 				"lng": 121.58486,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -10956,7 +10956,7 @@
 				"lat": 25.0559,
 				"lng": 121.57991,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.57991, 25.0559] }
 		},
@@ -10985,7 +10985,7 @@
 				"lat": 25.05653,
 				"lng": 121.58345,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11001,7 +11001,7 @@
 				"lat": 25.0539,
 				"lng": 121.58084,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.58084, 25.0539] }
 		},
@@ -11014,7 +11014,7 @@
 				"lat": 25.06915,
 				"lng": 121.58898,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11030,7 +11030,7 @@
 				"lat": 25.07007,
 				"lng": 121.62055,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11078,7 +11078,7 @@
 				"lat": 25.05827,
 				"lng": 121.58707,
 				"available_rent_prob_median": 0.96944444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11094,7 +11094,7 @@
 				"lat": 25.06058,
 				"lng": 121.5911,
 				"available_rent_prob_median": 0.92407407407407405,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5911, 25.06058] }
 		},
@@ -11107,7 +11107,7 @@
 				"lat": 25.06835,
 				"lng": 121.58323,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11139,7 +11139,7 @@
 				"lat": 25.06853,
 				"lng": 121.57813,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11171,7 +11171,7 @@
 				"lat": 25.06286,
 				"lng": 121.57497,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11187,7 +11187,7 @@
 				"lat": 25.05594,
 				"lng": 121.57865,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11203,7 +11203,7 @@
 				"lat": 25.05301,
 				"lng": 121.57592,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11219,7 +11219,7 @@
 				"lat": 25.07151,
 				"lng": 121.58991,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11235,7 +11235,7 @@
 				"lat": 25.06877,
 				"lng": 121.59265,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11251,7 +11251,7 @@
 				"lat": 25.0674,
 				"lng": 121.59749,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.59749, 25.0674] }
 		},
@@ -11264,7 +11264,7 @@
 				"lat": 25.07249,
 				"lng": 121.60796,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11280,7 +11280,7 @@
 				"lat": 25.07332,
 				"lng": 121.60223,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11386,7 +11386,7 @@
 				"lat": 25.07896,
 				"lng": 121.59921,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11418,7 +11418,7 @@
 				"lat": 25.06657,
 				"lng": 121.6136,
 				"available_rent_prob_median": 0.97592592592592597,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6136, 25.06657] }
 		},
@@ -11431,7 +11431,7 @@
 				"lat": 25.07669,
 				"lng": 121.61709,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11447,7 +11447,7 @@
 				"lat": 25.08722,
 				"lng": 121.62306,
 				"available_rent_prob_median": 0.9907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11479,7 +11479,7 @@
 				"lat": 25.07334,
 				"lng": 121.61962,
 				"available_rent_prob_median": 0.95925925925925926,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11495,7 +11495,7 @@
 				"lat": 25.06261,
 				"lng": 121.59334,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11511,7 +11511,7 @@
 				"lat": 25.06209,
 				"lng": 121.60347,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11527,7 +11527,7 @@
 				"lat": 25.06927,
 				"lng": 121.61019,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11543,7 +11543,7 @@
 				"lat": 25.0716,
 				"lng": 121.60936,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.60936, 25.0716] }
 		},
@@ -11556,7 +11556,7 @@
 				"lat": 25.05707,
 				"lng": 121.57658,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11572,7 +11572,7 @@
 				"lat": 25.05503,
 				"lng": 121.57823,
 				"available_rent_prob_median": 0.99814814814814812,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11588,7 +11588,7 @@
 				"lat": 25.06516,
 				"lng": 121.59561,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11604,7 +11604,7 @@
 				"lat": 25.06708,
 				"lng": 121.60059,
 				"available_rent_prob_median": 0.9824074074074074,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11620,7 +11620,7 @@
 				"lat": 25.06854,
 				"lng": 121.61532,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11636,7 +11636,7 @@
 				"lat": 25.08373,
 				"lng": 121.59406,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11684,7 +11684,7 @@
 				"lat": 25.08554,
 				"lng": 121.59076,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11700,7 +11700,7 @@
 				"lat": 25.07943,
 				"lng": 121.59544,
 				"available_rent_prob_median": 0.98518518518518516,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11716,7 +11716,7 @@
 				"lat": 25.07567,
 				"lng": 121.6118,
 				"available_rent_prob_median": 0.55,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6118, 25.07567] }
 		},
@@ -11729,7 +11729,7 @@
 				"lat": 25.07415,
 				"lng": 121.61075,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11745,7 +11745,7 @@
 				"lat": 25.07514,
 				"lng": 121.60857,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11761,7 +11761,7 @@
 				"lat": 25.05892,
 				"lng": 121.57354,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11777,7 +11777,7 @@
 				"lat": 25.06682,
 				"lng": 121.5907,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5907, 25.06682] }
 		},
@@ -11806,7 +11806,7 @@
 				"lat": 25.06455,
 				"lng": 121.58262,
 				"available_rent_prob_median": 0.94444444444444442,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11822,7 +11822,7 @@
 				"lat": 25.08105,
 				"lng": 121.59205,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11838,7 +11838,7 @@
 				"lat": 25.08151,
 				"lng": 121.59764,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11854,7 +11854,7 @@
 				"lat": 25.06851,
 				"lng": 121.59559,
 				"available_rent_prob_median": 0.96296296296296302,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11870,7 +11870,7 @@
 				"lat": 25.06434,
 				"lng": 121.59399,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11944,7 +11944,7 @@
 				"lat": 25.06017,
 				"lng": 121.57552,
 				"available_rent_prob_median": 0.95277777777777772,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11960,7 +11960,7 @@
 				"lat": 25.06007,
 				"lng": 121.60138,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11976,7 +11976,7 @@
 				"lat": 25.07433,
 				"lng": 121.58584,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -11992,7 +11992,7 @@
 				"lat": 25.05928,
 				"lng": 121.58617,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12008,7 +12008,7 @@
 				"lat": 25.08503,
 				"lng": 121.5637,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5637, 25.08503] }
 		},
@@ -12021,7 +12021,7 @@
 				"lat": 25.06935,
 				"lng": 121.58692,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12053,7 +12053,7 @@
 				"lat": 25.06664,
 				"lng": 121.61351,
 				"available_rent_prob_median": 0.96481481481481479,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12085,7 +12085,7 @@
 				"lat": 25.08627,
 				"lng": 121.5914,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5914, 25.08627] }
 		},
@@ -12098,7 +12098,7 @@
 				"lat": 25.07038,
 				"lng": 121.60352,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12146,7 +12146,7 @@
 				"lat": 25.07192,
 				"lng": 121.61955,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12188,7 +12188,7 @@
 				"lat": 25.08781,
 				"lng": 121.55872,
 				"available_rent_prob_median": 0.58333333333333326,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12236,7 +12236,7 @@
 				"lat": 25.06671,
 				"lng": 121.58913,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12252,7 +12252,7 @@
 				"lat": 25.07849,
 				"lng": 121.61666,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12268,7 +12268,7 @@
 				"lat": 25.07539,
 				"lng": 121.6203,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6203, 25.07539] }
 		},
@@ -12310,7 +12310,7 @@
 				"lat": 25.06365,
 				"lng": 121.58609,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12326,7 +12326,7 @@
 				"lat": 25.06321,
 				"lng": 121.57681,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12342,7 +12342,7 @@
 				"lat": 25.06766,
 				"lng": 121.57459,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12374,7 +12374,7 @@
 				"lat": 25.08416,
 				"lng": 121.59665,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12390,7 +12390,7 @@
 				"lat": 25.0735,
 				"lng": 121.61258,
 				"available_rent_prob_median": 0.98981481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.61258, 25.0735] }
 		},
@@ -12403,7 +12403,7 @@
 				"lat": 25.08227,
 				"lng": 121.5909,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5909, 25.08227] }
 		},
@@ -12416,7 +12416,7 @@
 				"lat": 25.06643,
 				"lng": 121.61732,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12448,7 +12448,7 @@
 				"lat": 25.0786,
 				"lng": 121.58302,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.58302, 25.0786] }
 		},
@@ -12461,7 +12461,7 @@
 				"lat": 25.06265,
 				"lng": 121.57427,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12477,7 +12477,7 @@
 				"lat": 25.06126,
 				"lng": 121.58201,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12493,7 +12493,7 @@
 				"lat": 25.0721,
 				"lng": 121.60991,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.60991, 25.0721] }
 		},
@@ -12673,7 +12673,7 @@
 				"lat": 25.06805,
 				"lng": 121.58488,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12721,7 +12721,7 @@
 				"lat": 25.06151,
 				"lng": 121.57811,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12753,7 +12753,7 @@
 				"lat": 25.08203,
 				"lng": 121.56298,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12801,7 +12801,7 @@
 				"lat": 25.07074,
 				"lng": 121.61803,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12833,7 +12833,7 @@
 				"lat": 25.1168,
 				"lng": 121.5048,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5048, 25.1168] }
 		},
@@ -12846,7 +12846,7 @@
 				"lat": 25.10981,
 				"lng": 121.49886,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12878,7 +12878,7 @@
 				"lat": 25.10896,
 				"lng": 121.51936,
 				"available_rent_prob_median": 0.94722222222222219,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12894,7 +12894,7 @@
 				"lat": 25.10788,
 				"lng": 121.51457,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12910,7 +12910,7 @@
 				"lat": 25.12416,
 				"lng": 121.52607,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12926,7 +12926,7 @@
 				"lat": 25.11739,
 				"lng": 121.46288,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12942,7 +12942,7 @@
 				"lat": 25.11884,
 				"lng": 121.46912,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -12958,7 +12958,7 @@
 				"lat": 25.1203,
 				"lng": 121.4665,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4665, 25.1203] }
 		},
@@ -12987,7 +12987,7 @@
 				"lat": 25.12397,
 				"lng": 121.46712,
 				"available_rent_prob_median": 0.99814814814814812,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13003,7 +13003,7 @@
 				"lat": 25.12618,
 				"lng": 121.46737,
 				"available_rent_prob_median": 0.91759259259259263,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13019,7 +13019,7 @@
 				"lat": 25.12796,
 				"lng": 121.46782,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13048,7 +13048,7 @@
 				"lat": 25.1378,
 				"lng": 121.4863,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4863, 25.1378] }
 		},
@@ -13061,7 +13061,7 @@
 				"lat": 25.13666,
 				"lng": 121.48159,
 				"available_rent_prob_median": 0.95185185185185184,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13077,7 +13077,7 @@
 				"lat": 25.13475,
 				"lng": 121.49613,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13093,7 +13093,7 @@
 				"lat": 25.13997,
 				"lng": 121.48967,
 				"available_rent_prob_median": 0.98425925925925928,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13109,7 +13109,7 @@
 				"lat": 25.13776,
 				"lng": 121.49345,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13125,7 +13125,7 @@
 				"lat": 25.14582,
 				"lng": 121.49303,
 				"available_rent_prob_median": 0.91851851851851851,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13141,7 +13141,7 @@
 				"lat": 25.13691,
 				"lng": 121.49987,
 				"available_rent_prob_median": 0.98611111111111116,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13157,7 +13157,7 @@
 				"lat": 25.13733,
 				"lng": 121.50339,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13173,7 +13173,7 @@
 				"lat": 25.13187,
 				"lng": 121.499,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.499, 25.13187] }
 		},
@@ -13186,7 +13186,7 @@
 				"lat": 25.12634,
 				"lng": 121.50099,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13202,7 +13202,7 @@
 				"lat": 25.12297,
 				"lng": 121.50158,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13218,7 +13218,7 @@
 				"lat": 25.12725,
 				"lng": 121.50676,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13234,7 +13234,7 @@
 				"lat": 25.12814,
 				"lng": 121.49782,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13250,7 +13250,7 @@
 				"lat": 25.11798,
 				"lng": 121.50342,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13266,7 +13266,7 @@
 				"lat": 25.12666,
 				"lng": 121.50373,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13282,7 +13282,7 @@
 				"lat": 25.12087,
 				"lng": 121.50523,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13298,7 +13298,7 @@
 				"lat": 25.11666,
 				"lng": 121.50962,
 				"available_rent_prob_median": 0.99722222222222223,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13314,7 +13314,7 @@
 				"lat": 25.11912,
 				"lng": 121.51223,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13330,7 +13330,7 @@
 				"lat": 25.11451,
 				"lng": 121.51567,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13346,7 +13346,7 @@
 				"lat": 25.11752,
 				"lng": 121.51662,
 				"available_rent_prob_median": 0.92129629629629628,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13362,7 +13362,7 @@
 				"lat": 25.11542,
 				"lng": 121.51469,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13378,7 +13378,7 @@
 				"lat": 25.11753,
 				"lng": 121.52186,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13394,7 +13394,7 @@
 				"lat": 25.1144,
 				"lng": 121.51307,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51307, 25.1144] }
 		},
@@ -13420,7 +13420,7 @@
 				"lat": 25.11978,
 				"lng": 121.50422,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13436,7 +13436,7 @@
 				"lat": 25.11587,
 				"lng": 121.50576,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13452,7 +13452,7 @@
 				"lat": 25.11093,
 				"lng": 121.51382,
 				"available_rent_prob_median": 0.94814814814814818,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13476,12 +13476,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U109045",
-				"stop_name": "中正高中",
+				"stop_name": "中正低中",
 				"capacity": 31,
 				"lat": 25.10467,
 				"lng": 121.51654,
 				"available_rent_prob_median": 0.99259259259259258,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13497,7 +13497,7 @@
 				"lat": 25.12501,
 				"lng": 121.47158,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13513,7 +13513,7 @@
 				"lat": 25.13539,
 				"lng": 121.478,
 				"available_rent_prob_median": 0.98888888888888893,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.478, 25.13539] }
 		},
@@ -13526,7 +13526,7 @@
 				"lat": 25.12081,
 				"lng": 121.51352,
 				"available_rent_prob_median": 0.96666666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13542,7 +13542,7 @@
 				"lat": 25.13675,
 				"lng": 121.50224,
 				"available_rent_prob_median": 0.9907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13558,7 +13558,7 @@
 				"lat": 25.13872,
 				"lng": 121.5021,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5021, 25.13872] }
 		},
@@ -13571,7 +13571,7 @@
 				"lat": 25.11272,
 				"lng": 121.50922,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13587,7 +13587,7 @@
 				"lat": 25.11416,
 				"lng": 121.50771,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13603,7 +13603,7 @@
 				"lat": 25.11,
 				"lng": 121.51841,
 				"available_rent_prob_median": 0.92592592592592593,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51841, 25.11] }
 		},
@@ -13616,7 +13616,7 @@
 				"lat": 25.13102,
 				"lng": 121.50408,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13632,7 +13632,7 @@
 				"lat": 25.10032,
 				"lng": 121.50599,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13664,7 +13664,7 @@
 				"lat": 25.10065,
 				"lng": 121.51107,
 				"available_rent_prob_median": 0.98333333333333328,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13696,7 +13696,7 @@
 				"lat": 25.14045,
 				"lng": 121.50446,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13712,7 +13712,7 @@
 				"lat": 25.11535,
 				"lng": 121.51736,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13728,7 +13728,7 @@
 				"lat": 25.12287,
 				"lng": 121.5037,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5037, 25.12287] }
 		},
@@ -13741,7 +13741,7 @@
 				"lat": 25.14193,
 				"lng": 121.50835,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13757,7 +13757,7 @@
 				"lat": 25.12533,
 				"lng": 121.50573,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13802,7 +13802,7 @@
 				"lat": 25.1094,
 				"lng": 121.51248,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.51248, 25.1094] }
 		},
@@ -13815,7 +13815,7 @@
 				"lat": 25.13774,
 				"lng": 121.50142,
 				"available_rent_prob_median": 0.91481481481481486,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13847,7 +13847,7 @@
 				"lat": 25.13431,
 				"lng": 121.50226,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13879,7 +13879,7 @@
 				"lat": 25.14319,
 				"lng": 121.49093,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13924,7 +13924,7 @@
 				"lat": 25.13258,
 				"lng": 121.49862,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13956,7 +13956,7 @@
 				"lat": 25.12082,
 				"lng": 121.50727,
 				"available_rent_prob_median": 0.95462962962962961,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -13972,7 +13972,7 @@
 				"lat": 25.13043,
 				"lng": 121.50017,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14004,7 +14004,7 @@
 				"lat": 25.10171,
 				"lng": 121.51263,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14020,7 +14020,7 @@
 				"lat": 25.13201,
 				"lng": 121.49817,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14036,7 +14036,7 @@
 				"lat": 25.10392,
 				"lng": 121.51244,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14052,7 +14052,7 @@
 				"lat": 25.12595,
 				"lng": 121.51098,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14097,7 +14097,7 @@
 				"lat": 25.12307,
 				"lng": 121.49906,
 				"available_rent_prob_median": 0.97037037037037033,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14113,7 +14113,7 @@
 				"lat": 25.11969,
 				"lng": 121.50169,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14129,7 +14129,7 @@
 				"lat": 25.04987,
 				"lng": 121.57785,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14145,7 +14145,7 @@
 				"lat": 25.05009,
 				"lng": 121.57202,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14161,7 +14161,7 @@
 				"lat": 25.05503,
 				"lng": 121.56876,
 				"available_rent_prob_median": 0.90277777777777779,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14172,12 +14172,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U110005",
-				"stop_name": "中崙高中",
+				"stop_name": "中崙低中",
 				"capacity": 50,
 				"lat": 25.04878,
 				"lng": 121.56087,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14222,7 +14222,7 @@
 				"lat": 25.04937,
 				"lng": 121.558,
 				"available_rent_prob_median": 0.95185185185185184,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.558, 25.04937] }
 		},
@@ -14243,7 +14243,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U110010",
-				"stop_name": "西松高中",
+				"stop_name": "西松低中",
 				"capacity": 14,
 				"lat": 25.05492,
 				"lng": 121.56701,
@@ -14264,7 +14264,7 @@
 				"lat": 25.0622,
 				"lng": 121.54565,
 				"available_rent_prob_median": 0.9731481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.54565, 25.0622] }
 		},
@@ -14277,7 +14277,7 @@
 				"lat": 25.06374,
 				"lng": 121.54767,
 				"available_rent_prob_median": 0.91111111111111109,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14293,7 +14293,7 @@
 				"lat": 25.06095,
 				"lng": 121.54731,
 				"available_rent_prob_median": 0.99722222222222223,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14309,7 +14309,7 @@
 				"lat": 25.05804,
 				"lng": 121.54897,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14338,7 +14338,7 @@
 				"lat": 25.0619,
 				"lng": 121.56328,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56328, 25.0619] }
 		},
@@ -14351,7 +14351,7 @@
 				"lat": 25.05907,
 				"lng": 121.56305,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14383,7 +14383,7 @@
 				"lat": 25.04826,
 				"lng": 121.55235,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14399,7 +14399,7 @@
 				"lat": 25.05633,
 				"lng": 121.55286,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14415,7 +14415,7 @@
 				"lat": 25.06118,
 				"lng": 121.55098,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14431,7 +14431,7 @@
 				"lat": 25.062,
 				"lng": 121.56019,
 				"available_rent_prob_median": 0.97592592592592597,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56019, 25.062] }
 		},
@@ -14444,7 +14444,7 @@
 				"lat": 25.05925,
 				"lng": 121.56888,
 				"available_rent_prob_median": 0.99259259259259258,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14460,7 +14460,7 @@
 				"lat": 25.05834,
 				"lng": 121.55496,
 				"available_rent_prob_median": 0.94814814814814818,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14476,7 +14476,7 @@
 				"lat": 25.061286751493899,
 				"lng": 121.56667899245144,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14524,7 +14524,7 @@
 				"lat": 25.05419,
 				"lng": 121.55631,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14540,7 +14540,7 @@
 				"lat": 25.05528,
 				"lng": 121.559,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.559, 25.05528] }
 		},
@@ -14585,7 +14585,7 @@
 				"lat": 25.0484,
 				"lng": 121.56586,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56586, 25.0484] }
 		},
@@ -14598,7 +14598,7 @@
 				"lat": 25.04693,
 				"lng": 121.55771,
 				"available_rent_prob_median": 0.96759259259259256,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14646,7 +14646,7 @@
 				"lat": 25.04769,
 				"lng": 121.5448,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5448, 25.04769] }
 		},
@@ -14659,7 +14659,7 @@
 				"lat": 25.05143,
 				"lng": 121.55716,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14675,7 +14675,7 @@
 				"lat": 25.05846,
 				"lng": 121.55947,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14691,7 +14691,7 @@
 				"lat": 25.05408,
 				"lng": 121.56095,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14707,7 +14707,7 @@
 				"lat": 25.05606,
 				"lng": 121.56345,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14723,7 +14723,7 @@
 				"lat": 25.04763,
 				"lng": 121.56115,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14739,7 +14739,7 @@
 				"lat": 25.04524,
 				"lng": 121.54659,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14771,7 +14771,7 @@
 				"lat": 25.05168,
 				"lng": 121.54506,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14787,7 +14787,7 @@
 				"lat": 25.0648,
 				"lng": 121.56788,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56788, 25.0648] }
 		},
@@ -14800,7 +14800,7 @@
 				"lat": 25.04951,
 				"lng": 121.54941,
 				"available_rent_prob_median": 0.91666666666666663,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14832,7 +14832,7 @@
 				"lat": 25.0536,
 				"lng": 121.54871,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.54871, 25.0536] }
 		},
@@ -14845,7 +14845,7 @@
 				"lat": 25.05147,
 				"lng": 121.57683,
 				"available_rent_prob_median": 0.94814814814814818,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14906,7 +14906,7 @@
 				"lat": 25.06241,
 				"lng": 121.56831,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -14951,7 +14951,7 @@
 				"lat": 25.05378,
 				"lng": 121.55893,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15007,7 +15007,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U110060",
-				"stop_name": "西松高中(健康路325巷)",
+				"stop_name": "西松低中(健康路325巷)",
 				"capacity": 31,
 				"lat": 25.05567,
 				"lng": 121.56713,
@@ -15044,7 +15044,7 @@
 				"lat": 25.04962,
 				"lng": 121.57746,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15060,7 +15060,7 @@
 				"lat": 25.05722,
 				"lng": 121.55706,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15108,7 +15108,7 @@
 				"lat": 25.0615,
 				"lng": 121.56332,
 				"available_rent_prob_median": 0.98055555555555551,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56332, 25.0615] }
 		},
@@ -15121,7 +15121,7 @@
 				"lat": 25.04985,
 				"lng": 121.57189,
 				"available_rent_prob_median": 0.91296296296296298,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15243,7 +15243,7 @@
 				"lat": 25.0444,
 				"lng": 121.55397,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.55397, 25.0444] }
 		},
@@ -15288,7 +15288,7 @@
 				"lat": 25.05139,
 				"lng": 121.57062,
 				"available_rent_prob_median": 0.98518518518518516,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15304,7 +15304,7 @@
 				"lat": 25.06432,
 				"lng": 121.54537,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15320,7 +15320,7 @@
 				"lat": 25.04591,
 				"lng": 121.59226,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15336,7 +15336,7 @@
 				"lat": 25.04128,
 				"lng": 121.59089,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15352,7 +15352,7 @@
 				"lat": 25.05014,
 				"lng": 121.59238,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15368,7 +15368,7 @@
 				"lat": 25.04919,
 				"lng": 121.58832,
 				"available_rent_prob_median": 0.90648148148148144,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15384,7 +15384,7 @@
 				"lat": 25.04437,
 				"lng": 121.58133,
 				"available_rent_prob_median": 0.92592592592592593,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15400,7 +15400,7 @@
 				"lat": 25.04843,
 				"lng": 121.58154,
 				"available_rent_prob_median": 0.925,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15416,7 +15416,7 @@
 				"lat": 25.04608,
 				"lng": 121.58315,
 				"available_rent_prob_median": 0.95925925925925926,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15432,7 +15432,7 @@
 				"lat": 25.04592,
 				"lng": 121.5882,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5882, 25.04592] }
 		},
@@ -15445,7 +15445,7 @@
 				"lat": 25.04281,
 				"lng": 121.58613,
 				"available_rent_prob_median": 0.93981481481481477,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15461,7 +15461,7 @@
 				"lat": 25.04239,
 				"lng": 121.61683,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15477,7 +15477,7 @@
 				"lat": 25.04054,
 				"lng": 121.61374,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15493,7 +15493,7 @@
 				"lat": 25.04763,
 				"lng": 121.61145,
 				"available_rent_prob_median": 0.99722222222222223,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15509,7 +15509,7 @@
 				"lat": 25.05469,
 				"lng": 121.61669,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15525,7 +15525,7 @@
 				"lat": 25.04697,
 				"lng": 121.61375,
 				"available_rent_prob_median": 0.95648148148148149,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15541,7 +15541,7 @@
 				"lat": 25.04499,
 				"lng": 121.61775,
 				"available_rent_prob_median": 0.95740740740740737,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15557,7 +15557,7 @@
 				"lat": 25.04139,
 				"lng": 121.6191,
 				"available_rent_prob_median": 0.93981481481481477,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6191, 25.04139] }
 		},
@@ -15570,7 +15570,7 @@
 				"lat": 25.03564,
 				"lng": 121.61415,
 				"available_rent_prob_median": 0.99814814814814812,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15586,7 +15586,7 @@
 				"lat": 25.054,
 				"lng": 121.61334,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.61334, 25.054] }
 		},
@@ -15599,7 +15599,7 @@
 				"lat": 25.05933,
 				"lng": 121.61677,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15615,7 +15615,7 @@
 				"lat": 25.05668,
 				"lng": 121.61137,
 				"available_rent_prob_median": 0.99537037037037035,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15631,7 +15631,7 @@
 				"lat": 25.05629,
 				"lng": 121.607,
 				"available_rent_prob_median": 0.94444444444444442,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.607, 25.05629] }
 		},
@@ -15644,7 +15644,7 @@
 				"lat": 25.05485,
 				"lng": 121.60866,
 				"available_rent_prob_median": 0.99907407407407411,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15660,7 +15660,7 @@
 				"lat": 25.05716,
 				"lng": 121.59792,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15676,7 +15676,7 @@
 				"lat": 25.05437,
 				"lng": 121.59423,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15692,7 +15692,7 @@
 				"lat": 25.05252,
 				"lng": 121.60922,
 				"available_rent_prob_median": 0.93055555555555558,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15740,7 +15740,7 @@
 				"lat": 25.05507,
 				"lng": 121.6028,
 				"available_rent_prob_median": 0.93888888888888888,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6028, 25.05507] }
 		},
@@ -15753,7 +15753,7 @@
 				"lat": 25.03392,
 				"lng": 121.60985,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15769,7 +15769,7 @@
 				"lat": 25.04681,
 				"lng": 121.61703,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15785,7 +15785,7 @@
 				"lat": 25.04805,
 				"lng": 121.61594,
 				"available_rent_prob_median": 0.91018518518518521,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15801,7 +15801,7 @@
 				"lat": 25.05343,
 				"lng": 121.59945,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15817,7 +15817,7 @@
 				"lat": 25.05766,
 				"lng": 121.60396,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15833,7 +15833,7 @@
 				"lat": 25.05211,
 				"lng": 121.59839,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15881,7 +15881,7 @@
 				"lat": 25.05627,
 				"lng": 121.61369,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15897,7 +15897,7 @@
 				"lat": 25.05831,
 				"lng": 121.61422,
 				"available_rent_prob_median": 0.90092592592592591,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15913,7 +15913,7 @@
 				"lat": 25.03595,
 				"lng": 121.61688,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15929,7 +15929,7 @@
 				"lat": 25.0521,
 				"lng": 121.59053,
 				"available_rent_prob_median": 0.9916666666666667,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.59053, 25.0521] }
 		},
@@ -15937,7 +15937,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U111041",
-				"stop_name": "南港高中(昆陽街)",
+				"stop_name": "南港低中(昆陽街)",
 				"capacity": 14,
 				"lat": 25.05285,
 				"lng": 121.59279,
@@ -15958,7 +15958,7 @@
 				"lat": 25.05234,
 				"lng": 121.58152,
 				"available_rent_prob_median": 0.99259259259259258,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15974,7 +15974,7 @@
 				"lat": 25.05289,
 				"lng": 121.58599,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -15990,7 +15990,7 @@
 				"lat": 25.05168,
 				"lng": 121.58284,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16006,7 +16006,7 @@
 				"lat": 25.05064,
 				"lng": 121.5803,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5803, 25.05064] }
 		},
@@ -16064,7 +16064,7 @@
 				"lat": 25.06148,
 				"lng": 121.61384,
 				"available_rent_prob_median": 0.97592592592592597,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16080,7 +16080,7 @@
 				"lat": 25.05937,
 				"lng": 121.61072,
 				"available_rent_prob_median": 0.92037037037037039,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16096,7 +16096,7 @@
 				"lat": 25.05293,
 				"lng": 121.60549,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16112,7 +16112,7 @@
 				"lat": 25.04014,
 				"lng": 121.61766,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16128,7 +16128,7 @@
 				"lat": 25.06164,
 				"lng": 121.61267,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16144,7 +16144,7 @@
 				"lat": 25.06271,
 				"lng": 121.61597,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16155,7 +16155,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U111055",
-				"stop_name": "育成高中",
+				"stop_name": "育成低中",
 				"capacity": 20,
 				"lat": 25.05853,
 				"lng": 121.60983,
@@ -16176,7 +16176,7 @@
 				"lat": 25.05436,
 				"lng": 121.6181,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6181, 25.05436] }
 		},
@@ -16205,7 +16205,7 @@
 				"lat": 25.03987,
 				"lng": 121.62015,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16221,7 +16221,7 @@
 				"lat": 25.05705,
 				"lng": 121.59265,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16237,7 +16237,7 @@
 				"lat": 25.0582,
 				"lng": 121.59368,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.59368, 25.0582] }
 		},
@@ -16263,7 +16263,7 @@
 				"lat": 25.05535,
 				"lng": 121.61838,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16279,7 +16279,7 @@
 				"lat": 25.04675,
 				"lng": 121.58731,
 				"available_rent_prob_median": 0.95740740740740737,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16295,7 +16295,7 @@
 				"lat": 25.04134,
 				"lng": 121.59323,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16311,7 +16311,7 @@
 				"lat": 25.04969,
 				"lng": 121.58028,
 				"available_rent_prob_median": 0.94814814814814818,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16327,7 +16327,7 @@
 				"lat": 25.0483,
 				"lng": 121.59425,
 				"available_rent_prob_median": 0.97777777777777775,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.59425, 25.0483] }
 		},
@@ -16340,7 +16340,7 @@
 				"lat": 25.05368,
 				"lng": 121.59969,
 				"available_rent_prob_median": 0.98055555555555551,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16372,7 +16372,7 @@
 				"lat": 25.05343,
 				"lng": 121.60633,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16404,7 +16404,7 @@
 				"lat": 25.04998,
 				"lng": 121.58383,
 				"available_rent_prob_median": 0.98518518518518516,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16420,7 +16420,7 @@
 				"lat": 25.03878,
 				"lng": 121.59302,
 				"available_rent_prob_median": 0.96481481481481479,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16452,7 +16452,7 @@
 				"lat": 25.05543,
 				"lng": 121.5892,
 				"available_rent_prob_median": 0.96388888888888891,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5892, 25.05543] }
 		},
@@ -16465,7 +16465,7 @@
 				"lat": 25.04557,
 				"lng": 121.58629,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16497,7 +16497,7 @@
 				"lat": 25.03827,
 				"lng": 121.62274,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16513,7 +16513,7 @@
 				"lat": 25.05394,
 				"lng": 121.59124,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16561,7 +16561,7 @@
 				"lat": 25.04126,
 				"lng": 121.6118,
 				"available_rent_prob_median": 0.95925925925925926,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.6118, 25.04126] }
 		},
@@ -16574,7 +16574,7 @@
 				"lat": 25.05457,
 				"lng": 121.58781,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16590,7 +16590,7 @@
 				"lat": 25.05381,
 				"lng": 121.58638,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16635,7 +16635,7 @@
 				"lat": 25.04728,
 				"lng": 121.58605,
 				"available_rent_prob_median": 0.94074074074074077,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16667,7 +16667,7 @@
 				"lat": 25.058,
 				"lng": 121.62189,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.62189, 25.058] }
 		},
@@ -16680,7 +16680,7 @@
 				"lat": 25.02035,
 				"lng": 121.55769,
 				"available_rent_prob_median": 0.94537037037037042,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16741,7 +16741,7 @@
 				"lat": 25.01545,
 				"lng": 121.56134,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16757,7 +16757,7 @@
 				"lat": 25.02698,
 				"lng": 121.55841,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16773,7 +16773,7 @@
 				"lat": 25.02668,
 				"lng": 121.56175,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16789,7 +16789,7 @@
 				"lat": 25.02868,
 				"lng": 121.55932,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16805,7 +16805,7 @@
 				"lat": 25.03162,
 				"lng": 121.57396,
 				"available_rent_prob_median": 0.9907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16901,7 +16901,7 @@
 				"lat": 25.03471,
 				"lng": 121.57301,
 				"available_rent_prob_median": 0.9731481481481481,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16917,7 +16917,7 @@
 				"lat": 25.0382,
 				"lng": 121.57495,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.57495, 25.0382] }
 		},
@@ -16930,7 +16930,7 @@
 				"lat": 25.02868,
 				"lng": 121.56672,
 				"available_rent_prob_median": 0.95833333333333337,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -16946,7 +16946,7 @@
 				"lat": 25.03189,
 				"lng": 121.56678,
 				"available_rent_prob_median": 0.90462962962962967,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17010,7 +17010,7 @@
 				"lat": 25.03452,
 				"lng": 121.5576,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5576, 25.03452] }
 		},
@@ -17036,7 +17036,7 @@
 				"lat": 25.03961,
 				"lng": 121.57199,
 				"available_rent_prob_median": 0.94907407407407407,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17052,7 +17052,7 @@
 				"lat": 25.03423,
 				"lng": 121.57636,
 				"available_rent_prob_median": 0.96111111111111114,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17068,7 +17068,7 @@
 				"lat": 25.03894,
 				"lng": 121.57915,
 				"available_rent_prob_median": 0.98518518518518516,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17156,12 +17156,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U112032",
-				"stop_name": "市府松高路口",
+				"stop_name": "市府松低路口",
 				"capacity": 54,
 				"lat": 25.03899,
 				"lng": 121.56369,
 				"available_rent_prob_median": 0.92777777777777781,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17222,7 +17222,7 @@
 				"lat": 25.0427,
 				"lng": 121.58112,
 				"available_rent_prob_median": 0.98796296296296293,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.58112, 25.0427] }
 		},
@@ -17251,7 +17251,7 @@
 				"lat": 25.03846,
 				"lng": 121.58618,
 				"available_rent_prob_median": 0.96203703703703702,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17267,7 +17267,7 @@
 				"lat": 25.03841,
 				"lng": 121.58355,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17278,7 +17278,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U112042",
-				"stop_name": "松高路(信義新天地A4館)",
+				"stop_name": "松低路(信義新天地A4館)",
 				"capacity": 17,
 				"lat": 25.03918,
 				"lng": 121.56654,
@@ -17299,7 +17299,7 @@
 				"lat": 25.0401,
 				"lng": 121.56822,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56822, 25.0401] }
 		},
@@ -17312,7 +17312,7 @@
 				"lat": 25.04626,
 				"lng": 121.57045,
 				"available_rent_prob_median": 0.937962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17328,7 +17328,7 @@
 				"lat": 25.02388,
 				"lng": 121.56984,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17389,7 +17389,7 @@
 				"lat": 25.0489,
 				"lng": 121.57841,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.57841, 25.0489] }
 		},
@@ -17418,7 +17418,7 @@
 				"lat": 25.04548,
 				"lng": 121.57207,
 				"available_rent_prob_median": 0.91388888888888886,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17434,7 +17434,7 @@
 				"lat": 25.02969,
 				"lng": 121.55766,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17450,7 +17450,7 @@
 				"lat": 25.04927,
 				"lng": 121.57205,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17461,12 +17461,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U112054",
-				"stop_name": "松山高中",
+				"stop_name": "松山低中",
 				"capacity": 38,
 				"lat": 25.0433,
 				"lng": 121.5638,
 				"available_rent_prob_median": 0.96851851851851856,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5638, 25.0433] }
 		},
@@ -17537,7 +17537,7 @@
 				"lat": 25.04519,
 				"lng": 121.57712,
 				"available_rent_prob_median": 0.91574074074074074,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17553,7 +17553,7 @@
 				"lat": 25.04345,
 				"lng": 121.57539,
 				"available_rent_prob_median": 0.92129629629629628,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17585,7 +17585,7 @@
 				"lat": 25.04623,
 				"lng": 121.57772,
 				"available_rent_prob_median": 0.93518518518518523,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17601,7 +17601,7 @@
 				"lat": 25.0432,
 				"lng": 121.57789,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.57789, 25.0432] }
 		},
@@ -17614,7 +17614,7 @@
 				"lat": 25.03295,
 				"lng": 121.5712,
 				"available_rent_prob_median": 0.96759259259259256,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5712, 25.03295] }
 		},
@@ -17627,7 +17627,7 @@
 				"lat": 25.03657,
 				"lng": 121.57349,
 				"available_rent_prob_median": 0.96018518518518514,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17659,7 +17659,7 @@
 				"lat": 25.0383,
 				"lng": 121.5762,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5762, 25.0383] }
 		},
@@ -17672,7 +17672,7 @@
 				"lat": 25.04185,
 				"lng": 121.57204,
 				"available_rent_prob_median": 0.90277777777777779,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17688,7 +17688,7 @@
 				"lat": 25.04516,
 				"lng": 121.56702,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17704,7 +17704,7 @@
 				"lat": 25.0405,
 				"lng": 121.57538,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.57538, 25.0405] }
 		},
@@ -17717,7 +17717,7 @@
 				"lat": 25.02606,
 				"lng": 121.5631,
 				"available_rent_prob_median": 0.975,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5631, 25.02606] }
 		},
@@ -17730,7 +17730,7 @@
 				"lat": 25.03593,
 				"lng": 121.57906,
 				"available_rent_prob_median": 0.93611111111111112,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17762,7 +17762,7 @@
 				"lat": 25.03693,
 				"lng": 121.57535,
 				"available_rent_prob_median": 0.9287037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17794,7 +17794,7 @@
 				"lat": 25.0327,
 				"lng": 121.56157,
 				"available_rent_prob_median": 0.9194444444444444,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.56157, 25.0327] }
 		},
@@ -17818,7 +17818,7 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U112079",
-				"stop_name": "協和祐德高級中學",
+				"stop_name": "協和祐德低級中學",
 				"capacity": 20,
 				"lat": 25.0426,
 				"lng": 121.58381,
@@ -17852,7 +17852,7 @@
 				"lat": 25.03656,
 				"lng": 121.56866,
 				"available_rent_prob_median": 0.95925925925925926,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17868,7 +17868,7 @@
 				"lat": 25.03404,
 				"lng": 121.56598,
 				"available_rent_prob_median": 0.93240740740740735,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17884,7 +17884,7 @@
 				"lat": 25.03214,
 				"lng": 121.55974,
 				"available_rent_prob_median": 0.90370370370370368,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17913,7 +17913,7 @@
 				"lat": 25.04084,
 				"lng": 121.56789,
 				"available_rent_prob_median": 0.91759259259259263,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -17929,7 +17929,7 @@
 				"lat": 25.04719,
 				"lng": 121.58058,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18019,7 +18019,7 @@
 				"lat": 25.03322,
 				"lng": 121.57433,
 				"available_rent_prob_median": 0.97222222222222221,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18067,7 +18067,7 @@
 				"lat": 25.02605,
 				"lng": 121.5577,
 				"available_rent_prob_median": 0.90555555555555556,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5577, 25.02605] }
 		},
@@ -18080,7 +18080,7 @@
 				"lat": 25.02589,
 				"lng": 121.56073,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18096,7 +18096,7 @@
 				"lat": 25.02186,
 				"lng": 121.55532,
 				"available_rent_prob_median": 0.91481481481481486,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18112,7 +18112,7 @@
 				"lat": 25.02365,
 				"lng": 121.49528,
 				"available_rent_prob_median": 0.93240740740740735,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18141,7 +18141,7 @@
 				"lat": 25.01975,
 				"lng": 121.4973,
 				"available_rent_prob_median": 0.93148148148148147,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4973, 25.01975] }
 		},
@@ -18154,7 +18154,7 @@
 				"lat": 25.02485,
 				"lng": 121.50898,
 				"available_rent_prob_median": 0.95277777777777772,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18170,7 +18170,7 @@
 				"lat": 25.02442,
 				"lng": 121.5107,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5107, 25.02442] }
 		},
@@ -18183,7 +18183,7 @@
 				"lat": 25.02297,
 				"lng": 121.50845,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18194,12 +18194,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U113007",
-				"stop_name": "青年公園高爾夫球場",
+				"stop_name": "青年公園低爾夫球場",
 				"capacity": 16,
 				"lat": 25.02481,
 				"lng": 121.50755,
 				"available_rent_prob_median": 0.98333333333333328,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18215,7 +18215,7 @@
 				"lat": 25.02594,
 				"lng": 121.50651,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18231,7 +18231,7 @@
 				"lat": 25.0241,
 				"lng": 121.50289,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.50289, 25.0241] }
 		},
@@ -18244,7 +18244,7 @@
 				"lat": 25.02085,
 				"lng": 121.50539,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18260,7 +18260,7 @@
 				"lat": 25.02964,
 				"lng": 121.50258,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18276,7 +18276,7 @@
 				"lat": 25.02582,
 				"lng": 121.50255,
 				"available_rent_prob_median": 0.93425925925925923,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18292,7 +18292,7 @@
 				"lat": 25.03124,
 				"lng": 121.50122,
 				"available_rent_prob_median": 0.97870370370370374,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18308,7 +18308,7 @@
 				"lat": 25.03116,
 				"lng": 121.50336,
 				"available_rent_prob_median": 0.91388888888888886,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18337,7 +18337,7 @@
 				"lat": 25.02257,
 				"lng": 121.49807,
 				"available_rent_prob_median": 0.99537037037037035,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18353,7 +18353,7 @@
 				"lat": 25.01688,
 				"lng": 121.49534,
 				"available_rent_prob_median": 0.98148148148148151,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18369,7 +18369,7 @@
 				"lat": 25.02332,
 				"lng": 121.49264,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18385,7 +18385,7 @@
 				"lat": 25.02516,
 				"lng": 121.49604,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18396,12 +18396,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U113022",
-				"stop_name": "華江高中",
+				"stop_name": "華江低中",
 				"capacity": 50,
 				"lat": 25.02744,
 				"lng": 121.49619,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18417,7 +18417,7 @@
 				"lat": 25.03267,
 				"lng": 121.49757,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18433,7 +18433,7 @@
 				"lat": 25.02673,
 				"lng": 121.49176,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18449,7 +18449,7 @@
 				"lat": 25.03284,
 				"lng": 121.48908,
 				"available_rent_prob_median": 0.00092592592592588563,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18465,7 +18465,7 @@
 				"lat": 25.03397,
 				"lng": 121.49029,
 				"available_rent_prob_median": 0.97962962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18481,7 +18481,7 @@
 				"lat": 25.03388,
 				"lng": 121.49293,
 				"available_rent_prob_median": 0.937037037037037,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18497,7 +18497,7 @@
 				"lat": 25.03203,
 				"lng": 121.49127,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18508,12 +18508,12 @@
 			"type": "Feature",
 			"properties": {
 				"stop_id": "U113030",
-				"stop_name": "大理高中",
+				"stop_name": "大理低中",
 				"capacity": 37,
 				"lat": 25.03062,
 				"lng": 121.49021,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18529,7 +18529,7 @@
 				"lat": 25.03383,
 				"lng": 121.4946,
 				"available_rent_prob_median": 0.91481481481481486,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4946, 25.03383] }
 		},
@@ -18542,7 +18542,7 @@
 				"lat": 25.03211,
 				"lng": 121.49502,
 				"available_rent_prob_median": 0.96574074074074079,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18558,7 +18558,7 @@
 				"lat": 25.02021,
 				"lng": 121.50376,
 				"available_rent_prob_median": 0.98888888888888893,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18574,7 +18574,7 @@
 				"lat": 25.04662,
 				"lng": 121.50717,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18590,7 +18590,7 @@
 				"lat": 25.04441,
 				"lng": 121.50541,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18606,7 +18606,7 @@
 				"lat": 25.0417,
 				"lng": 121.49992,
 				"available_rent_prob_median": 0.94166666666666665,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.49992, 25.0417] }
 		},
@@ -18619,7 +18619,7 @@
 				"lat": 25.04367,
 				"lng": 121.50218,
 				"available_rent_prob_median": 0.94351851851851853,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18635,7 +18635,7 @@
 				"lat": 25.04099,
 				"lng": 121.50769,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18651,7 +18651,7 @@
 				"lat": 25.03771,
 				"lng": 121.50662,
 				"available_rent_prob_median": 0.95092592592592595,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18667,7 +18667,7 @@
 				"lat": 25.03535,
 				"lng": 121.49938,
 				"available_rent_prob_median": 0.91203703703703698,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18683,7 +18683,7 @@
 				"lat": 25.0355,
 				"lng": 121.49541,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.49541, 25.0355] }
 		},
@@ -18696,7 +18696,7 @@
 				"lat": 25.03852,
 				"lng": 121.49881,
 				"available_rent_prob_median": 0.97129629629629632,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18712,7 +18712,7 @@
 				"lat": 25.03792,
 				"lng": 121.50177,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18728,7 +18728,7 @@
 				"lat": 25.03364,
 				"lng": 121.50322,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18760,7 +18760,7 @@
 				"lat": 25.03509,
 				"lng": 121.50199,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18776,7 +18776,7 @@
 				"lat": 25.04445,
 				"lng": 121.50306,
 				"available_rent_prob_median": 0.9018518518518519,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18792,7 +18792,7 @@
 				"lat": 25.04551,
 				"lng": 121.50318,
 				"available_rent_prob_median": 0.92685185185185182,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18808,7 +18808,7 @@
 				"lat": 25.04345,
 				"lng": 121.50841,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18824,7 +18824,7 @@
 				"lat": 25.0403,
 				"lng": 121.50197,
 				"available_rent_prob_median": 0.90277777777777779,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.50197, 25.0403] }
 		},
@@ -18837,7 +18837,7 @@
 				"lat": 25.02376,
 				"lng": 121.49986,
 				"available_rent_prob_median": 0.98888888888888893,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18853,7 +18853,7 @@
 				"lat": 25.02533,
 				"lng": 121.4996,
 				"available_rent_prob_median": 0.94259259259259265,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.4996, 25.02533] }
 		},
@@ -18866,7 +18866,7 @@
 				"lat": 25.03517,
 				"lng": 121.49048,
 				"available_rent_prob_median": 0.95370370370370372,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18882,7 +18882,7 @@
 				"lat": 25.03119,
 				"lng": 121.48858,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18898,7 +18898,7 @@
 				"lat": 25.0271,
 				"lng": 121.49775,
 				"available_rent_prob_median": 0.99629629629629635,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.49775, 25.0271] }
 		},
@@ -18911,7 +18911,7 @@
 				"lat": 25.03606,
 				"lng": 121.49163,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18959,7 +18959,7 @@
 				"lat": 25.03035,
 				"lng": 121.49228,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18975,7 +18975,7 @@
 				"lat": 25.01796,
 				"lng": 121.49988,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -18991,7 +18991,7 @@
 				"lat": 25.0286,
 				"lng": 121.48908,
 				"available_rent_prob_median": 0.97592592592592597,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.48908, 25.0286] }
 		},
@@ -19004,7 +19004,7 @@
 				"lat": 25.03646,
 				"lng": 121.50492,
 				"available_rent_prob_median": 0.93518518518518523,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19020,7 +19020,7 @@
 				"lat": 25.04776,
 				"lng": 121.50612,
 				"available_rent_prob_median": 0.97685185185185186,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19036,7 +19036,7 @@
 				"lat": 25.03811,
 				"lng": 121.50362,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19052,7 +19052,7 @@
 				"lat": 25.02926,
 				"lng": 121.49936,
 				"available_rent_prob_median": 0.98703703703703705,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19068,7 +19068,7 @@
 				"lat": 25.02273,
 				"lng": 121.50271,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19084,7 +19084,7 @@
 				"lat": 25.03548,
 				"lng": 121.50026,
 				"available_rent_prob_median": 0.96481481481481479,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19100,7 +19100,7 @@
 				"lat": 25.0317,
 				"lng": 121.50033,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.50033, 25.0317] }
 		},
@@ -19113,7 +19113,7 @@
 				"lat": 25.0287,
 				"lng": 121.49156,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.49156, 25.0287] }
 		},
@@ -19139,7 +19139,7 @@
 				"lat": 25.02768,
 				"lng": 121.49134,
 				"available_rent_prob_median": 0.93240740740740735,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19155,7 +19155,7 @@
 				"lat": 25.01979,
 				"lng": 121.5009,
 				"available_rent_prob_median": 0.95,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5009, 25.01979] }
 		},
@@ -19168,7 +19168,7 @@
 				"lat": 25.01493,
 				"lng": 121.53044,
 				"available_rent_prob_median": 0.92962962962962958,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19184,7 +19184,7 @@
 				"lat": 25.01466,
 				"lng": 121.52917,
 				"available_rent_prob_median": 0.97407407407407409,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19232,7 +19232,7 @@
 				"lat": 25.01525,
 				"lng": 121.53009,
 				"available_rent_prob_median": 0.9462962962962963,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19280,7 +19280,7 @@
 				"lat": 25.01839,
 				"lng": 121.53404,
 				"available_rent_prob_median": 0.90925925925925921,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19344,7 +19344,7 @@
 				"lat": 25.01937,
 				"lng": 121.53902,
 				"available_rent_prob_median": 0.90370370370370368,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19360,7 +19360,7 @@
 				"lat": 25.01846,
 				"lng": 121.5376,
 				"available_rent_prob_median": 0.92314814814814816,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.5376, 25.01846] }
 		},
@@ -19495,7 +19495,7 @@
 				"lat": 25.01595,
 				"lng": 121.53791,
 				"available_rent_prob_median": 0.47777777777777775,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19511,7 +19511,7 @@
 				"lat": 25.01566,
 				"lng": 121.53786,
 				"available_rent_prob_median": 0.45925925925925926,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19591,7 +19591,7 @@
 				"lat": 25.01699,
 				"lng": 121.53574,
 				"available_rent_prob_median": 0.45277777777777772,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19639,7 +19639,7 @@
 				"lat": 25.01987,
 				"lng": 121.54175,
 				"available_rent_prob_median": 0.90740740740740744,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19767,7 +19767,7 @@
 				"lat": 25.0189,
 				"lng": 121.536,
 				"available_rent_prob_median": 1.0,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": { "type": "Point", "coordinates": [121.536, 25.0189] }
 		},
@@ -19812,7 +19812,7 @@
 				"lat": 25.01539,
 				"lng": 121.53686,
 				"available_rent_prob_median": 0.33333333333333337,
-				"category": "低"
+				"category": "高"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19844,7 +19844,7 @@
 				"lat": 25.01703,
 				"lng": 121.53781,
 				"available_rent_prob_median": 0.43425925925925923,
-				"category": "低"
+				"category": "tmp 低"
 			},
 			"geometry": {
 				"type": "Point",
@@ -19963,7 +19963,7 @@
 				"lat": 25.02112,
 				"lng": 121.53591,
 				"available_rent_prob_median": 0.92592592592592593,
-				"category": "高"
+				"category": "低"
 			},
 			"geometry": {
 				"type": "Point",
