@@ -184,7 +184,6 @@ export const useMapStore = defineStore("map", {
 			} else {
 				this.addMapLayer(map_config);
 			}
-			
 		},
 		// 4-1. Using the mapbox source and map config, create a new layer
 		// The styles and configs can be edited in /assets/configs/mapbox/mapConfig.js
@@ -237,10 +236,15 @@ export const useMapStore = defineStore("map", {
 			this.loadingLayers = this.loadingLayers.filter(
 				(el) => el !== map_config.layerId
 			);
-			console.log('id', map_config.layerId)
-			if(['tp_flood_2-fill', 'tp_flood_3-fill', 'tp_flood_4-fill'].includes(map_config.layerId)) {
+			if (
+				[
+					"tp_flood_2-fill",
+					"tp_flood_3-fill",
+					"tp_flood_4-fill",
+				].includes(map_config.layerId)
+			) {
 				// this.turnOffMapLayerVisibility([map_config])
-				const mapLayerId = map_config.layerId
+				const mapLayerId = map_config.layerId;
 				if (this.map.getLayer(mapLayerId)) {
 					this.map.setFilter(mapLayerId, null);
 					this.map.setLayoutProperty(
@@ -250,7 +254,6 @@ export const useMapStore = defineStore("map", {
 					);
 				}
 			} else {
-				console.log('push!', map_config.layerId)
 				this.currentVisibleLayers.push(map_config.layerId);
 			}
 		},
@@ -353,7 +356,7 @@ export const useMapStore = defineStore("map", {
 		// 6. Turn off the visibility of an exisiting map layer but don't remove it completely
 		turnOffMapLayerVisibility(map_config) {
 			map_config.forEach((element) => {
-				if(!element) return
+				if (!element) return;
 				let mapLayerId = `${element.index}-${element.type}`;
 				this.loadingLayers = this.loadingLayers.filter(
 					(el) => el !== mapLayerId
@@ -373,7 +376,6 @@ export const useMapStore = defineStore("map", {
 			});
 
 			this.removePopup();
-			
 		},
 
 		/* Popup Related Functions */

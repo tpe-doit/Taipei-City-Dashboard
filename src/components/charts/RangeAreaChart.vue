@@ -65,9 +65,6 @@ const chartOptions = ref({
 		axisTicks: {
 			show: false,
 		},
-		labels: {
-			show: false,
-		},
 		type: "category",
 		labels: {
 			style: {
@@ -126,7 +123,7 @@ const processedSeries = computed(() => {
 	};
 
 	const calculateMedian = (sortedData) => {
-		const length = sortedData.length;
+		const { length } = sortedData;
 		if (length % 2 === 0) {
 			return (sortedData[length / 2 - 1] + sortedData[length / 2]) / 2;
 		} else {
