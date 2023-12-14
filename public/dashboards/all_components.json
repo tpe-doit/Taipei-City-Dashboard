@@ -3974,6 +3974,99 @@
 			],
 			"contributors": ["tuic"]
 		},
+		"152": {
+			"id": 152,
+			"index": "residential_safety",
+			"map_config": [
+				{
+					"index": "taipei_building_3d",
+					"type": "render",
+					"paint": [
+						"taipei_building_3d-render",
+						"fill-extrusion-color",
+						[
+							"match",
+							[
+								"get",
+								"都更機會"
+							],
+							"高液化且大於20年",
+							"#A25FAD",
+							"大於30年",
+							"#E06666",
+							"已在都更範圍",
+							"#F49F36",
+							"沒有",
+							"#7D7D7D",
+							"#7D7D7D"
+						]
+					],
+					"no-paint": [
+						"taipei_building_3d-render",
+						"fill-extrusion-color",
+						[
+							"interpolate",
+							[
+								"linear"
+							],
+							[
+								"zoom"
+							],
+							14.4,
+							"#121212",
+							14.5,
+							"#272727"
+						]
+					]
+				}
+			],
+			"map_filter": {
+				"mode": "byParam",
+				"byParam": {
+					"xParam": "TOWN_NAME",
+					"yParam": "都更機會"
+				}
+			},
+			"chart_config": {
+				"color": [
+					"#A25FAD",
+					"#E06666",
+					"#F49F36",
+					"#7D7D7D"
+				],
+				"types": [
+					"ColumnChart",
+					"BarPercentChart"
+				],
+				"unit": "",
+				"categories": [
+					"北投區",
+					"士林區",
+					"內湖區",
+					"南港區",
+					"松山區",
+					"信義區",
+					"中山區",
+					"大同區",
+					"中正區",
+					"萬華區",
+					"大安區",
+					"文山區"
+				]
+			},
+			"name": "居住安全性",
+			"source": "",
+			"time_from": "",
+			"time_to": "",
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"tags": [],
+			"links": [],
+			"contributors": [
+				"Wee Win"
+			]
+		},
 		"161": {
 			"id": 161,
 			"index": "waterworks",
