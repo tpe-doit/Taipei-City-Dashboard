@@ -53,10 +53,12 @@ func StartApplication() {
 	cache.CloseConnect()
 }
 
-func MigrateManagerSchema() {
+func MigrateManagerSchema(isForcedDBInit bool) {
 	models.ConnectToDatabases("MANAGER")
-	models.MigrateManagerSchema()
-	initial.InitDashboardManager()
+	isMigrateSuccess := models.MigrateManagerSchema(isForcedDBInit)
+	if isMigrateSuccess {
+		initial.InitDashboardManager()
+	}
 	models.CloseConnects("MANAGER")
 }
 

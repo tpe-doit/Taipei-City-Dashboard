@@ -2,6 +2,7 @@
 package cmd
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -29,8 +30,10 @@ var migrateDBCmd = &cobra.Command{
 	Short: "create or update DB Schema",
 	Long:  "Use models paclage to Create or Update manager DB table Schema.",
 	Run: func(cmd *cobra.Command, args []string) {
+		isForcedDBInit := flag.Bool("f", false, "-f, delete the existing tables in manager db")
+		flag.Parse()
 		logs.Info("Start the process of migrate manager database schema.")
-		app.MigrateManagerSchema()
+		app.MigrateManagerSchema(*isForcedDBInit)
 	},
 }
 

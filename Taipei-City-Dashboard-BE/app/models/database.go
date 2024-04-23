@@ -64,7 +64,7 @@ func ConnectToDatabase(dbConfig global.DatabaseConfig) *gorm.DB {
 	dbConn, err := gorm.Open(postgres.Open(dbargs), &gorm.Config{})
 	if err != nil {
 		// Log an error and panic if there is an issue connecting to the database
-		logs.FError("Error connecting to %s database", dbConfig.Host)
+		logs.FError("Error connecting to %s database: %v", dbConfig.Host, err)
 		panic("Connecting to database error")
 	}
 
@@ -109,21 +109,41 @@ func CloseConnect(dbName string, DB *gorm.DB) {
 	}
 }
 
-func MigrateManagerSchema() {
+// return true if migration success, otherwise false
+func MigrateManagerSchema(isForcedDBInit bool) bool {
 	// Retrieve the underlying SQL database connection.
-	if DBManager != nil {
-		DBManager.AutoMigrate(&AuthUser{}, &Role{}, &Group{})
-		DBManager.AutoMigrate(&AuthUserGroupRole{})
-		DBManager.AutoMigrate(&Component{}, &ComponentChart{}, &ComponentMap{})
-		DBManager.AutoMigrate(&Contributor{})
-		DBManager.AutoMigrate(&Dashboard{}, &DashboardGroup{}, &Issue{})
-
-		// All users beneath the public group do not need to be added to the public group
-		// DBManager.Exec("ALTER TABLE auth_user_group_roles ADD CONSTRAINT check_group_id CHECK (group_id > 1);")
-		// DBManager.Exec("ALTER TABLE isso_user_groups ADD CONSTRAINT check_group_id CHECK (group_id > 1);")
-	} else {
+	if DBManager == nil {
 		panic("failed to get Manager database connection")
 	}
+	var tablesToCheck = []interface{}{
+		&AuthUser{}, &Role{}, &Group{},
+		&AuthUserGroupRole{},
+		&Component{}, &ComponentChart{}, &ComponentMap{},
+		&Contributor{},
+		&Dashboard{}, &DashboardGroup{}, &Issue{},
+	}
+	var anyTableExists = false
+	DBManagerMigrator := DBManager.Migrator()
+	for _, table := range tablesToCheck {
+		tableExists := DBManagerMigrator.HasTable(table)
+		if isForcedDBInit && tableExists {
+			logs.FWarn("Forced manager migration: Deleted existing table %T", table)
+			DBManagerMigrator.DropTable(table)
+		} else {
+			anyTableExists = anyTableExists || tableExists
+		}
+	}
+	if isForcedDBInit || !anyTableExists {
+		err := DBManager.AutoMigrate(tablesToCheck...)
+		if err != nil {
+			logs.FError("Error migrating sample tables: %v", err)
+			panic("Error migrating table")
+		}
+	} else {
+		logs.Warn("Migration terminated: Some tables in Manager database already exists.\n")
+		return false
+	}
+	return true
 }
 
 // ExecuteSQLFile executes SQL statements from a given file.
