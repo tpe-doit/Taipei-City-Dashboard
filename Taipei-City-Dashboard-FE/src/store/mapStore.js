@@ -13,6 +13,7 @@ import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
 import { Threebox } from "threebox-plugin";
+import { featureCollection, voronoi, point, isolines, interpolate } from "@turf/turf"
 
 // Other Stores
 import { useAuthStore } from "./authStore";
@@ -35,7 +36,7 @@ import {
 } from "../assets/configs/mapbox/mapConfig.js";
 import { savedLocations } from "../assets/configs/mapbox/savedLocations.js";
 import { calculateGradientSteps } from "../assets/configs/mapbox/arcGradient";
-import { voronoi } from "../assets/utilityFunctions/voronoi.js";
+// import { voronoi } from "../assets/utilityFunctions/voronoi.js";
 import { interpolation } from "../assets/utilityFunctions/interpolation.js";
 import { marchingSquare } from "../assets/utilityFunctions/marchingSquare.js";
 
@@ -443,16 +444,31 @@ export const useMapStore = defineStore("map", {
 			features = features.filter((_, ind) => !shouldBeRemoved[ind]);
 			coords = coords.filter((_, ind) => !shouldBeRemoved[ind]);
 
+			// make turf points
+			let pointCollection = featureCollection(
+				coords.map(
+					(coord) => point(coord)
+				)
+			);
+
+			// square bbox
+			let lngStart = 121.42955;
+			let lngEnd = 121.68351;
+			let latStart = 24.94679;
+			let latEnd = 25.21811;
+			let bbox = [lngStart,latStart,lngEnd,latEnd];
+
 			// Calculate cell for each coordinate
-			let cells = voronoi(coords);
+			let cells = voronoi(pointCollection, {"bbox": bbox});
 
 			// Push cell outlines to source data
-			for (let i = 0; i < cells.length; i++) {
+			for (let i = 0; i < cells.features.length; i++) {
+				console.log(cells.features[i]);
 				voronoi_source.features.push({
 					...features[i],
 					geometry: {
 						type: "LineString",
-						coordinates: cells[i],
+						coordinates: cells.features[i].geometry.coordinates[0]
 					},
 				});
 			}
@@ -473,13 +489,12 @@ export const useMapStore = defineStore("map", {
 			this.loadingLayers.push("rendering");
 			// Step 1: Generate a 2D scalar field from known data points
 			// - Turn the original data into the format that can be accepted by interpolation()
+			let propertyName = map_config.paint?.["isoline-key"] || "value";
 			let dataPoints = data.features.map((item) => {
 				return {
 					x: item.geometry.coordinates[0],
 					y: item.geometry.coordinates[1],
-					value: item.properties[
-						map_config.paint?.["isoline-key"] || "value"
-					],
+					value: item.properties[propertyName],
 				};
 			});
 
@@ -505,49 +520,19 @@ export const useMapStore = defineStore("map", {
 			let interpolationResult = interpolation(dataPoints, targetPoints);
 
 			// Step 2: Calculate isolines from the 2D scalar field
-			// - Turn the interpolation result into the format that can be accepted by marchingSquare()
-			let discreteData = [];
-			for (let y = 0; y < rowN; y++) {
-				discreteData.push([]);
-				for (let x = 0; x < colN; x++) {
-					discreteData[y].push(interpolationResult[y * colN + x]);
-				}
+			// - Turn the interpolation result into the point collection
+			let interpolatedPoints = [];
+			for (let n = 0; n < interpolationResult.length; n++) {
+				interpolatedPoints.push(point(
+					[lngStart + n % colN * gridSize, latStart + Math.floor(n / colN) * gridSize],
+					{"value": interpolationResult[n]}
+				));
 			}
-
-			// - Initialize geojson data
-			let isoline_data = {
-				type: "FeatureCollection",
-				crs: {
-					type: "name",
-					properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
-				},
-				features: [],
-			};
-
-			// - Repeat the marching square algorithm for differnt iso-values (40, 42, 44 ... 74 in this case)
-			for (let isoValue = 40; isoValue <= 75; isoValue += 2) {
-				let result = marchingSquare(discreteData, isoValue);
-
-				let transformedResult = result.map((line) => {
-					return line.map((point) => {
-						return [
-							point[0] * gridSize + lngStart,
-							point[1] * gridSize + latStart,
-						];
-					});
-				});
-
-				isoline_data.features = isoline_data.features.concat(
-					// Turn result into geojson format
-					transformedResult.map((line) => {
-						return {
-							type: "Feature",
-							properties: { value: isoValue },
-							geometry: { type: "LineString", coordinates: line },
-						};
-					})
-				);
-			}
+			let interpolatedPointCollection = featureCollection(interpolatedPoints);
+			// [0 1 ... 17] ==> [40, 42, 44 ... 74]
+			let breaks = [...Array((74 - 40) / 2 + 1).keys()].map(v => (v * 2 + 40));
+			let isoline_data = isolines(interpolatedPointCollection, breaks, {zProperty: "value"});
+			console.log(isoline_data)
 
 			// Step 3: Add source and layer
 			this.map.addSource(`${map_config.layerId}-source`, {
