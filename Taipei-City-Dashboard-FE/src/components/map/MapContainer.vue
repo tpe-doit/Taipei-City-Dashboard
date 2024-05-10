@@ -1,10 +1,11 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023-2024-->
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useMapStore } from "../../store/mapStore";
 import { useDialogStore } from "../../store/dialogStore";
 import { useContentStore } from "../../store/contentStore";
+import { storeToRefs } from "pinia";
 
 import MobileLayers from "../dialogs/MobileLayers.vue";
 
@@ -14,6 +15,8 @@ const contentStore = useContentStore();
 
 const districtLayer = ref(false);
 const villageLayer = ref(false);
+const latitude = ref(0);
+const longitude = ref(0);
 
 // const newSavedLocation = ref("");
 
@@ -33,7 +36,13 @@ function toggleVillageLayer() {
 }
 
 onMounted(() => {
-	mapStore.initializeMapBox();
+	const geoLocate = mapStore.initializeMapBox();
+	geoLocate.on("geolocate", function (position) {
+		latitude.value = position.coords.latitude;
+		longitude.value = position.coords.longitude;
+		console.log(latitude.value);
+		console.log(longitude.value);
+	});
 });
 </script>
 
