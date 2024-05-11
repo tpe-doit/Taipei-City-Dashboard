@@ -321,6 +321,20 @@ export const maplayerCommonLayout = {
 			0.9,
 		],
 	},
+	"symbol-ambulance": {
+		"icon-image": "ambulance",
+		"icon-size": [
+			"interpolate",
+			["linear"],
+			["zoom"],
+			11.99,
+			0.7,
+			14,
+			1.1,
+			22,
+			1.4,
+		],
+	},
 	"symbol-triangle_green": {
 		"icon-image": "triangle_green",
 	},
