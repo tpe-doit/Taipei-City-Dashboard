@@ -92,7 +92,7 @@ func GetWeightScore(x float64, y float64, filename string,
 	a := 0.5  // 指數增長速率
     for distance := range distances {
 		if (distance < calcRange) {
-			distanceScore := math.Exp(-a * weight)
+			distanceScore := weight * math.Exp(-a * distance)
 			result += distanceScore;
 		}
     }
@@ -115,7 +115,10 @@ func GetLiveSafeScore(c *gin.Context) {
 		c.JSON(400, gin.H{"error": err})
 		return
 	}
-	result := GetWeightScore(x, y, "traffic_accident_location_view.geojson", 0.00026, 5)
-    // 返回 JSON
+	result := GetWeightScore(x, y, "traffic_accident_location_view.geojson", 0.00084, 5)
+    if (result > 100) {
+		result = 100
+	}
+	// 返回 JSON
     c.JSON(200, gin.H{"score": result})
 }
