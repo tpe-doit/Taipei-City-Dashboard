@@ -7,6 +7,7 @@ import { useDialogStore } from "../../store/dialogStore";
 import { useContentStore } from "../../store/contentStore";
 
 import MobileLayers from "../dialogs/MobileLayers.vue";
+import SecurityIndicator from "../utilities/miscellaneous/SecurityIndicator.vue";
 
 const mapStore = useMapStore();
 const dialogStore = useDialogStore();
@@ -39,6 +40,8 @@ onMounted(() => {
 
 <template>
 	<div class="mapcontainer">
+		<SecurityIndicator :value="mapStore.securityScore" />
+
 		<div class="mapcontainer-map">
 			<!-- #mapboxBox needs to be empty to ensure Mapbox performance -->
 			<div id="mapboxBox" />
