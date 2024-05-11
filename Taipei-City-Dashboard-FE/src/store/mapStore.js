@@ -229,6 +229,7 @@ export const useMapStore = defineStore("map", {
 			axios
 				.get(`/mapData/${map_config.index}.geojson`)
 				.then((rs) => {
+					console.log("rs ->", rs);
 					this.addGeojsonSource(map_config, rs.data);
 				})
 				.catch((e) => console.error(e));
