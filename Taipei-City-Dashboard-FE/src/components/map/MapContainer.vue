@@ -44,6 +44,9 @@ onMounted(() => {
 		console.log(longitude.value);
 	});
 });
+
+const showTooltip = ref(false);
+
 </script>
 
 <template>
@@ -89,24 +92,22 @@ onMounted(() => {
 			</div>
 			<!-- The key prop informs vue that the component should be updated when switching dashboards -->
 			<MobileLayers :key="contentStore.currentDashboard.index" />
-			<!-- <button
+			<button
 				class="input"
-				@click="toggleVillageLayer"
+				@click="dialogStore.showDialog('incidentReport')"
 				:style="{
 					// color: villageLayer
 					// 	? 'var(--color-highlight)'
 					// 	: 'var(--color-component-background)'
 				}"
+				title="通報災害"
+				@mouseover="showTooltip = true"
+				@mouseleave="showTooltip = false"
 			>
-			<span class="material-symbols-outlined">emergency_home</span>
-				區
-			</button> -->
-				<button
-					class="show-if-mobile input"
-					@click="dialogStore.showDialog('mobileLayers')"
-				>
-					<span>layers</span>
-				</button>
+				<span class="material-symbols-outlined icon">e911_emergency</span>
+				<span v-if="showTooltip" class="tooltip">通報災害</span>
+				<!-- ! -->
+			</button>
 		</div>
 
 		<div class="mapcontainer-controls hide-if-mobile">
@@ -153,11 +154,11 @@ onMounted(() => {
 .input {
 	position: absolute;
     right: 20px;
-    bottom: 40px;
+    bottom: 60px;
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    // background-color: var(--color-component-background);
+    background-color: var(--color-component-background);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,6 +166,36 @@ onMounted(() => {
     &:hover {
         background-color: var(--color-highlight);
     }
+	.icon {
+		color: white;
+		font-size: xxlarge;
+		font-family: var(--font-icon);
+	}
+
+	.tooltip {
+		position: absolute;
+		background-color: black;
+		border-radius: 20px;
+		border-width: 0px;
+		color: white;
+		text-align: center;
+		padding: 5px 10px;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+	}
+
+	.tooltip::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-color: black transparent transparent transparent;
+	}
+
 }
 .mapcontainer {
 	position: relative;
