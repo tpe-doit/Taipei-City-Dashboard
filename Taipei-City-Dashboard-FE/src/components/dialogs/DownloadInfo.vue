@@ -125,6 +125,7 @@ export default {
 			let fileName = '';
 			if (eventType === 'earthquake') {
 				fileURL = 'https://www.eoc.gov.taipei/PropagandaManual/Earthquake/mobile/download/%E3%80%8C%E8%87%BA%E5%8C%97%E9%98%B2%E7%81%BD%E7%AB%8B%E5%8D%B3go%E3%80%8D%E9%98%B2%E7%81%BD%E6%89%8B%E5%86%8A_%E5%9C%B0%E9%9C%87.pdf';
+				// fileURL = '../../assets/infoFiles/「臺北防災立即go」防災手冊_地震.pdf';
 				fileName = '台北防災手冊_地震.pdf';
 			}
 			else if (eventType === 'fire') {
