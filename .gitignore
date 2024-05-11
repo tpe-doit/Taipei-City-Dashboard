@@ -59,9 +59,13 @@ Taipei-City-Dashboard-FE/.env.test
 docker/db-data
 # nginx ssl
 docker/nginx/ssl
-venv/
 
+requirements.txt
+venv
 data/
 code/
 
-requirements.txt
+#config
+mapbox-config.js
+settings.json
+.env.template
