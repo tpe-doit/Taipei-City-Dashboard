@@ -35,6 +35,23 @@ func haversine(lat1, lon1, lat2, lon2 float64) float64 {
 	distance := earthRadius * c
 	return distance
 }
+
+// Point 代表一個經緯度的點
+type Point struct {
+	Latitude, Longitude float64
+}
+
+// DistanceToPolygon 計算一個點到一個多邊形的最短距離
+func DistanceToPolygon(point Point, polygon []Point) float64 {
+	minDistance := math.Inf(1)
+	for i := 0; i < len(polygon); i++ {
+		target := polygon[i]
+		distance := haversine(point.Latitude, point.Longitude, target.Latitude, target.Longitude)
+		minDistance = math.Min(minDistance, distance)
+	}
+	return minDistance
+}
+
 /**
 	x: x value for coordinates
 	y: y value for coordinates
@@ -70,15 +87,15 @@ func GetWeightScore(x float64, y float64, filename string,
 		distance := haversine(x, y, coords[0], coords[1])
         distances[distance] = coords
     }
-
     // 轉換距離和座標的 map 為 JSON 可接受的格式
     var result = 0.0;
+	a := 0.5  // 指數增長速率
     for distance := range distances {
 		if (distance < calcRange) {
-			result += weight;
+			distanceScore := math.Exp(-a * weight)
+			result += distanceScore;
 		}
     }
-
 	return result;
 }
 
