@@ -16,7 +16,7 @@ const location = ref(null);
 const errorMessage = ref(null);
 const incidentType = ref("");
 const incidentDesc = ref("");
-const incidentPlace = ref("");
+const incidentDis = ref("");
 
 const { editUser } = storeToRefs(authStore);
 
@@ -29,11 +29,11 @@ const typeOptions = [
 	// Add more options as needed
 ];
 
-const placeOptions = [
-	{ label: "500公尺內", value: "0.5" },
-	{ label: "500公尺~2公里", value: "2" },
-	{ label: "2公里~5公里", value: "5" },
-	{ label: "大於5公里", value: "10" },
+const disOptions = [
+	{ label: "500公尺內", value: 0.5 },
+	{ label: "500公尺~2公里", value: 2 },
+	{ label: "2公里~5公里", value: 5 },
+	{ label: "大於5公里", value: 10 },
 	// Add more options as needed
 ];
 
@@ -62,17 +62,27 @@ const getCurrentLocation = () => {
 
 async function handleSubmit() {
 	let payload = {
-		type: incidentType,
-		description: incidentDesc,
-		place: incidentPlace,
-		location: location,
-		reportTime: new Date(),
+		inctype: incidentType.value,
+		description: incidentDesc.value,
+		distance: incidentDis.value,
+		latitude: location.value.latitude,
+		longitude: location.value.longitude,
+		reportTime: new Date().getTime(),
 	};
-	const response = await http.post("/incident", payload);
+	if (
+		incidentType.value == "" ||
+		incidentDesc.value == "" ||
+		incidentDis.value == ""
+	) {
+		dialogStore.showNotification("fail", "Some properties are empty");
+		return;
+	}
+	console.log(payload);
+	const response = await http.post("/incident/", payload);
 	console.log(response);
 	incidentType.value = "";
 	incidentDesc.value = "";
-	incidentPlace.value = "";
+	incidentDis.value = "";
 	dialogStore.showNotification("success", "OK!!!");
 	dialogStore.hideAllDialogs();
 }
@@ -103,9 +113,9 @@ onMounted(() => {
 				v-model="incidentDesc"
 			/>
 			<label> 事件發生位置 </label>
-			<select v-model="incidentPlace">
+			<select v-model="incidentDis">
 				<option
-					v-for="(option, index) in placeOptions"
+					v-for="(option, index) in disOptions"
 					:key="index"
 					:value="option.value"
 				>

@@ -1,4 +1,3 @@
- 
 /* eslint-disable indent */
 
 // Developed by Taipei Urban Intelligence Center 2023-2024
@@ -277,11 +276,10 @@ export const useAdminStore = defineStore("admin", {
 		async getDisasters(params) {
 			const apiParams = JSON.parse(JSON.stringify(params));
 
-			apiParams.filterbystatus = apiParams.filterbystatus.join(",");
-
-			const response = await http.get(`/disaster/`, {
+			const response = await http.get(`/incident/`, {
 				params: apiParams,
 			});
+			console.log(response.data.data);
 			this.disasters = response.data.data;
 			this.disasterResults = response.data.results;
 			this.setLoading(false);
@@ -291,7 +289,7 @@ export const useAdminStore = defineStore("admin", {
 			const dialogStore = useDialogStore();
 			const authStore = useAuthStore();
 
-			await http.patch(`/disaster/${this.currentDisaster.id}`, {
+			await http.patch(`/incident/${this.currentDisaster.id}`, {
 				status: this.currentDisaster.status,
 				decision_desc: this.currentDisaster.decision_desc,
 				updated_by: authStore.user.name,

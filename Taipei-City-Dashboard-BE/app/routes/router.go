@@ -5,8 +5,6 @@ import (
 	"TaipeiCityDashboardBE/app/controllers"
 	"TaipeiCityDashboardBE/app/middleware"
 	"TaipeiCityDashboardBE/global"
-	"bytes"
-	"io"
 
 	"github.com/gin-gonic/gin"
 
@@ -34,19 +32,9 @@ func ConfigureRoutes() {
 	configureComponentRoutes()
 	configureDashboardRoutes()
 	configureIssueRoutes()
+	configureIncidentRoutes()
 	RouterGroup.GET("/ws", func(c *gin.Context) {
 		serveWs(c.Writer, c.Request)
-	})
-	RouterGroup.POST("/incident", func(c *gin.Context) {
-		var buf bytes.Buffer
-    _, err := io.Copy(&buf, c.Request.Body)
-    if err != nil {
-        // Handle error
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read request body"})
-        return
-    }
-		fmt.Println(string(buf.String()))
-		c.JSON(http.StatusOK, gin.H{"message": "Hello, welcome to my Gin app!"})
 	})
 }
 
@@ -141,6 +129,19 @@ func configureIssueRoutes() {
 			GET("/", controllers.GetAllIssues)
 		issueRoutes.
 			PATCH("/:id", controllers.UpdateIssueByID)
+	}
+}
+
+func configureIncidentRoutes() {
+	incidentRoutes := RouterGroup.Group("/incident")
+	incidentRoutes.Use(middleware.LimitAPIRequests(global.IssueLimitAPIRequestsTimes, global.LimitRequestsDuration))
+	incidentRoutes.Use(middleware.LimitTotalRequests(global.IssueLimitTotalRequestsTimes, global.LimitRequestsDuration))
+	{
+		incidentRoutes.GET("/", controllers.GetIncident)
+		incidentRoutes.POST("/", controllers.CreateIncident)
+		incidentRoutes.DELETE("/", controllers.DeleteIncident)
+		incidentRoutes.POST("/authorized", controllers.CreateIncidentType)
+		incidentRoutes.PATCH("/authorized", controllers.UpdateIncidentType)
 	}
 }
 
