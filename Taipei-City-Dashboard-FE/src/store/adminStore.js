@@ -27,6 +27,10 @@ export const useAdminStore = defineStore("admin", {
 		issues: [],
 		issueResults: 0,
 		currentIssue: null,
+		// Edit Disaster (for /admin/disaster)
+		disasters: [],
+		disasterResults: 0,
+		currentDisaster: null,
 		// Edit User (for /admin/user)
 		users: [],
 		userResults: 0,
@@ -266,6 +270,35 @@ export const useAdminStore = defineStore("admin", {
 			dialogStore.showNotification("success", "問題更新成功");
 			this.getIssues(params);
 			this.currentIssue = null;
+		},
+
+		/* Disaster */
+		// 1. Get all disasters
+		async getDisasters(params) {
+			const apiParams = JSON.parse(JSON.stringify(params));
+
+			apiParams.filterbystatus = apiParams.filterbystatus.join(",");
+
+			const response = await http.get(`/disaster/`, {
+				params: apiParams,
+			});
+			this.disasters = response.data.data;
+			this.disasterResults = response.data.results;
+			this.setLoading(false);
+		},
+		// 2. Update a disaster
+		async updateDisaster(params) {
+			const dialogStore = useDialogStore();
+			const authStore = useAuthStore();
+
+			await http.patch(`/disaster/${this.currentDisaster.id}`, {
+				status: this.currentDisaster.status,
+				decision_desc: this.currentDisaster.decision_desc,
+				updated_by: authStore.user.name,
+			});
+			dialogStore.showNotification("success", "災害更新成功");
+			this.getDisasters(params);
+			this.currentDisaster = null;
 		},
 
 		/* User */

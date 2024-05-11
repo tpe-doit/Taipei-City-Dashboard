@@ -68,6 +68,13 @@ onMounted(() => {
       :expanded="isExpanded"
       index="issue"
     />
+    <h2>{{ isExpanded ? `災情回報` : `災情` }}</h2>
+    <SideBarTab
+      icon="flood"
+      title="民眾災害通報"
+      :expanded="isExpanded"
+      index="disaster"
+    />
     <h2>{{ isExpanded ? `系統總覽` : `系統` }}</h2>
     <SideBarTab
       icon="person"
