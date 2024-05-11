@@ -104,9 +104,9 @@ const showTooltip = ref(false);
 				@mouseover="showTooltip = true"
 				@mouseleave="showTooltip = false"
 			>
-				<span class="material-symbols-outlined icon">e911_emergency</span>
+				<!-- <span class="material-symbols-outlined icon">e911_emergency</span> -->
 				<span v-if="showTooltip" class="tooltip">通報災害</span>
-				<!-- ! -->
+				!
 			</button>
 		</div>
 
@@ -163,12 +163,12 @@ const showTooltip = ref(false);
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s, color 0.2s;
+	font-size: 32px;
     &:hover {
         background-color: var(--color-highlight);
     }
 	.icon {
 		color: white;
-		font-size: xxlarge;
 		font-family: var(--font-icon);
 	}
 
