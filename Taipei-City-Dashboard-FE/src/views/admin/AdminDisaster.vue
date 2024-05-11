@@ -13,8 +13,6 @@ const adminStore = useAdminStore();
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 
-const statuses = ["待處理", "處理中", "已處理", "不處理"];
-
 const searchParams = ref({
 	sort: "time",
 	order: "desc",
@@ -35,7 +33,11 @@ const pages = computed(() => {
 
 function parseTime(time) {
 	const date = new Date(time); // Convert seconds to milliseconds
-	return date.toISOString();
+	// return date.toISOString();
+	const taipeiTime = date.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+    const parts = taipeiTime.split(' ')[0].split('/').map(part => part.padStart(2, '0'));
+    const timeParts = taipeiTime.split(' ')[1].split(':').map(part => part.padStart(2, '0'));
+    return `${parts[0]-1911}年${parts[1]}月${parts[2]}日 ${timeParts[0]}點${timeParts[1]}分${timeParts[2]}秒`;
 }
 
 function handleSort(sort) {
@@ -69,9 +71,14 @@ function handleOpenSettings(disaster) {
 	dialogStore.showDialog("adminEditDisaster");
 }
 
+function handleReview(id, result){
+	
+}
+
 onMounted(() => {
 	adminStore.getDisasters(searchParams.value);
 });
+
 </script>
 
 <template>
@@ -80,7 +87,6 @@ onMounted(() => {
 		<table class="admindisaster-table">
 			<thead>
 				<tr class="admindisaster-table-header">
-					<TableHeader min-width="60px" />
 					<TableHeader
 						:sort="true"
 						:mode="
@@ -92,37 +98,11 @@ onMounted(() => {
 						ID
 					</TableHeader>
 					<TableHeader min-width="100px"> 種類 </TableHeader>
-					<TableHeader min-width="250px"> 描述 </TableHeader>
+					<TableHeader min-width="170px"> 描述 </TableHeader>
 					<TableHeader min-width="110px"> 經度 </TableHeader>
 					<TableHeader min-width="110px"> 緯度 </TableHeader>
-					<TableHeader
-						:sort="true"
-						:mode="
-							searchParams.sort === 'created_at'
-								? searchParams.order
-								: ''
-						"
-						min-width="200px"
-						@sort="handleSort('created_at')"
-					>
-						開立時間
-					</TableHeader>
-					<TableHeader min-width="250px"> 審核 </TableHeader>
-					<!-- <TableHeader min-width="110px">
-            上次編輯人
-          </TableHeader>
-          <TableHeader
-            :sort="true"
-            :mode="
-              searchParams.sort === 'updated_at'
-                ? searchParams.order
-                : ''
-            "
-            min-width="200px"
-            @sort="handleSort('updated_at')"
-          >
-            上次編輯
-          </TableHeader> -->
+					<TableHeader min-width="200px"> 時間 </TableHeader>
+					<TableHeader min-width="120px"> 審核 </TableHeader>
 				</tr>
 			</thead>
 			<!-- 2-1. Disasters are present -->
@@ -131,18 +111,28 @@ onMounted(() => {
 					v-for="disaster in adminStore.disasters"
 					:key="`disaster-${disaster.id}`"
 				>
-					<td class="admindisaster-table-settings">
-						<button @click="handleOpenSettings(disaster)">
-							<span>edit_note</span>
-						</button>
-					</td>
 					<td>{{ disaster.ID }}</td>
 					<td>{{ disaster.inctype }}</td>
-					<td>{{ disaster.description }}</td>
+					<td class="description">{{ disaster.description }}</td>
 					<td>{{ disaster.longitude }}</td>
 					<td>{{ disaster.latitude }}</td>
 					<td>{{ parseTime(disaster.reportTime) }}</td>
-					<td>{{ parseTime(disaster.reportTime) }}</td>
+					<td class="review">
+						<div class="btn">
+							<button
+								class="reviewBtn"
+								@click="handleReview(disaster.ID, true)"
+							>
+								通過
+							</button>
+							<button
+								class="reviewBtn"
+								@click="handleReview(disaster.ID, false)"
+							>
+								刪除
+							</button>
+						</div>				
+					</td>
 				</tr>
 			</tbody>
 			<!-- 2-2. Disaster are still loading -->
@@ -338,4 +328,36 @@ onMounted(() => {
 		}
 	}
 }
+.description {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+    word-break: break-word;
+    max-width: 450px;
+}
+.review {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 120px;
+	.btn {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		.reviewBtn {
+			padding: 7px;
+			margin: 5px;
+			font-size: large;
+			color: black;
+			background-color: rgba(136, 135, 135, 1);
+			border-radius: 10px;
+			&:hover {
+				background-color: rgb(190, 189, 189);	
+			}
+		}
+	}	
+}
+
+
 </style>
