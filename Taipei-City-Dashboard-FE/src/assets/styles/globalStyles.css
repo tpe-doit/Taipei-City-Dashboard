@@ -162,3 +162,7 @@ td:last-child {
 		transform: rotate(360deg);
 	}
 }
+
+.maplegend-legend-item h6 {
+	display: none;
+}
