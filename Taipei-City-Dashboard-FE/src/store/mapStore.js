@@ -851,5 +851,60 @@ export const useMapStore = defineStore("map", {
 			this.currentVisibleLayers = [];
 			this.removePopup();
 		},
+
+		/* Handle search location  */
+		// 1. Called when the user searches a location
+		async searchLocation(query) {
+			const MAPBOXTOKEN = import.meta.env.VITE_MAPBOXTOKEN;
+			const response = await fetch(
+				`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${MAPBOXTOKEN}`
+			);
+			const data = await response.json();
+			const location_array = data.features?.[0].center;
+			this.flyToLocation(location_array);
+			this.addIcon("home-icon", location_array);
+		},
+		// 2. Called after searching a location
+		addIcon(iconId, coordinates) {
+			if (!this.map) {
+				console.error("Map instance is not initialized.");
+				return;
+			}
+
+			// Ensure the icon image is loaded
+			this.map.loadImage("./images/map/home.png", (error, image) => {
+				if (error) throw error;
+
+				// Remove the existing layer if it exists
+				if (this.map.getLayer(iconId)) {
+					this.map.removeLayer(iconId);
+					this.map.removeSource(iconId);
+				}
+
+				// Add the icon to the map
+				if (!this.map.hasImage(iconId))
+					this.map.addImage(iconId, image);
+
+				// Add a layer to the map with the icon
+				this.map.addLayer({
+					id: iconId,
+					type: "symbol",
+					source: {
+						type: "geojson",
+						data: {
+							type: "Feature",
+							geometry: {
+								type: "Point",
+								coordinates: coordinates,
+							},
+						},
+					},
+					layout: {
+						"icon-image": iconId,
+						"icon-size": 1, // Adjust the size of the icon as needed
+					},
+				});
+			});
+		},
 	},
 });

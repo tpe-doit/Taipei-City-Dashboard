@@ -1,10 +1,10 @@
 <!-- Developed By Taipei Urban Intelligence Center 2023-2024 -->
-<!-- 
+<!--
 Lead Developer:  Igor Ho (Full Stack Engineer)
 Data Pipelines:  Iima Yu (Data Scientist)
 Design and UX: Roy Lin (Fmr. Consultant), Chu Chen (Researcher)
 Systems: Ann Shih (Systems Engineer)
-Testing: Jack Huang (Data Scientist), Ian Huang (Data Analysis Intern) 
+Testing: Jack Huang (Data Scientist), Ian Huang (Data Analysis Intern)
 -->
 <!-- Department of Information Technology, Taipei City Government -->
 
@@ -20,6 +20,8 @@ import { useMapStore } from "../store/mapStore";
 import MapContainer from "../components/map/MapContainer.vue";
 import MoreInfo from "../components/dialogs/MoreInfo.vue";
 import ReportIssue from "../components/dialogs/ReportIssue.vue";
+
+import SearchInput from "../components/utilities/forms/SearchInput.vue";
 
 const contentStore = useContentStore();
 const dialogStore = useDialogStore();
@@ -71,6 +73,10 @@ function shouldDisable(map_config) {
 		mapStore.loadingLayers.filter((el) => allMapLayerIds.includes(el))
 			.length > 0
 	);
+}
+
+function handleSearch(query) {
+	mapStore.searchLocation(query);
 }
 </script>
 
@@ -134,6 +140,11 @@ function shouldDisable(map_config) {
 				"
 				class="map-charts"
 			>
+				<h2>輸入地址</h2>
+				<SearchInput
+					:placeholder="`搜尋地址...`"
+					@search="handleSearch"
+				/>
 				<DashboardComponent
 					v-for="item in parseMapLayers.hasMap"
 					:key="`map-layer-${item.index}-${contentStore.currentDashboard.index}`"
