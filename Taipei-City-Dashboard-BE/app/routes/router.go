@@ -26,6 +26,7 @@ func ConfigureRoutes() {
 	configureComponentRoutes()
 	configureDashboardRoutes()
 	configureIssueRoutes()
+	configureScoreRoutes()
 }
 
 func configureAuthRoutes() {
@@ -120,4 +121,10 @@ func configureIssueRoutes() {
 		issueRoutes.
 			PATCH("/:id", controllers.UpdateIssueByID)
 	}
+}
+
+func configureScoreRoutes() {
+	issueRoutes := RouterGroup.Group("/score")
+	issueRoutes.
+			GET("/liveSafe", controllers.GetLiveSafeScore)
 }
