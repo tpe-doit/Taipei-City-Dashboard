@@ -32,7 +32,7 @@ export default defineConfig({
 				rewrite: (path) => path.replace("/dev", "/v1"),
 			},
 			"/geo_server": {
-				target: "https://geoserver.tuic.gov.taipei/geoserver/",
+				target: "https://citydashboard.taipei/geo_server/",
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/geo_server/, ""),
 			},
