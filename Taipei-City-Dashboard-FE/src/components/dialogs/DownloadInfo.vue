@@ -62,7 +62,7 @@ const authStore = useAuthStore();
 	top: 0;
 	right: 0;
 	opacity: 1;
-	z-index: 10;
+	z-index: 2;
 
 	&-dialog {
 		width: fit-content;
@@ -75,7 +75,7 @@ const authStore = useAuthStore();
 		border-radius: 5px;
 		background-color: rgb(30, 30, 30);
 		transform: translateY(0);
-		z-index: 2;
+		z-index: 5;
 	}
 
 	&-background {
@@ -86,6 +86,7 @@ const authStore = useAuthStore();
 		top: 0;
 		left: 0;
 		background-color: rgba(0, 0, 0, 0.66);
+		z-index: 4;
 	}
 }
 
