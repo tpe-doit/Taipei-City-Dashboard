@@ -21,9 +21,11 @@ const incidentPlace = ref("");
 const { editUser } = storeToRefs(authStore);
 
 const typeOptions = [
-	{ label: "火災", value: "fire" },
-	{ label: "交通事故", value: "traffic" },
-	{ label: "其他", value: "other" },
+	{ label: "火災 Fire", value: "fire" },
+	{ label: "淹水 Flood", value: "flood" },
+	{ label: "道路 Road", value: "road" },
+	{ label: "建物 Building", value: "building" },
+	{ label: "其他 Others", value: "other" },
 	// Add more options as needed
 ];
 

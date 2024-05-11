@@ -1,0 +1,70 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.507, 25.07]
+			},
+			"properties": {
+				"類型": "fire",
+				"描述": "大火",
+				"距離": 0.5,
+				"時間": "2024/5/11 下午3:10:11"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.505, 25.09]
+			},
+			"properties": {
+				"類型": "flood",
+				"描述": "淹水",
+				"距離": 1,
+				"時間": "2024/5/11 下午3:10:11"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.504, 25.04]
+			},
+			"properties": {
+				"類型": "road",
+				"描述": "道路坍方",
+				"距離": 0.5,
+				"時間": "2024/5/11 下午3:10:11"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.506, 25.04]
+			},
+			"properties": {
+				"類型": "building",
+				"描述": "建物倒塌",
+				"距離": 2,
+				"時間": "2024/5/11 下午3:10:11"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.505, 25.06]
+			},
+			"properties": {
+				"類型": "other",
+				"描述": "其他",
+				"距離": 1,
+				"時間": "2024/5/11 下午3:10:11"
+			}
+		}
+	]
+}

@@ -22,6 +22,8 @@ const linkQuery = computed(() => {
 	const { query } = route;
 	return `?index=${query.index}`;
 });
+
+const readGeoJson = () => {};
 </script>
 
 <template>
