@@ -46,7 +46,7 @@ onMounted(() => {
           : "keyboard_double_arrow_right"
       }}</span>
     </button>
-    <!-- <h2>{{ isExpanded ? `用戶設定` : `用戶` }}</h2> -->
+    <h2>{{ isExpanded ? `用戶設定` : `用戶` }}</h2>
     <h2>{{ isExpanded ? `儀表板設定` : `表板` }}</h2>
     <SideBarTab
       icon="dashboard"

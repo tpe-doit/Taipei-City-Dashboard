@@ -89,6 +89,24 @@ onMounted(() => {
 			</div>
 			<!-- The key prop informs vue that the component should be updated when switching dashboards -->
 			<MobileLayers :key="contentStore.currentDashboard.index" />
+			<!-- <button
+				class="input"
+				@click="toggleVillageLayer"
+				:style="{
+					// color: villageLayer
+					// 	? 'var(--color-highlight)'
+					// 	: 'var(--color-component-background)'
+				}"
+			>
+			<span class="material-symbols-outlined">emergency_home</span>
+				區
+			</button> -->
+				<button
+					class="show-if-mobile input"
+					@click="dialogStore.showDialog('mobileLayers')"
+				>
+					<span>layers</span>
+				</button>
 		</div>
 
 		<div class="mapcontainer-controls hide-if-mobile">
@@ -132,6 +150,22 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.input {
+	position: absolute;
+    right: 20px;
+    bottom: 40px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    // background-color: var(--color-component-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+    &:hover {
+        background-color: var(--color-highlight);
+    }
+}
 .mapcontainer {
 	position: relative;
 	width: 100%;
