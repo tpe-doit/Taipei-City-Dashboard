@@ -55,6 +55,11 @@ export const useMapStore = defineStore("map", {
 		savedLocations: savedLocations,
 		// Store currently loading layers,
 		loadingLayers: [],
+
+		// Stores search location
+		locationCoords: [],
+		// Stores search location
+		securityScore: 0,
 	}),
 	getters: {},
 	actions: {
@@ -855,14 +860,22 @@ export const useMapStore = defineStore("map", {
 		/* Handle search location  */
 		// 1. Called when the user searches a location
 		async searchLocation(query) {
+			if (!query) return;
+
 			const MAPBOXTOKEN = import.meta.env.VITE_MAPBOXTOKEN;
 			const response = await fetch(
 				`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${MAPBOXTOKEN}`
 			);
-			const data = await response.json();
-			const location_array = data.features?.[0].center;
-			this.flyToLocation(location_array);
-			this.addIcon("home-icon", location_array);
+
+			if (response.ok) {
+				const data = await response.json();
+				this.locationCoords = data.features?.[0].center;
+				this.flyToLocation(this.locationCoords);
+				this.addIcon("home-icon", this.locationCoords);
+				this.setSecurityScore(this.locationCoords);
+			} else {
+				console.error("Failed to fetch ", response.statusText);
+			}
 		},
 		// 2. Called after searching a location
 		addIcon(iconId, coordinates) {
@@ -905,6 +918,21 @@ export const useMapStore = defineStore("map", {
 					},
 				});
 			});
+		},
+		// 3. Called after searching a location, set security score
+		async setSecurityScore(coordinates) {
+			if (!coordinates) return;
+			this.securityScore = 0;
+
+			const response = await fetch(
+				`http://localhost:8088/api/v1/score/liveSafe?x=${coordinates[0]}&y=${coordinates[1]}`
+			);
+			if (response.ok) {
+				const data = await response.json();
+				this.securityScore = parseInt(data.score * 100);
+			} else {
+				console.error("Failed to fetch ", response.statusText);
+			}
 		},
 	},
 });
