@@ -95,11 +95,12 @@ func GetWeightScore(x float64, y float64, filename string,
     }
     // 轉換距離和座標的 map 為 JSON 可接受的格式
     var result = 0.0;
-	a := 0.5  // 指數增長速率
+	a := 0.378  // 指數增長速率
     for distance := range distances {
 		if (distance < calcRange) {
 			distanceScore := weight * math.Exp(-a * distance)
 			result += distanceScore;
+			fmt.Println(distance," ",distanceScore)
 		}
     }
 	return result;
@@ -121,7 +122,8 @@ func GetLiveSafeScore(c *gin.Context) {
 		c.JSON(400, gin.H{"error": err})
 		return
 	}
-	result := GetWeightScore(x, y, "traffic_accident_location_view.geojson", 0.00284, 5)
+	// ref: https://ir.lib.nycu.edu.tw/bitstream/11536/39265/1/651301.pdf
+	result := GetWeightScore(x, y, "traffic_accident_location_view.geojson", 0.00214, 3.72)
     if (result > 100) {
 		result = 100
 	}
