@@ -13,7 +13,7 @@ import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
 import { Threebox } from "threebox-plugin";
-import { featureCollection, voronoi, point, isolines, interpolate } from "@turf/turf"
+import * as turf from "@turf/turf"
 
 // Other Stores
 import { useAuthStore } from "./authStore";
@@ -38,7 +38,7 @@ import { savedLocations } from "../assets/configs/mapbox/savedLocations.js";
 import { calculateGradientSteps } from "../assets/configs/mapbox/arcGradient";
 // import { voronoi } from "../assets/utilityFunctions/voronoi.js";
 import { interpolation } from "../assets/utilityFunctions/interpolation.js";
-import { marchingSquare } from "../assets/utilityFunctions/marchingSquare.js";
+// import { marchingSquare } from "../assets/utilityFunctions/marchingSquare.js";
 
 export const useMapStore = defineStore("map", {
 	state: () => ({
@@ -56,6 +56,9 @@ export const useMapStore = defineStore("map", {
 		savedLocations: savedLocations,
 		// Store currently loading layers,
 		loadingLayers: [],
+		// Taipei city border
+		taipeiCityBorder: null,
+		taipeiCityBorderBBox: null
 	}),
 	getters: {},
 	actions: {
@@ -114,6 +117,25 @@ export const useMapStore = defineStore("map", {
 						})
 						.addLayer(TaipeiVillage);
 				});
+			// Taipei City Boundary and BBox
+			fetch(`mapData/taipei_town.geojson`)
+				.then((response) => response.json())
+				.then((data) => {
+					// manully round border coordinate to 10 decimals precision to prevent error
+					turf.meta.coordEach(data, (c) => {
+						c[0] = Math.round(c[0] * 1e10) / 1e10;
+						c[1] = Math.round(c[1] * 1e10) / 1e10;
+					})
+					this.taipeiCityBorder = data.features[0];
+					data.features.forEach(
+						(feature) => {
+							this.taipeiCityBorder = turf.union(this.taipeiCityBorder, feature);
+						}
+					)
+					// too many lines make the performance drop, so simplify
+					this.taipeiCityBorder = turf.simplify(this.taipeiCityBorder, {tolerance: 1e-3});
+					this.taipeiCityBorderBBox = turf.bbox(this.taipeiCityBorder);
+				});
 			// Taipei 3D Buildings
 			if (!authStore.isMobileDevice) {
 				this.map
@@ -145,7 +167,6 @@ export const useMapStore = defineStore("map", {
 					],
 				})
 				.addLayer(TpDistrict);
-
 			this.addSymbolSources();
 		},
 		// 3. Adds symbols that will be used by some map layers
@@ -419,7 +440,7 @@ export const useMapStore = defineStore("map", {
 			let voronoi_source = {
 				type: data.type,
 				crs: data.crs,
-				features: [],
+				features: [this.taipeiCityBorder],
 			};
 
 			// Get features alone
@@ -445,33 +466,41 @@ export const useMapStore = defineStore("map", {
 			coords = coords.filter((_, ind) => !shouldBeRemoved[ind]);
 
 			// make turf points
-			let pointCollection = featureCollection(
+			let pointCollection = turf.featureCollection(
 				coords.map(
-					(coord) => point(coord)
+					(coord) => turf.point(coord)
 				)
 			);
 
-			// square bbox
-			let lngStart = 121.42955;
-			let lngEnd = 121.68351;
-			let latStart = 24.94679;
-			let latEnd = 25.21811;
-			let bbox = [lngStart,latStart,lngEnd,latEnd];
-
 			// Calculate cell for each coordinate
-			let cells = voronoi(pointCollection, {"bbox": bbox});
-
+			let cells = turf.voronoi(pointCollection, {"bbox": this.taipeiCityBorderBBox});
 			// Push cell outlines to source data
-			for (let i = 0; i < cells.features.length; i++) {
-				console.log(cells.features[i]);
-				voronoi_source.features.push({
-					...features[i],
-					geometry: {
-						type: "LineString",
-						coordinates: cells.features[i].geometry.coordinates[0]
-					},
-				});
-			}
+			cells.features.forEach(
+				feature => {
+					let curLineString = {
+						...feature,
+						geometry: {
+							type: "LineString",
+							coordinates: feature.geometry.coordinates[0]
+						},
+					}
+					// check if current line is in taipeiCityBorder
+					if (turf.booleanWithin(curLineString, this.taipeiCityBorder)) {
+						voronoi_source.features.push(curLineString);
+					}
+					else {
+						// split current line with taipeiCityBorder and check each again
+						let splitLines = turf.lineSplit(curLineString, this.taipeiCityBorder);
+						splitLines.features.forEach(
+							line => {
+								if (turf.booleanContains(this.taipeiCityBorder, line)) {
+									voronoi_source.features.push(line);
+								}
+							}
+						)
+					}
+				}
+			);
 
 			// Add source and layer
 			this.map.addSource(`${map_config.layerId}-source`, {
@@ -487,6 +516,13 @@ export const useMapStore = defineStore("map", {
 		// Developed by 00:21, Taipei Codefest 2023
 		AddIsolineMapLayer(map_config, data) {
 			this.loadingLayers.push("rendering");
+
+			let isoline_source = {
+				type: data.type,
+				crs: data.crs,
+				features: [this.taipeiCityBorder],
+			};
+
 			// Step 1: Generate a 2D scalar field from known data points
 			// - Turn the original data into the format that can be accepted by interpolation()
 			let propertyName = map_config.paint?.["isoline-key"] || "value";
@@ -498,10 +534,10 @@ export const useMapStore = defineStore("map", {
 				};
 			});
 
-			let lngStart = 121.42955;
-			let lngEnd = 121.68351;
-			let latStart = 24.94679;
-			let latEnd = 25.21811;
+			let lngStart = this.taipeiCityBorderBBox[0];
+			let latStart = this.taipeiCityBorderBBox[1];
+			let lngEnd = this.taipeiCityBorderBBox[2];
+			let latEnd = this.taipeiCityBorderBBox[3];
 
 			let targetPoints = [];
 			let gridSize = 0.001;
@@ -523,22 +559,42 @@ export const useMapStore = defineStore("map", {
 			// - Turn the interpolation result into the point collection
 			let interpolatedPoints = [];
 			for (let n = 0; n < interpolationResult.length; n++) {
-				interpolatedPoints.push(point(
+				interpolatedPoints.push(turf.point(
 					[lngStart + n % colN * gridSize, latStart + Math.floor(n / colN) * gridSize],
 					{"value": interpolationResult[n]}
 				));
 			}
-			let interpolatedPointCollection = featureCollection(interpolatedPoints);
+			let interpolatedPointCollection = turf.featureCollection(interpolatedPoints);
 			// [0 1 ... 17] ==> [40, 42, 44 ... 74]
 			let breaks = [...Array((74 - 40) / 2 + 1).keys()].map(v => (v * 2 + 40));
-			let isoline_data = isolines(interpolatedPointCollection, breaks, {zProperty: "value"});
-			console.log(isoline_data)
+			let isoline_data = turf.isolines(interpolatedPointCollection, breaks, {zProperty: "value"});
+			// flatten from MultiLineString to LineString
+			isoline_data = turf.flatten(isoline_data);
 
+			isoline_data.features = isoline_data.features.filter(
+				curIsoLine => {
+					// check if current line is in taipeiCityBorder
+					if (turf.booleanWithin(curIsoLine, this.taipeiCityBorder)) {
+						isoline_source.features.push(curIsoLine);
+					}
+					else {
+						// split current line with taipeiCityBorder and check each again
+						let splitLines = turf.lineSplit(curIsoLine, this.taipeiCityBorder);
+						splitLines.features.forEach(
+							line => {
+								if (turf.booleanContains(this.taipeiCityBorder, line)) {
+									isoline_source.features.push(line);
+								}
+							}
+						)
+					}
+				}
+			)
 			// Step 3: Add source and layer
 			this.map.addSource(`${map_config.layerId}-source`, {
 				type: "geojson",
 
-				data: { ...isoline_data },
+				data: { ...isoline_source },
 			});
 
 			delete map_config.paint?.["isoline-key"];
