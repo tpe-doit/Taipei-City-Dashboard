@@ -38,7 +38,7 @@ func EditUserInfo(c *gin.Context) {
 		return
 	}
 
-	user, err = models.UpdateSelf(userID, user.Name)
+	user, err = models.UpdateSelf(userID, user.Name, user.Mode)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update user"})
 		return

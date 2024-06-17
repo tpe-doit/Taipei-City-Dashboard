@@ -24,7 +24,7 @@ export const useAuthStore = defineStore("auth", {
 			is_blacked: null,
 			login_at: null,
 			is_admin: false,
-			mode: "light",
+			mode: "dark",
 		},
 		editUser: {},
 		token: null,
@@ -58,9 +58,7 @@ export const useAuthStore = defineStore("auth", {
 				this.editUser = JSON.parse(JSON.stringify(this.user));
 			}
 
-			document.getElementsByTagName("body")[0].className = this.user.mode
-				? this.user.mode
-				: "light";
+			document.getElementsByTagName("body")[0].className = this.user.mode;
 
 			contentStore.setContributors();
 		},
@@ -106,6 +104,8 @@ export const useAuthStore = defineStore("auth", {
 			this.user = response.data.user;
 			this.editUser = JSON.parse(JSON.stringify(this.user));
 
+			document.getElementsByTagName("body")[0].className = this.user.mode;
+
 			contentStore.publicDashboards = [];
 			router.go();
 			dialogStore.showNotification("success", "登入成功");
@@ -149,6 +149,12 @@ export const useAuthStore = defineStore("auth", {
 			const response = await http.get("/user/me");
 			this.user = response.data.user;
 			this.editUser = JSON.parse(JSON.stringify(this.user));
+		},
+		// 2. Update mode
+		async toggleMode() {
+			this.user.mode = this.user.mode === "dark" ? "light" : "dark";
+			await http.patch("/user/me", { mode: this.user.mode });
+			document.getElementsByTagName("body")[0].className = this.user.mode;
 		},
 
 		/* Other Utility Functions */
