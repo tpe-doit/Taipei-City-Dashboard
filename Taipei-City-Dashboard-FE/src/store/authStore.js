@@ -24,6 +24,7 @@ export const useAuthStore = defineStore("auth", {
 			is_blacked: null,
 			login_at: null,
 			is_admin: false,
+			mode: "light",
 		},
 		editUser: {},
 		token: null,
@@ -56,6 +57,10 @@ export const useAuthStore = defineStore("auth", {
 				}
 				this.editUser = JSON.parse(JSON.stringify(this.user));
 			}
+
+			document.getElementsByTagName("body")[0].className = this.user.mode
+				? this.user.mode
+				: "light";
 
 			contentStore.setContributors();
 		},

@@ -100,7 +100,7 @@ const linkQuery = computed(() => {
             </button>
           </li>
         </ul>
-        <teleport to="body">
+        <Teleport to="body">
           <ContributorsList />
         </teleport>
       </div>
@@ -145,7 +145,7 @@ const linkQuery = computed(() => {
             </button>
           </li>
         </ul>
-        <teleport to="body">
+        <Teleport to="body">
           <user-settings />
         </teleport>
       </div>
@@ -193,7 +193,7 @@ const linkQuery = computed(() => {
 
 			img {
 				height: 45px;
-				filter: invert(1);
+				filter: var(--img-filter);
 			}
 		}
 	}
@@ -280,7 +280,7 @@ const linkQuery = computed(() => {
 				top: 55px;
 				padding: 8px;
 				border-radius: 5px;
-				background-color: rgb(85, 85, 85);
+				background-color: var(--color-border);
 				opacity: 0;
 				transition: opacity 0.25s;
 				z-index: 10;
