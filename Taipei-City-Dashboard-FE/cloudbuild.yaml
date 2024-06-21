@@ -1,17 +1,23 @@
 steps:
-    # echo envs to .env file
-    - name: "ubuntu"
-      id: "echo_env_variables"
+    # Fetch git tags and determine VITE_APP_VERSION
+    - name: "gcr.io/cloud-builders/git"
       entrypoint: "bash"
-      dir: "Taipei-City-Dashboard-FE"
       args:
           - "-c"
           - |
-              echo "VITE_API_URL=$_VITE_API_URL" >> .env
-              echo "VITE_APP_TITLE=$_VITE_APP_TITLE" >> .env
-              echo "VITE_APP_VERSION=$_VITE_APP_VERSION" >> .env
-              echo "VITE_MAPBOXTILE=$_VITE_MAPBOXTILE" >> .env
-              echo "VITE_MAPBOXTOKEN=$_VITE_MAPBOXTOKEN" >> .env
+              git fetch --tags
+              GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null)
+              if [ -z "$${GIT_TAG}" ]; then
+                COMMIT_SHA=$(git rev-parse --short HEAD)
+                VITE_APP_VERSION=$COMMIT_SHA
+              else
+                VITE_APP_VERSION=$${GIT_TAG}
+              fi
+              echo "VITE_API_URL=$_VITE_API_URL" >> Taipei-City-Dashboard-FE/.env
+              echo "VITE_APP_TITLE=$_VITE_APP_TITLE" >> Taipei-City-Dashboard-FE/.env
+              echo "VITE_APP_VERSION=$$VITE_APP_VERSION" >> Taipei-City-Dashboard-FE/.env
+              echo "VITE_MAPBOXTILE=$_VITE_MAPBOXTILE" >> Taipei-City-Dashboard-FE/.env
+              echo "VITE_MAPBOXTOKEN=$_VITE_MAPBOXTOKEN" >> Taipei-City-Dashboard-FE/.env
 
     # build docker image
     - name: "gcr.io/cloud-builders/docker"
@@ -25,12 +31,6 @@ steps:
               "asia-east1-docker.pkg.dev/tuic-bd2456/tuic/dashboard-fe:$COMMIT_SHA",
               ".",
           ]
-      # env:
-      #     - "NODE_ENV=$_NODE_ENV"
-      #     - "VITE_API_URL=$_VITE_API_URL"
-      #     - "VITE_APP_TITLE=$_VITE_APP_TITLE"
-      #     - "VITE_APP_VERSION=$_VITE_APP_VERSION"
-      #     - "VITE_MAPBOXTILE=$_VITE_MAPBOXTILE"
 
     # push image to Artifact Registry
     - name: "gcr.io/cloud-builders/docker"
