@@ -55,6 +55,17 @@ const parsedSeries = computed(() => {
 
 	return parsedData;
 });
+
+// 判斷該站是否為「分支終點站」
+// 規則：只要下一筆資料的 id 是 '0'（即分支方向提示文字，例如「往新北投」「往小碧潭」「往蘆洲」），
+// 就代表目前這一站是該分支的死路終點，應套用終點樣式並停止延伸連接線。
+// 這樣無論資料裡有幾個分支（新北投、小碧潭、迴龍…），都會被自動、一致地正確處理，
+// 不需要再針對每個分支終點站名（如 'O21'、'R22A'、'G03A'）個別寫死特例。
+const isBranchTerminal = (index) => {
+	const stations = lineInfo[line.value];
+	const next = stations[index + 1];
+	return next?.id === "0";
+};
 </script>
 
 <template>
@@ -79,7 +90,7 @@ const parsedSeries = computed(() => {
               : `${item.name.slice(0, 4)}...`
           }}
         </h5>
-        <!-- Will show a different style if the station is a terminal station -->
+        <!-- 若為路線端點站或分支終點站，會顯示不同樣式（實心色塊） -->
         <div
           class="metrochart-block-tag"
           :style="{
@@ -87,7 +98,7 @@ const parsedSeries = computed(() => {
             backgroundColor:
               index === lineInfo[line].length - 1 ||
               index === 0 ||
-              item.id === 'O21'
+              isBranchTerminal(index)
                 ? color
                 : 'white',
           }"
@@ -97,7 +108,7 @@ const parsedSeries = computed(() => {
               color:
                 index === lineInfo[line].length - 1 ||
                 index === 0 ||
-                item.id === 'O21'
+                isBranchTerminal(index)
                   ? 'white'
                   : 'black',
             }"
@@ -109,7 +120,7 @@ const parsedSeries = computed(() => {
               color:
                 index === lineInfo[line].length - 1 ||
                 index === 0 ||
-                item.id === 'O21'
+                isBranchTerminal(index)
                   ? 'white'
                   : 'black',
             }"
@@ -136,7 +147,7 @@ const parsedSeries = computed(() => {
       </div>
       <!-- Just shows the line connecting stations -->
       <div
-        v-if="item.id !== '0' && item.id !== 'O21'"
+        v-if="item.id !== '0' && !isBranchTerminal(index)"
         class="metrochart-block"
       >
         <div />
@@ -259,4 +270,3 @@ const parsedSeries = computed(() => {
 	}
 }
 </style>
-
