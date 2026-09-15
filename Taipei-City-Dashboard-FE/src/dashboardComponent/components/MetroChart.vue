@@ -32,6 +32,11 @@ const line = computed(() => {
 	return "R";
 });
 
+// 各分支的終點站（死路端點），需套用跟路線端點站一樣的實心樣式，
+// 並且不再往下延伸連接線。目前捷運路網共有三個這樣的分支終點：
+// 新北投 (R22A)、小碧潭 (G03A)、迴龍 (O21)。
+const branchTerminalIds = ["O21", "R22A", "G03A"];
+
 const parsedSeries = computed(() => {
 
 	const parsedData = [
@@ -55,17 +60,6 @@ const parsedSeries = computed(() => {
 
 	return parsedData;
 });
-
-// 判斷該站是否為「分支終點站」
-// 規則：只要下一筆資料的 id 是 '0'（即分支方向提示文字，例如「往新北投」「往小碧潭」「往蘆洲」），
-// 就代表目前這一站是該分支的死路終點，應套用終點樣式並停止延伸連接線。
-// 這樣無論資料裡有幾個分支（新北投、小碧潭、迴龍…），都會被自動、一致地正確處理，
-// 不需要再針對每個分支終點站名（如 'O21'、'R22A'、'G03A'）個別寫死特例。
-const isBranchTerminal = (index) => {
-	const stations = lineInfo[line.value];
-	const next = stations[index + 1];
-	return next?.id === "0";
-};
 </script>
 
 <template>
@@ -98,7 +92,7 @@ const isBranchTerminal = (index) => {
             backgroundColor:
               index === lineInfo[line].length - 1 ||
               index === 0 ||
-              isBranchTerminal(index)
+              branchTerminalIds.includes(item.id)
                 ? color
                 : 'white',
           }"
@@ -108,7 +102,7 @@ const isBranchTerminal = (index) => {
               color:
                 index === lineInfo[line].length - 1 ||
                 index === 0 ||
-                isBranchTerminal(index)
+                branchTerminalIds.includes(item.id)
                   ? 'white'
                   : 'black',
             }"
@@ -120,12 +114,12 @@ const isBranchTerminal = (index) => {
               color:
                 index === lineInfo[line].length - 1 ||
                 index === 0 ||
-                isBranchTerminal(index)
+                branchTerminalIds.includes(item.id)
                   ? 'white'
                   : 'black',
             }"
           >
-            {{ item.id.slice(-2) }}
+            {{ item.id.replace(/^[A-Za-z]+/, '') }}
           </p>
         </div>
         <MetroCarDensity
@@ -147,7 +141,7 @@ const isBranchTerminal = (index) => {
       </div>
       <!-- Just shows the line connecting stations -->
       <div
-        v-if="item.id !== '0' && !isBranchTerminal(index)"
+        v-if="item.id !== '0' && !branchTerminalIds.includes(item.id)"
         class="metrochart-block"
       >
         <div />
