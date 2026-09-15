@@ -82,7 +82,7 @@ export const lineInfo: lineInfoType = {
 		{ name: "奇岩", id: "R21" },
 		{ name: "北投", id: "R22" },
 		{ name: "往新北投", id: "0" },
-		{ name: "北投", id: "R22A" },
+		{ name: "新北投", id: "R22A" },
 		{ name: "往淡水", id: "0" },
 		{ name: "復興崗", id: "R23" },
 		{ name: "忠義", id: "R24" },
