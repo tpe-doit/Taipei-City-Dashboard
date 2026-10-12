@@ -69,7 +69,11 @@ func addRoles() {
 func createAdmin() {
 	userName := global.DashboardDefaultUserName
 	email := global.DashboardDefaultUserEmail
-	password := util.HashString(global.DashboardDefaultUserPassword)
+	password, err := util.HashPassword(global.DashboardDefaultUserPassword)
+	if err != nil {
+		logs.FError("Failed to hash default user password: %v", err)
+		return
+	}
 	logs.FInfo("userName: %s", userName)
 	logs.FInfo("user email: %s", email)
 

@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"errors"
 	"fmt"
 	"net/http"
 	"regexp"
@@ -13,7 +12,6 @@ import (
 	"TaipeiCityDashboardBE/logs"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 const (
@@ -49,24 +47,35 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// search DB to validate user password
-	passwordSHA := util.HashString(password)
+	// Email's unique constraint is case-sensitive while login is not. Verify
+	// candidates in ID order, preserving the old first matching account behavior.
+	var candidates []models.AuthUser
 	if err := models.DBManager.
 		Where("LOWER(email) = LOWER(?)", email).
-		Where("password = ?", passwordSHA).
-		First(&user).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Incorrect username or password"})
-			return
-		} else {
-			logs.FError("Login failed: unexpected database error: %v", err)
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "unexpected database error"})
-			return
+		Order("id ASC").
+		Find(&candidates).Error; err != nil {
+		logs.FError("Login failed: unexpected database error: %v", err)
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unexpected database error"})
+		return
+	}
+	validPassword, needsUpgrade := false, false
+	for _, candidate := range candidates {
+		if candidate.Password == nil {
+			continue
 		}
+		if valid, upgrade := util.VerifyPassword(password, *candidate.Password); valid {
+			user = candidate
+			validPassword, needsUpgrade = true, upgrade
+			break
+		}
+	}
+	if !validPassword {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Incorrect username or password"})
+		return
 	}
 
 	// check user is active
-	if !*user.IsActive {
+	if user.IsActive == nil || !*user.IsActive {
 		c.JSON(http.StatusForbidden, gin.H{"error": "User not activated"})
 		return
 	}
@@ -89,7 +98,19 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// update last login time
+	// Upgrade existing SHA-256 credentials together with the login timestamp.
+	// Keeping the replacement on user prevents Save from restoring the old hash.
+	if needsUpgrade {
+		replacement, err := util.HashPassword(password)
+		if err != nil {
+			logs.FError("Failed to upgrade password hash: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "unexpected password hashing error"})
+			return
+		}
+		user.Password = &replacement
+	}
+
+	// update last login time and any password upgrade before returning the token
 	if err := models.DBManager.Save(&user).Error; err != nil {
 		logs.FError("Failed to update login time: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "unexpected database error"})

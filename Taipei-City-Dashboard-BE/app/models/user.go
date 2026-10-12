@@ -38,6 +38,14 @@ type AuthUser struct {
 /* ----- Handlers ----- */
 
 func GetAllUsers(pageSize int, pageNum int, sort string, order string, searchByID string, searchByName string) (users []AuthUser, totalUsers int64, resultNum int64, err error) {
+	sortOrder, err := buildSortOrder(sort, order, "auth_users", []string{
+		"id", "name", "email", "password", "idno", "uuid", "tp_account", "member_type", "verify_level",
+		"is_admin", "is_active", "is_whitelist", "is_blacked", "expired_at", "created_at", "login_at",
+	})
+	if err != nil {
+		return users, 0, 0, err
+	}
+
 	// Create a temporary database
 	tempDB := DBManager.Table("auth_users")
 
@@ -61,8 +69,8 @@ func GetAllUsers(pageSize int, pageNum int, sort string, order string, searchByI
 	}
 
 	// Sort the issues
-	if sort != "" {
-		tempDB = tempDB.Order(sort + " " + order)
+	if sortOrder != nil {
+		tempDB = tempDB.Order(*sortOrder)
 	}
 
 	// Paginate the issues
