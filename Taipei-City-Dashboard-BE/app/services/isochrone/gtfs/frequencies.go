@@ -42,7 +42,7 @@ func ExpandFrequencies(f *Feed) []ExpandedTrip {
 				continue
 			}
 			seq := 0
-			for tripStart := fe.StartTime; tripStart < fe.EndTime; tripStart += fe.HeadwaySec {
+			for tripStart := fe.StartTime; tripStart < fe.EndTime; {
 				newTimes := make([]RawStopTime, len(template))
 				for i, st := range template {
 					newTimes[i] = RawStopTime{
@@ -61,6 +61,11 @@ func ExpandFrequencies(f *Feed) []ExpandedTrip {
 					StopTimes: newTimes,
 				})
 				seq++
+				// Check in int64 before adding to the int32 departure time.
+				if int64(tripStart)+int64(fe.HeadwaySec) >= int64(fe.EndTime) {
+					break
+				}
+				tripStart += fe.HeadwaySec
 			}
 		}
 	}

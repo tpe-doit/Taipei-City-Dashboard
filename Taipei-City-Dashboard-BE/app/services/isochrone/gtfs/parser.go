@@ -437,10 +437,18 @@ func (f *Feed) parseFrequencies(r *csv.Reader) error {
 		if tid == "" {
 			continue
 		}
+		// A frequency template must not become a scheduled trip if all rows are invalid.
+		if _, exists := f.Freqs[tid]; !exists {
+			f.Freqs[tid] = nil
+		}
+		headway, err := strconv.ParseInt(col(row, idx, "headway_secs"), 10, 32)
+		if err != nil || headway <= 0 {
+			continue
+		}
 		f.Freqs[tid] = append(f.Freqs[tid], FreqEntry{
 			StartTime:  parseGTFSTime(col(row, idx, "start_time")),
 			EndTime:    parseGTFSTime(col(row, idx, "end_time")),
-			HeadwaySec: int32(parseInt(col(row, idx, "headway_secs"))),
+			HeadwaySec: int32(headway),
 		})
 	}
 	return nil
