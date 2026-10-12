@@ -36,7 +36,10 @@ func TestParseFrequenciesHeadwayBounds(t *testing.T) {
 			if err := feed.parseFrequencies(newCSVReader(strings.NewReader(input))); err != nil {
 				t.Fatal(err)
 			}
-			entries := feed.Freqs["trip"]
+			entries, isFrequencyTrip := feed.Freqs["trip"]
+			if !isFrequencyTrip {
+				t.Fatalf("frequency template ownership lost for headway %q", tc.input)
+			}
 			if !tc.wantRow {
 				if len(entries) != 0 {
 					t.Fatalf("invalid headway %q produced entries: %#v", tc.input, entries)
@@ -59,13 +62,17 @@ func TestParseFrequenciesSkipsInvalidRowsAndKeepsFollowingRows(t *testing.T) {
 		"trip,08:00:00,09:00:00,4294967297\n" +
 		"trip,08:00:00,09:00:00,invalid\n" +
 		",08:00:00,09:00:00,600\n" +
-		"trip,08:00:00,09:00:00,600\n"
+		"trip,08:00:00,09:00:00,600\n" +
+		"trip,08:00:00,09:00:00,0\n"
 	if err := feed.parseFrequencies(newCSVReader(strings.NewReader(input))); err != nil {
 		t.Fatal(err)
 	}
 	entries := feed.Freqs["trip"]
 	if len(entries) != 1 || entries[0].HeadwaySec != 600 {
 		t.Fatalf("expected only the valid following row, got %#v", feed.Freqs)
+	}
+	if _, exists := feed.Freqs[""]; exists {
+		t.Fatal("row without a trip ID should not claim a frequency template")
 	}
 }
 
