@@ -24,6 +24,13 @@ type Issue struct {
 /* ----- Handlers ----- */
 
 func GetAllIssues(pageSize int, pageNum int, filterByStatus string, sort string, order string) (issues []Issue, totalIssues int64, resultNum int64, err error) {
+	sortOrder, err := buildSortOrder(sort, order, "issues", []string{
+		"id", "title", "user_name", "user_id", "context", "description", "decision_desc", "status", "updated_by", "created_at", "updated_at",
+	})
+	if err != nil {
+		return issues, 0, 0, err
+	}
+
 	tempDB := DBManager.Table("issues")
 
 	// Count the total amount of issues
@@ -38,8 +45,8 @@ func GetAllIssues(pageSize int, pageNum int, filterByStatus string, sort string,
 	tempDB.Count(&resultNum)
 
 	// Sort the issues
-	if sort != "" {
-		tempDB = tempDB.Order("issues." + sort + " " + order)
+	if sortOrder != nil {
+		tempDB = tempDB.Order(*sortOrder)
 	}
 
 	// Paginate the issues

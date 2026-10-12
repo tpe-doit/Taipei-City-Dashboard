@@ -15,14 +15,25 @@ const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 const authStore = useAuthStore();
 
+function getSafeLink(link) {
+	if (typeof link !== "string") return null;
+	try {
+		const url = new URL(link);
+		return ["http:", "https:"].includes(url.protocol) ? url : null;
+	} catch {
+		return null;
+	}
+}
+
 function getLinkTag(link, index) {
-	if (link.includes("data.taipei")) {
+	const hostname = getSafeLink(link)?.hostname;
+	if (hostname === "data.taipei") {
 		return `資料集 - ${index + 1} (data.taipei)`;
-	} else if (link.includes("data.ntpc")) {
+	} else if (hostname === "data.ntpc.gov.tw") {
 		return `資料集 - ${index + 1} (data.ntpc)`;
-	} else if (link.includes("tuic.gov.taipei")) {
+	} else if (hostname === "tuic.gov.taipei") {
 		return `大數據中心專案網頁`;
-	} else if (link.includes("github.com")) {
+	} else if (hostname === "github.com") {
 		return `GitHub 程式庫`;
 	} else {
 		return `資料集 - ${index + 1} (其他)`;
@@ -80,7 +91,7 @@ function getLinkTag(link, index) {
                 v-for="(link, index) in dialogStore
                   .moreInfoContent.links"
                 :key="link"
-                :href="link"
+                :href="getSafeLink(link)?.href"
                 target="_blank"
                 rel="noreferrer"
               >{{ getLinkTag(link, index) }}</a>

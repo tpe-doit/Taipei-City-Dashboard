@@ -59,6 +59,7 @@ def download_file(
         0   3  雁鴨保護區  1.799444e+06  重要濕地  NaN  NaN   NaN  NaN   NaN   NaN       NaN  MULTIPOLYGON (((121.51075 25.02214, 121.51083 ...
     """
     full_file_path = f"{file_folder}/{file_name}"
+    request_error = None
     # download file
     try:
         with requests.get(
@@ -72,10 +73,18 @@ def download_file(
             with open(full_file_path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
-        print(f"Downloaded {full_file_path} successfully.")
-        return full_file_path
-    except Exception as e:
-        raise e
+    except requests.exceptions.RequestException as error:
+        # Request exception messages and attached objects may contain URL credentials.
+        message = f"File download failed ({type(error).__name__})."
+        if error.response is not None:
+            message += f" HTTP status: {error.response.status_code}."
+        request_error = type(error)(message)
+
+    # Raise outside the handler so the original exception is not retained as context.
+    if request_error is not None:
+        raise request_error from None
+    print(f"Downloaded {full_file_path} successfully.")
+    return full_file_path
 
 
 def unzip_file_to_target_folder(zip_file: str, unzip_path: str, encoding="UTF-8"):

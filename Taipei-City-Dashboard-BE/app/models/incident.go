@@ -30,6 +30,13 @@ type PlaceResponse struct {
 }
 
 func GetAllIncident(pageSize int, pageNum int, filterByStatus string, sort string, order string) (incidents []Incident, totalIncidents int64, resultNum int64, err error) {
+	sortOrder, err := buildSortOrder(sort, order, "incidents", []string{
+		"id", "type", "description", "distance", "latitude", "longitude", "place", "time", "status",
+	})
+	if err != nil {
+		return incidents, 0, 0, err
+	}
+
 	tempDB := DBManager.Table("incidents")
 
 	// Count the total amount of incidents
@@ -44,8 +51,8 @@ func GetAllIncident(pageSize int, pageNum int, filterByStatus string, sort strin
 	tempDB.Count(&resultNum)
 
 	// Sort the issues
-	if sort != "" {
-		tempDB = tempDB.Order(sort + " " + order)
+	if sortOrder != nil {
+		tempDB = tempDB.Order(*sortOrder)
 	}
 
 	// Paginate the issues

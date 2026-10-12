@@ -164,6 +164,22 @@ func createTempComponentDB() *gorm.DB {
 }
 
 func GetAllComponents(city string, pageSize int, pageNum int, sort string, order string, filterBy string, filterMode string, filterValue string, searchByIndex string, searchByName string) (components []CityComponent, totalComponents int64, resultNum int64, err error) {
+	componentsColumn := []string{"id","index","name"}
+	queryChartsColumn := []string{"update_freq","source","short_desc","long_desc","use_case","links","contributors","query_type"}
+	allColumns := append(componentsColumn, queryChartsColumn...)
+	sortTable := "query_charts"
+	if slices.Contains(componentsColumn, sort) {
+		sortTable = "components"
+	}
+	// Preserve the existing behavior of ignoring unsupported component columns.
+	if !slices.Contains(allColumns, sort) {
+		sort = ""
+	}
+	sortOrder, err := buildSortOrder(sort, order, sortTable, allColumns)
+	if err != nil {
+		return components, 0, 0, err
+	}
+
 	tempDB := createTempComponentDB()
 
 	// Count the total amount of components
@@ -180,10 +196,6 @@ func GetAllComponents(city string, pageSize int, pageNum int, sort string, order
 	if searchByName != "" {
 		tempDB = tempDB.Where("components.name LIKE ?", "%"+searchByName+"%")
 	}
-
-	componentsColumn := []string{"id","index","name"}
-	queryChartsColumn := []string{"update_freq","source","short_desc","long_desc","use_case","links","contributors","query_type"}
-	allColumns := append(componentsColumn, queryChartsColumn...)
 
 	// Filter the components
 	if filterBy != "" && filterValue != "" && slices.Contains(allColumns,filterBy){
@@ -215,14 +227,8 @@ func GetAllComponents(city string, pageSize int, pageNum int, sort string, order
 	tempDB.Count(&resultNum)
 
 	// Sort the components
-	if sort != "" && slices.Contains(allColumns,sort){
-		if slices.Contains(componentsColumn,sort){
-			tempDB = tempDB.Order("components." + sort + " " + order)
-		}
-
-		if slices.Contains(queryChartsColumn,sort){
-			tempDB = tempDB.Order("query_charts." + sort + " " + order)
-		}
+	if sortOrder != nil {
+		tempDB = tempDB.Order(*sortOrder)
 	}
 
 	// Paginate the components

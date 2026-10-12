@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"gorm.io/gorm/clause"
 )
 
 /* ----- Models ----- */
@@ -22,16 +24,23 @@ type Contributor struct {
 /* ----- Handlers ----- */
 
 func GetAllContributors(pageSize int, pageNum int, sort string, order string) (contributors []Contributor, totalContributors int64, err error) {
+	sortOrder, err := buildSortOrder(sort, order, "contributors", []string{
+		"id", "user_id", "user_name", "image", "link", "identity", "description", "include", "created_at", "updated_at",
+	})
+	if err != nil {
+		return contributors, 0, err
+	}
+
 	tempDB := DBManager.Table("contributors")
 
 	// Count the total amount of contributors
 	tempDB.Count(&totalContributors)
 
 	// Sort the contributors
-	if sort != "" {
-		tempDB = tempDB.Order("contributors." + sort + " " + order)
+	if sortOrder != nil {
+		tempDB = tempDB.Order(*sortOrder)
 	} else {
-		tempDB = tempDB.Order("contributors.id asc")
+		tempDB = tempDB.Order(clause.OrderByColumn{Column: clause.Column{Table: "contributors", Name: "id"}})
 	}
 
 	// Paginate the contributors
