@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
-	"strconv"
 )
 
 /* ----- Models ----- */
@@ -127,7 +127,7 @@ type BubbleData struct {
 }
 
 type BubbleDataItem struct {
-	X any `json:"x"`
+	X any     `json:"x"`
 	Y float64 `json:"y"`
 	Z float64 `json:"z"`
 }
@@ -184,50 +184,18 @@ func GetComponentHistoryDataQuery(id int, city string, timeFrom string, timeTo s
 		return historyDataQuery.QueryHistory, err
 	}
 
-	var timeStepUnit string
-
-	timeFromTime, err := time.Parse("2006-01-02T15:04:05+08:00", timeFrom)
+	// Keep request values out of the SQL template. They are bound only when
+	// GetTimeSeriesData executes the query, including every history group.
+	if _, err = dashboardHistoryTimeStep(timeFrom, timeTo); err != nil {
+		return queryHistory, err
+	}
+	parts, err := splitDashboardQuery(historyDataQuery.QueryHistory)
 	if err != nil {
 		return queryHistory, err
 	}
-	timeToTime, err := time.Parse("2006-01-02T15:04:05+08:00", timeTo)
-	if err != nil {
-		return queryHistory, err
-	}
-
-	/*
-			timesteps are automatically determined based on the time range:
-		  - Within 24hrs: hour
-		  - Within 1 month: day
-		  - Within 3 months: week
-		  - Within 2 years: month
-		  - More than 2 years: year
-	*/
-	if timeToTime.Sub(timeFromTime).Hours() <= 24 {
-		timeStepUnit = "hour" // Within 24hrs
-	} else if timeToTime.Sub(timeFromTime).Hours() < 24*32 {
-		timeStepUnit = "day" // Within 1 month
-	} else if timeToTime.Sub(timeFromTime).Hours() < 24*93 {
-		timeStepUnit = "week" // Within 3 months
-	} else if timeToTime.Sub(timeFromTime).Hours() < 24*740 {
-		timeStepUnit = "month" // Within 2 years
-	} else {
-		timeStepUnit = "year" // More than 2 years
-	}
-
-	// Insert the time range and timestep unit into the query
-	var queryInsertStrings []any
-
-	if strings.Count(historyDataQuery.QueryHistory, "%s")%3 != 0 {
+	if (len(parts)-1)%3 != 0 {
 		return queryHistory, fmt.Errorf("invalid query string")
 	}
-
-	for i := 0; i < strings.Count(historyDataQuery.QueryHistory, "%s")/3; i++ {
-		queryInsertStrings = append(queryInsertStrings, timeStepUnit, timeFrom, timeTo)
-	}
-
-	historyDataQuery.QueryHistory = fmt.Sprintf(historyDataQuery.QueryHistory, queryInsertStrings...)
-
 	return historyDataQuery.QueryHistory, nil
 }
 
@@ -238,17 +206,7 @@ two_d, three_d, percent, and time. three_d and percent data share a common handl
 
 func GetTwoDimensionalData(query *string, timeFrom string, timeTo string) (chartDataOutput []TwoDimensionalDataOutput, err error) {
 	var chartData []TwoDimensionalData
-	var queryString string
-
-	// 1. Check if query contains substring '%s'. If so, the component can be queried by time.
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	// 2. Get the data from the database
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartDataOutput, err
 	}
@@ -264,17 +222,7 @@ func GetTwoDimensionalData(query *string, timeFrom string, timeTo string) (chart
 
 func GetThreeDimensionalData(query *string, timeFrom string, timeTo string) (chartDataOutput []ThreeDimensionalDataOutput, categories []string, err error) {
 	var chartData []ThreeDimensionalData
-	var queryString string
-
-	// 1. Check if query contains substring '%s'. If so, the component can be queried by time.
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	// 2. Get the data from the database
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartDataOutput, categories, err
 	}
@@ -320,17 +268,7 @@ func GetThreeDimensionalData(query *string, timeFrom string, timeTo string) (cha
 
 func GetTimeSeriesData(query *string, timeFrom string, timeTo string) (chartDataOutput []TimeSeriesDataOutput, err error) {
 	var chartData []TimeSeriesData
-	var queryString string
-
-	// 1. Check if query contains substring '%s'. If so, the component can be queried by time.
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	// 2. Get the data from the database
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartDataOutput, err
 	}
@@ -362,17 +300,7 @@ func GetTimeSeriesData(query *string, timeFrom string, timeTo string) (chartData
 }
 
 func GetMapLegendData(query *string, timeFrom string, timeTo string) (chartData []MapLegendData, err error) {
-	var queryString string
-
-	// 1. Check if query contains substring '%s'. If so, the component can be queried by time.
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	// 2. Get the data from the database
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartData, err
 	}
@@ -384,23 +312,15 @@ func GetMapLegendData(query *string, timeFrom string, timeTo string) (chartData 
 }
 
 func parseX(s string) any {
-    if f, err := strconv.ParseFloat(s, 64); err == nil {
-        return f
-    }
-    return s
+	if f, err := strconv.ParseFloat(s, 64); err == nil {
+		return f
+	}
+	return s
 }
 
 func GetBubbleData(query *string, timeFrom string, timeTo string) (chartDataOutput []BubbleDataOutput, categories []string, err error) {
 	var chartData []BubbleData
-	var queryString string
-
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartDataOutput, categories, err
 	}
@@ -445,15 +365,7 @@ func GetBubbleData(query *string, timeFrom string, timeTo string) (chartDataOutp
 }
 
 func GetLayeredFlowData(query *string, timeFrom string, timeTo string) (chartData []LayeredFlowData, categories []string, err error) {
-	var queryString string
-
-	if strings.Count(*query, "%s") == 2 {
-		queryString = fmt.Sprintf(*query, timeFrom, timeTo)
-	} else {
-		queryString = *query
-	}
-
-	err = DBDashboard.Raw(queryString).Scan(&chartData).Error
+	err = executeDashboardRawQuery(query, timeFrom, timeTo, &chartData)
 	if err != nil {
 		return chartData, categories, err
 	}
