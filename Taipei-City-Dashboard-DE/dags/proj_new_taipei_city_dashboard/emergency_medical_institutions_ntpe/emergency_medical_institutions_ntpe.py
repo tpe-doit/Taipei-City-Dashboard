@@ -68,6 +68,8 @@ def _emergency_medical_institutions_ntpe(**kwargs):
         "division": "division",
         "remark": "remark"
     })
+    if "seqno" not in data.columns:
+        data["seqno"] = range(1, len(data) + 1)
     data["data_time"] = pd.to_datetime("now")
     # === Geocode(地址→經緯度;參照 food_hygiene_award)===
     data["lng"] = None

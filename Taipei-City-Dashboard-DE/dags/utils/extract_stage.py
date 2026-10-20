@@ -62,6 +62,7 @@ def download_file(
     full_file_path = f"{file_folder}/{file_name}"
     # download file
     try:
+        os.makedirs(os.path.dirname(full_file_path), exist_ok=True)
         with requests.get(
             url,
             stream=True,

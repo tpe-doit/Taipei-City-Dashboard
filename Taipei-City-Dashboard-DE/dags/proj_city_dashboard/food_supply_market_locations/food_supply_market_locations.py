@@ -134,8 +134,15 @@ def _food_supply_market_locations(**kwargs):
         taipei_basic_url,
         is_proxy=False,
     )
-    taipei_stalls_raw = pd.read_csv(taipei_stalls_file, encoding="big5")
-    taipei_basic_raw = pd.read_csv(taipei_basic_file, encoding="big5")
+    try:
+        taipei_stalls_raw = pd.read_csv(taipei_stalls_file, encoding="utf-8-sig")
+    except UnicodeDecodeError:
+        taipei_stalls_raw = pd.read_csv(taipei_stalls_file, encoding="big5")
+
+    try:
+        taipei_basic_raw = pd.read_csv(taipei_basic_file, encoding="utf-8-sig")
+    except UnicodeDecodeError:
+        taipei_basic_raw = pd.read_csv(taipei_basic_file, encoding="big5")
 
     ntpc_client = NewTaipeiAPIClient(NTPC_RID, input_format="json")
     ntpc_raw = pd.DataFrame(ntpc_client.get_all_data(size=1000))
