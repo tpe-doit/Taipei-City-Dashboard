@@ -32,7 +32,11 @@ def _R0085(**kwargs):
     # Transform
     data = raw_data.copy()
     # rename
-    data.columns = data.columns.str.lower()
+    data.columns = (
+        data.columns.str.lower()
+        .str.replace(r"[（\(].*?[）\)]", "", regex=True)
+        .str.strip()
+    )
     data.rename(
         columns={
             "stationid": "station_no",

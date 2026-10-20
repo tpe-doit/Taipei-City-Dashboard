@@ -29,7 +29,7 @@ def _transfer(**kwargs):
 
     data = raw_data.copy()
 
-    data = data[data["field1"].str.contains("新北市- 計")].copy()
+    data = data[data["field1"].str.contains(r"新北市.*計", regex=True)].copy()
 
     # ** 提取年份數字 (民國/西元 皆適用)**
     data["year"] = data["field1"].str.extract(r"(\d{4})").astype(int)
