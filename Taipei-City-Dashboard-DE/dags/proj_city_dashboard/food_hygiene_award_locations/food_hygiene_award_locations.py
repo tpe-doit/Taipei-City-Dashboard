@@ -17,6 +17,7 @@ def _ensure_ready_table(engine, table_name, col_map):
 
 
 def _food_hygiene_award_locations(**kwargs):
+    import logging
     import re
 
     import pandas as pd
@@ -75,15 +76,19 @@ def _food_hygiene_award_locations(**kwargs):
 
     # NOTE: 暫無對應 utils helper,使用 inline requests。後續多支 DAG 若共用此來源,請維護者升級為 utils.extract_stage.<helper>。
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    ntpc_res = requests.post(
-        NTPC_API_URL,
-        data={"ZoneID": NTPC_DISTRICTS},
-        timeout=60,
-        proxies=kwargs.get("proxies"),
-        verify=False,
-    )
-    ntpc_res.raise_for_status()
-    ntpc_raw = pd.DataFrame(ntpc_res.json())
+    ntpc_raw = pd.DataFrame()
+    try:
+        ntpc_res = requests.post(
+            NTPC_API_URL,
+            data={"ZoneID": NTPC_DISTRICTS},
+            timeout=60,
+            proxies=kwargs.get("proxies"),
+            verify=False,
+        )
+        ntpc_res.raise_for_status()
+        ntpc_raw = pd.DataFrame(ntpc_res.json())
+    except Exception as e:
+        logging.warning(f"NTPC food award markers fetch failed ({e}); proceeding with Taipei data only")
 
     # === Transform ===
     taipei = taipei_raw.rename(
@@ -117,38 +122,41 @@ def _food_hygiene_award_locations(**kwargs):
         addr_xy = pd.DataFrame({"address": unique_addr, "lng": lng, "lat": lat})
         taipei = taipei.drop(columns=["lng", "lat"]).merge(addr_xy, on="address", how="left")
 
-    ntpc = ntpc_raw.rename(
-        columns={
-            "id": "source_record_id",
-            "lon": "lng",
-            "lat": "lat",
-            "label": "business_name",
-            "Address": "address",
-            "Name": "grade",
-            "url": "award_image_url",
-        }
-    )
-    ntpc["source_city"] = "新北市"
-    ntpc["source_agency"] = "新北市政府衛生局"
-    ntpc["registration_no"] = None
-    ntpc["area_code"] = None
-    ntpc["district"] = ntpc["address"].str.extract(r"^([^市縣]{2,3}區)")
-    ntpc["award_year"] = ntpc["grade"].apply(
-        lambda value: int(re.search(r"(\d{3})年度", str(value)).group(1))
-        if re.search(r"(\d{3})年度", str(value))
-        else None
-    )
-    ntpc["grade"] = ntpc["grade"].astype(str).str.replace(r"^\d{3}年度\s*", "", regex=True)
-    ntpc["award_image_url"] = ntpc["award_image_url"].apply(
-        lambda value: f"https://foodtracer.health.ntpc.gov.tw{value}"
-        if isinstance(value, str) and value.startswith("/")
-        else value
-    )
-    ntpc["lng"] = pd.to_numeric(ntpc["lng"], errors="coerce")
-    ntpc["lat"] = pd.to_numeric(ntpc["lat"], errors="coerce")
-    ntpc["data_time"] = get_tpe_now_time_str(is_with_tz=True)
+    if not ntpc_raw.empty:
+        ntpc = ntpc_raw.rename(
+            columns={
+                "id": "source_record_id",
+                "lon": "lng",
+                "lat": "lat",
+                "label": "business_name",
+                "Address": "address",
+                "Name": "grade",
+                "url": "award_image_url",
+            }
+        )
+        ntpc["source_city"] = "新北市"
+        ntpc["source_agency"] = "新北市政府衛生局"
+        ntpc["registration_no"] = None
+        ntpc["area_code"] = None
+        ntpc["district"] = ntpc["address"].str.extract(r"^([^市縣]{2,3}區)")
+        ntpc["award_year"] = ntpc["grade"].apply(
+            lambda value: int(re.search(r"(\d{3})年度", str(value)).group(1))
+            if re.search(r"(\d{3})年度", str(value))
+            else None
+        )
+        ntpc["grade"] = ntpc["grade"].astype(str).str.replace(r"^\d{3}年度\s*", "", regex=True)
+        ntpc["award_image_url"] = ntpc["award_image_url"].apply(
+            lambda value: f"https://foodtracer.health.ntpc.gov.tw{value}"
+            if isinstance(value, str) and value.startswith("/")
+            else value
+        )
+        ntpc["lng"] = pd.to_numeric(ntpc["lng"], errors="coerce")
+        ntpc["lat"] = pd.to_numeric(ntpc["lat"], errors="coerce")
+        ntpc["data_time"] = get_tpe_now_time_str(is_with_tz=True)
 
-    data = pd.concat([taipei, ntpc], ignore_index=True, sort=False)
+        data = pd.concat([taipei, ntpc], ignore_index=True, sort=False)
+    else:
+        data = taipei.copy()
     data["data_time"] = convert_str_to_time_format(
         data["data_time"].astype(str),
         errors="coerce",

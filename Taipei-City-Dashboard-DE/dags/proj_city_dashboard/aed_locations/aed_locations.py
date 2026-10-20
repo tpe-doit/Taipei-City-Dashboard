@@ -30,18 +30,33 @@ def _transfer(**kwargs):
     raw_data["data_time"] = get_tpe_now_time_str()
 
     # Rename columns to match provided structure
-    # 注意:資料集目前無「縣市別代碼」欄位,city_code 從「行政區域代碼」衍生
+    # 注意:資料集欄位可能為「行政區域代碼」或「區域代碼」，「aed放置地點」大小寫可能不一
     raw_data = raw_data.rename(columns={
         "_id": "place_id",
         "場所名稱": "place_name",
         "場所地址": "address",
         "行政區域代碼": "district_code",
+        "區域代碼": "district_code",
         "緯度": "lat",
         "經度": "lng",
         "場所分類": "category",
         "場所類型": "type",
-        "aed放置地點": "aed_location"
+        "aed放置地點": "aed_location",
+        "AED放置地點": "aed_location",
     })
+
+    if "district_code" not in raw_data.columns and "行政區域代碼" in raw_data.columns:
+        raw_data["district_code"] = raw_data["行政區域代碼"]
+    elif "district_code" not in raw_data.columns and "區域代碼" in raw_data.columns:
+        raw_data["district_code"] = raw_data["區域代碼"]
+
+    if "aed_location" not in raw_data.columns:
+        for c in raw_data.columns:
+            if "aed" in str(c).lower() and "地點" in str(c):
+                raw_data["aed_location"] = raw_data[c]
+                break
+        if "aed_location" not in raw_data.columns:
+            raw_data["aed_location"] = None
 
     # Clean and select
     df = raw_data[[

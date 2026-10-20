@@ -56,22 +56,32 @@ def _pharmacies(**kwargs):
         "_id": "seq",
         "機構名稱": "pharmacy_name",
         "地址": "address",
-        "電話": "phone"
+        "電話": "phone",
+        "經度": "lng",
+        "緯度": "lat"
     })
+    if "phone" not in data.columns:
+        data["phone"] = None
+    if "lng" not in data.columns:
+        data["lng"] = None
+    if "lat" not in data.columns:
+        data["lat"] = None
     data["zipcode"] = None
     data["data_time"] = pd.to_datetime("now")
 
-    # === Geocode（地址→經緯度;參照 food_hygiene_award:去重後打 TPGOS）===
-    data["lng"] = None
-    data["lat"] = None
-    if Variable.get("TPGOS_GET_ADDR_XY", default_var=None):
-        uniq = data["address"].dropna().drop_duplicates().tolist()
-        if uniq:
-            lng, lat = get_addr_xy_parallel(uniq, sleep_time=0.5)
-            addr_xy = pd.DataFrame({"address": uniq, "lng": lng, "lat": lat})
-            data = data.drop(columns=["lng", "lat"]).merge(addr_xy, on="address", how="left")
+    # === Geocode（地址→經緯度;若原始資料缺座標則打 TPGOS 補點）===
     data["lng"] = pd.to_numeric(data["lng"], errors="coerce")
     data["lat"] = pd.to_numeric(data["lat"], errors="coerce")
+    if Variable.get("TPGOS_GET_ADDR_XY", default_var=None):
+        missing_mask = data["lng"].isna() | data["lat"].isna()
+        uniq = data.loc[missing_mask, "address"].dropna().drop_duplicates().tolist()
+        if uniq:
+            lng, lat = get_addr_xy_parallel(uniq, sleep_time=0.5)
+            addr_xy = pd.DataFrame({"address": uniq, "geo_lng": lng, "geo_lat": lat})
+            data = data.merge(addr_xy, on="address", how="left")
+            data["lng"] = data["lng"].fillna(pd.to_numeric(data["geo_lng"], errors="coerce"))
+            data["lat"] = data["lat"].fillna(pd.to_numeric(data["geo_lat"], errors="coerce"))
+            data = data.drop(columns=["geo_lng", "geo_lat"], errors="ignore")
     # 經緯度(WGS84)→ Point wkb_geometry
     data = add_point_wkbgeometry_column_to_df(
         data, x=data["lng"], y=data["lat"], from_crs=4326, to_crs=4326, is_add_xy_columns=True
