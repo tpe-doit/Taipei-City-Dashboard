@@ -3,6 +3,7 @@ from operators.common_pipeline import CommonDag
 
 
 def _D060102_1(**kwargs):
+    import pandas as pd
     from sqlalchemy import create_engine
     from utils.extract_stage import get_current_rid_from_page_id, get_data_taipei_api
     from utils.load_stage import (
@@ -36,6 +37,7 @@ def _D060102_1(**kwargs):
             "場所名稱": "name",
             "場所地址": "addr",
             "行政區域代碼": "vil_code",
+            "區域代碼": "vil_code",
             "場所分類": "main_type",
             "場所類型": "sub_type",
             "aed放置地點": "aed_place",
@@ -44,8 +46,14 @@ def _D060102_1(**kwargs):
             "data_time": "data_time",
         }
     )
+    if "vil_code" not in data.columns and "行政區域代碼" in data.columns:
+        data["vil_code"] = data["行政區域代碼"]
+    elif "vil_code" not in data.columns and "區域代碼" in data.columns:
+        data["vil_code"] = data["區域代碼"]
+
     # define column type
-    data["vil_code"] = data["vil_code"].astype(float).astype(int).astype(str)
+    if "vil_code" in data.columns:
+        data["vil_code"] = pd.to_numeric(data["vil_code"], errors="coerce").fillna(0).astype(int).astype(str)
     
     # add column
     data["city"] = "台北市"

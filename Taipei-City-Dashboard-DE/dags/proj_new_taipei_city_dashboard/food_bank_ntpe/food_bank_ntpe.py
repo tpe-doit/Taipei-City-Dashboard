@@ -30,7 +30,7 @@ def _food_bank_ntpe(**kwargs):
     default_table = dag_infos.get("ready_data_default_table")
     history_table = dag_infos.get("ready_data_history_table")
 
-    RID = "1c1d0066-a4e7-4753-b8bc-d7728d5f3e04"
+    RID = "fbcc2a46-c8de-489c-92d2-c614a793e76f"
 
     COL_MAP = {
         "data_time": 'timestamp with time zone DEFAULT CURRENT_TIMESTAMP',
@@ -53,11 +53,14 @@ def _food_bank_ntpe(**kwargs):
     client = NewTaipeiAPIClient(RID, input_format="json")
     raw_records = client.get_all_data(size=1000)
     raw_data = pd.DataFrame(raw_records)
+    if raw_data.empty:
+        return
 
     # Transform
     data = raw_data.rename(
         columns={
             "no": "seq",
+            "seqno": "seq",
             "title": "title",
             "countycode": "county_code",
             "county": "county",
@@ -68,6 +71,8 @@ def _food_bank_ntpe(**kwargs):
             "localcallservice": "phone",
         }
     )
+    if "seq" not in data.columns:
+        data["seq"] = range(1, len(data) + 1)
     data["seq"] = pd.to_numeric(data["seq"], errors="coerce").astype("Int64")
     data["data_time"] = pd.to_datetime("now").strftime("%Y-%m-%d %H:%M:%S")
     # 來源地址含全形數字(如 ２５８),轉半形

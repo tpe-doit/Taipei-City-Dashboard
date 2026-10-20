@@ -35,9 +35,15 @@ def _transfer(**kwargs):
     col_map = {
         "title": "name",
         "town": "district",
+        "area": "district",
         "areacode": "zip_code",
+        "localcall service": "tel",
     }
     data = data.rename(columns=col_map)
+    if "district" not in data.columns:
+        data["district"] = data.get("area", data.get("town", ""))
+    if "tel" not in data.columns:
+        data["tel"] = data.get("localcall service", data.get("phone", None))
     data["data_time"] = get_tpe_now_time_str(is_with_tz=True)
     # get geometry
     # clean addr

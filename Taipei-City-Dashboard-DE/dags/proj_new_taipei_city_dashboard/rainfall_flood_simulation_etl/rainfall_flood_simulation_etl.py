@@ -28,7 +28,7 @@ def _transfer(**kwargs):
     gdata.columns = gdata.columns.str.lower()
     gdata["area"] = gdata["geometry"].apply(lambda x: x.area).round()
     gdata['city'] = "新北市"
-    gdata = convert_geometry_to_wkbgeometry(gdata, from_crs=4326)
+    gdata = convert_geometry_to_wkbgeometry(gdata, from_crs=3826)
 
     df = gdata[["gridcode","category", "type", "area", "city", "wkb_geometry"]]
     df["data_time"] = pd.to_datetime("now").strftime("%Y-%m-%d %H:%M:%S")

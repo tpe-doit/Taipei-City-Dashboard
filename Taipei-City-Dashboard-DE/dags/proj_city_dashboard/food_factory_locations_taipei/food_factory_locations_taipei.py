@@ -59,7 +59,7 @@ def _food_factory_locations_taipei(**kwargs):
         "https://data.taipei/api/dataset/c8215f0d-20fa-4350-bcd9-da82432c2c9d/"
         "resource/db839b8c-bcbf-4b82-ab54-4d025df79b3c/download"
     )
-    SOURCE_ENCODING = "utf-8"
+    SOURCE_ENCODING = "utf-8-sig"
     SOURCE_CRS = 3826  # TWD97 TM2 (北市座標系統)
 
     # === Extract ===
@@ -68,6 +68,7 @@ def _food_factory_locations_taipei(**kwargs):
     local_path = os.path.join(data_path, dag_id, "raw.csv")
     download_file(os.path.join(dag_id, "raw.csv"), SOURCE_URL)
     raw_data = pd.read_csv(local_path, encoding=SOURCE_ENCODING)
+    raw_data.columns = raw_data.columns.str.replace("\ufeff", "")
 
     # === Transform ===
     # 1. rename 原始欄位 → snake_case
